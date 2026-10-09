@@ -61,13 +61,26 @@ appId: no.rastcamp.app
     timeout: 8000
 - takeScreenshot: 01-map-filter
 
-# 2) Nearby list (same filter).
-- tapOn: '${TAB_NEARBY}'
+# 2) Nearby list (same filter). Wait for the list itself: a tab tap during the map's
+# camera animation can get lost (happened on iOS).
+- retry:
+    maxRetries: 3
+    commands:
+      - tapOn: '${TAB_NEARBY}'
+      - extendedWaitUntil:
+          visible: '${SEARCH}'
+          timeout: 10000
 - waitForAnimationToEnd
 - takeScreenshot: 02-nearby
 
 # 4) Favourites.
-- tapOn: '${TAB_FAVORITES}'
+- retry:
+    maxRetries: 3
+    commands:
+      - tapOn: '${TAB_FAVORITES}'
+      - extendedWaitUntil:
+          visible: 'Homannsberget Camping.*'
+          timeout: 10000
 - waitForAnimationToEnd
 - takeScreenshot: 04-favorites
 
