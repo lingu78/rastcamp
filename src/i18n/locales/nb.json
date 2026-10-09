@@ -1,0 +1,40 @@
+{
+  "appName": "Rastcamp",
+  "tabs": {
+    "map": "Kart",
+    "nearby": "Nærmest",
+    "favorites": "Favoritter",
+    "more": "Mer"
+  },
+  "categories": {
+    "caravan_site": "Bobilplass",
+    "camp_site": "Camping",
+    "dump_station": "Tømming",
+    "water": "Vann",
+    "rest_area": "Rasteplass",
+    "lpg": "Gass"
+  },
+  "map": {
+    "placeholder": "Kartet kommer her."
+  },
+  "nearby": {
+    "title": "Nærmest meg",
+    "empty": "Ingen steder å vise ennå."
+  },
+  "favorites": {
+    "title": "Favoritter",
+    "empty": "Ingen favoritter ennå.",
+    "emptyHint": "Åpne et sted og trykk «Lagre favoritt», så havner det her."
+  },
+  "more": {
+    "title": "Mer",
+    "language": "Språk",
+    "version": "Versjon"
+  },
+  "language": {
+    "auto": "Automatisk (enhetens språk)",
+    "sv": "Svenska",
+    "nb": "Norsk (bokmål)",
+    "en": "English"
+  }
+}

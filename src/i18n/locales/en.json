@@ -1,0 +1,40 @@
+{
+  "appName": "Rastcamp",
+  "tabs": {
+    "map": "Map",
+    "nearby": "Nearby",
+    "favorites": "Favourites",
+    "more": "More"
+  },
+  "categories": {
+    "caravan_site": "Motorhome stop",
+    "camp_site": "Campsite",
+    "dump_station": "Dump station",
+    "water": "Water",
+    "rest_area": "Rest area",
+    "lpg": "LPG"
+  },
+  "map": {
+    "placeholder": "The map goes here."
+  },
+  "nearby": {
+    "title": "Nearest to me",
+    "empty": "No places to show yet."
+  },
+  "favorites": {
+    "title": "Favourites",
+    "empty": "No favourites yet.",
+    "emptyHint": "Open a place and tap “Save favourite” to keep it here."
+  },
+  "more": {
+    "title": "More",
+    "language": "Language",
+    "version": "Version"
+  },
+  "language": {
+    "auto": "Automatic (device language)",
+    "sv": "Svenska",
+    "nb": "Norsk (bokmål)",
+    "en": "English"
+  }
+}

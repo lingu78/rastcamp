@@ -1,0 +1,48 @@
+{
+  "expo": {
+    "name": "Rastcamp",
+    "slug": "rastcamp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "rastcamp",
+    "userInterfaceStyle": "automatic",
+    "backgroundColor": "#F2F3F1",
+    "ios": {
+      "bundleIdentifier": "no.rastcamp.app",
+      "supportsTablet": false,
+      "config": {
+        "usesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "no.rastcamp.app",
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "single"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-localization",
+        {
+          "supportedLocales": ["en", "sv", "nb"]
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#2E6B3F",
+          "imageWidth": 120,
+          "dark": {
+            "backgroundColor": "#173A22"
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}

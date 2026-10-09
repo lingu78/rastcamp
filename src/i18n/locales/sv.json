@@ -1,0 +1,40 @@
+{
+  "appName": "Rastcamp",
+  "tabs": {
+    "map": "Karta",
+    "nearby": "Närmast",
+    "favorites": "Favoriter",
+    "more": "Mer"
+  },
+  "categories": {
+    "caravan_site": "Ställplats",
+    "camp_site": "Camping",
+    "dump_station": "Tömning",
+    "water": "Vatten",
+    "rest_area": "Rastplats",
+    "lpg": "Gasol"
+  },
+  "map": {
+    "placeholder": "Kartan kommer här."
+  },
+  "nearby": {
+    "title": "Närmast mig",
+    "empty": "Inga platser att visa ännu."
+  },
+  "favorites": {
+    "title": "Favoriter",
+    "empty": "Inga favoriter ännu.",
+    "emptyHint": "Öppna en plats och tryck på ”Spara favorit” så hamnar den här."
+  },
+  "more": {
+    "title": "Mer",
+    "language": "Språk",
+    "version": "Version"
+  },
+  "language": {
+    "auto": "Automatiskt (enhetens språk)",
+    "sv": "Svenska",
+    "nb": "Norsk (bokmål)",
+    "en": "English"
+  }
+}
