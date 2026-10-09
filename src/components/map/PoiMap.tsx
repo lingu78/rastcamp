@@ -4,7 +4,6 @@ import {
   Images,
   Layer,
   Map,
-  NativeUserLocation,
   type CameraRef,
   type GeoJSONSourceRef,
   type InitialViewState,
@@ -42,6 +41,8 @@ const MAP_ICONS: Record<Category, number> = {
 
 const USER_ZOOM = 11;
 const CLUSTER_MAX_ZOOM = 12;
+/** "You are here" blue, recognisable from other map apps. */
+const USER_DOT_COLOR = '#1A73E8';
 
 export type PoiMapHandle = {
   /** Moves the camera to the device position; returns false if there is none. */
@@ -214,7 +215,33 @@ export function PoiMap({ visible, onSelectPoi, onBaseMapStatus, ref }: Props) {
           </GeoJSONSource>
         );
       })}
-      {permission === 'granted' && <NativeUserLocation />}
+      {/* Drawn from our own expo-location fix (the one "Närmast" measures from) instead of
+          MapLibre's location component, which has a separate location engine. */}
+      {permission === 'granted' && position && (
+        <GeoJSONSource
+          id="user-location"
+          data={{
+            type: 'Feature',
+            geometry: { type: 'Point', coordinates: [position.lon, position.lat] },
+            properties: {},
+          }}>
+          <Layer
+            id="user-location-halo"
+            type="circle"
+            paint={{ 'circle-radius': 18, 'circle-color': USER_DOT_COLOR, 'circle-opacity': 0.18 }}
+          />
+          <Layer
+            id="user-location-dot"
+            type="circle"
+            paint={{
+              'circle-radius': 8,
+              'circle-color': USER_DOT_COLOR,
+              'circle-stroke-width': 3,
+              'circle-stroke-color': '#FFFFFF',
+            }}
+          />
+        </GeoJSONSource>
+      )}
     </Map>
   );
 }

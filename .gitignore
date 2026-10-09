@@ -50,3 +50,6 @@ coverage/
 # data pipeline work files (large PBF downloads etc.)
 data-pipeline/work/
 data-pipeline/out/
+
+# Maestro failure output (CI only)
+store/screenshots/debug/

@@ -67,7 +67,8 @@ jobs:
           profile: pixel_2
           # Animations on, like a real phone (the Android form sheet needs them).
           disable-animations: false
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          # swiftshader_indirect (deprecated) draws no map text; let the emulator pick.
+          emulator-options: -no-window -gpu software -noaudio -no-boot-anim -camera-back none
           script: |
             adb install -r $RUNNER_TEMP/app.apk
             adb shell settings put global sysui_demo_allowed 1
@@ -77,7 +78,9 @@ jobs:
             adb shell am broadcast -a com.android.systemui.demo -e command notifications -e visible false
             scripts/screenshots.sh android
       - run: node scripts/frame-screenshots.ts android
+        if: always()
       - name: Push to store-screenshots-android
+        if: always()
         run: scripts/push-dir.sh store/screenshots store-screenshots-android
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -127,7 +130,9 @@ jobs:
           echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
       - run: scripts/screenshots.sh ios
       - run: node scripts/frame-screenshots.ts ios
+        if: always()
       - name: Push to store-screenshots-ios
+        if: always()
         run: scripts/push-dir.sh store/screenshots store-screenshots-ios
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

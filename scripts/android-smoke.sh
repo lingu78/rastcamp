@@ -33,8 +33,15 @@ launch() { # $1 = name, $2 = optional deep link (rastcamp://…)
     echo "::error::App is not running after launch ($1)"; exit 1
   fi
   adb exec-out screencap -p > "$OUT/$1.png"
-  adb logcat -d -s ReactNativeJS:V AndroidRuntime:E MapLibre:W > "$OUT/$1-logcat.txt" || true
-  grep -h "\[perf\]" "$OUT/$1-logcat.txt" | sed "s/^/$1: /" >> "$OUT/perf.txt" || true
+  # All warnings/errors (MapLibre, GL, crashes) + JS log + the activity start, epoch timestamps.
+  adb logcat -d -v epoch '*:W' ReactNativeJS:V ActivityTaskManager:I > "$OUT/$1-logcat.txt" || true
+  # [perf] markers measured from the activity start (cold start, spec §7).
+  awk -v name="$1" '
+    /START u0/ && !t0 { t0 = $1 }
+    /\[perf\]/ && t0 {
+      label = $0; sub(/.*\[perf\] /, "", label); sub(/ .*/, "", label)
+      printf "%s: %s %.1f s after activity start\n", name, label, $1 - t0
+    }' "$OUT/$1-logcat.txt" >> "$OUT/perf.txt" || true
   if grep -q "FATAL EXCEPTION" "$OUT/$1-logcat.txt"; then
     echo "::error::Crash during $1"; cat "$OUT/$1-logcat.txt"; exit 1
   fi
@@ -71,6 +78,10 @@ adb shell cmd uimode night no
 
 # 4) Online list and detail via deep links (Oslo).
 WAIT=12 launch 04-nearby "rastcamp://nearby"
+# The normal way into a place: tap the first row of the list (pixel_7, 1080×2400).
+adb shell input tap 540 750
+sleep 6
+adb exec-out screencap -p > "$OUT/04b-detail-tap.png"
 WAIT=12 launch 05-detail "rastcamp://place/w49139387%2Fcaravan_site"
 
 # 5) Offline (airplane mode, spec F7): map falls back, list/detail still work.

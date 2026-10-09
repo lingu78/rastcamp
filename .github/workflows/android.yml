@@ -68,6 +68,17 @@ jobs:
           rm -rf android/app/build android/build ~/.gradle/caches/build-cache-* node_modules/.cache
           df -h / | tail -1
 
+      - name: Map style and fonts reachable (diagnostic)
+        continue-on-error: true
+        run: |
+          style=$(curl -fsS https://tiles.openfreemap.org/styles/liberty)
+          echo "$style" | jq -r '"glyphs: \(.glyphs)", "sprite: \(.sprite)"'
+          echo "$style" | jq -r '[.layers[].layout["text-font"]? // empty | tostring] | unique[]'
+          for f in Noto%20Sans%20Regular Noto%20Sans%20Bold; do
+            curl -sS -o /dev/null -w "$f 0-255.pbf: HTTP %{http_code}, %{size_download} bytes\n" \
+              "https://tiles.openfreemap.org/fonts/$f/0-255.pbf"
+          done
+
       - name: Enable KVM
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules

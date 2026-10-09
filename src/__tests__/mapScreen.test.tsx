@@ -6,6 +6,7 @@ import MapScreen from '@/app/(tabs)/index';
 import { PoiDataProvider } from '@/data/DataProvider';
 import i18n from '@/i18n';
 import { filterStore } from '@/state/filters';
+import { locationStore } from '@/state/location';
 
 import { testPoiFile } from '../../test/fixtures';
 
@@ -34,6 +35,7 @@ const visibility = (layerId: string) =>
 describe('map screen (F1–F4)', () => {
   beforeEach(async () => {
     filterStore.set([]);
+    locationStore.set({ permission: 'undetermined', position: null });
     await i18n.changeLanguage('sv');
   });
 
@@ -70,5 +72,12 @@ describe('map screen (F1–F4)', () => {
       expect.any(String),
       expect.any(Array),
     );
+  });
+
+  it("draws the device position from the app's own location fix", async () => {
+    locationStore.set({ permission: 'granted', position: { lat: 59.91, lon: 10.75 } });
+    await renderMap();
+    expect(screen.getByTestId('user-location')).toBeOnTheScreen();
+    expect(screen.getByTestId('user-location-dot')).toBeOnTheScreen();
   });
 });

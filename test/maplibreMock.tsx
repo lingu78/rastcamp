@@ -35,4 +35,3 @@ export const Layer = (props: AnyProps) => (
   <View testID={String(props.id)} accessibilityHint={JSON.stringify(props.layout ?? {})} />
 );
 export const Images = () => null;
-export const NativeUserLocation = () => <View testID="user-location" />;

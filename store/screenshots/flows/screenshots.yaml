@@ -15,12 +15,23 @@ appId: no.rastcamp.app
     timeout: 20000
 
 # Switch the app language (the language names are the same in every UI language).
-- tapOn: '${TAB_MORE_DEVICE}'
+- retry:
+    maxRetries: 3
+    commands:
+      - tapOn: '${TAB_MORE_DEVICE}'
+      - extendedWaitUntil:
+          visible: '${LANGUAGE}'
+          timeout: 10000
 - tapOn: '${LANGUAGE}'
-- waitForAnimationToEnd
+- extendedWaitUntil:
+    visible: '${TAB_NEARBY}'
+    timeout: 10000
 
 # Favourites first, so the favourites screenshot has content.
 - tapOn: '${TAB_NEARBY}'
+- extendedWaitUntil:
+    visible: '${SEARCH}'
+    timeout: 10000
 - tapOn: '${SEARCH}'
 - inputText: 'Homannsberget'
 - hideKeyboard
@@ -68,9 +79,12 @@ appId: no.rastcamp.app
     commands:
       - setAirplaneMode: enabled
       - waitForAnimationToEnd
+# Search works offline too ("Vatten" etc. may be scrolled out of view in the chip row).
 - tapOn: '${TAB_NEARBY}'
 - tapOn: '${CHIP_ALL}'
-- tapOn: '${CHIP_WATER}'
+- tapOn: '${SEARCH}'
+- inputText: 'camping'
+- hideKeyboard
 - waitForAnimationToEnd
 - takeScreenshot: 05-offline
 - runFlow:
