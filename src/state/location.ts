@@ -50,8 +50,21 @@ function stopWatching(): void {
   subscription = null;
 }
 
-/** Asks for permission (once) and starts watching the position if granted. Never throws. */
-export async function initLocation(): Promise<void> {
+let pending: Promise<void> | null = null;
+
+/**
+ * Asks for permission (once) and starts watching the position if granted. Never throws.
+ * Concurrent calls (start-up + returning to the foreground) share one run, so the
+ * permission dialog can never be shown twice.
+ */
+export function initLocation(): Promise<void> {
+  pending ??= runInitLocation().finally(() => {
+    pending = null;
+  });
+  return pending;
+}
+
+async function runInitLocation(): Promise<void> {
   try {
     let response = await Location.getForegroundPermissionsAsync();
     if (response.status === 'undetermined' && response.canAskAgain) {

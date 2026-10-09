@@ -6,7 +6,7 @@
 const marked = new Set<string>();
 
 export function markPerf(label: string): void {
-  if (marked.has(label)) return;
+  if (process.env.NODE_ENV === 'test' || marked.has(label)) return;
   marked.add(label);
   const now = globalThis.performance?.now?.();
   if (typeof now === 'number') console.log(`[perf] ${label} ${Math.round(now)} ms`);

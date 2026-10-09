@@ -64,7 +64,8 @@
     "licenses": "Datakällor och licenser",
     "privacy": "Integritetspolicy",
     "attribution": "Platsdata © OpenStreetMap contributors (ODbL). Karta © OpenMapTiles, OpenFreeMap.",
-    "privacyShort": "Rastcamp samlar inte in någon data. Din position används bara i telefonen."
+    "privacyShort": "Rastcamp samlar inte in någon data. Din position används bara i telefonen.",
+    "placeCount": "Antal platser"
   },
   "language": {
     "auto": "Automatiskt (enhetens språk)",

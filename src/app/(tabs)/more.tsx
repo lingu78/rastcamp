@@ -16,6 +16,9 @@ import {
 
 const LANGUAGE_OPTIONS: LanguagePreference[] = ['auto', 'sv', 'nb', 'en'];
 
+/** 13153 → "13 153" (thin space works for sv/nb/en without relying on Intl in Hermes). */
+const formatCount = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '\u202f');
+
 /** Settings & about (spec F10). */
 export default function MoreScreen() {
   const { t } = useTranslation();
@@ -64,7 +67,7 @@ export default function MoreScreen() {
           label={t('more.dataVersion', { version })}
           value={source === 'downloaded' ? t('more.dataDownloaded') : t('more.dataBundled')}
         />
-        <Row label={`${pois.length.toLocaleString()} POI`} value="© OpenStreetMap" />
+        <Row label={t('more.placeCount')} value={formatCount(pois.length)} />
         <Row
           label={checking ? t('more.checking') : t('more.checkNow')}
           onPress={() => void checkNow()}

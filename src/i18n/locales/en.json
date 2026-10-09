@@ -64,7 +64,8 @@
     "licenses": "Data sources and licences",
     "privacy": "Privacy policy",
     "attribution": "Place data © OpenStreetMap contributors (ODbL). Map © OpenMapTiles, OpenFreeMap.",
-    "privacyShort": "Rastcamp collects no data. Your location is only used on your phone."
+    "privacyShort": "Rastcamp collects no data. Your location is only used on your phone.",
+    "placeCount": "Number of places"
   },
   "language": {
     "auto": "Automatic (device language)",
