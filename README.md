@@ -7,11 +7,14 @@ utan reklam och offline.
 - Kravspecifikation: [SPEC.md](SPEC.md)
 - Status per milstolpe: [PROGRESS.md](PROGRESS.md)
 - Tekniska beslut och verifierade butikskrav: [DECISIONS.md](DECISIONS.md)
+- Publicering och 🔑-steg: [RELEASE.md](RELEASE.md) · Manuell testplan: [TESTPLAN.md](TESTPLAN.md)
+- Butiksmaterial: [`store/`](store/)
 
 ## Teknik
 
-Expo SDK 57 · React Native 0.86 · TypeScript (strict) · Expo Router · i18next (sv/nb/en) ·
-Jest + React Native Testing Library · EAS Build/Submit.
+Expo SDK 57 · React Native 0.86 · TypeScript (strict) · Expo Router · MapLibre React Native
+(OpenFreeMap-kartor) · i18next (sv/nb/en) · KDBush/geokdbush · Jest + React Native Testing
+Library · Maestro (skärmdumpar) · EAS Build/Submit.
 
 ## Kom igång
 
@@ -23,14 +26,17 @@ npm start          # Metro dev-server
 npm run web        # snabb förhandsvisning i webbläsaren (endast för utveckling)
 ```
 
-Appen kommer att använda MapLibre (native-modul) från M3 och kräver då en
-**development build** – Expo Go räcker inte:
+Appen använder MapLibre (native-modul) och kräver ett eget bygge – Expo Go räcker inte:
 
 ```bash
-npm run android    # = expo run:android, kräver Android SDK/emulator lokalt
-# eller i molnet (ingen Mac/Android Studio krävs):
-npx eas-cli@latest build --profile development --platform android
+npm run android    # = expo run:android, kräver Android SDK + emulator/telefon lokalt
+npm run ios        # = expo run:ios, kräver macOS + Xcode ≥ 26.4
+# eller i molnet (ingen Mac/Android Studio krävs) – installerbar APK:
+npx eas-cli@latest build --profile preview --platform android
 ```
+
+Webbförhandsvisningen (`npm run web`) visar allt utom kartan (platshållare) och används bara för
+snabb visuell kontroll.
 
 ## Kvalitetskontroller
 
@@ -42,8 +48,15 @@ npm test              # Jest
 npm run check         # allt ovan i följd – samma som CI
 ```
 
-CI (GitHub Actions, `.github/workflows/ci.yml`) kör dessutom `expo-doctor` och en
-bundle-röktest (`expo export` för Android och iOS) på varje push.
+GitHub Actions:
+
+| Workflow          | Vad                                                                                                                                        |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `ci.yml`          | lint, Prettier, typecheck, Jest (app + pipeline, inkl. osmium end-to-end), `expo-doctor`, bundle-röktest                                   |
+| `android.yml`     | release-APK → Android-emulator (API 35): start med/utan platsbehörighet, mörkt läge, lista/detalj, flygplansläge; skärmdumpar + starttider |
+| `data.yml`        | datapipeline månadsvis → GitHub Pages (`gh-pages`)                                                                                         |
+| `screenshots.yml` | butiksskärmdumpar med Maestro (Android-emulator + iOS-simulator), sv/nb/en                                                                 |
+| `eas.yml`         | `eas init` / `eas build` / `eas submit` (kräver secret `EXPO_TOKEN`)                                                                       |
 
 ## Platsdata
 
@@ -55,19 +68,44 @@ npm run data:build
 ```
 
 En GitHub Action (`.github/workflows/data.yml`) kör den månadsvis och publicerar
-`pois.json.gz` + `manifest.json` på GitHub Pages.
+`pois.json.gz` + `manifest.json` på GitHub Pages; appen hämtar nyare data själv (max 1 gång/dygn).
+Den inbyggda datafilen (`assets/data/pois.json`) uppdateras före varje release:
+
+```bash
+npm run data:update                          # från GitHub Pages
+npm run data:update -- --dir data-pipeline/out   # från ett lokalt pipelinebygge
+```
+
+## Övriga skript
+
+```bash
+npm run icons:app        # appikon/splash/Play-ikon från assets/brand/icon-artwork.svg
+npm run icons:map        # kartmarkörer från kategoriglyferna
+npm run licenses         # licenstexter i appen (från bundlens source maps)
+npm run store:graphics   # Play feature graphic (sv/nb/en)
+npm run screenshots:frame  # bildtext + butiksstorlek på råa skärmdumpar
+```
 
 ## Projektstruktur
 
 ```
 src/
   app/            Expo Router-rutter (varje fil = skärm)
-    _layout.tsx   rot-layout (tema, i18n, Stack)
+    _layout.tsx   rot-layout (tema, i18n, data, Stack)
     (tabs)/       flikarna Karta (index), Närmast, Favoriter, Mer
-  components/     återanvändbara komponenter (SVG-ikoner m.m.)
-  i18n/           i18next-setup, språkmappning, översättningar (locales/*.json)
-  theme/          färgtokens (ljust/mörkt) och useTheme
+    place/[key]   detaljvy (bottom sheet)
+    licenses.tsx  datakällor och licenser
+  components/     UI-komponenter (karta, filterchips, rader, ikoner …)
+  data/           dataset, rumsligt index, sök, fält, datauppdatering (F9)
+  state/          filter, favoriter, plats, språk (små externa stores)
+  i18n/           i18next-setup, språkmappning, översättningar
+  theme/          färgtokens, kategorifärger och glyfer
+  legal/          genererade licenstexter
+assets/           ikoner, kartmarkörer, inbyggd platsdata
 data-pipeline/    OSM → pois.json.gz (Node + osmium), egna tester
+site/             GitHub Pages (startsida, integritetspolicy, öppen data)
+store/            butikstexter, integritet, åldersgräns, grafik, skärmdumpar, testmaterial
+scripts/          generatorer (ikoner, licenser, grafik, skärmdumpar) och CI-hjälpskript
 ```
 
 Native-mapparna `ios/` och `android/` genereras (Continuous Native Generation) och checkas inte in.
@@ -82,4 +120,5 @@ gitignorerade.
 ## Licens
 
 Koden: alla rättigheter förbehållna (ingen öppen licens vald ännu – se DECISIONS.md).
-Platsdata: © OpenStreetMap contributors, ODbL (se appens "Mer"-flik från M5).
+Platsdata: © OpenStreetMap contributors, ODbL – fritt tillgänglig på
+<https://lingu78.github.io/rastcamp/data/>. Karta: © OpenMapTiles, OpenFreeMap.
