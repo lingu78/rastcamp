@@ -67,10 +67,11 @@ jobs:
           profile: pixel_2
           # Animations on, like a real phone (the Android form sheet needs them).
           disable-animations: false
-          # swiftshader_indirect (deprecated) draws no map text; let the emulator pick.
-          emulator-options: -no-window -gpu software -noaudio -no-boot-anim -camera-back none
+          # SwiftShader (swiftshader_indirect / software) draws no map text or icons; try Mesa.
+          emulator-options: -no-window -gpu lavapipe -noaudio -no-boot-anim -camera-back none
           script: |
             adb install -r $RUNNER_TEMP/app.apk
+            adb shell settings put global hide_error_dialogs 1
             adb shell settings put global sysui_demo_allowed 1
             adb shell am broadcast -a com.android.systemui.demo -e command enter
             adb shell am broadcast -a com.android.systemui.demo -e command clock -e hhmm 0941

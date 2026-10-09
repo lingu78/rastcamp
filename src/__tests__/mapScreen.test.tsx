@@ -44,6 +44,7 @@ describe('map screen (F1–F4)', () => {
     for (const c of ['caravan_site', 'camp_site', 'dump_station', 'water', 'rest_area', 'lpg']) {
       expect(screen.getByTestId(`pois-${c}`)).toBeOnTheScreen();
       expect(visibility(`poi-${c}`)).toBe('visible');
+      expect(visibility(`poi-dot-${c}`)).toBe('visible');
     }
     expect(screen.getByText('© OpenMapTiles · © OpenStreetMap contributors')).toBeOnTheScreen();
   });
@@ -53,6 +54,7 @@ describe('map screen (F1–F4)', () => {
     await fireEvent.press(screen.getByRole('button', { name: 'Tömning' }));
     expect(visibility('poi-dump_station')).toBe('visible');
     expect(visibility('poi-camp_site')).toBe('none');
+    expect(visibility('poi-dot-camp_site')).toBe('none');
     expect(visibility('cluster-camp_site')).toBe('none');
     expect(screen.getByRole('button', { name: 'Tömning' }).props.accessibilityState).toMatchObject({
       selected: true,

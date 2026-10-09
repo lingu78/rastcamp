@@ -49,6 +49,8 @@ launch() { # $1 = name, $2 = optional deep link (rastcamp://…)
 
 adb install -r "$APK"
 adb shell settings put system screen_off_timeout 600000
+# The slow software-GPU emulator makes the launcher "not respond"; hide such system dialogs.
+adb shell settings put global hide_error_dialogs 1
 # Real phones animate; the emulator runner switches animations off. Turn them back on and
 # test the "remove animations" accessibility setting separately at the end.
 animations() { for k in window_animation_scale transition_animation_scale animator_duration_scale; do adb shell settings put global "$k" "$1"; done; }

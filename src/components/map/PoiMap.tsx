@@ -200,6 +200,20 @@ export function PoiMap({ visible, onSelectPoi, onBaseMapStatus, ref }: Props) {
                 paint={{ 'text-color': '#FFFFFF' }}
               />
             )}
+            {/* Same disc as the icon, underneath it: if a GPU/driver fails to draw symbol
+                layers (seen on Android emulators), the places are still visible. */}
+            <Layer
+              id={`poi-dot-${category}`}
+              type="circle"
+              filter={['!', ['has', 'point_count']]}
+              layout={{ visibility }}
+              paint={{
+                'circle-color': color,
+                'circle-radius': ['interpolate', ['linear'], ['zoom'], 8, 9.3, 14, 12.5],
+                'circle-stroke-width': ['interpolate', ['linear'], ['zoom'], 8, 1.4, 14, 1.8],
+                'circle-stroke-color': '#FFFFFF',
+              }}
+            />
             <Layer
               id={`poi-${category}`}
               type="symbol"
