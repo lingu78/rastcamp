@@ -149,3 +149,13 @@ Slogs upp 2026-10-09 (M1). Kontrollera igen innan M8 (första butiksbyggena).
 - **Integritetspolicy** (sv/nb/en på en sida) i `site/privacy/`, publiceras på GitHub Pages ihop med datan. Kontaktadressen fylls i från repo-variabeln `CONTACT_EMAIL` vid publicering (🔑); utan den publiceras inte policysidan. (M7)
 - **Data safety / App Privacy:** "No data collected" resp. "Data Not Collected" – positionen lämnar aldrig enheten, inga SDK:er för analys/krasch/reklam, ingen inloggning. Kartplattor och datafil hämtas utan identifierare. Motivering per datatyp i `store/google-data-safety.md` och `store/apple-privacy.md`. (M7)
 - **Åldersgräns:** 4+ (Apples nya frågeformulär 2026) / PEGI 3 / Everyone; webblänkar öppnas i extern webbläsare (ingen "unrestricted web access"). Play "Target audience" 18+ för att inte omfattas av Families-policyn. (M7)
+
+## 13. Lärdomar från emulator- och simulatorkörningar (M3–M7)
+
+- **GPS-noggrannhet "High" i förgrunden** (inte "Balanced"): Balanced bygger på wifi/mobilnät och gav ingen position alls i emulatorn – i fjällen utan täckning (spec §3 flöde 3) riskerar den samma sak. Bevakningen pågår bara när appen är öppen (avstånd ≥ 50 m / 10 s), så batterikostnaden är liten. (M6)
+- **"Väntar på position"** visas i listan när behörighet finns men ingen position ännu, i stället för det missvisande "platstjänster avstängda". (M6)
+- **Android-runnerns disk räcker inte** för Gradle-bygge + emulatorns systemavbild: CI rensar oanvända verktyg (`scripts/ci-free-disk.sh`) och bygget tas bort innan emulatorn startar. (M6)
+- **APK-storlek:** release-APK:n i CI är ~57 MB eftersom förbyggda native-bibliotek (bl.a. MapLibre) innehåller alla fyra CPU-arkitekturer. Google Play levererar `.aab` uppdelad per arkitektur, så nedladdning/installation per telefon blir en bråkdel; `scripts/apk-size.sh` uppskattar storleken för en arkitektur i varje körning (spec §7: < 40 MB). (M6)
+- **Kallstart mäts på riktig telefon, inte i CI-emulatorn:** emulatorn kör mjukvaru-GPU (swiftshader) på 2 kärnor; `am start -W` ger där 4–10 s. Siffrorna loggas för trendjämförelse, men målet < 3 s verifieras på en mellanklass-Android enligt TESTPLAN.md. (M6)
+- **iOS-bygget verifierat** på GitHubs macOS-runner (Xcode 26, Release, iPhone 17 Pro Max-simulator med iOS 26.5) innan något Apple-konto finns. (M7)
+- **Maestro 2.11:** skärmdumpar måste skrivas i körningens `--test-output-dir`; platsbehörighet anges `allow` på Android men `inuse` på iOS. (M7)
