@@ -24,6 +24,8 @@ jobs:
     name: Build POI data
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    permissions:
+      contents: write # data-preview branch
     steps:
       - uses: actions/checkout@v7
 
@@ -56,6 +58,19 @@ jobs:
               "
             } >> "$GITHUB_STEP_SUMMARY"
           fi
+
+      - name: Push preview to data-preview branch (non-main pushes)
+        # Lets developers (and the app's bundled-data update) fetch real output with plain git.
+        if: github.event_name == 'push' && github.ref != 'refs/heads/main'
+        run: |
+          cd data-pipeline/out
+          git init -q && git checkout -q -b data-preview
+          git add pois.json.gz manifest.json report.json
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -q -m "Data preview from ${GITHUB_SHA::7} (${GITHUB_REF_NAME})"
+          git push -q -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" data-preview
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/upload-artifact@v7
         with:

@@ -5,8 +5,8 @@ Bockas av enligt "Definition of done" i SPEC.md §13. Senast uppdaterad: 2026-10
 | #   | Milstolpe                     | Status   |
 | --- | ----------------------------- | -------- |
 | M1  | Repo & skelett                | ✅ Klar  |
-| M2  | Datapipeline                  | 🔄 Pågår |
-| M3  | Karta & filter                | ⬜       |
+| M2  | Datapipeline                  | ✅ Klar  |
+| M3  | Karta & filter                | 🔄 Pågår |
 | M4  | Lista, detalj, favoriter, sök | ⬜       |
 | M5  | Datauppdatering & Mer-flik    | ⬜       |
 | M6  | Polish                        | ⬜       |
@@ -44,7 +44,16 @@ Definition of done: _`pois.json.gz` för SE/NO/FI/DK genereras lokalt och i GitH
 - [x] Enhetstester: taggar → kategori, centroid, haversine, rutnätsindex, dedup, vatten-regel, manifest/checksumma, validering + end-to-end-test av CLI:t mot OSM-fixtur (osmium installeras i CI)
 - [x] Genereras lokalt: verifierat end-to-end med fixtur (riktiga Geofabrik-filer är blockerade i molnmiljön – se nedan)
 - [x] GitHub Action `data.yml`: månadsvis + manuellt (publicerar till `gh-pages`) och vid pipeline-ändringar (bygger på riktig data)
-- [ ] Riktig körning i GitHub Action med SE/NO/FI/DK: antal per kategori och storlek < 5 MB – kontrolleras efter push
+- [x] Riktig körning i GitHub Action ([Data #1](https://github.com/lingu78/rastcamp/actions/runs/37920598778), OSM-data 2026-10-08): **13 327 platser, `pois.json.gz` 0,38 MB** (okomprimerat 1,42 MB), 397 dubbletter borttagna, 208 dricksvattenposter vid tömningsstationer. Hela körningen inkl. nedladdning av 3,5 GB PBF tar ~7 min.
+
+  | Kategori   | SE    | NO    | FI    | DK    | Totalt |
+  | ---------- | ----- | ----- | ----- | ----- | ------ |
+  | Ställplats | 648   | 382   | 238   | 328   | 1 596  |
+  | Camping    | 1 417 | 1 342 | 430   | 615   | 3 804  |
+  | Tömning    | 594   | 498   | 268   | 409   | 1 769  |
+  | Vatten     | 267   | 247   | 105   | 297   | 916    |
+  | Rastplats  | 773   | 1 774 | 1 186 | 1 319 | 5 052  |
+  | Gasol      | 44    | 104   | 34    | 8     | 190    |
 
 ## Kända begränsningar i utvecklingsmiljön
 

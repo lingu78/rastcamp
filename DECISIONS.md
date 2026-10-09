@@ -88,6 +88,9 @@ Slogs upp 2026-10-09 (M1). Kontrollera igen innan M8 (första butiksbyggena).
 - **Byggkontroller:** misslyckas vid 0 träffar i någon kategori, gzip > 5 MB eller schemavalideringsfel. Antal per kategori × land loggas och skrivs till Actions-sammanfattningen. (M2)
 - **Publicering via `gh-pages`-grenen** (en squashad commit per publicering, så repot inte växer) i stället för `actions/deploy-pages`. Skäl: Pages-sajten ska innehålla både data (månadsvis) och integritetspolicy (M7); med deploy-pages ersätter varje deploy hela sajten, medan `publish.sh` lägger nytt ovanpå befintligt innehåll. (M2)
 
+- **Gasol har låg täckning i OSM** (190 platser, varav 44 i Sverige): `fuel:lpg=yes` och `shop=gas` är sparsamt taggat, och gasolflaskor som säljs på vanliga bensinstationer/järnhandlar taggas sällan. Vi gissar inte (t.ex. utifrån kedjenamn) – felaktiga träffar är värre än få. Kan förbättras genom bättre taggning i OSM (appens "Rapportera fel" leder dit). (M2)
+- **Förhandsdata via `data-preview`-grenen:** pipelinekörningar från andra grenar än `main` pushar sitt resultat till grenen `data-preview` (en commit, force-push), så att utvecklare och appens inbyggda data kan hämtas med vanlig git utan att publicera på Pages. (M2)
+
 ### ODbL (spec §5.5)
 
 - Datafilen är en **härledd databas** (Derivative Database) av OSM; appen som visar den är ett **Produced Work**. Krav som följs: (M2)
