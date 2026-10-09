@@ -18,13 +18,14 @@
     "placeholder": "Kartet kommer her.",
     "a11yLabel": "Kart med steder",
     "centerOnMe": "Sentrer på min posisjon",
-    "attributionA11y": "Kartdata fra OpenMapTiles og OpenStreetMap. Åpner opphavsrettsinformasjon.",
     "locationOffTitle": "Posisjonstjenester er slått av",
     "locationOffBody": "Tillat Rastcamp å bruke posisjonen din for å se steder i nærheten. Posisjonen forlater aldri telefonen.",
     "allowLocation": "Tillat",
     "offlineBody": "Bakgrunnskartet kunne ikke lastes. Stedene og listen fungerer likevel offline.",
     "showList": "Vis liste",
-    "retry": "Prøv igjen"
+    "retry": "Prøv igjen",
+    "attributionOmtA11y": "© OpenMapTiles. Åpner openmaptiles.org.",
+    "attributionOsmA11y": "© OpenStreetMap contributors. Åpner opphavsrettsinformasjon."
   },
   "nearby": {
     "title": "Nærmest meg",
@@ -45,7 +46,25 @@
   "more": {
     "title": "Mer",
     "language": "Språk",
-    "version": "Versjon"
+    "version": "Appversjon",
+    "settings": "Innstillinger",
+    "units": "Avstand",
+    "unitsKm": "Kilometer",
+    "data": "Stedsdata",
+    "dataVersion": "Versjon {{version}}",
+    "dataBundled": "Innebygd i appen",
+    "dataDownloaded": "Nedlastet oppdatering",
+    "checkNow": "Se etter nye data",
+    "checking": "Søker …",
+    "resultUpdated": "Oppdatert til {{version}}.",
+    "resultUpToDate": "Du har de nyeste dataene.",
+    "resultFailed": "Kunne ikke se etter nye data (ingen dekning?). De innebygde dataene fungerer likevel.",
+    "resultSkipped": "Dataene ble sjekket nylig.",
+    "about": "Om",
+    "licenses": "Datakilder og lisenser",
+    "privacy": "Personvernerklæring",
+    "attribution": "Stedsdata © OpenStreetMap contributors (ODbL). Kart © OpenMapTiles, OpenFreeMap.",
+    "privacyShort": "Rastcamp samler ikke inn noen data. Posisjonen din brukes bare på telefonen."
   },
   "language": {
     "auto": "Automatisk (enhetens språk)",
@@ -105,5 +124,12 @@
     "leashed": "Ja, i bånd",
     "outside": "Utendørs",
     "always": "Døgnåpent"
+  },
+  "licenses": {
+    "title": "Datakilder og lisenser",
+    "data": "Data og kart",
+    "software": "Programvare med åpen kildekode",
+    "showText": "Vis lisenstekst",
+    "hideText": "Skjul lisenstekst"
   }
 }

@@ -1,10 +1,12 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { renderRouter, screen } from 'expo-router/testing-library';
 
-import i18n from '@/i18n';
+import { languagePreferenceStore, setLanguagePreference } from '@/state/language';
 
 describe('tab navigation', () => {
   beforeEach(async () => {
-    await i18n.changeLanguage('sv');
+    await AsyncStorage.clear();
+    languagePreferenceStore.set('auto');
   });
 
   it('shows the four tabs in Swedish (device locale in tests)', async () => {
@@ -14,8 +16,8 @@ describe('tab navigation', () => {
     }
   });
 
-  it('renders the Norwegian labels when the language is nb', async () => {
-    await i18n.changeLanguage('nb');
+  it('renders the Norwegian labels when the user picked bokmål', async () => {
+    setLanguagePreference('nb');
     await renderRouter('./src/app');
     for (const label of ['Kart', 'Nærmest', 'Favoritter', 'Mer']) {
       expect(screen.getByRole('button', { name: label })).toBeOnTheScreen();

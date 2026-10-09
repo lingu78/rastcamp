@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { PoiDataProvider } from '@/data/DataProvider';
 import { restoreFavorites } from '@/state/favorites';
 import { restoreFilters } from '@/state/filters';
+import { restoreLanguage } from '@/state/language';
 import { initLocation } from '@/state/location';
 import { palette } from '@/theme/colors';
 import { useColorSchemeName } from '@/theme/useTheme';
@@ -39,6 +40,7 @@ export default function RootLayout() {
   useEffect(() => {
     void restoreFilters();
     void restoreFavorites();
+    void restoreLanguage();
     void initLocation();
   }, []);
 
@@ -57,6 +59,7 @@ export default function RootLayout() {
               headerShown: false,
             }}
           />
+          <Stack.Screen name="licenses" options={{ title: t('licenses.title') }} />
         </Stack>
       </PoiDataProvider>
       <StatusBar style="auto" />

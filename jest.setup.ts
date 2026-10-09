@@ -25,3 +25,11 @@ jest.mock('expo-location', () => ({
   getLastKnownPositionAsync: jest.fn(async () => null),
   watchPositionAsync: jest.fn(async () => ({ remove: jest.fn() })),
 }));
+
+// Native file/crypto/network side of the data update (F9). The update logic itself is
+// unit-tested with injected fakes in src/data/__tests__/update.test.ts.
+jest.mock('./src/data/storage', () => ({
+  loadStoredFile: jest.fn(async () => null),
+  runUpdateCheck: jest.fn(async () => ({ status: 'skipped' })),
+  getLastCheck: jest.fn(async () => null),
+}));

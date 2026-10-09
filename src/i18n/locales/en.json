@@ -18,13 +18,14 @@
     "placeholder": "The map goes here.",
     "a11yLabel": "Map of places",
     "centerOnMe": "Centre on my location",
-    "attributionA11y": "Map data from OpenMapTiles and OpenStreetMap. Opens copyright information.",
     "locationOffTitle": "Location is turned off",
     "locationOffBody": "Allow Rastcamp to use your location to see places near you. Your location never leaves your phone.",
     "allowLocation": "Allow",
     "offlineBody": "The background map could not be loaded. Places and the list still work offline.",
     "showList": "Show list",
-    "retry": "Try again"
+    "retry": "Try again",
+    "attributionOmtA11y": "© OpenMapTiles. Opens openmaptiles.org.",
+    "attributionOsmA11y": "© OpenStreetMap contributors. Opens copyright information."
   },
   "nearby": {
     "title": "Nearest to me",
@@ -45,7 +46,25 @@
   "more": {
     "title": "More",
     "language": "Language",
-    "version": "Version"
+    "version": "App version",
+    "settings": "Settings",
+    "units": "Distance",
+    "unitsKm": "Kilometres",
+    "data": "Place data",
+    "dataVersion": "Version {{version}}",
+    "dataBundled": "Built into the app",
+    "dataDownloaded": "Downloaded update",
+    "checkNow": "Check for new data",
+    "checking": "Checking…",
+    "resultUpdated": "Updated to {{version}}.",
+    "resultUpToDate": "You have the latest data.",
+    "resultFailed": "Could not check for new data (no coverage?). The built-in data still works.",
+    "resultSkipped": "The data was checked recently.",
+    "about": "About",
+    "licenses": "Data sources and licences",
+    "privacy": "Privacy policy",
+    "attribution": "Place data © OpenStreetMap contributors (ODbL). Map © OpenMapTiles, OpenFreeMap.",
+    "privacyShort": "Rastcamp collects no data. Your location is only used on your phone."
   },
   "language": {
     "auto": "Automatic (device language)",
@@ -105,5 +124,12 @@
     "leashed": "Yes, on a lead",
     "outside": "Outdoors",
     "always": "Open 24/7"
+  },
+  "licenses": {
+    "title": "Data sources and licences",
+    "data": "Data and map",
+    "software": "Open source software",
+    "showText": "Show licence text",
+    "hideText": "Hide licence text"
   }
 }
