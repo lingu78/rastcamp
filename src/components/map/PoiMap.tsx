@@ -25,6 +25,7 @@ import {
 } from '@/state/location';
 import { CATEGORY_COLORS } from '@/theme/categories';
 import { useColorSchemeName, useTheme } from '@/theme/useTheme';
+import { markPerf } from '@/utils/perf';
 
 import { MAP_STYLES } from './PoiMap.styles';
 
@@ -144,7 +145,11 @@ export function PoiMap({ visible, onSelectPoi, onBaseMapStatus, ref }: Props) {
         if (userInteraction) userMovedMap.current = true;
         mapCenterStore.set({ lat: center[1], lon: center[0] });
       }}
-      onDidFinishLoadingMap={() => onBaseMapStatus?.('ok')}
+      onDidFinishLoadingMap={() => {
+        markPerf('map-style-loaded');
+        onBaseMapStatus?.('ok');
+      }}
+      onDidFinishRenderingMapFully={() => markPerf('map-rendered')}
       onDidFailLoadingMap={() => {
         setBaseMapFailed(true);
         onBaseMapStatus?.('failed');

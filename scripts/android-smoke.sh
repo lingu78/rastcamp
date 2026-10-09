@@ -28,6 +28,7 @@ launch() { # $1 = name, $2 = optional deep link (rastcamp://…)
   fi
   adb exec-out screencap -p > "$OUT/$1.png"
   adb logcat -d -s ReactNativeJS:V AndroidRuntime:E MapLibre:W > "$OUT/$1-logcat.txt" || true
+  grep -h "\[perf\]" "$OUT/$1-logcat.txt" | sed "s/^/$1: /" >> "$OUT/perf.txt" || true
   if grep -q "FATAL EXCEPTION" "$OUT/$1-logcat.txt"; then
     echo "::error::Crash during $1"; cat "$OUT/$1-logcat.txt"; exit 1
   fi
@@ -73,3 +74,5 @@ adb shell cmd connectivity airplane-mode disable
 
 echo "Cold start (am start -W):"
 grep -h "TotalTime" "$OUT"/*-start.txt || true
+echo "JS markers:"
+cat "$OUT/perf.txt" 2>/dev/null || true

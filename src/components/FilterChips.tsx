@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 
 import { CATEGORIES, type Category } from '@/data/schema';
 import { clearFilters, toggleCategory, useSelectedCategories } from '@/state/filters';
-import { CATEGORY_COLORS } from '@/theme/categories';
-import { useTheme } from '@/theme/useTheme';
+import { CATEGORY_COLORS, CATEGORY_GLYPH_COLORS_DARK } from '@/theme/categories';
+import { useColorSchemeName, useTheme } from '@/theme/useTheme';
 
 import { CategoryIcon } from './CategoryIcon';
 
@@ -12,6 +12,7 @@ import { CategoryIcon } from './CategoryIcon';
 export function FilterChips() {
   const { t } = useTranslation();
   const theme = useTheme();
+  const scheme = useColorSchemeName();
   const selected = useSelectedCategories();
   const allActive = selected.length === 0;
 
@@ -44,7 +45,13 @@ export function FilterChips() {
             category={category}
             variant="glyph"
             size={18}
-            color={active ? '#FFFFFF' : CATEGORY_COLORS[category]}
+            color={
+              active
+                ? '#FFFFFF'
+                : scheme === 'dark'
+                  ? CATEGORY_GLYPH_COLORS_DARK[category]
+                  : CATEGORY_COLORS[category]
+            }
           />
         )}
         <Text

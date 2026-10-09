@@ -42,6 +42,8 @@ jobs:
           distribution: temurin
           java-version: '17'
 
+      - uses: gradle/actions/setup-gradle@v6
+
       - name: Install dependencies
         run: npm ci
 
@@ -52,7 +54,7 @@ jobs:
 
       - name: Assemble release APK (x86_64 only, for the emulator)
         working-directory: android
-        run: ./gradlew :app:assembleRelease -PreactNativeArchitectures=x86_64 --no-daemon --stacktrace
+        run: ./gradlew :app:assembleRelease -PreactNativeArchitectures=x86_64 --stacktrace
 
       - name: APK size
         run: |
@@ -75,6 +77,18 @@ jobs:
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           script: scripts/android-smoke.sh
+
+      - name: Start-up timing summary
+        if: always()
+        run: |
+          [ -d ci-artifacts/android ] || exit 0
+          {
+            echo '### Start-up (emulator, x86_64, swiftshader GPU)'
+            echo '```'
+            for f in ci-artifacts/android/*-start.txt; do echo "$(basename "$f" -start.txt): $(grep -h TotalTime "$f" || true)"; done
+            cat ci-artifacts/android/perf.txt 2>/dev/null || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Publish screenshots to ci-screenshots branch
         if: always() && github.event_name == 'push'

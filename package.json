@@ -19,7 +19,8 @@
     "data:build": "node data-pipeline/src/run.ts",
     "data:update": "node scripts/update-bundled-data.ts",
     "icons:map": "node scripts/generate-map-icons.ts",
-    "licenses": "node scripts/generate-licenses.ts"
+    "licenses": "node scripts/generate-licenses.ts",
+    "icons:app": "node scripts/generate-app-icons.ts"
   },
   "dependencies": {
     "@maplibre/maplibre-react-native": "^11.5.0",

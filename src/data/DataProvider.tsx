@@ -15,6 +15,7 @@ import { validatePoiFile, type Category, type PoiFile } from './schema';
 import { buildSearchIndex } from './search';
 import { buildSpatialIndex, type SpatialIndex } from './spatial';
 import { loadStoredFile, runUpdateCheck } from './storage';
+import { markPerf } from '../utils/perf';
 import type { UpdateResult } from './update';
 import { isNewer } from './update';
 
@@ -125,7 +126,11 @@ export function PoiDataProvider({ children, file: fixedFile }: Props) {
     };
   }, [fixedFile, adopt, runCheck]);
 
-  const data = useMemo(() => buildPoiData(file), [file]);
+  const data = useMemo(() => {
+    const built = buildPoiData(file);
+    markPerf('data-ready');
+    return built;
+  }, [file]);
   const status = useMemo<DataStatus>(
     () => ({ source, lastResult, checking, checkNow: () => runCheck(true) }),
     [source, lastResult, checking, runCheck],

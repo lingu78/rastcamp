@@ -14,6 +14,19 @@ export const CATEGORY_COLORS: Record<Category, string> = {
   lpg: '#B42318',
 };
 
+/**
+ * Lighter tints for glyph-only use (filter chips) on dark surfaces, where the marker
+ * colours above are too dark (≥ 3:1 against the dark surface, tested).
+ */
+export const CATEGORY_GLYPH_COLORS_DARK: Record<Category, string> = {
+  caravan_site: '#7CC392',
+  camp_site: '#6FC3CC',
+  dump_station: '#F2A05A',
+  water: '#7FB2EE',
+  rest_area: '#BFA5E3',
+  lpg: '#F28B82',
+};
+
 /** Hand-drawn 24×24 glyphs (stroke paths), shared by chips, list, detail and map icons. */
 export const CATEGORY_GLYPHS: Record<Category, { stroke?: string[]; fill?: string[] }> = {
   caravan_site: {

@@ -28,6 +28,13 @@ fi
 
 if [ -d "$ROOT/site" ]; then
   cp -R "$ROOT/site/." "$SITE/"
+  # The privacy policy needs a real contact address (repo variable CONTACT_EMAIL).
+  if [ -n "${CONTACT_EMAIL:-}" ]; then
+    find "$SITE" -name '*.html' -exec sed -i "s/{{CONTACT_EMAIL}}/${CONTACT_EMAIL}/g" {} +
+  elif grep -rq '{{CONTACT_EMAIL}}' "$SITE"; then
+    echo "::warning::CONTACT_EMAIL is not set – privacy policy not published"
+    rm -rf "$SITE/privacy"
+  fi
 fi
 
 MESSAGE="Update site"

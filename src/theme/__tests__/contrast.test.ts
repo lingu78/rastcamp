@@ -41,3 +41,17 @@ describe('category marker colours', () => {
     expect(contrast('#FFFFFF', color)).toBeGreaterThanOrEqual(4.5);
   });
 });
+
+describe('category glyphs in chips', () => {
+  const { CATEGORY_COLORS, CATEGORY_GLYPH_COLORS_DARK } =
+    jest.requireActual<typeof import('../categories')>('../categories');
+  it.each(Object.entries(CATEGORY_COLORS))('%s glyph on light surface ≥ 3:1', (_cat, color) => {
+    expect(contrast(color, palette.light.surface)).toBeGreaterThanOrEqual(3);
+  });
+  it.each(Object.entries(CATEGORY_GLYPH_COLORS_DARK))(
+    '%s glyph on dark surface ≥ 3:1',
+    (_cat, color) => {
+      expect(contrast(color, palette.dark.surface)).toBeGreaterThanOrEqual(3);
+    },
+  );
+});
