@@ -27,6 +27,8 @@ jobs:
     timeout-minutes: 75
     steps:
       - uses: actions/checkout@v7
+      - name: Free disk space
+        run: scripts/ci-free-disk.sh
       - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
@@ -43,6 +45,10 @@ jobs:
       - name: Assemble release APK (x86_64)
         working-directory: android
         run: ./gradlew :app:assembleRelease -PreactNativeArchitectures=x86_64
+      - name: Keep the APK, free the build directory
+        run: |
+          cp android/app/build/outputs/apk/release/app-release.apk "$RUNNER_TEMP/app.apk"
+          rm -rf android/app/build android/build node_modules/.cache
       - name: Install Maestro
         run: |
           curl -fsSL "https://get.maestro.mobile.dev" | bash
@@ -62,7 +68,7 @@ jobs:
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           script: |
-            adb install -r android/app/build/outputs/apk/release/app-release.apk
+            adb install -r $RUNNER_TEMP/app.apk
             adb shell settings put global sysui_demo_allowed 1
             adb shell am broadcast -a com.android.systemui.demo -e command enter
             adb shell am broadcast -a com.android.systemui.demo -e command clock -e hhmm 0941
@@ -77,6 +83,8 @@ jobs:
 
   ios:
     name: iOS (6.9" iPhone)
+    # macOS minutes cost 10× – only on manual runs or commits tagged [ios].
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[ios]')
     runs-on: macos-latest
     timeout-minutes: 90
     steps:

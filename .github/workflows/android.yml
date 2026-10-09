@@ -32,6 +32,9 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      - name: Free disk space
+        run: scripts/ci-free-disk.sh
+
       - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
@@ -56,10 +59,14 @@ jobs:
         working-directory: android
         run: ./gradlew :app:assembleRelease -PreactNativeArchitectures=x86_64 --stacktrace
 
-      - name: APK size
+      - name: APK size and cleanup
         run: |
-          ls -l android/app/build/outputs/apk/release/
-          echo "APK (x86_64 only): $(du -h android/app/build/outputs/apk/release/app-release.apk | cut -f1)" >> "$GITHUB_STEP_SUMMARY"
+          cp android/app/build/outputs/apk/release/app-release.apk "$RUNNER_TEMP/app.apk"
+          { echo '### APK size'; scripts/apk-size.sh "$RUNNER_TEMP/app.apk"; } >> "$GITHUB_STEP_SUMMARY"
+          scripts/apk-size.sh "$RUNNER_TEMP/app.apk"
+          # Make room for the emulator system image.
+          rm -rf android/app/build android/build ~/.gradle/caches/build-cache-* node_modules/.cache
+          df -h / | tail -1
 
       - name: Enable KVM
         run: |
@@ -76,7 +83,7 @@ jobs:
           profile: pixel_7
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          script: scripts/android-smoke.sh
+          script: scripts/android-smoke.sh $RUNNER_TEMP/app.apk
 
       - name: Start-up timing summary
         if: always()
