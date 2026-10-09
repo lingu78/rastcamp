@@ -9,7 +9,7 @@ appId: no.rastcamp.app
 - launchApp:
     clearState: true
     permissions:
-      location: allow
+      location: ${LOCATION_PERMISSION} # 'allow' on Android, 'inuse' on iOS
 - extendedWaitUntil:
     visible: '${TAB_MORE_DEVICE}'
     timeout: 20000

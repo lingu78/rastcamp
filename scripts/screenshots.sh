@@ -14,7 +14,9 @@ run() { # $1 = lang code, rest = KEY=VALUE labels
   local out="$ROOT/store/screenshots/raw/$PLATFORM/$lang"
   local run; run="$(mktemp -d)"
   rm -rf "$out" && mkdir -p "$out"
-  local args=(-e "TAB_MORE_DEVICE=More")
+  local permission=allow
+  [ "$PLATFORM" = ios ] && permission=inuse
+  local args=(-e "TAB_MORE_DEVICE=More" -e "LOCATION_PERMISSION=$permission")
   for kv in "$@"; do args+=(-e "$kv"); done
   # Maestro only writes screenshots inside the run's output folder (…/takeScreenshot/).
   maestro test --test-output-dir "$run" "${args[@]}" "$FLOW"
