@@ -1,5 +1,5 @@
 # Store screenshots (spec §10). Run per language with the labels as env vars, e.g.:
-#   maestro test store/screenshots/flows/screenshots.yaml -e LANGUAGE=Svenska -e TAB_MAP=Karta ...
+#   maestro test --test-output-dir out store/screenshots/flows/screenshots.yaml -e LANGUAGE=Svenska ...
 # See store/screenshots/README.md and scripts/screenshots.sh (which passes them all).
 appId: no.rastcamp.app
 ---
@@ -36,7 +36,7 @@ appId: no.rastcamp.app
     text: 'Sjølyst bobilparkering.*'
 - tapOn: '${SAVE_FAVORITE}'
 - waitForAnimationToEnd
-- takeScreenshot: ${OUT}/03-detail
+- takeScreenshot: 03-detail
 - tapOn: '${CLOSE}'
 - tapOn: '${CLEAR_SEARCH}'
 - hideKeyboard
@@ -48,17 +48,17 @@ appId: no.rastcamp.app
 - tapOn: '${LOCATE}'
 - waitForAnimationToEnd:
     timeout: 8000
-- takeScreenshot: ${OUT}/01-map-filter
+- takeScreenshot: 01-map-filter
 
 # 2) Nearby list (same filter).
 - tapOn: '${TAB_NEARBY}'
 - waitForAnimationToEnd
-- takeScreenshot: ${OUT}/02-nearby
+- takeScreenshot: 02-nearby
 
 # 4) Favourites.
 - tapOn: '${TAB_FAVORITES}'
 - waitForAnimationToEnd
-- takeScreenshot: ${OUT}/04-favorites
+- takeScreenshot: 04-favorites
 
 # 5) Offline: everything but the background map keeps working (Android only can toggle
 # airplane mode; on iOS the caption carries the message).
@@ -72,7 +72,7 @@ appId: no.rastcamp.app
 - tapOn: '${CHIP_ALL}'
 - tapOn: '${CHIP_WATER}'
 - waitForAnimationToEnd
-- takeScreenshot: ${OUT}/05-offline
+- takeScreenshot: 05-offline
 - runFlow:
     when:
       platform: Android

@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 6,
     paddingVertical: 3,
     borderRadius: 4,
-    maxWidth: '72%',
   },
   // Fixed dark-on-light so it stays readable on any map style.
   text: { fontSize: 11, color: '#1A1F1B' },

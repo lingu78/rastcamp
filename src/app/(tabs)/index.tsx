@@ -111,6 +111,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   bannerButtonText: { fontSize: 15, fontWeight: '600' },
-  bottomLeft: { position: 'absolute', left: 8, bottom: 8 },
+  bottomLeft: { position: 'absolute', left: 8, right: 84, bottom: 8, alignItems: 'flex-start' },
   bottomRight: { position: 'absolute', right: 16, bottom: 24 },
 });

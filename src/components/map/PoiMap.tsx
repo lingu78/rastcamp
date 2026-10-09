@@ -168,7 +168,7 @@ export function PoiMap({ visible, onSelectPoi, onBaseMapStatus, ref }: Props) {
             }}
             data={geojson[category]}
             cluster
-            clusterRadius={44}
+            clusterRadius={56}
             clusterMaxZoom={CLUSTER_MAX_ZOOM}
             onPress={(event) => void handlePress(category, event.nativeEvent.features)}>
             <Layer

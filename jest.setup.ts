@@ -11,7 +11,7 @@ jest.mock('@maplibre/maplibre-react-native', () => require('./test/maplibreMock'
 
 // Location is denied by default in tests (exercises the "no permission" path of spec F4).
 jest.mock('expo-location', () => ({
-  Accuracy: { Balanced: 3 },
+  Accuracy: { Balanced: 3, High: 4 },
   getForegroundPermissionsAsync: jest.fn(async () => ({
     status: 'denied',
     granted: false,

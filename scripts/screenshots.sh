@@ -12,10 +12,13 @@ FLOW="$ROOT/store/screenshots/flows/screenshots.yaml"
 run() { # $1 = lang code, rest = KEY=VALUE labels
   local lang="$1"; shift
   local out="$ROOT/store/screenshots/raw/$PLATFORM/$lang"
+  local run; run="$(mktemp -d)"
   rm -rf "$out" && mkdir -p "$out"
-  local args=(-e "OUT=$out" -e "TAB_MORE_DEVICE=More")
+  local args=(-e "TAB_MORE_DEVICE=More")
   for kv in "$@"; do args+=(-e "$kv"); done
-  maestro test "${args[@]}" "$FLOW"
+  # Maestro only writes screenshots inside the run's output folder (…/takeScreenshot/).
+  maestro test --test-output-dir "$run" "${args[@]}" "$FLOW"
+  find "$run" -name '*.png' -path '*takeScreenshot*' -exec cp {} "$out/" \;
   ls -1 "$out"
 }
 

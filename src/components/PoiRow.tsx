@@ -29,7 +29,11 @@ export const PoiRow = memo(function PoiRow({ poi, from, onPress }: Props) {
     <Pressable
       onPress={() => onPress(poi)}
       accessibilityRole="button"
-      accessibilityLabel={t('nearby.rowA11y', { name, category, distance, direction })}
+      accessibilityLabel={
+        poi.name
+          ? t('nearby.rowA11y', { name, category, distance, direction })
+          : t('nearby.rowA11yUnnamed', { category, distance, direction })
+      }
       style={({ pressed }) => [
         styles.row,
         { backgroundColor: pressed ? theme.surfaceAlt : theme.surface, borderColor: theme.border },
@@ -39,9 +43,11 @@ export const PoiRow = memo(function PoiRow({ poi, from, onPress }: Props) {
         <ThemedText variant="subtitle" numberOfLines={2}>
           {name}
         </ThemedText>
-        <ThemedText secondary variant="caption">
-          {category}
-        </ThemedText>
+        {poi.name ? (
+          <ThemedText secondary variant="caption">
+            {category}
+          </ThemedText>
+        ) : null}
       </View>
       <View style={styles.distance} accessible={false}>
         <ThemedText style={styles.distanceText}>{distance}</ThemedText>

@@ -35,7 +35,9 @@
     "fromPosition": "Distance from your location",
     "fromMapCenter": "Distance from the map centre – location is turned off",
     "noResults": "No matching places.",
-    "rowA11y": "{{name}}, {{category}}, {{distance}} {{direction}}"
+    "rowA11y": "{{name}}, {{category}}, {{distance}} {{direction}}",
+    "waitingForPosition": "Waiting for your location … distances from the map centre for now",
+    "rowA11yUnnamed": "{{category}}, {{distance}} {{direction}}"
   },
   "favorites": {
     "title": "Favourites",

@@ -65,7 +65,8 @@ jobs:
           target: google_apis
           arch: x86_64
           profile: pixel_2
-          disable-animations: true
+          # Animations on, like a real phone (the Android form sheet needs them).
+          disable-animations: false
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           script: |
             adb install -r $RUNNER_TEMP/app.apk

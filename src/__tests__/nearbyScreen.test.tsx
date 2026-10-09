@@ -38,7 +38,7 @@ describe('Närmast list (F5, F11)', () => {
     await renderList();
     expect(screen.getByText('Avstånd från din position')).toBeOnTheScreen();
     const labels = rowLabels();
-    expect(labels[0]).toBe('Tömning, Tömning, < 0,1 km åt N');
+    expect(labels[0]).toBe('Tömning, < 0,1 km åt N');
     expect(labels[1]).toMatch(/^Vattenpost, Vatten, 1,2 km åt /);
     expect(labels.at(-1)).toMatch(/^Bobilparkering Sentrum, Ställplats, 41\d km åt V$/);
   });

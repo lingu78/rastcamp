@@ -35,7 +35,9 @@
     "fromPosition": "Avstand fra din posisjon",
     "fromMapCenter": "Avstand fra kartets midtpunkt – posisjonstjenester er slått av",
     "noResults": "Ingen steder passer.",
-    "rowA11y": "{{name}}, {{category}}, {{distance}} mot {{direction}}"
+    "rowA11y": "{{name}}, {{category}}, {{distance}} mot {{direction}}",
+    "waitingForPosition": "Venter på posisjon … avstand fra kartets midtpunkt så lenge",
+    "rowA11yUnnamed": "{{category}}, {{distance}} mot {{direction}}"
   },
   "favorites": {
     "title": "Favoritter",

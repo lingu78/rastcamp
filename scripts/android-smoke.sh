@@ -21,7 +21,13 @@ launch() { # $1 = name, $2 = optional deep link (rastcamp://…)
   else
     adb shell am start -W -n "$PKG/.MainActivity" | tee "$OUT/$1-start.txt"
   fi
-  sleep "${WAIT:-25}"
+  # Keep feeding the emulator GPS while the app runs (a single fix before launch is not
+  # delivered to a location request that starts later).
+  local waited=0
+  while [ "$waited" -lt "${WAIT:-25}" ]; do
+    if [ -n "${GEO:-}" ]; then adb emu geo fix $GEO >/dev/null 2>&1 || true; fi
+    sleep 2; waited=$((waited + 2))
+  done
   if ! adb shell pidof "$PKG" >/dev/null; then
     adb logcat -d > "$OUT/$1-logcat.txt"
     echo "::error::App is not running after launch ($1)"; exit 1
@@ -36,6 +42,10 @@ launch() { # $1 = name, $2 = optional deep link (rastcamp://…)
 
 adb install -r "$APK"
 adb shell settings put system screen_off_timeout 600000
+# Real phones animate; the emulator runner switches animations off. Turn them back on and
+# test the "remove animations" accessibility setting separately at the end.
+animations() { for k in window_animation_scale transition_animation_scale animator_duration_scale; do adb shell settings put global "$k" "$1"; done; }
+animations 1
 adb shell cmd uimode night no
 
 # 1) Permission denied: request returns "denied" without a dialog because the flag is user-fixed.
@@ -50,8 +60,7 @@ for p in ACCESS_FINE_LOCATION ACCESS_COARSE_LOCATION; do
   adb shell pm clear-permission-flags "$PKG" "android.permission.$p" user-set user-fixed || true
 done
 perm grant
-adb emu geo fix 10.7522 59.9139
-sleep 2
+export GEO="10.7522 59.9139"
 launch 02-location-oslo
 
 # 3) Dark mode.
@@ -71,6 +80,11 @@ launch 06-offline-map
 WAIT=12 launch 07-offline-nearby "rastcamp://nearby"
 WAIT=12 launch 08-offline-detail "rastcamp://place/w35072156%2Fcaravan_site"
 adb shell cmd connectivity airplane-mode disable
+
+# 6) Detail sheet with animations switched off (Android accessibility setting).
+animations 0
+WAIT=12 launch 09-detail-no-animations "rastcamp://place/w49139387%2Fcaravan_site"
+animations 1
 
 echo "Cold start (am start -W):"
 grep -h "TotalTime" "$OUT"/*-start.txt || true

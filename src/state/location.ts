@@ -35,8 +35,11 @@ async function startWatching(): Promise<void> {
   try {
     const last = await Location.getLastKnownPositionAsync({ maxAge: 10 * 60_000 });
     if (last) locationStore.set((s) => ({ ...s, position: toLatLon(last) }));
+    // High = GPS. Balanced relies on Wi-Fi/cell positioning and may never produce a fix
+    // in the mountains without coverage – exactly where the app must work (spec §3 flow 3).
+    // Only while the app is in the foreground, so the battery cost is small.
     subscription = await Location.watchPositionAsync(
-      { accuracy: Location.Accuracy.Balanced, distanceInterval: 50, timeInterval: 10_000 },
+      { accuracy: Location.Accuracy.High, distanceInterval: 50, timeInterval: 10_000 },
       (location) => locationStore.set((s) => ({ ...s, position: toLatLon(location) })),
       () => undefined, // Errors (e.g. location services off) just leave the last position.
     );

@@ -35,7 +35,9 @@
     "fromPosition": "Avstånd från din position",
     "fromMapCenter": "Avstånd från kartans mittpunkt – platstjänster är avstängda",
     "noResults": "Inga platser matchar.",
-    "rowA11y": "{{name}}, {{category}}, {{distance}} åt {{direction}}"
+    "rowA11y": "{{name}}, {{category}}, {{distance}} åt {{direction}}",
+    "waitingForPosition": "Väntar på position … avstånd från kartans mittpunkt så länge",
+    "rowA11yUnnamed": "{{category}}, {{distance}} åt {{direction}}"
   },
   "favorites": {
     "title": "Favoriter",

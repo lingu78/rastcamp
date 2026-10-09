@@ -12,7 +12,7 @@ import { usePoiData } from '@/data/DataProvider';
 import type { Poi } from '@/data/pois';
 import { nearbyRows } from '@/data/nearbyRows';
 import { useSelectedCategories, visibleCategories } from '@/state/filters';
-import { useReferencePoint } from '@/state/location';
+import { useLocationState, useReferencePoint } from '@/state/location';
 
 /** "Närmast" (spec F5) + name search (F11). Works fully offline (F7). */
 export default function NearbyScreen() {
@@ -21,6 +21,7 @@ export default function NearbyScreen() {
   const data = usePoiData();
   const selected = useSelectedCategories();
   const reference = useReferencePoint();
+  const { permission } = useLocationState();
   const [query, setQuery] = useState('');
   const { lat, lon } = reference;
 
@@ -48,7 +49,11 @@ export default function NearbyScreen() {
             <SearchField value={query} onChange={setQuery} />
             <FilterChips />
             <ThemedText secondary variant="caption" style={styles.reference}>
-              {reference.source === 'gps' ? t('nearby.fromPosition') : t('nearby.fromMapCenter')}
+              {reference.source === 'gps'
+                ? t('nearby.fromPosition')
+                : permission === 'granted'
+                  ? t('nearby.waitingForPosition')
+                  : t('nearby.fromMapCenter')}
             </ThemedText>
           </View>
         }
