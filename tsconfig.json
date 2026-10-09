@@ -11,5 +11,5 @@
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"],
-  "exclude": ["node_modules", "data-pipeline/out", "dist"]
+  "exclude": ["node_modules", "data-pipeline", "dist"]
 }

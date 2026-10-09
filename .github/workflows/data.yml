@@ -1,0 +1,91 @@
+name: Data
+
+# Builds pois.json.gz for SE/NO/FI/DK from Geofabrik (spec §5.3–5.4).
+# - Monthly (and manually) on main: build + publish to GitHub Pages (gh-pages branch).
+# - On pushes that touch the pipeline: build only (artifact), to validate changes on real data.
+on:
+  schedule:
+    - cron: '23 4 3 * *' # 04:23 UTC on the 3rd of every month
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data-pipeline/**'
+      - '.github/workflows/data.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: data-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build POI data
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+
+      - name: Install osmium-tool
+        run: sudo apt-get update -q && sudo apt-get install -y -q osmium-tool && osmium --version
+
+      - name: Build (download Geofabrik extracts, filter, export, categorise)
+        run: node data-pipeline/src/run.ts
+
+      - name: Summary
+        if: always()
+        run: |
+          if [ -f data-pipeline/out/report.json ]; then
+            {
+              echo '### POI counts'
+              node -e "
+                const r = require('./data-pipeline/out/report.json');
+                const m = require('./data-pipeline/out/manifest.json');
+                const cs = r.sources;
+                console.log('| category | ' + cs.join(' | ') + ' | total |');
+                console.log('|---|' + cs.map(() => '---:|').join('') + '---:|');
+                for (const [cat, by] of Object.entries(r.stats.counts))
+                  console.log('| ' + cat + ' | ' + cs.map(c => by[c] ?? 0).join(' | ') + ' | ' + r.stats.totals[cat] + ' |');
+                console.log('');
+                console.log('Total ' + r.stats.total + ' POIs, gzip ' + (m.bytes / 1e6).toFixed(2) + ' MB, data ' + m.dataTimestamp);
+              "
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: pois-data
+          path: |
+            data-pipeline/out/pois.json.gz
+            data-pipeline/out/manifest.json
+            data-pipeline/out/report.json
+          retention-days: 30
+
+  publish:
+    name: Publish to GitHub Pages
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: pois-data
+          path: data-pipeline/out
+
+      - name: Push to gh-pages
+        run: data-pipeline/publish.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

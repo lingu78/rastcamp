@@ -68,3 +68,30 @@ Slogs upp 2026-10-09 (M1). Kontrollera igen innan M8 (första butiksbyggena).
 
 - **Inga hemligheter i repot.** `.gitignore` utesluter `.env*`, signeringsfiler (`*.jks`, `*.keystore`, `*.p8`, `*.p12`, `*.mobileprovision`, `*.pem`, `*.key`) och service account-JSON. Tokens (EXPO_TOKEN m.fl.) läses från miljövariabler / GitHub Secrets / EAS. (M1)
 - **Inga native-mappar i repot** (`/ios`, `/android` ignoreras) – Continuous Native Generation via `expo prebuild`/EAS. All native-konfiguration sker i `app.json` och config plugins. (M1)
+
+## 7. Data och datapipeline
+
+- **Node (TypeScript) + osmium-tool, inga npm-beroenden.** Pipelinen körs med Nodes inbyggda typ-strippning (Node ≥ 22.18), så samma TypeScript-typer och valideringskod delas med appen utan byggsteg. osmium gör det tunga PBF-arbetet (`tags-filter` + `export` till GeoJSON-seq). (M2)
+- **Geofabrik-MD5 verifieras** efter varje nedladdning; cachad PBF återanvänds om MD5 stämmer. (M2)
+- **Taggningsjusteringar mot spec §5.2** (spec tillåter justering):
+  - Camping exkluderar `backcountry=yes`, `camp_site=basic|backcountry`, `motor_vehicle=no`/`motorcar=no` och `caravans=no`+`motorhome=no` – _utom_ när `motorhome`/`caravans=yes` uttryckligen anges. (M2)
+  - `sanitary_dump_station=customers/public` räknas som tömning (inte bara `=yes`); `=no` gör det inte. (M2)
+  - **Tillagt:** `water_point=yes` på annat objekt (typiskt en tömningsstation) ger en Vatten-plats – samma logik som specens `sanitary_dump_station=yes`. (M2)
+  - **Alla kategorier:** `access=private|no`, `disused=yes`, `abandoned=yes`, `opening_hours=closed|off` utesluts. (M2)
+  - Vatten-regeln "drinking_water inom 50 m från tömningsstation" räknar även tömning från `sanitary_dump_station=yes` på andra objekt. (M2)
+- **Ett OSM-objekt kan ge flera platser** (camping med tömning → en Camping- och en Tömning-plats på samma koordinat). Unik nyckel i appen: `<osm-id>/<kategori>`. (M2)
+- **Ytor → punkt:** ytviktad tyngdpunkt av yttre ringen; multipolygon → största delytan; öppen väg → medelvärde av noderna. osmium exporterar slutna vägar både som linje och yta – ytan föredras. osmiums yt-id (`a<2×id(+1)>`) normaliseras tillbaka till `w<id>`/`r<id>`. (M2)
+- **Dedup 30 m per kategori:** objektet med namn > flest taggar > yta (före nod) behålls; den bortslagnas namn/taggar fyller luckor. Exakt sökning via rutnätsindex (cellstorlek ≥ radien upp till 82° N, dvs. även Svalbard). (M2)
+- **Namn:** `name` → `name:sv/nb/no/en` → `official_name` → `brand` (t.ex. bensinstationskedja). Tomt namn = appen visar kategorinamnet (F6). (M2)
+- **Taggwhitelist (F6):** fee, charge, opening_hours, phone (← contact:phone, contact:mobile), website (← contact:website, url), power_supply, shower, toilets, drinking_water, water_point, sanitary_dump_station (+ `:grey_water`, `:chemical_toilet`, `:black_water`), capacity (+ `:caravans`, `:motorhome`), dog, description (+ `:sv`, `:nb` ← `:no`, `:en`). Text normaliseras (blanksteg) och kortas (500 tecken för beskrivningar, annars 200). Listan finjusteras mot verklig data via `report.json` (vanligaste nycklar per kategori). (M2)
+- **Filformat:** kompakta tupler `[id, kategoriindex, lat, lon, namn, taggar?]`, koordinater avrundade till 5 decimaler (~1 m), sorterat på kategori/lat/lon → stabil, deterministisk och välkomprimerande fil (gzip nivå 9). Manifestet innehåller SHA-256 för både gzip-filen och den okomprimerade JSON:en så att appen kan verifiera nedladdningen (F9). (M2)
+- **Byggkontroller:** misslyckas vid 0 träffar i någon kategori, gzip > 5 MB eller schemavalideringsfel. Antal per kategori × land loggas och skrivs till Actions-sammanfattningen. (M2)
+- **Publicering via `gh-pages`-grenen** (en squashad commit per publicering, så repot inte växer) i stället för `actions/deploy-pages`. Skäl: Pages-sajten ska innehålla både data (månadsvis) och integritetspolicy (M7); med deploy-pages ersätter varje deploy hela sajten, medan `publish.sh` lägger nytt ovanpå befintligt innehåll. (M2)
+
+### ODbL (spec §5.5)
+
+- Datafilen är en **härledd databas** (Derivative Database) av OSM; appen som visar den är ett **Produced Work**. Krav som följs: (M2)
+  1. **Attribution** "© OpenStreetMap contributors" + ODbL-hänvisning i appen (kartan, Mer-fliken – F1/F10), i butikstexterna (M7) och i själva datafilen/manifestet (`attribution`, `license`).
+  2. **Härledd databas tillgänglig för alla:** publiceras öppet på GitHub Pages under ODbL (`data/pois.json.gz`). Eftersom en appversion kan innehålla en äldre inbyggd datafil arkiveras de 24 senaste versionerna (`data/archive/`), så den databas som finns i varje appbygge går att hämta.
+  3. Datan licensieras vidare under ODbL 1.0 (står i datafilen och i `data-pipeline/README.md`); inga tekniska skydd (DRM) läggs på datan.
+- **Förutsättning:** GitHub Pages måste vara aktiverat och publikt (🔑 §14 punkt 1). Repot `lingu78/rastcamp` är i dag **privat** och GitHub Pages för privata repon kräver betald plan (GitHub Pro/Team). Rekommendation: göra repot publikt (gratis Pages, och öppenheten passar ODbL) – alternativt GitHub Pro. Detta tas upp vid närmaste 🔑-checkpoint.

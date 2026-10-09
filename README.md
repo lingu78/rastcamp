@@ -45,6 +45,18 @@ npm run check         # allt ovan i följd – samma som CI
 CI (GitHub Actions, `.github/workflows/ci.yml`) kör dessutom `expo-doctor` och en
 bundle-röktest (`expo export` för Android och iOS) på varje push.
 
+## Platsdata
+
+Platsdatan byggs från OpenStreetMap av pipelinen i [`data-pipeline/`](data-pipeline/README.md)
+(kräver `osmium-tool`):
+
+```bash
+npm run data:build
+```
+
+En GitHub Action (`.github/workflows/data.yml`) kör den månadsvis och publicerar
+`pois.json.gz` + `manifest.json` på GitHub Pages.
+
 ## Projektstruktur
 
 ```
@@ -55,6 +67,7 @@ src/
   components/     återanvändbara komponenter (SVG-ikoner m.m.)
   i18n/           i18next-setup, språkmappning, översättningar (locales/*.json)
   theme/          färgtokens (ljust/mörkt) och useTheme
+data-pipeline/    OSM → pois.json.gz (Node + osmium), egna tester
 ```
 
 Native-mapparna `ios/` och `android/` genereras (Continuous Native Generation) och checkas inte in.

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hand-made fixture covering every category and the edge cases in DECISIONS.md. -->
+<osm version="0.6" generator="rastcamp-fixture">
+  <!-- 1. Ställplats (node) + duplicate node 10 m away with fewer tags -->
+  <node id="1" version="1" lat="59.300000" lon="18.000000">
+    <tag k="tourism" v="caravan_site"/>
+    <tag k="name" v="Hamnens ställplats"/>
+    <tag k="fee" v="yes"/>
+    <tag k="power_supply" v="yes"/>
+    <tag k="contact:phone" v="+46 8 123 45 67"/>
+    <tag k="operator" v="Kommunen"/>
+  </node>
+  <node id="2" version="1" lat="59.300090" lon="18.000000">
+    <tag k="tourism" v="caravan_site"/>
+    <tag k="dog" v="yes"/>
+  </node>
+  <!-- 2. Camping as closed way (polygon) with a dump station tag -->
+  <node id="10" version="1" lat="59.310000" lon="18.010000"/>
+  <node id="11" version="1" lat="59.310000" lon="18.012000"/>
+  <node id="12" version="1" lat="59.312000" lon="18.012000"/>
+  <node id="13" version="1" lat="59.312000" lon="18.010000"/>
+  <!-- 3. Excluded campsites: backcountry, basic tent site, private -->
+  <node id="20" version="1" lat="59.400000" lon="18.100000">
+    <tag k="tourism" v="camp_site"/>
+    <tag k="backcountry" v="yes"/>
+  </node>
+  <node id="21" version="1" lat="59.410000" lon="18.100000">
+    <tag k="tourism" v="camp_site"/>
+    <tag k="camp_site" v="basic"/>
+  </node>
+  <node id="22" version="1" lat="59.420000" lon="18.100000">
+    <tag k="tourism" v="camp_site"/>
+    <tag k="access" v="private"/>
+  </node>
+  <!-- 3b. Basic site that explicitly allows motorhomes → kept -->
+  <node id="23" version="1" lat="59.430000" lon="18.100000">
+    <tag k="tourism" v="camp_site"/>
+    <tag k="camp_site" v="basic"/>
+    <tag k="motorhome" v="yes"/>
+  </node>
+  <!-- 4. Dump station + drinking water 20 m away (kept) and 500 m away (dropped) -->
+  <node id="30" version="1" lat="59.500000" lon="18.200000">
+    <tag k="amenity" v="sanitary_dump_station"/>
+    <tag k="sanitary_dump_station:grey_water" v="yes"/>
+    <tag k="sanitary_dump_station:chemical_toilet" v="yes"/>
+    <tag k="fee" v="no"/>
+  </node>
+  <node id="31" version="1" lat="59.500180" lon="18.200000">
+    <tag k="amenity" v="drinking_water"/>
+  </node>
+  <node id="32" version="1" lat="59.504500" lon="18.200000">
+    <tag k="amenity" v="drinking_water"/>
+  </node>
+  <!-- 4b. Drinking water marked for caravans → kept anywhere -->
+  <node id="33" version="1" lat="59.600000" lon="18.300000">
+    <tag k="amenity" v="drinking_water"/>
+    <tag k="caravans" v="yes"/>
+  </node>
+  <!-- 5. Water point -->
+  <node id="40" version="1" lat="59.700000" lon="18.400000">
+    <tag k="amenity" v="water_point"/>
+    <tag k="name" v="Vattenpost"/>
+  </node>
+  <!-- 6. Rest area (node) and services (way) -->
+  <node id="50" version="1" lat="59.800000" lon="17.500000">
+    <tag k="highway" v="rest_area"/>
+    <tag k="toilets" v="yes"/>
+  </node>
+  <node id="51" version="1" lat="59.810000" lon="17.510000"/>
+  <node id="52" version="1" lat="59.810000" lon="17.514000"/>
+  <node id="53" version="1" lat="59.812000" lon="17.514000"/>
+  <!-- 7. LPG: fuel station with lpg, shop=gas, and fuel without lpg (dropped) -->
+  <node id="60" version="1" lat="59.900000" lon="17.600000">
+    <tag k="amenity" v="fuel"/>
+    <tag k="fuel:lpg" v="yes"/>
+    <tag k="brand" v="Bensinmacken"/>
+    <tag k="opening_hours" v="24/7"/>
+  </node>
+  <node id="61" version="1" lat="59.910000" lon="17.600000">
+    <tag k="shop" v="gas"/>
+    <tag k="name" v="Gasolbutiken"/>
+  </node>
+  <node id="62" version="1" lat="59.920000" lon="17.600000">
+    <tag k="amenity" v="fuel"/>
+  </node>
+  <!-- 8. Camping as multipolygon relation -->
+  <node id="70" version="1" lat="60.000000" lon="17.000000"/>
+  <node id="71" version="1" lat="60.000000" lon="17.004000"/>
+  <node id="72" version="1" lat="60.002000" lon="17.004000"/>
+  <node id="73" version="1" lat="60.002000" lon="17.000000"/>
+  <way id="100" version="1">
+    <nd ref="10"/><nd ref="11"/><nd ref="12"/><nd ref="13"/><nd ref="10"/>
+    <tag k="tourism" v="camp_site"/>
+    <tag k="name" v="Sjöviks camping"/>
+    <tag k="sanitary_dump_station" v="yes"/>
+    <tag k="shower" v="yes"/>
+    <tag k="website" v="https://example.org"/>
+  </way>
+  <way id="101" version="1">
+    <nd ref="51"/><nd ref="52"/><nd ref="53"/><nd ref="51"/>
+    <tag k="highway" v="services"/>
+    <tag k="area" v="yes"/>
+  </way>
+  <way id="102" version="1">
+    <nd ref="70"/><nd ref="71"/><nd ref="72"/><nd ref="73"/><nd ref="70"/>
+  </way>
+  <relation id="200" version="1">
+    <member type="way" ref="102" role="outer"/>
+    <tag k="type" v="multipolygon"/>
+    <tag k="tourism" v="camp_site"/>
+    <tag k="name" v="Skogens camping"/>
+    <tag k="description" v="Lugn camping   vid sjön."/>
+  </relation>
+</osm>
