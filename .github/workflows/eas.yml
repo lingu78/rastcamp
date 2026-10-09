@@ -1,0 +1,72 @@
+name: EAS
+
+# Runs EAS commands in CI (the development environment cannot reach expo.dev).
+# Needs the repository secret EXPO_TOKEN (RELEASE.md, step 2). Start from the Actions tab.
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: What to do
+        type: choice
+        options:
+          - init
+          - build
+          - build-and-submit
+          - submit-latest
+        default: build
+      platform:
+        description: Platform
+        type: choice
+        options: [android, ios, all]
+        default: android
+      profile:
+        description: Build profile
+        type: choice
+        options: [production, preview]
+        default: production
+
+permissions:
+  contents: write # 'init' commits the projectId to app.json
+
+jobs:
+  eas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      EXPO_NO_TELEMETRY: 1
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Check token
+        run: |
+          [ -n "$EXPO_TOKEN" ] || { echo "::error::Secret EXPO_TOKEN is missing (RELEASE.md step 2)"; exit 1; }
+          npx --yes eas-cli@latest whoami
+
+      - name: eas init (create the Expo project, write projectId)
+        if: inputs.action == 'init'
+        run: |
+          npx eas-cli@latest init --non-interactive --force
+          if ! git diff --quiet app.json; then
+            git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit -am "Link EAS project (eas init)"
+            git push
+          fi
+
+      - name: Refresh bundled data (latest published)
+        if: inputs.action != 'init' && inputs.action != 'submit-latest' && inputs.profile == 'production'
+        run: node scripts/update-bundled-data.ts || echo "::warning::Could not refresh bundled data – building with the committed file"
+
+      - name: eas build
+        if: inputs.action == 'build' || inputs.action == 'build-and-submit'
+        run: >
+          npx eas-cli@latest build --platform ${{ inputs.platform }} --profile ${{ inputs.profile }}
+          --non-interactive --wait ${{ inputs.action == 'build-and-submit' && '--auto-submit' || '' }}
+
+      - name: eas submit (latest build)
+        if: inputs.action == 'submit-latest'
+        run: npx eas-cli@latest submit --platform ${{ inputs.platform }} --latest --non-interactive
