@@ -1,4 +1,4 @@
-import { classify, isTentOnlyCampsite } from '../src/categorize.ts';
+import { classify, isMarine, isTentOnlyCampsite } from '../src/categorize.ts';
 
 const cats = (tags: Record<string, string>) => classify(tags).categories;
 
@@ -78,5 +78,31 @@ describe('isTentOnlyCampsite', () => {
     [{}, false],
   ])('%j → %s', (tags, expected) => {
     expect(isTentOnlyCampsite(tags)).toBe(expected);
+  });
+});
+
+describe('marine facilities (boats, not motorhomes)', () => {
+  it.each([
+    [{ amenity: 'sanitary_dump_station', 'seamark:type': 'small_craft_facility' }, []],
+    [{ amenity: 'water_point', 'seamark:small_craft_facility:category': 'water_tap' }, []],
+    [{ waterway: 'sanitary_dump_station' }, []],
+    [{ amenity: 'sanitary_dump_station', boat: 'yes' }, []],
+    [{ amenity: 'drinking_water', motorboat: 'yes' }, []],
+    [{ leisure: 'marina', water_point: 'yes', sanitary_dump_station: 'yes' }, []],
+    // explicitly for motorhomes too → kept
+    [{ amenity: 'sanitary_dump_station', boat: 'yes', motorhome: 'yes' }, ['dump_station']],
+    // a campsite at a marina keeps its camping category but not a marine dump station
+    [
+      { tourism: 'camp_site', sanitary_dump_station: 'yes', 'seamark:type': 'harbour' },
+      ['camp_site'],
+    ],
+  ])('%j → %j', (tags, expected) => {
+    expect(cats(tags)).toEqual(expected);
+  });
+
+  it('isMarine', () => {
+    expect(isMarine({ 'seamark:type': 'harbour' })).toBe(true);
+    expect(isMarine({ amenity: 'water_point' })).toBe(false);
+    expect(isMarine({ boat: 'yes', caravans: 'yes' })).toBe(false);
   });
 });

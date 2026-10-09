@@ -20,6 +20,17 @@ export function vehiclesWelcome(tags: OsmTags): boolean {
   return isYes(tags.motorhome) || isYes(tags.caravans) || isYes(tags.caravan);
 }
 
+/**
+ * Facilities for boats (harbour pump-outs, quay water taps): tagged with seamark:*, as a
+ * waterway feature, as a marina, or for boats. Useless – and often unreachable – by motorhome.
+ */
+export function isMarine(tags: OsmTags): boolean {
+  if (vehiclesWelcome(tags)) return false;
+  if (tags.waterway !== undefined) return true;
+  if (tags.boat === 'yes' || tags.motorboat === 'yes' || tags.leisure === 'marina') return true;
+  return Object.keys(tags).some((key) => key.startsWith('seamark:'));
+}
+
 function isClosedOrPrivate(tags: OsmTags): boolean {
   if (tags.access && NO_ACCESS.has(tags.access)) return true;
   if (tags.disused === 'yes' || tags.abandoned === 'yes') return true;
@@ -50,15 +61,21 @@ export function classify(tags: OsmTags): Classification {
   if (tags.tourism === 'caravan_site') categories.push('caravan_site');
   if (tags.tourism === 'camp_site' && !isTentOnlyCampsite(tags)) categories.push('camp_site');
 
+  // Dump stations and water for boats are left out (see isMarine).
+  const marine = isMarine(tags);
   const dumpTagged =
     tags.sanitary_dump_station !== undefined && DUMP_STATION_VALUES.has(tags.sanitary_dump_station);
-  if (tags.amenity === 'sanitary_dump_station' || dumpTagged) categories.push('dump_station');
+  if (!marine && (tags.amenity === 'sanitary_dump_station' || dumpTagged)) {
+    categories.push('dump_station');
+  }
 
-  if (tags.amenity === 'water_point' || tags.water_point === 'yes') {
-    categories.push('water');
-  } else if (tags.amenity === 'drinking_water') {
-    if (vehiclesWelcome(tags)) categories.push('water');
-    else drinkingWaterCandidate = true;
+  if (!marine) {
+    if (tags.amenity === 'water_point' || tags.water_point === 'yes') {
+      categories.push('water');
+    } else if (tags.amenity === 'drinking_water') {
+      if (vehiclesWelcome(tags)) categories.push('water');
+      else drinkingWaterCandidate = true;
+    }
   }
 
   if (tags.highway === 'rest_area' || tags.highway === 'services') categories.push('rest_area');
