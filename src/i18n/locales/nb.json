@@ -28,12 +28,19 @@
   },
   "nearby": {
     "title": "Nærmest meg",
-    "empty": "Ingen steder å vise ennå."
+    "empty": "Ingen steder å vise ennå.",
+    "searchPlaceholder": "Søk på navn",
+    "clearSearch": "Tøm søket",
+    "fromPosition": "Avstand fra din posisjon",
+    "fromMapCenter": "Avstand fra kartets midtpunkt – posisjonstjenester er slått av",
+    "noResults": "Ingen steder passer.",
+    "rowA11y": "{{name}}, {{category}}, {{distance}} mot {{direction}}"
   },
   "favorites": {
     "title": "Favoritter",
     "empty": "Ingen favoritter ennå.",
-    "emptyHint": "Åpne et sted og trykk «Lagre favoritt», så havner det her."
+    "emptyHint": "Åpne et sted og trykk «Lagre favoritt», så havner det her.",
+    "listA11y": "Favoritter"
   },
   "more": {
     "title": "Mer",
@@ -56,6 +63,47 @@
   },
   "place": {
     "title": "Sted",
-    "notFound": "Fant ikke stedet."
+    "notFound": "Fant ikke stedet.",
+    "navigate": "Naviger dit",
+    "saveFavorite": "Lagre favoritt",
+    "removeFavorite": "Fjern favoritt",
+    "share": "Del",
+    "report": "Rapporter feil",
+    "reportHint": "Åpner OpenStreetMap i nettleseren, der du kan legge igjen en merknad om feilen.",
+    "call": "Ring {{number}}",
+    "openWebsite": "Åpne nettsiden",
+    "distanceFrom": "{{distance}} {{direction}}",
+    "shareMessage": "{{name}} ({{category}})",
+    "dataSource": "Data: © OpenStreetMap contributors"
+  },
+  "fields": {
+    "fee": "Avgift",
+    "opening_hours": "Åpningstider",
+    "phone": "Telefon",
+    "website": "Nettside",
+    "power_supply": "Strøm",
+    "shower": "Dusj",
+    "toilets": "Toalett",
+    "water": "Vann",
+    "dump_station": "Tømming",
+    "grey_water": "Tømming gråvann",
+    "chemical_toilet": "Tømming kassett",
+    "black_water": "Tømming svartvann",
+    "capacity": "Maks antall",
+    "capacity_motorhome": "Maks antall bobiler",
+    "capacity_caravans": "Maks antall campingvogner",
+    "dog": "Hunder tillatt",
+    "description": "Beskrivelse",
+    "coordinates": "Koordinater",
+    "distance": "Avstand"
+  },
+  "values": {
+    "yes": "Ja",
+    "no": "Nei",
+    "customers": "For kunder",
+    "limited": "Begrenset",
+    "leashed": "Ja, i bånd",
+    "outside": "Utendørs",
+    "always": "Døgnåpent"
   }
 }

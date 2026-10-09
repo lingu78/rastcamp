@@ -26,11 +26,9 @@ import {
 import { CATEGORY_COLORS } from '@/theme/categories';
 import { useColorSchemeName, useTheme } from '@/theme/useTheme';
 
-/** OpenFreeMap public instance: free, no API key, no tracking (see DECISIONS.md). */
-export const MAP_STYLES = {
-  light: 'https://tiles.openfreemap.org/styles/liberty',
-  dark: 'https://tiles.openfreemap.org/styles/dark',
-} as const;
+import { MAP_STYLES } from './PoiMap.styles';
+
+export { MAP_STYLES };
 
 const MAP_ICONS: Record<Category, number> = {
   caravan_site: require('../../../assets/map/caravan_site.png'),

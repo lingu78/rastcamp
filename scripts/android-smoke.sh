@@ -13,11 +13,15 @@ perm() { # $1 = grant|revoke
   for p in ACCESS_FINE_LOCATION ACCESS_COARSE_LOCATION; do adb shell pm "$1" "$PKG" "android.permission.$p" || true; done
 }
 
-launch() { # $1 = name
+launch() { # $1 = name, $2 = optional deep link (rastcamp://…)
   adb shell am force-stop "$PKG"
   adb logcat -c
-  adb shell am start -W -n "$PKG/.MainActivity" | tee "$OUT/$1-start.txt"
-  sleep 25
+  if [ -n "${2:-}" ]; then
+    adb shell am start -W -a android.intent.action.VIEW -d "$2" "$PKG" | tee "$OUT/$1-start.txt"
+  else
+    adb shell am start -W -n "$PKG/.MainActivity" | tee "$OUT/$1-start.txt"
+  fi
+  sleep "${WAIT:-25}"
   if ! adb shell pidof "$PKG" >/dev/null; then
     adb logcat -d > "$OUT/$1-logcat.txt"
     echo "::error::App is not running after launch ($1)"; exit 1
@@ -54,6 +58,18 @@ adb shell cmd uimode night yes
 sleep 2
 launch 03-dark-mode
 adb shell cmd uimode night no
+
+# 4) Online list and detail via deep links (Oslo).
+WAIT=12 launch 04-nearby "rastcamp://nearby"
+WAIT=12 launch 05-detail "rastcamp://place/w49139387%2Fcaravan_site"
+
+# 5) Offline (airplane mode, spec F7): map falls back, list/detail still work.
+adb shell cmd connectivity airplane-mode enable
+sleep 5
+launch 06-offline-map
+WAIT=12 launch 07-offline-nearby "rastcamp://nearby"
+WAIT=12 launch 08-offline-detail "rastcamp://place/w35072156%2Fcaravan_site"
+adb shell cmd connectivity airplane-mode disable
 
 echo "Cold start (am start -W):"
 grep -h "TotalTime" "$OUT"/*-start.txt || true

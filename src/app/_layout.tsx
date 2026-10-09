@@ -6,10 +6,14 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { PoiDataProvider } from '@/data/DataProvider';
+import { restoreFavorites } from '@/state/favorites';
 import { restoreFilters } from '@/state/filters';
 import { initLocation } from '@/state/location';
 import { palette } from '@/theme/colors';
 import { useColorSchemeName } from '@/theme/useTheme';
+
+// Deep links straight into a place still get the tabs underneath (so "close" has somewhere to go).
+export const unstable_settings = { initialRouteName: '(tabs)' };
 
 function navigationTheme(scheme: 'light' | 'dark'): Theme {
   const base = scheme === 'dark' ? DarkTheme : DefaultTheme;
@@ -34,6 +38,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     void restoreFilters();
+    void restoreFavorites();
     void initLocation();
   }, []);
 

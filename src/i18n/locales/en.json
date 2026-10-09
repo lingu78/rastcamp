@@ -28,12 +28,19 @@
   },
   "nearby": {
     "title": "Nearest to me",
-    "empty": "No places to show yet."
+    "empty": "No places to show yet.",
+    "searchPlaceholder": "Search by name",
+    "clearSearch": "Clear search",
+    "fromPosition": "Distance from your location",
+    "fromMapCenter": "Distance from the map centre – location is turned off",
+    "noResults": "No matching places.",
+    "rowA11y": "{{name}}, {{category}}, {{distance}} {{direction}}"
   },
   "favorites": {
     "title": "Favourites",
     "empty": "No favourites yet.",
-    "emptyHint": "Open a place and tap “Save favourite” to keep it here."
+    "emptyHint": "Open a place and tap “Save favourite” to keep it here.",
+    "listA11y": "Favourites"
   },
   "more": {
     "title": "More",
@@ -56,6 +63,47 @@
   },
   "place": {
     "title": "Place",
-    "notFound": "Place not found."
+    "notFound": "Place not found.",
+    "navigate": "Navigate",
+    "saveFavorite": "Save favourite",
+    "removeFavorite": "Remove favourite",
+    "share": "Share",
+    "report": "Report an error",
+    "reportHint": "Opens OpenStreetMap in your browser, where you can leave a note about the error.",
+    "call": "Call {{number}}",
+    "openWebsite": "Open website",
+    "distanceFrom": "{{distance}} {{direction}}",
+    "shareMessage": "{{name}} ({{category}})",
+    "dataSource": "Data: © OpenStreetMap contributors"
+  },
+  "fields": {
+    "fee": "Fee",
+    "opening_hours": "Opening hours",
+    "phone": "Phone",
+    "website": "Website",
+    "power_supply": "Electricity",
+    "shower": "Shower",
+    "toilets": "Toilets",
+    "water": "Water",
+    "dump_station": "Dump station",
+    "grey_water": "Grey water disposal",
+    "chemical_toilet": "Cassette disposal",
+    "black_water": "Black water disposal",
+    "capacity": "Max capacity",
+    "capacity_motorhome": "Max motorhomes",
+    "capacity_caravans": "Max caravans",
+    "dog": "Dogs allowed",
+    "description": "Description",
+    "coordinates": "Coordinates",
+    "distance": "Distance"
+  },
+  "values": {
+    "yes": "Yes",
+    "no": "No",
+    "customers": "Customers only",
+    "limited": "Limited",
+    "leashed": "Yes, on a lead",
+    "outside": "Outdoors",
+    "always": "Open 24/7"
   }
 }

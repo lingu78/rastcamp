@@ -3,11 +3,14 @@ import { createContext, use, useMemo, type ReactNode } from 'react';
 import { featureCollectionsByCategory, type PoiFeatureCollection } from './geojson';
 import { decodePoiFile, type PoiDataset } from './pois';
 import { validatePoiFile, type Category, type PoiFile } from './schema';
+import { buildSearchIndex } from './search';
 import { buildSpatialIndex, type SpatialIndex } from './spatial';
 
 export type PoiData = PoiDataset & {
   spatial: SpatialIndex;
   geojson: Record<Category, PoiFeatureCollection>;
+  /** Normalised names, same order as `pois` (spec F11). */
+  searchIndex: string[];
 };
 
 const EMPTY_FILE: PoiFile = {
@@ -38,6 +41,7 @@ export function buildPoiData(file: PoiFile): PoiData {
     ...dataset,
     spatial: buildSpatialIndex(dataset.pois),
     geojson: featureCollectionsByCategory(dataset.pois),
+    searchIndex: buildSearchIndex(dataset.pois),
   };
 }
 
