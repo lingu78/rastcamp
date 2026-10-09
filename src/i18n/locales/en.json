@@ -15,7 +15,16 @@
     "lpg": "LPG"
   },
   "map": {
-    "placeholder": "The map goes here."
+    "placeholder": "The map goes here.",
+    "a11yLabel": "Map of places",
+    "centerOnMe": "Centre on my location",
+    "attributionA11y": "Map data from OpenMapTiles and OpenStreetMap. Opens copyright information.",
+    "locationOffTitle": "Location is turned off",
+    "locationOffBody": "Allow Rastcamp to use your location to see places near you. Your location never leaves your phone.",
+    "allowLocation": "Allow",
+    "offlineBody": "The background map could not be loaded. Places and the list still work offline.",
+    "showList": "Show list",
+    "retry": "Try again"
   },
   "nearby": {
     "title": "Nearest to me",
@@ -36,5 +45,17 @@
     "sv": "Svenska",
     "nb": "Norsk (bokmål)",
     "en": "English"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "close": "Close"
+  },
+  "filter": {
+    "label": "Filter categories",
+    "all": "All"
+  },
+  "place": {
+    "title": "Place",
+    "notFound": "Place not found."
   }
 }

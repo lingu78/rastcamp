@@ -34,3 +34,10 @@ describe.each(['light', 'dark'] as const)('%s palette meets WCAG AA', (scheme) =
     expect(contrast(c[fg], c[bg])).toBeGreaterThanOrEqual(min);
   });
 });
+
+describe('category marker colours', () => {
+  const { CATEGORY_COLORS } = jest.requireActual<typeof import('../categories')>('../categories');
+  it.each(Object.entries(CATEGORY_COLORS))('white glyph on %s (%s) ≥ 4.5:1', (_cat, color) => {
+    expect(contrast('#FFFFFF', color)).toBeGreaterThanOrEqual(4.5);
+  });
+});

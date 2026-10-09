@@ -2,7 +2,12 @@ import '@/i18n';
 
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider, type Theme } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
+import { PoiDataProvider } from '@/data/DataProvider';
+import { restoreFilters } from '@/state/filters';
+import { initLocation } from '@/state/location';
 import { palette } from '@/theme/colors';
 import { useColorSchemeName } from '@/theme/useTheme';
 
@@ -25,11 +30,30 @@ function navigationTheme(scheme: 'light' | 'dark'): Theme {
 
 export default function RootLayout() {
   const scheme = useColorSchemeName();
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    void restoreFilters();
+    void initLocation();
+  }, []);
+
   return (
     <ThemeProvider value={navigationTheme(scheme)}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      </Stack>
+      <PoiDataProvider>
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="place/[key]"
+            options={{
+              title: t('place.title'),
+              presentation: 'formSheet',
+              sheetAllowedDetents: [0.5, 1],
+              sheetGrabberVisible: true,
+              headerShown: false,
+            }}
+          />
+        </Stack>
+      </PoiDataProvider>
       <StatusBar style="auto" />
     </ThemeProvider>
   );

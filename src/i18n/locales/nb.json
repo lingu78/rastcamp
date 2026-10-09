@@ -15,7 +15,16 @@
     "lpg": "Gass"
   },
   "map": {
-    "placeholder": "Kartet kommer her."
+    "placeholder": "Kartet kommer her.",
+    "a11yLabel": "Kart med steder",
+    "centerOnMe": "Sentrer på min posisjon",
+    "attributionA11y": "Kartdata fra OpenMapTiles og OpenStreetMap. Åpner opphavsrettsinformasjon.",
+    "locationOffTitle": "Posisjonstjenester er slått av",
+    "locationOffBody": "Tillat Rastcamp å bruke posisjonen din for å se steder i nærheten. Posisjonen forlater aldri telefonen.",
+    "allowLocation": "Tillat",
+    "offlineBody": "Bakgrunnskartet kunne ikke lastes. Stedene og listen fungerer likevel offline.",
+    "showList": "Vis liste",
+    "retry": "Prøv igjen"
   },
   "nearby": {
     "title": "Nærmest meg",
@@ -36,5 +45,17 @@
     "sv": "Svenska",
     "nb": "Norsk (bokmål)",
     "en": "English"
+  },
+  "common": {
+    "cancel": "Avbryt",
+    "close": "Lukk"
+  },
+  "filter": {
+    "label": "Filtrer kategorier",
+    "all": "Alle"
+  },
+  "place": {
+    "title": "Sted",
+    "notFound": "Fant ikke stedet."
   }
 }

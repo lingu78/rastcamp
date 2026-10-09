@@ -15,7 +15,16 @@
     "lpg": "Gasol"
   },
   "map": {
-    "placeholder": "Kartan kommer här."
+    "placeholder": "Kartan kommer här.",
+    "a11yLabel": "Karta med platser",
+    "centerOnMe": "Centrera på min position",
+    "attributionA11y": "Kartdata från OpenMapTiles och OpenStreetMap. Öppnar upphovsrättsinformation.",
+    "locationOffTitle": "Platstjänster är avstängda",
+    "locationOffBody": "Tillåt Rastcamp att använda din position för att se platser nära dig. Positionen lämnar aldrig telefonen.",
+    "allowLocation": "Tillåt",
+    "offlineBody": "Bakgrundskartan kunde inte laddas. Platserna och listan fungerar ändå offline.",
+    "showList": "Visa lista",
+    "retry": "Försök igen"
   },
   "nearby": {
     "title": "Närmast mig",
@@ -36,5 +45,17 @@
     "sv": "Svenska",
     "nb": "Norsk (bokmål)",
     "en": "English"
+  },
+  "common": {
+    "cancel": "Avbryt",
+    "close": "Stäng"
+  },
+  "filter": {
+    "label": "Filtrera kategorier",
+    "all": "Alla"
+  },
+  "place": {
+    "title": "Plats",
+    "notFound": "Platsen hittades inte."
   }
 }

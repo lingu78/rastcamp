@@ -1,0 +1,6 @@
+{
+  "ios": {
+    "CFBundleDisplayName": "Rastcamp",
+    "NSLocationWhenInUseUsageDescription": "Rastcamp bruker posisjonen din til å vise steder i nærheten og sortere dem etter avstand. Posisjonen blir værende på telefonen din og sendes aldri noe sted."
+  }
+}

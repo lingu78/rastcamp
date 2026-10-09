@@ -1,0 +1,97 @@
+name: Android
+
+# Builds a release-variant APK (JS bundled, debug-signed) and runs it on an emulator:
+# proves the native config (MapLibre, location, locales) builds and the app starts
+# without crashing on the main paths. Screenshots go to the ci-screenshots branch.
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'src/**'
+      - 'assets/**'
+      - 'app.json'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'scripts/android-smoke.sh'
+      - '.github/workflows/android.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-run:
+    name: Build APK & run on emulator
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write # ci-screenshots branch
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Prebuild native Android project
+        run: npx expo prebuild --platform android --no-install
+        env:
+          EXPO_NO_TELEMETRY: 1
+
+      - name: Assemble release APK (x86_64 only, for the emulator)
+        working-directory: android
+        run: ./gradlew :app:assembleRelease -PreactNativeArchitectures=x86_64 --no-daemon --stacktrace
+
+      - name: APK size
+        run: |
+          ls -l android/app/build/outputs/apk/release/
+          echo "APK (x86_64 only): $(du -h android/app/build/outputs/apk/release/app-release.apk | cut -f1)" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Run on emulator (API 35)
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          profile: pixel_7
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          script: scripts/android-smoke.sh
+
+      - name: Publish screenshots to ci-screenshots branch
+        if: always() && github.event_name == 'push'
+        run: |
+          [ -d ci-artifacts/android ] || exit 0
+          cd ci-artifacts/android
+          git init -q && git checkout -q -b ci-screenshots
+          git add -A
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -q -m "Android screenshots from ${GITHUB_SHA::7}"
+          git push -q -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" ci-screenshots
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: android-smoke
+          path: ci-artifacts/android
+          retention-days: 14
