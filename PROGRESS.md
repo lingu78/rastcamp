@@ -7,10 +7,10 @@ Bockas av enligt "Definition of done" i SPEC.md §13. Senast uppdaterad: 2026-10
 | M1  | Repo & skelett                | ✅ Klar  |
 | M2  | Datapipeline                  | ✅ Klar  |
 | M3  | Karta & filter                | 🔄 Pågår |
-| M4  | Lista, detalj, favoriter, sök | ⬜       |
-| M5  | Datauppdatering & Mer-flik    | ⬜       |
-| M6  | Polish                        | ⬜       |
-| M7  | Butiksmaterial                | ⬜       |
+| M4  | Lista, detalj, favoriter, sök | 🔄 Pågår |
+| M5  | Datauppdatering & Mer-flik    | ✅ Klar  |
+| M6  | Polish                        | 🔄 Pågår |
+| M7  | Butiksmaterial                | 🔄 Pågår |
 | M8  | 🔑 Konton & första byggen     | ⬜       |
 | M9  | Closed test / TestFlight      | ⬜       |
 | M10 | 🔑 Inskick                    | ⬜       |
@@ -54,6 +54,61 @@ Definition of done: _`pois.json.gz` för SE/NO/FI/DK genereras lokalt och i GitH
   | Vatten     | 267   | 247   | 105   | 297   | 916    |
   | Rastplats  | 773   | 1 774 | 1 186 | 1 319 | 5 052  |
   | Gasol      | 44    | 104   | 34    | 8     | 190    |
+
+## M3 – Karta & filter
+
+Definition of done: _F1–F4 klara, development build körbar på Android-emulator._
+
+- [x] F1 MapLibre (v11) + OpenFreeMap `liberty` (ljust) / `dark` (mörkt), zoom/panorering; attribution "© OpenMapTiles · © OpenStreetMap contributors" alltid synlig (två länkar)
+- [x] F2 kategorimarkörer (egen ikon + färg) i 6 klustrade GeoJSON-källor; tryck på kluster zoomar in, tryck på markör öppnar detaljvyn
+- [x] F3 filterchips (flerval, "Alla"), påverkar karta och lista direkt, senaste val sparas
+- [x] F4 plats efter tillstånd, "centrera på mig"; nekad → Skandinavien + lista från kartans mittpunkt
+- [x] Offline-reserv: lokal bakgrundsstil + banner om bakgrundskartan inte laddas
+- [x] Komponenttester (karta/filter/nekad plats) gröna
+- [ ] Release-APK körbar på Android-emulator (API 35) i GitHub Actions – första körningen föll på saknad splash-bild (åtgärdat i M6-commit), ny körning pågår
+
+## M4 – Lista, detalj, favoriter, sök
+
+Definition of done: _F5–F8, F11 klara, offline verifierad._
+
+- [x] F5 Närmast: 100 närmaste, km med en decimal under 10 km, riktning; sortering = haversine (testat mot brute force)
+- [x] F6 detaljvy (bottom sheet): bara fält med data; Navigera dit (Apple Kartor / geo-intent), Spara favorit, Dela, Rapportera fel (OSM-anteckning)
+- [x] F7 all platsdata inbyggd; lista/filter/detalj/favoriter använder ingen nätverkstrafik
+- [x] F8 favoriter i AsyncStorage, överlever omstart (testat)
+- [x] F11 namnsökning < 10 ms på 13 000 platser (krav < 200 ms, testat på riktig data)
+- [x] Komponenttester för lista och detaljvy
+- [ ] Offline verifierad på emulator (flygplansläge: karta, lista, detalj) – ingår i Android-körningen som pågår
+
+## M5 – Datauppdatering & Mer-flik
+
+Definition of done: _F9–F10 klara, licenser i appen._
+
+- [x] F9 manifest-kontroll max 1 gång/dygn (+ manuellt), nedladdning i bakgrunden, storlek + SHA-256 (gzip och JSON) + schema verifieras, atomisk skrivning, faller tillbaka på inbyggd data; testat för korrupt/trunkerad/offline
+- [x] F10 Mer: språk (auto/sv/nb/en), enheter (km), datakällor & licenser, integritetspolicy-länk, appversion, datadatum + källa
+- [x] Licenstexter i appen: ODbL 1.0 (fulltext), OpenMapTiles, OpenFreeMap, MapLibre Native, OkHttp + alla 78 npm-paket i bundlen
+
+## M6 – Polish
+
+Definition of done: _Ikon, splash, mörkt läge, tillgänglighet, prestandamål uppfyllda, alla tester gröna._
+
+- [x] Appikon (husbil + kartnål, ingen text) i alla storlekar inkl. Android adaptiv/tema-ikon, splash på grönt
+- [x] Mörkt läge (app + karta), glyffärger anpassade och kontrasttestade
+- [x] Tillgänglighet: etiketter på alla knappar/länkar, roller (button/link/radio/header), textskalning, WCAG AA-kontrast testad automatiskt
+- [x] Alla tester gröna (228 st)
+- [ ] Prestandamål mätta på emulator (kallstart, kartrendering) – väntar på Android-körningen
+
+## M7 – Butiksmaterial
+
+Definition of done: _Allt i avsnitt 9–10 klart i `store/`, integritetspolicy publicerad._
+
+- [x] Butikstexter sv/nb/en (namn, undertitel, kort/lång beskrivning, nyckelord, reklamtext, What's new) inom teckengränserna – `store/listing/`
+- [x] Notes for review (Apple, inkl. riktlinje 4.2) – `store/apple-review-notes.md`
+- [x] Apple App Privacy + Google Data safety + åldersgräns/IARC – `store/`
+- [x] Feature graphic 1024×500 (sv/nb/en) och Play-ikon 512²
+- [x] Integritetspolicy sv/nb/en (`site/privacy/`) + Pages-startsida och öppen-data-sida
+- [x] Material för slutet test och TestFlight (inbjudan, guide, påminnelser dag 7/12, svar till produktionsansökan) – `store/testing/`
+- [ ] Skärmdumpar (Android 1080×1920 + iPhone 6,9") sv/nb/en – Maestro-workflow klar, körs när Android-bygget är verifierat
+- [ ] Integritetspolicy publicerad – kräver GitHub Pages + kontaktadress (🔑, se nedan)
 
 ## Kända begränsningar i utvecklingsmiljön
 

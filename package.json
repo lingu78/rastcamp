@@ -20,7 +20,9 @@
     "data:update": "node scripts/update-bundled-data.ts",
     "icons:map": "node scripts/generate-map-icons.ts",
     "licenses": "node scripts/generate-licenses.ts",
-    "icons:app": "node scripts/generate-app-icons.ts"
+    "icons:app": "node scripts/generate-app-icons.ts",
+    "screenshots:frame": "node scripts/frame-screenshots.ts",
+    "store:graphics": "node scripts/generate-feature-graphic.ts"
   },
   "dependencies": {
     "@maplibre/maplibre-react-native": "^11.5.0",

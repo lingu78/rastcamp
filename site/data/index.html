@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rastcamp – open data (ODbL)</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <main>
+      <header><h1>Rastcamp – open data</h1></header>
+      <p>
+        The place database used by the Rastcamp app (motorhome stops, campsites, dump stations,
+        water points, rest areas and LPG in Sweden, Norway, Finland and Denmark) is a derivative
+        database of <a href="https://www.openstreetmap.org/">OpenStreetMap</a>, rebuilt monthly from
+        Geofabrik extracts.
+      </p>
+      <ul>
+        <li><a href="manifest.json">manifest.json</a> – version, date, counts, SHA-256</li>
+        <li><a href="pois.json.gz">pois.json.gz</a> – current data (gzip JSON)</li>
+        <li>
+          <a href="archive/">archive/</a> – previous versions (<code>pois-YYYY-MM-DD.json.gz</code>)
+        </li>
+      </ul>
+      <p>
+        <strong>Licence:</strong> © OpenStreetMap contributors. Available under the
+        <a href="https://opendatacommons.org/licenses/odbl/1-0/">Open Database License (ODbL) 1.0</a
+        >. Format and pipeline: see the <code>data-pipeline/README.md</code> of the app's source.
+      </p>
+    </main>
+  </body>
+</html>

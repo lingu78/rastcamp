@@ -112,3 +112,40 @@ Slogs upp 2026-10-09 (M1). Kontrollera igen innan M8 (första butiksbyggena).
 - **Liten egen store** (`useSyncExternalStore`) för filter, plats och kartmittpunkt i stället för Zustand/Redux – tre värden motiverar inget beroende. (M3)
 - **Inbyggd data som JSON-modul** (`assets/data/pois.json`, ~1,4 MB, laddas med `require`): ingen fil-I/O eller dekomprimering vid kallstart, fungerar identiskt i Jest/webb. Hermes kompilerar den till bytekod i bygget. Uppdateras före varje release med `npm run data:update` (verifierar manifestets SHA-256 + schema). (M3)
 - **Android-verifiering i GitHub Actions** (`.github/workflows/android.yml`) eftersom molnmiljön saknar Android SDK/KVM: `expo prebuild` → `assembleRelease` (x86_64, JS inbäddad, debug-signerad) → emulator API 35 → tre startscenarier (plats nekad, plats beviljad i Oslo, mörkt läge) med kraschkontroll, skärmdumpar och kallstartstid. Release-varianten används i stället för en dev-client-build eftersom den inte behöver en Metro-server och testar det som faktiskt skeppas; EAS `development`-profil läggs till i M8 för Linus egen felsökning. (M3)
+
+## 9. Lista, detalj, favoriter, sök (M4)
+
+- **Närmast (F5):** `geokdbush.around` på ett KDBush-index (geodetiskt avstånd, samma resultat som en brute-force-sortering på haversine – testat på 5 000 slumpade punkter). Max 100 rader. Avstånd i km med en decimal under 10 km ("< 0,1 km" under 50 m), heltal därefter; decimalkomma på sv/nb. Riktning som 8-delad kompassriktning (N/NO/O… resp. N/NØ/Ø… och N/NE/E…) plus en roterad pil. (M4)
+- **Sök (F11):** normaliserad namnsökning (gemener + vikning av å/ä/ö/ø/æ m.fl. utan `String.normalize`, som inte är garanterat i Hermes); alla sökord måste förekomma; respekterar kategorifiltret; resultaten sorteras på avstånd, max 100. < 10 ms på hela datasetet (krav < 200 ms, testat på den riktiga datan). (M4)
+- **Detaljvy (F6) som `formSheet`** (react-native-screens native bottom sheet, detents 50 % / 100 %) – inget extra bottom-sheet-bibliotek. Egen stängknapp för skärmläsare. Fält utan data visas inte; yes/no översätts; `charge` går före `fee`; `24/7` → "Dygnet runt"; beskrivning på användarens språk om OSM har en. (M4)
+- **Navigera dit:** iOS `https://maps.apple.com/?daddr=…` (öppnar Apple Kartor), Android `geo:lat,lon?q=lat,lon(namn)` (Google Maps eller valfri kartapp). Fallback till Google Maps webblänk. (M4)
+- **Dela via React Natives `Share`** (text + koordinater + osm.org-länk) i stället för `expo-sharing`, som är till för filer – ett beroende mindre. (M4)
+- **Rapportera fel:** `https://www.openstreetmap.org/note/new?lat=…&lon=…#map=18/…` i webbläsaren – rättelser hamnar där datan kommer ifrån och kommer alla till del. (M4)
+- **Favoriter (F8):** ögonblicksbild (nyckel, namn, kategori, koordinater) i AsyncStorage, så att favoriter överlever en datauppdatering även om platsen ändras/försvinner. Listan sorteras på avstånd. (M4)
+- **Marina objekt utesluts** från Tömning/Vatten (`seamark:*`, `waterway=*`, `boat/motorboat=yes`, `leisure=marina`) om inte husbil/husvagn uttryckligen välkomnas – båttömning i hamnar dök annars upp som tömningsstationer. (M4, pipeline)
+- **Deep links:** `rastcamp://nearby`, `rastcamp://place/<osm-id>%2F<kategori>` (Expo Router). Används av emulatortest och skärmdumpar; `initialRouteName: (tabs)` gör att en djuplänk till en plats har flikarna under sig. (M4)
+
+## 10. Datauppdatering och Mer (M5)
+
+- **F9-flöde:** 4 s efter start (aldrig i vägen för kallstarten), högst en gång per dygn (tidsstämpel i AsyncStorage, sätts bara när manifestet faktiskt hämtats – en start utan nät "förbrukar" inte dagens kontroll): hämta `manifest.json` → jämför version → hämta `pois.json.gz` → kontrollera **storlek + SHA-256 för gzip + SHA-256 för JSON + schema + version** → skriv till temporär fil och flytta över (atomiskt) → byt dataset live. Alla fel ger `failed` och lämnar nuvarande data orörd. All logik är injicerbar och enhetstestad (korrupt, trunkerad, fel checksumma, fel schema, offline, en gång per dygn). (M5)
+- **Bibliotek:** `expo-file-system` (nya `File`/`Directory`-API:t), `expo-crypto` (`digest` SHA-256), `fflate` (gunzip i ren JS, 8 kB – Hermes saknar `DecompressionStream`). (M5)
+- **Lagrad data vinner bara om den är nyare** än den inbyggda (efter en appuppdatering med nyare inbyggd data används den). (M5)
+- **Språk (F10):** auto/sv/nb/en sparas i AsyncStorage; "auto" följer enhetens (eller systemets per-app-) språk och omvärderas när appen kommer till förgrunden. (M5)
+- **Licenser i appen:** genereras av `npm run licenses` från Metros source maps (= exakt de 78 npm-paket som faktiskt ligger i bundlen, inte alla 800+ i `node_modules`), plus MapLibre Native och OkHttp, plus datalicenser: ODbL 1.0 i fulltext, OpenMapTiles (BSD-3 + CC-BY 4.0) och OpenFreeMap. (M5)
+- **Kartattribution med två länkar:** OpenMapTiles kräver en synlig kreditering _med länk till openmaptiles.org_, OSM en länk till copyright-sidan. (M5)
+
+## 11. Polish (M6)
+
+- **Appikon:** egen SVG (`assets/brand/icon-artwork.svg`): stiliserad husbil under en orange kartnål på skogsgrön bakgrund, ingen text. `npm run icons:app` renderar iOS/standard (1024², utan transparens), Android adaptiv förgrund (inom 66 % säkerhetszon) + monokrom (Android 13+ temaikoner), Play-ikon 512² och favicon. (M6)
+- **Splash:** ikonen på grön bakgrund (spec §8), mörk variant med mörkare grönt. (M6)
+- **Ljusare kategoriglyfer i mörkt läge** för chipsen (≥ 3:1 mot mörk yta, testat); markörfärgerna har ≥ 4,5:1 mot vit glyf. (M6)
+- **Prestandamätning:** `[perf]`-markörer (data klar, kartstil laddad, karta renderad) i enhetsloggen + `am start -W` samlas in av emulatortestet och visas i Actions-sammanfattningen. Listsortering/sök mäts i Jest (< 100 ms resp. < 200 ms). (M6)
+
+## 12. Butiksmaterial (M7)
+
+- **Texter** i `store/listing/{sv,nb,en}.md` – alla teckengränser kontrollerade (undertitel 29/30, kort beskrivning ≤ 79/80, nyckelord ≤ 97/100). Nyckelorden upprepar inte ord från namn/undertitel (Apple indexerar dem redan). (M7)
+- **Skärmdumpar genereras automatiskt** med Maestro (`store/screenshots/flows/screenshots.yaml`, `scripts/screenshots.sh`) i en riktig Android-emulator (1080×1920 – Play kräver högst 2:1) och iOS-simulator (6,9", 1320×2868) i GitHub Actions (`.github/workflows/screenshots.yml`), för sv/nb/en, med bildtext via `scripts/frame-screenshots.ts`. Flödet trycker på riktiga UI-element (text/tillgänglighetsetiketter), byter språk via Mer-fliken och slår på flygplansläge för offline-bilden (Android). iOS-jobbet bygger dessutom appen för simulator, vilket verifierar iOS-bygget innan EAS (M8). Körs bara på begäran eller när flödena ändras, eftersom macOS-minuter är dyra. (M7)
+- **Feature graphic** 1024×500 per språk (24-bit PNG utan alfa, Plays krav) från samma SVG: `npm run store:graphics`. (M7)
+- **Integritetspolicy** (sv/nb/en på en sida) i `site/privacy/`, publiceras på GitHub Pages ihop med datan. Kontaktadressen fylls i från repo-variabeln `CONTACT_EMAIL` vid publicering (🔑); utan den publiceras inte policysidan. (M7)
+- **Data safety / App Privacy:** "No data collected" resp. "Data Not Collected" – positionen lämnar aldrig enheten, inga SDK:er för analys/krasch/reklam, ingen inloggning. Kartplattor och datafil hämtas utan identifierare. Motivering per datatyp i `store/google-data-safety.md` och `store/apple-privacy.md`. (M7)
+- **Åldersgräns:** 4+ (Apples nya frågeformulär 2026) / PEGI 3 / Everyone; webblänkar öppnas i extern webbläsare (ingen "unrestricted web access"). Play "Target audience" 18+ för att inte omfattas av Families-policyn. (M7)

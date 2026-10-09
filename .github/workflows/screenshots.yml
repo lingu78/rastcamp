@@ -1,0 +1,124 @@
+name: Store screenshots
+
+# Takes the store screenshots (spec §10) with Maestro on a real Android emulator and an iOS
+# simulator, for sv/nb/en, then adds captions in store sizes. Results are pushed to the
+# store-screenshots-android / store-screenshots-ios branches (copied into store/screenshots/).
+# macOS minutes are expensive, so this only runs on demand or when the flows change.
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'store/screenshots/flows/**'
+      - 'scripts/screenshots.sh'
+      - 'scripts/frame-screenshots.ts'
+      - '.github/workflows/screenshots.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: screenshots-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  android:
+    name: Android (1080×1920)
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v6
+      - run: npm ci
+      - run: npx expo prebuild --platform android --no-install
+        env:
+          EXPO_NO_TELEMETRY: 1
+      - name: Assemble release APK (x86_64)
+        working-directory: android
+        run: ./gradlew :app:assembleRelease -PreactNativeArchitectures=x86_64
+      - name: Install Maestro
+        run: |
+          curl -fsSL "https://get.maestro.mobile.dev" | bash
+          echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Screenshots on emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          profile: pixel_2
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          script: |
+            adb install -r android/app/build/outputs/apk/release/app-release.apk
+            adb shell settings put global sysui_demo_allowed 1
+            adb shell am broadcast -a com.android.systemui.demo -e command enter
+            adb shell am broadcast -a com.android.systemui.demo -e command clock -e hhmm 0941
+            adb shell am broadcast -a com.android.systemui.demo -e command battery -e level 100 -e plugged false
+            adb shell am broadcast -a com.android.systemui.demo -e command notifications -e visible false
+            scripts/screenshots.sh android
+      - run: node scripts/frame-screenshots.ts android
+      - name: Push to store-screenshots-android
+        run: scripts/push-dir.sh store/screenshots store-screenshots-android
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  ios:
+    name: iOS (6.9" iPhone)
+    runs-on: macos-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Select newest Xcode (SDK 57 needs ≥ 26.4)
+        run: |
+          XCODE=$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)
+          sudo xcode-select -s "$XCODE"
+          xcodebuild -version
+      - run: npm ci
+      - run: npx expo prebuild --platform ios
+        env:
+          EXPO_NO_TELEMETRY: 1
+      - name: Build for simulator (Release, unsigned)
+        run: |
+          set -o pipefail
+          xcodebuild -workspace ios/Rastcamp.xcworkspace -scheme Rastcamp -configuration Release \
+            -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath build CODE_SIGNING_ALLOWED=NO build | tail -n 40
+      - name: Boot the largest iPhone simulator
+        run: |
+          UDID=$(xcrun simctl list devices available -j | node -e '
+            const d = JSON.parse(require("fs").readFileSync(0, "utf8")).devices;
+            const all = Object.entries(d).filter(([r]) => r.includes("iOS")).flatMap(([r, ds]) => ds.map((x) => ({ ...x, r })));
+            const pick = all.filter((x) => /Pro Max/.test(x.name)).sort((a, b) => a.r.localeCompare(b.r, undefined, { numeric: true }) || a.name.localeCompare(b.name, undefined, { numeric: true })).pop();
+            console.log(pick.udid); console.error(pick.name, pick.r);')
+          echo "UDID=$UDID" >> "$GITHUB_ENV"
+          xcrun simctl boot "$UDID"
+          xcrun simctl bootstatus "$UDID" -b
+          xcrun simctl status_bar "$UDID" override --time "9:41" --batteryState charged --batteryLevel 100 --cellularMode active --cellularBars 4 --wifiBars 3
+          xcrun simctl install "$UDID" build/Build/Products/Release-iphonesimulator/Rastcamp.app
+      - name: Install Maestro
+        run: |
+          curl -fsSL "https://get.maestro.mobile.dev" | bash
+          echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
+      - run: scripts/screenshots.sh ios
+      - run: node scripts/frame-screenshots.ts ios
+      - name: Push to store-screenshots-ios
+        run: scripts/push-dir.sh store/screenshots store-screenshots-ios
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,80 @@
+# Store screenshots (spec §10). Run per language with the labels as env vars, e.g.:
+#   maestro test store/screenshots/flows/screenshots.yaml -e LANGUAGE=Svenska -e TAB_MAP=Karta ...
+# See store/screenshots/README.md and scripts/screenshots.sh (which passes them all).
+appId: no.rastcamp.app
+---
+- setLocation:
+    latitude: 59.9139
+    longitude: 10.7522
+- launchApp:
+    clearState: true
+    permissions:
+      location: allow
+- extendedWaitUntil:
+    visible: '${TAB_MORE_DEVICE}'
+    timeout: 20000
+
+# Switch the app language (the language names are the same in every UI language).
+- tapOn: '${TAB_MORE_DEVICE}'
+- tapOn: '${LANGUAGE}'
+- waitForAnimationToEnd
+
+# Favourites first, so the favourites screenshot has content.
+- tapOn: '${TAB_NEARBY}'
+- tapOn: '${SEARCH}'
+- inputText: 'Homannsberget'
+- hideKeyboard
+- tapOn:
+    text: 'Homannsberget Camping.*'
+- tapOn: '${SAVE_FAVORITE}'
+- tapOn: '${CLOSE}'
+- tapOn: '${CLEAR_SEARCH}'
+- tapOn: '${SEARCH}'
+- inputText: 'Sjølyst'
+- hideKeyboard
+- tapOn:
+    text: 'Sjølyst bobilparkering.*'
+- tapOn: '${SAVE_FAVORITE}'
+- waitForAnimationToEnd
+- takeScreenshot: ${OUT}/03-detail
+- tapOn: '${CLOSE}'
+- tapOn: '${CLEAR_SEARCH}'
+- hideKeyboard
+
+# 1) Map with filter: motorhome stops + dump stations around Oslo.
+- tapOn: '${TAB_MAP}'
+- tapOn: '${CHIP_CARAVAN}'
+- tapOn: '${CHIP_DUMP}'
+- tapOn: '${LOCATE}'
+- waitForAnimationToEnd:
+    timeout: 8000
+- takeScreenshot: ${OUT}/01-map-filter
+
+# 2) Nearby list (same filter).
+- tapOn: '${TAB_NEARBY}'
+- waitForAnimationToEnd
+- takeScreenshot: ${OUT}/02-nearby
+
+# 4) Favourites.
+- tapOn: '${TAB_FAVORITES}'
+- waitForAnimationToEnd
+- takeScreenshot: ${OUT}/04-favorites
+
+# 5) Offline: everything but the background map keeps working (Android only can toggle
+# airplane mode; on iOS the caption carries the message).
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - setAirplaneMode: enabled
+      - waitForAnimationToEnd
+- tapOn: '${TAB_NEARBY}'
+- tapOn: '${CHIP_ALL}'
+- tapOn: '${CHIP_WATER}'
+- waitForAnimationToEnd
+- takeScreenshot: ${OUT}/05-offline
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - setAirplaneMode: disabled
