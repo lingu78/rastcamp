@@ -48,6 +48,17 @@ export const CAPTIONS: Record<string, Record<'sv' | 'nb' | 'en', string>> = {
 const escapeXml = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
+const FONT = 'Helvetica Neue, Helvetica, DejaVu Sans, Arial, sans-serif';
+
+/** Rendered width of one caption line (px), measured with the same SVG renderer. */
+async function textWidth(line: string, fontSize: number): Promise<number> {
+  const w = Math.ceil(fontSize * line.length);
+  const h = Math.ceil(fontSize * 2);
+  const svg = `<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg"><rect width="${w}" height="${h}" fill="#fff"/><text x="${fontSize / 2}" y="${fontSize * 1.4}" font-family="${FONT}" font-weight="700" font-size="${fontSize}" fill="#000">${escapeXml(line)}</text></svg>`;
+  const { info } = await sharp(Buffer.from(svg)).trim().toBuffer({ resolveWithObject: true });
+  return info.width;
+}
+
 /** Splits a caption into at most two balanced lines. */
 function lines(text: string, maxChars: number): string[] {
   if (text.length <= maxChars) return [text];
@@ -86,13 +97,16 @@ async function frame(platform: Platform, lang: 'sv' | 'nb' | 'en', file: string)
     ])
     .png()
     .toBuffer();
-  const fontSize = Math.round(W * 0.062);
   const textLines = lines(caption, 26);
+  // Shrink long captions so every line keeps a margin on both sides.
+  let fontSize = Math.round(W * 0.062);
+  const widest = Math.max(0, ...(await Promise.all(textLines.map((l) => textWidth(l, fontSize)))));
+  if (widest > W * 0.88) fontSize = Math.floor((fontSize * W * 0.88) / widest);
   const textY = band / 2 - ((textLines.length - 1) * fontSize * 1.2) / 2 + fontSize * 0.35;
   const text = textLines
     .map(
       (l, i) =>
-        `<text x="${W / 2}" y="${textY + i * fontSize * 1.2}" text-anchor="middle" font-family="Helvetica Neue, Helvetica, DejaVu Sans, Arial, sans-serif" font-weight="700" font-size="${fontSize}" fill="#FFFFFF">${escapeXml(l)}</text>`,
+        `<text x="${W / 2}" y="${textY + i * fontSize * 1.2}" text-anchor="middle" font-family="${FONT}" font-weight="700" font-size="${fontSize}" fill="#FFFFFF">${escapeXml(l)}</text>`,
     )
     .join('');
   const background = `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
@@ -100,9 +114,15 @@ async function frame(platform: Platform, lang: 'sv' | 'nb' | 'en', file: string)
     <rect width="${W}" height="${H}" fill="url(#g)"/>${text}</svg>`;
   const out = join(ROOT, 'store/screenshots/final', platform, lang, file);
   await mkdir(dirname(out), { recursive: true });
-  await sharp(Buffer.from(background))
+  // sharp applies composite after flatten, so flatten in a second pass: the stores want
+  // 24-bit PNGs without alpha.
+  const composed = await sharp(Buffer.from(background))
     .composite([{ input: shot, left: Math.round((W - shotW) / 2), top: band }])
+    .png()
+    .toBuffer();
+  await sharp(composed)
     .flatten({ background: '#1F4D2C' })
+    .removeAlpha()
     .png({ compressionLevel: 9 })
     .toFile(out);
 }

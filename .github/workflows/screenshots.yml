@@ -130,6 +130,9 @@ jobs:
           curl -fsSL "https://get.maestro.mobile.dev" | bash
           echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
       - run: scripts/screenshots.sh ios
+        env:
+          # The XCUITest driver needs more than the default 2 min on the macOS runner.
+          MAESTRO_DRIVER_STARTUP_TIMEOUT: 600000
       - run: node scripts/frame-screenshots.ts ios
         if: always()
       - name: Push to store-screenshots-ios

@@ -93,7 +93,8 @@ jobs:
           arch: x86_64
           profile: pixel_7
           disable-animations: true
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          # Mesa: with SwiftShader MapLibre draws no map text or icons (DECISIONS.md §13).
+          emulator-options: -no-window -gpu lavapipe -noaudio -no-boot-anim -camera-back none
           script: scripts/android-smoke.sh $RUNNER_TEMP/app.apk
 
       - name: Start-up timing summary
@@ -101,7 +102,7 @@ jobs:
         run: |
           [ -d ci-artifacts/android ] || exit 0
           {
-            echo '### Start-up (emulator, x86_64, swiftshader GPU)'
+            echo '### Start-up (emulator, x86_64, software GPU)'
             echo '```'
             for f in ci-artifacts/android/*-start.txt; do echo "$(basename "$f" -start.txt): $(grep -h TotalTime "$f" || true)"; done
             cat ci-artifacts/android/perf.txt 2>/dev/null || true

@@ -53,3 +53,4 @@ data-pipeline/out/
 
 # Maestro failure output (CI only)
 store/screenshots/debug/
+store/screenshots/raw/

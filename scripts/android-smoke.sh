@@ -47,6 +47,15 @@ launch() { # $1 = name, $2 = optional deep link (rastcamp://…)
   fi
 }
 
+# Opens a place the normal way: tap the first row of the "Närmast" list (pixel_7, 1080×2400).
+# (A cold-start deep link straight into a place gives a collapsed sheet on Android – known
+# react-native-screens limitation, see DECISIONS.md; the app never hands out such links.)
+tap_first_row() { # $1 = name
+  adb shell input tap 540 750
+  sleep 6
+  adb exec-out screencap -p > "$OUT/$1.png"
+}
+
 adb install -r "$APK"
 adb shell settings put system screen_off_timeout 600000
 # The slow software-GPU emulator makes the launcher "not respond"; hide such system dialogs.
@@ -78,25 +87,22 @@ sleep 2
 launch 03-dark-mode
 adb shell cmd uimode night no
 
-# 4) Online list and detail via deep links (Oslo).
+# 4) Online list and detail (Oslo).
 WAIT=12 launch 04-nearby "rastcamp://nearby"
-# The normal way into a place: tap the first row of the list (pixel_7, 1080×2400).
-adb shell input tap 540 750
-sleep 6
-adb exec-out screencap -p > "$OUT/04b-detail-tap.png"
-WAIT=12 launch 05-detail "rastcamp://place/w49139387%2Fcaravan_site"
+tap_first_row 05-detail
 
 # 5) Offline (airplane mode, spec F7): map falls back, list/detail still work.
 adb shell cmd connectivity airplane-mode enable
 sleep 5
 launch 06-offline-map
 WAIT=12 launch 07-offline-nearby "rastcamp://nearby"
-WAIT=12 launch 08-offline-detail "rastcamp://place/w35072156%2Fcaravan_site"
+tap_first_row 08-offline-detail
 adb shell cmd connectivity airplane-mode disable
 
 # 6) Detail sheet with animations switched off (Android accessibility setting).
 animations 0
-WAIT=12 launch 09-detail-no-animations "rastcamp://place/w49139387%2Fcaravan_site"
+WAIT=12 launch 09-nearby-no-animations "rastcamp://nearby"
+tap_first_row 09-detail-no-animations
 animations 1
 
 echo "Cold start (am start -W):"

@@ -2,18 +2,18 @@
 
 Bockas av enligt "Definition of done" i SPEC.md §13. Senast uppdaterad: 2026-10-09.
 
-| #   | Milstolpe                     | Status   |
-| --- | ----------------------------- | -------- |
-| M1  | Repo & skelett                | ✅ Klar  |
-| M2  | Datapipeline                  | ✅ Klar  |
-| M3  | Karta & filter                | 🔄 Pågår |
-| M4  | Lista, detalj, favoriter, sök | 🔄 Pågår |
-| M5  | Datauppdatering & Mer-flik    | ✅ Klar  |
-| M6  | Polish                        | 🔄 Pågår |
-| M7  | Butiksmaterial                | 🔄 Pågår |
-| M8  | 🔑 Konton & första byggen     | ⬜       |
-| M9  | Closed test / TestFlight      | ⬜       |
-| M10 | 🔑 Inskick                    | ⬜       |
+| #   | Milstolpe                     | Status          |
+| --- | ----------------------------- | --------------- |
+| M1  | Repo & skelett                | ✅ Klar         |
+| M2  | Datapipeline                  | ✅ Klar         |
+| M3  | Karta & filter                | ✅ Klar         |
+| M4  | Lista, detalj, favoriter, sök | ✅ Klar         |
+| M5  | Datauppdatering & Mer-flik    | ✅ Klar         |
+| M6  | Polish                        | ✅ Klar¹        |
+| M7  | Butiksmaterial                | 🔄 Nästan klar² |
+| M8  | 🔑 Konton & första byggen     | ⬜              |
+| M9  | Closed test / TestFlight      | ⬜              |
+| M10 | 🔑 Inskick                    | ⬜              |
 
 ---
 
@@ -65,7 +65,8 @@ Definition of done: _F1–F4 klara, development build körbar på Android-emulat
 - [x] F4 plats efter tillstånd, "centrera på mig"; nekad → Skandinavien + lista från kartans mittpunkt
 - [x] Offline-reserv: lokal bakgrundsstil + banner om bakgrundskartan inte laddas
 - [x] Komponenttester (karta/filter/nekad plats) gröna
-- [ ] Release-APK körbar på Android-emulator (API 35) i GitHub Actions – första körningen föll på saknad splash-bild (åtgärdat i M6-commit), ny körning pågår
+- [x] Release-APK körbar på Android-emulator (API 35) i GitHub Actions ([Android-workflow](https://github.com/lingu78/rastcamp/actions/workflows/android.yml)): nekad plats → Skandinavien, plats i Oslo → kartan centreras med blå prick, mörkt läge, ingen krasch
+- [x] Egen positionsprick från appens GPS-position; färgad cirkel under varje ikon (syns även om en GPU inte ritar symboler)
 
 ## M4 – Lista, detalj, favoriter, sök
 
@@ -77,7 +78,8 @@ Definition of done: _F5–F8, F11 klara, offline verifierad._
 - [x] F8 favoriter i AsyncStorage, överlever omstart (testat)
 - [x] F11 namnsökning < 10 ms på 13 000 platser (krav < 200 ms, testat på riktig data)
 - [x] Komponenttester för lista och detaljvy
-- [ ] Offline verifierad på emulator (flygplansläge: karta, lista, detalj) – ingår i Android-körningen som pågår
+- [x] Offline verifierad på emulator i flygplansläge: lista, sök, filter, detaljvy och favoriter fungerar; kartan visar cachade plattor eller reservbakgrund
+- [x] Detaljvyn som bottenblad (halv höjd, dras till helskärm) verifierad på emulator med och utan animationer
 
 ## M5 – Datauppdatering & Mer-flik
 
@@ -94,8 +96,9 @@ Definition of done: _Ikon, splash, mörkt läge, tillgänglighet, prestandamål 
 - [x] Appikon (husbil + kartnål, ingen text) i alla storlekar inkl. Android adaptiv/tema-ikon, splash på grönt
 - [x] Mörkt läge (app + karta), glyffärger anpassade och kontrasttestade
 - [x] Tillgänglighet: etiketter på alla knappar/länkar, roller (button/link/radio/header), textskalning, WCAG AA-kontrast testad automatiskt
-- [x] Alla tester gröna (228 st)
-- [ ] Prestandamål mätta på emulator (kallstart, kartrendering) – väntar på Android-körningen
+- [x] Alla tester gröna (232 st)
+- [x] Starttid mäts i varje emulatorkörning (från aktivitetsstart: platsdata klar, kartstil laddad, karta renderad)
+- [ ] ¹ Målet kallstart < 3 s kan inte bekräftas i CI-emulatorn (mjukvaru-GPU, 2 kärnor: platsdata klar efter 2–3 s vid omstart, 7–9 s första gången; kartan väntar dessutom på nätet). Verifieras på en riktig mellanklass-Android enligt TESTPLAN.md under det slutna testet (M9).
 
 ## M7 – Butiksmaterial
 
@@ -107,8 +110,9 @@ Definition of done: _Allt i avsnitt 9–10 klart i `store/`, integritetspolicy p
 - [x] Feature graphic 1024×500 (sv/nb/en) och Play-ikon 512²
 - [x] Integritetspolicy sv/nb/en (`site/privacy/`) + Pages-startsida och öppen-data-sida
 - [x] Material för slutet test och TestFlight (inbjudan, guide, påminnelser dag 7/12, svar till produktionsansökan) – `store/testing/`
-- [ ] Skärmdumpar (Android 1080×1920 + iPhone 6,9") sv/nb/en – Maestro-workflow klar, körs när Android-bygget är verifierat
-- [ ] Integritetspolicy publicerad – kräver GitHub Pages + kontaktadress (🔑, se nedan)
+- [x] Skärmdumpar Android 1080×1920 sv/nb/en (5 st/språk) – `store/screenshots/final/android/`, metod i `store/screenshots/README.md`
+- [ ] Skärmdumpar iPhone 6,9" (1320×2868) sv/nb/en – iOS-jobbet körs om (Maestros drivrutin hann inte starta på macOS-runnern)
+- [ ] ² Integritetspolicy publicerad – kräver GitHub Pages + kontaktadress (🔑 M8 steg 1)
 
 ## Kända begränsningar i utvecklingsmiljön
 
