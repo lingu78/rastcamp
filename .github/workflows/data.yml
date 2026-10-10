@@ -104,3 +104,5 @@ jobs:
         run: data-pipeline/publish.sh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Repository variables are not exposed to steps unless passed explicitly.
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}

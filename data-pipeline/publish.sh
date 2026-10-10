@@ -28,9 +28,18 @@ fi
 
 if [ -d "$ROOT/site" ]; then
   cp -R "$ROOT/site/." "$SITE/"
-  # The privacy policy needs a real contact address (repo variable CONTACT_EMAIL).
-  if [ -n "${CONTACT_EMAIL:-}" ]; then
-    find "$SITE" -name '*.html' -exec sed -i "s/{{CONTACT_EMAIL}}/${CONTACT_EMAIL}/g" {} +
+  # The privacy policy needs a real contact address (repo variable CONTACT_EMAIL, passed in
+  # by data.yml). Whitespace from copy-paste is dropped; anything not shaped like an address
+  # fails the run rather than publishing a broken page.
+  CONTACT_EMAIL="$(printf '%s' "${CONTACT_EMAIL:-}" | tr -d '[:space:]')"
+  if [ -n "$CONTACT_EMAIL" ]; then
+    email_re='^[^@<>"]+@[^@<>"]+\.[^@<>"]+$'
+    if ! [[ "$CONTACT_EMAIL" =~ $email_re ]]; then
+      echo "::error::CONTACT_EMAIL does not look like an e-mail address"
+      exit 1
+    fi
+    escaped="$(printf '%s' "$CONTACT_EMAIL" | sed -e 's/[|&\\]/\\&/g')"
+    find "$SITE" -name '*.html' -exec sed -i "s|{{CONTACT_EMAIL}}|${escaped}|g" {} +
   elif grep -rq '{{CONTACT_EMAIL}}' "$SITE"; then
     echo "::warning::CONTACT_EMAIL is not set – privacy policy not published"
     rm -rf "$SITE/privacy"
