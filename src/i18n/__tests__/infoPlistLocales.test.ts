@@ -14,9 +14,9 @@ describe('iOS Info.plist strings', () => {
   it('declares a motion purpose string', () => {
     // expo-location links CoreMotion, so App Store Connect rejects uploads without
     // NSMotionUsageDescription (ITMS-90683) even though the app never asks for motion data.
-    const location = appJson.expo.plugins.find(
-      (p): p is [string, Record<string, unknown>] => Array.isArray(p) && p[0] === 'expo-location',
-    );
+    const plugins = appJson.expo.plugins as unknown[];
+    const location = plugins.find((p) => Array.isArray(p) && p[0] === 'expo-location') as
+      [string, { motionUsagePermission?: unknown }] | undefined;
     expect(typeof location?.[1].motionUsagePermission).toBe('string');
     for (const strings of [sv, nb, en]) {
       expect(strings.ios.NSMotionUsageDescription.length).toBeGreaterThan(20);
