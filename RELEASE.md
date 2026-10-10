@@ -47,22 +47,54 @@ privata repon med GitHubs gratisplan.**
    4. Ladda upp JSON-filen till EAS: <https://expo.dev> → projektet _rastcamp_ → **Credentials → Android → no.rastcamp.app → Service credentials → Add a Google service account key**. Lägg **inte** filen i repot.
 6. Säg till Claude Code → bygger `.aab` och laddar upp till **Internal testing**.
 
-## Steg 4 – Apple Developer Program (🔑, 99 USD/år, 1–2 dagar för verifiering)
+## Steg 4 – Apple Developer Program (🔑, 99 USD/år)
 
-1. Gå med: <https://developer.apple.com/programs/enroll/> (som _Individual_), med Apple-ID som har tvåfaktorsautentisering. Betala årsavgiften.
-2. App Store Connect → **Apps → + → New App**: plattform iOS, namn `Rastcamp`, primärt språk
-   **Swedish**, bundle-ID **no.rastcamp.app** (finns det inte i listan: registrera det på
-   <https://developer.apple.com/account/resources/identifiers/add/bundleId>), SKU `rastcamp`. Notera **Apple ID** (siffror) under _App Information_ → ge det till Claude Code (`ascAppId`).
-3. **EU-krav (DSA):** App Store Connect → _Business_ → ange trader-status. Utan den tas appen bort i EU.
-4. App Store Connect API-nyckel: <https://appstoreconnect.apple.com/access/integrations/api> → **Generate API Key** → namn `EAS`, roll **App Manager** → ladda ned `.p8` (går bara en gång) och notera _Key ID_ och _Issuer ID_. Ladda upp i EAS: <https://expo.dev> → projektet → **Credentials → iOS → App Store Connect API Keys**.
-5. **En gång, i din egen terminal** (Windows/Mac/Linux, ingen Mac krävs) – skapar certifikat och provisioning-profil:
+Kontrollerat mot Apples och Expos dokumentation och eas-cli 24.12 (2026-10-10). Bakgrund: den
+_första_ iOS-signeringen (certifikat + provisioning-profil) kan inte skapas i GitHub Actions –
+eas-cli kräver en interaktiv körning en gång. Därefter sköts byggen och uppladdning i Actions.
+
+1. Gå med som _Individual_: <https://developer.apple.com/programs/enroll/> (enklast i appen
+   _Apple Developer_ på iPhone; Apple-ID med tvåfaktorsautentisering, juridiskt namn – det
+   visas som säljare i App Store).
+2. **App Store Connect** (<https://appstoreconnect.apple.com>), som Account Holder:
+   1. _Business_ → _Agreements_: godkänn eventuella uppdaterade avtal (gratisappar behöver
+      bara Apple Developer Program License Agreement – inget Paid Apps-avtal, ingen bank/skatt).
+   2. _Business_ → _Agreements_ → _Compliance_ → **Digital Services Act** → _Complete
+      Compliance Requirements_ → trader-status. Gratis, utan reklam/köp/företag: normalt
+      **"This is not a trader account"** (ditt beslut; Apples hobbyexempel). Krävs för att få
+      skicka in appar.
+   3. _Users and Access_ → _Integrations_ → _App Store Connect API_ → **Request Access** →
+      godkänn villkoren → _Submit_ (Apple granskar; behövs för API-nyckeln i steg 3.3).
+3. **En gång på din dator** (Windows/Mac/Linux, ingen Mac krävs; Node.js 22.18+ från
+   <https://nodejs.org> och git):
    ```bash
-   git clone https://github.com/lingu78/rastcamp.git && cd rastcamp && npm ci
+   git clone https://github.com/lingu78/rastcamp.git
+   cd rastcamp
+   npm ci
    npx eas-cli@latest login
-   npx eas-cli@latest build --platform ios --profile production
+   npx eas-cli@latest credentials:configure-build -p ios -e production
    ```
-   Svara **Yes** på att logga in på Apple och låta EAS hantera certifikat; ange Apple-ID, lösenord och 2FA-kod. Därefter kan alla iOS-byggen och uppladdningar köras automatiskt.
-6. Säg till Claude Code → laddar upp till **TestFlight**.
+   1. `login`: ditt Expo-konto.
+   2. `configure-build`: svara **Yes** på inloggning hos Apple → Apple-ID, lösenord,
+      2FA-kod → **Yes** på att låta EAS skapa certifikat och profil. EAS registrerar
+      bundle-ID:t `no.rastcamp.app` och sparar certifikat + profil (krypterat) hos Expo.
+      Lösenordet skickas inte till Expo.
+   3. Sedan, i samma terminal: `npx eas-cli@latest credentials -p ios` → _production_ →
+      **App Store Connect: Manage your API Key** → **Set up your project to use an API Key
+      for EAS Submit** → **Add a new key** → låt EAS skapa den → roll **ADMIN**.
+   4. Om steg 3.3 felar för att API-åtkomsten (2.3) inte är godkänd än: vänta på Apples
+      mejl och kör bara steg 3.3 igen.
+4. **App Store Connect** → _Apps_ → **+** → _New App_: plattform **iOS**, namn `Rastcamp`,
+   primärt språk **Swedish**, bundle-ID **no.rastcamp.app** (finns i listan efter steg 3),
+   SKU `rastcamp`, _Full Access_ → _Create_. (Upptaget namn? Säg till.)
+5. Skicka till Claude Code appens **Apple ID** – siffrorna under _App Information_ →
+   _General Information_ (inte ditt inloggnings-Apple-ID). Det läggs i `eas.json`
+   (`ascAppId`, inte hemligt); därefter bygger och laddar Actions upp till **TestFlight**.
+6. Installera _TestFlight_ på iPhonen; du är intern testare som Account Holder (ingen
+   granskning för interna testare).
+
+Underhåll: certifikatet gäller ett år – när det går ut körs steg 3 igen. Medlemskap och nya
+avtal måste förnyas/godkännas i tid, annars stoppas uppladdningar.
 
 ## Steg 5 – Testare (🔑 rekrytering)
 

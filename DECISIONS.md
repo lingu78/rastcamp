@@ -28,6 +28,8 @@ Slogs upp 2026-10-09 (M1). Kontrollera igen innan M8 (första butiksbyggena).
 
 ---
 
+- **iOS-signering i CI (verifierat 2026-10-10 mot Expo-dokumentationen och eas-cli 24.12-källkoden):** `eas build --non-interactive` kan inte skapa det _första_ distributionscertifikatet eller registrera bundle-ID:t – det kräver en interaktiv körning en gång (`eas credentials:configure-build -p ios -e production`, Apple-ID + 2FA) på Linus dator. En App Store Connect-**teamnyckel med rollen Admin** lagras därefter hos EAS (via `eas credentials`) och används av både `eas submit` och icke-interaktiva byggen för att förnya provisioning-profilen; GitHub behöver bara `EXPO_TOKEN`. Appposten i App Store Connect skapas för hand (Apples API kan inte skapa appar) och dess numeriska Apple ID läggs som `ascAppId` i `eas.json` (krävs för icke-interaktiv submit). Android-nyckelarkivet skapas däremot automatiskt i CI. (M8)
+
 ## 2. Stack och projektstruktur
 
 - **Expo SDK 57 + React Native 0.86 + TypeScript strict** (plus `noUncheckedIndexedAccess`). New Architecture och Hermes är obligatoriska/standard i SDK 57. (M1)

@@ -5,23 +5,25 @@ innehåller bara platsinformation, inga användargenererade inlägg, ingen chatt
 
 ## Apple – Age Rating (nya frågeformuläret, sedan 2026)
 
-App Store Connect → App Information → Age Rating → Edit. Svara:
+App Store Connect → Apps → Rastcamp → App Information → Age Ratings → **Set Up Age Ratings**. Svara:
 
 | Fråga                                                       | Svar                                                                        |
 | ----------------------------------------------------------- | --------------------------------------------------------------------------- |
 | Parental controls / Age assurance                           | No / No                                                                     |
 | Unrestricted web access (in-app browser)                    | **No** – länkar (webbplatser, OpenStreetMap) öppnas i Safari, utanför appen |
 | User-generated content / Messaging and chat                 | No / No                                                                     |
+| Social media (frågorna sedan juli 2026)                     | No                                                                          |
 | Advertising                                                 | No                                                                          |
 | Gambling, Contests, Loot boxes                              | None / No                                                                   |
 | Medical or treatment information, Health or wellness topics | None                                                                        |
 | Violence (cartoon/realistic/graphic), Horror/fear themes    | None                                                                        |
+| Guns or other weapons                                       | None                                                                        |
 | Sexual content or nudity, Mature or suggestive themes       | None                                                                        |
 | Profanity or crude humor                                    | None                                                                        |
 | Alcohol, tobacco or drug use or references                  | None                                                                        |
 | Simulated gambling                                          | None                                                                        |
 
-→ Förväntat resultat: **4+**.
+Age Categories and Override: **Not Applicable**. → Förväntat resultat: **4+**.
 
 ## Google Play – IARC-frågeformulär
 
