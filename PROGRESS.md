@@ -111,8 +111,7 @@ Definition of done: _Allt i avsnitt 9–10 klart i `store/`, integritetspolicy p
 - [x] Integritetspolicy sv/nb/en (`site/privacy/`) + Pages-startsida och öppen-data-sida
 - [x] Material för slutet test och TestFlight (inbjudan, guide, påminnelser dag 7/12, svar till produktionsansökan) – `store/testing/`
 - [x] Skärmdumpar Android 1080×1920 sv/nb/en (5 st/språk) – `store/screenshots/final/android/`, metod i `store/screenshots/README.md`
-- [x] Skärmdumpar iPhone 6,9" (1320×2868) sv/nb/en – `store/screenshots/final/ios/` (nb, en: 5 st; sv: 4 st)
-- [ ] iOS sv `02-nearby` tas om (flikbytet hann inte ske; flödet rättat) – körs när repot är publikt (gratis Actions-minuter, M8 steg 1)
+- [x] Skärmdumpar iPhone 6,9" (1320×2868) sv/nb/en (5 st/språk) – `store/screenshots/final/ios/`
 - [ ] ² Integritetspolicy publicerad – kräver GitHub Pages + kontaktadress (🔑 M8 steg 1)
 
 ## M8 – 🔑 Konton & första byggen
