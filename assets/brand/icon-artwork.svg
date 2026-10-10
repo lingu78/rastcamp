@@ -1,0 +1,21 @@
+<!-- Rastcamp app icon artwork (1024×1024, transparent): stylised motorhome under a map pin.
+     The background colour is added per target by scripts/generate-app-icons.ts. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- map pin -->
+  <path d="M512 150c-104 0-188 84-188 188 0 132 188 300 188 300s188-168 188-300c0-104-84-188-188-188Z" fill="#F29A4A"/>
+  <circle cx="512" cy="338" r="76" fill="#FFFAF2"/>
+  <!-- motorhome body -->
+  <path d="M206 612a40 40 0 0 1 40-40h420l112 112h48a32 32 0 0 1 32 32v76a24 24 0 0 1-24 24H230a24 24 0 0 1-24-24Z" fill="#FFF8EE"/>
+  <!-- cab window -->
+  <path d="M676 606h-6v86h104Z" fill="#2E6B3F"/>
+  <!-- side windows -->
+  <rect x="262" y="618" width="128" height="70" rx="14" fill="#2E6B3F"/>
+  <rect x="420" y="618" width="128" height="70" rx="14" fill="#2E6B3F"/>
+  <!-- stripe -->
+  <rect x="206" y="726" width="652" height="18" fill="#F29A4A"/>
+  <!-- wheels -->
+  <circle cx="330" cy="816" r="58" fill="#173A22"/>
+  <circle cx="330" cy="816" r="24" fill="#FFF8EE"/>
+  <circle cx="700" cy="816" r="58" fill="#173A22"/>
+  <circle cx="700" cy="816" r="24" fill="#FFF8EE"/>
+</svg>

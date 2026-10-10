@@ -1,0 +1,130 @@
+name: Android
+
+# Builds a release-variant APK (JS bundled, debug-signed) and runs it on an emulator:
+# proves the native config (MapLibre, location, locales) builds and the app starts
+# without crashing on the main paths. Screenshots go to the ci-screenshots branch.
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'src/**'
+      - 'assets/**'
+      - 'app.json'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'scripts/android-smoke.sh'
+      - '.github/workflows/android.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-run:
+    name: Build APK & run on emulator
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write # ci-screenshots branch
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Free disk space
+        run: scripts/ci-free-disk.sh
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: gradle/actions/setup-gradle@v6
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Prebuild native Android project
+        run: npx expo prebuild --platform android --no-install
+        env:
+          EXPO_NO_TELEMETRY: 1
+
+      - name: Assemble release APK (x86_64 only, for the emulator)
+        working-directory: android
+        run: ./gradlew :app:assembleRelease -PreactNativeArchitectures=x86_64 --stacktrace
+
+      - name: APK size and cleanup
+        run: |
+          cp android/app/build/outputs/apk/release/app-release.apk "$RUNNER_TEMP/app.apk"
+          { echo '### APK size'; scripts/apk-size.sh "$RUNNER_TEMP/app.apk"; } >> "$GITHUB_STEP_SUMMARY"
+          scripts/apk-size.sh "$RUNNER_TEMP/app.apk"
+          # Make room for the emulator system image.
+          rm -rf android/app/build android/build ~/.gradle/caches/build-cache-* node_modules/.cache
+          df -h / | tail -1
+
+      - name: Map style and fonts reachable (diagnostic)
+        continue-on-error: true
+        run: |
+          style=$(curl -fsS https://tiles.openfreemap.org/styles/liberty)
+          echo "$style" | jq -r '"glyphs: \(.glyphs)", "sprite: \(.sprite)"'
+          echo "$style" | jq -r '[.layers[].layout["text-font"]? // empty | tostring] | unique[]'
+          for f in Noto%20Sans%20Regular Noto%20Sans%20Bold; do
+            curl -sS -o /dev/null -w "$f 0-255.pbf: HTTP %{http_code}, %{size_download} bytes\n" \
+              "https://tiles.openfreemap.org/fonts/$f/0-255.pbf"
+          done
+
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Run on emulator (API 35)
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          profile: pixel_7
+          disable-animations: true
+          # Mesa: with SwiftShader MapLibre draws no map text or icons (DECISIONS.md §13).
+          emulator-options: -no-window -gpu lavapipe -noaudio -no-boot-anim -camera-back none
+          script: scripts/android-smoke.sh $RUNNER_TEMP/app.apk
+
+      - name: Start-up timing summary
+        if: always()
+        run: |
+          [ -d ci-artifacts/android ] || exit 0
+          {
+            echo '### Start-up (emulator, x86_64, software GPU)'
+            echo '```'
+            for f in ci-artifacts/android/*-start.txt; do echo "$(basename "$f" -start.txt): $(grep -h TotalTime "$f" || true)"; done
+            cat ci-artifacts/android/perf.txt 2>/dev/null || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Publish screenshots to ci-screenshots branch
+        if: always() && github.event_name == 'push'
+        run: |
+          [ -d ci-artifacts/android ] || exit 0
+          cd ci-artifacts/android
+          git init -q && git checkout -q -b ci-screenshots
+          git add -A
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -q -m "Android screenshots from ${GITHUB_SHA::7}"
+          git push -q -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" ci-screenshots
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: android-smoke
+          path: ci-artifacts/android
+          retention-days: 14

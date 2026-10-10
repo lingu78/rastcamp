@@ -1,0 +1,6 @@
+{
+  "name": "rastcamp-data-pipeline",
+  "private": true,
+  "type": "module",
+  "description": "Builds Rastcamp's offline POI file from OpenStreetMap (Geofabrik extracts). Run from the repo root: npm run data:build"
+}

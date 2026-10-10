@@ -1,0 +1,12 @@
+node_modules/
+.expo/
+dist/
+coverage/
+ios/
+android/
+package-lock.json
+data-pipeline/work/
+data-pipeline/out/
+assets/data/
+SPEC.md
+KICKOFF_PROMPT.md

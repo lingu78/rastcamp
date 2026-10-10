@@ -1,0 +1,138 @@
+{
+  "appName": "Rastcamp",
+  "tabs": {
+    "map": "Karta",
+    "nearby": "Närmast",
+    "favorites": "Favoriter",
+    "more": "Mer"
+  },
+  "categories": {
+    "caravan_site": "Ställplats",
+    "camp_site": "Camping",
+    "dump_station": "Tömning",
+    "water": "Vatten",
+    "rest_area": "Rastplats",
+    "lpg": "Gasol"
+  },
+  "map": {
+    "placeholder": "Kartan kommer här.",
+    "a11yLabel": "Karta med platser",
+    "centerOnMe": "Centrera på min position",
+    "locationOffTitle": "Platstjänster är avstängda",
+    "locationOffBody": "Tillåt Rastcamp att använda din position för att se platser nära dig. Positionen lämnar aldrig telefonen.",
+    "allowLocation": "Tillåt",
+    "offlineBody": "Bakgrundskartan kunde inte laddas. Platserna och listan fungerar ändå offline.",
+    "showList": "Visa lista",
+    "retry": "Försök igen",
+    "attributionOmtA11y": "© OpenMapTiles. Öppnar openmaptiles.org.",
+    "attributionOsmA11y": "© OpenStreetMap contributors. Öppnar upphovsrättsinformation."
+  },
+  "nearby": {
+    "title": "Närmast mig",
+    "empty": "Inga platser att visa ännu.",
+    "searchPlaceholder": "Sök på namn",
+    "clearSearch": "Rensa sökningen",
+    "fromPosition": "Avstånd från din position",
+    "fromMapCenter": "Avstånd från kartans mittpunkt – platstjänster är avstängda",
+    "noResults": "Inga platser matchar.",
+    "rowA11y": "{{name}}, {{category}}, {{distance}} åt {{direction}}",
+    "waitingForPosition": "Väntar på position … avstånd från kartans mittpunkt så länge",
+    "rowA11yUnnamed": "{{category}}, {{distance}} åt {{direction}}"
+  },
+  "favorites": {
+    "title": "Favoriter",
+    "empty": "Inga favoriter ännu.",
+    "emptyHint": "Öppna en plats och tryck på ”Spara favorit” så hamnar den här.",
+    "listA11y": "Favoriter"
+  },
+  "more": {
+    "title": "Mer",
+    "language": "Språk",
+    "version": "Appversion",
+    "settings": "Inställningar",
+    "units": "Avstånd",
+    "unitsKm": "Kilometer",
+    "data": "Platsdata",
+    "dataVersion": "Version {{version}}",
+    "dataBundled": "Inbyggd i appen",
+    "dataDownloaded": "Nedladdad uppdatering",
+    "checkNow": "Sök efter ny data",
+    "checking": "Söker…",
+    "resultUpdated": "Uppdaterad till {{version}}.",
+    "resultUpToDate": "Du har den senaste datan.",
+    "resultFailed": "Kunde inte söka efter ny data (ingen täckning?). Den inbyggda datan fungerar ändå.",
+    "resultSkipped": "Datan kontrollerades nyligen.",
+    "about": "Om",
+    "licenses": "Datakällor och licenser",
+    "privacy": "Integritetspolicy",
+    "attribution": "Platsdata © OpenStreetMap contributors (ODbL). Karta © OpenMapTiles, OpenFreeMap.",
+    "privacyShort": "Rastcamp samlar inte in någon data. Din position används bara i telefonen.",
+    "placeCount": "Antal platser"
+  },
+  "language": {
+    "auto": "Automatiskt (enhetens språk)",
+    "sv": "Svenska",
+    "nb": "Norsk (bokmål)",
+    "en": "English"
+  },
+  "common": {
+    "cancel": "Avbryt",
+    "close": "Stäng"
+  },
+  "filter": {
+    "label": "Filtrera kategorier",
+    "all": "Alla"
+  },
+  "place": {
+    "title": "Plats",
+    "notFound": "Platsen hittades inte.",
+    "navigate": "Navigera dit",
+    "saveFavorite": "Spara favorit",
+    "removeFavorite": "Ta bort favorit",
+    "share": "Dela",
+    "report": "Rapportera fel",
+    "reportHint": "Öppnar OpenStreetMap i webbläsaren där du kan lämna en anteckning om felet.",
+    "call": "Ring {{number}}",
+    "openWebsite": "Öppna webbplatsen",
+    "distanceFrom": "{{distance}} {{direction}}",
+    "shareMessage": "{{name}} ({{category}})",
+    "dataSource": "Data: © OpenStreetMap contributors"
+  },
+  "fields": {
+    "fee": "Avgift",
+    "opening_hours": "Öppettider",
+    "phone": "Telefon",
+    "website": "Webbplats",
+    "power_supply": "El",
+    "shower": "Dusch",
+    "toilets": "Toalett",
+    "water": "Vatten",
+    "dump_station": "Tömning",
+    "grey_water": "Tömning gråvatten",
+    "chemical_toilet": "Tömning kassett",
+    "black_water": "Tömning svartvatten",
+    "capacity": "Max antal",
+    "capacity_motorhome": "Max antal husbilar",
+    "capacity_caravans": "Max antal husvagnar",
+    "dog": "Hundar tillåtna",
+    "description": "Beskrivning",
+    "coordinates": "Koordinater",
+    "distance": "Avstånd"
+  },
+  "values": {
+    "yes": "Ja",
+    "no": "Nej",
+    "customers": "För kunder",
+    "limited": "Begränsat",
+    "leashed": "Ja, kopplade",
+    "outside": "Utomhus",
+    "always": "Dygnet runt"
+  },
+  "licenses": {
+    "title": "Datakällor och licenser",
+    "data": "Data och karta",
+    "software": "Programvara med öppen källkod",
+    "showText": "Visa licenstext",
+    "hideText": "Dölj licenstext"
+  }
+}
