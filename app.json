@@ -12,6 +12,13 @@
       "supportsTablet": false,
       "config": {
         "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "CFBundleLocalizations": [
+          "en",
+          "sv",
+          "nb"
+        ]
       }
     },
     "android": {
@@ -55,7 +62,11 @@
       [
         "expo-localization",
         {
-          "supportedLocales": ["en", "sv", "nb"]
+          "supportedLocales": [
+            "en",
+            "sv",
+            "nb"
+          ]
         }
       ],
       [
@@ -80,6 +91,13 @@
       "nb": "./locales/nb.json",
       "en": "./locales/en.json"
     },
-    "icon": "./assets/images/icon.png"
+    "icon": "./assets/images/icon.png",
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "7bd9ea09-5f92-4779-a1cb-3c74b9708fde"
+      }
+    },
+    "owner": "lingu78_app"
   }
 }
