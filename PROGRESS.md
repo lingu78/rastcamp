@@ -11,7 +11,7 @@ Bockas av enligt "Definition of done" i SPEC.md §13. Senast uppdaterad: 2026-10
 | M5  | Datauppdatering & Mer-flik    | ✅ Klar         |
 | M6  | Polish                        | ✅ Klar¹        |
 | M7  | Butiksmaterial                | 🔄 Nästan klar² |
-| M8  | 🔑 Konton & första byggen     | ⬜              |
+| M8  | 🔑 Konton & första byggen     | 🔄 Pågår        |
 | M9  | Closed test / TestFlight      | ⬜              |
 | M10 | 🔑 Inskick                    | ⬜              |
 
@@ -114,6 +114,17 @@ Definition of done: _Allt i avsnitt 9–10 klart i `store/`, integritetspolicy p
 - [x] Skärmdumpar iPhone 6,9" (1320×2868) sv/nb/en – `store/screenshots/final/ios/` (nb, en: 5 st; sv: 4 st)
 - [ ] iOS sv `02-nearby` tas om (flikbytet hann inte ske; flödet rättat) – körs när repot är publikt (gratis Actions-minuter, M8 steg 1)
 - [ ] ² Integritetspolicy publicerad – kräver GitHub Pages + kontaktadress (🔑 M8 steg 1)
+
+## M8 – 🔑 Konton & första byggen
+
+Definition of done: _Android-bygge i Internal testing, iOS-bygge i TestFlight._
+
+- [x] Repot publikt, arbetsgrenen sammanslagen till `main` ([PR #1](https://github.com/lingu78/rastcamp/pull/1))
+- [x] Datapipelinen publicerad till `gh-pages`, GitHub Pages på: <https://lingu78.github.io/rastcamp/>
+- [x] Expo-konto + `EXPO_TOKEN`; EAS-projekt skapat i Actions: [@lingu78_app/rastcamp](https://expo.dev/accounts/lingu78_app/projects/rastcamp) (projectId i `app.json`)
+- [ ] Integritetspolicy publicerad (kräver repo-variabeln `CONTACT_EMAIL` + ny Data-körning)
+- [ ] Apple Developer Program (Linus väljer att börja med iOS) → app i App Store Connect → API-nyckel i EAS → iOS-bygge → TestFlight
+- [ ] Google Play Console → app → service account → Android-bygge → Internal testing (senare)
 
 ## Kända begränsningar i utvecklingsmiljön
 
