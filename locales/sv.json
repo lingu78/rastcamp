@@ -1,6 +1,7 @@
 {
   "ios": {
     "CFBundleDisplayName": "Rastcamp",
-    "NSLocationWhenInUseUsageDescription": "Rastcamp använder din position för att visa platser nära dig och sortera dem efter avstånd. Positionen stannar på din telefon och skickas aldrig någonstans."
+    "NSLocationWhenInUseUsageDescription": "Rastcamp använder din position för att visa platser nära dig och sortera dem efter avstånd. Positionen stannar på din telefon och skickas aldrig någonstans.",
+    "NSMotionUsageDescription": "Rastcamp använder inte rörelse- eller träningsdata och frågar aldrig efter det. Texten krävs av Apple eftersom appens platskomponent innehåller stöd för rörelsesensorer."
   }
 }

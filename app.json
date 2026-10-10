@@ -47,7 +47,7 @@
           "locationWhenInUsePermission": "Rastcamp uses your location to show nearby places and sort them by distance. Your location stays on your phone and is never sent anywhere.",
           "locationAlwaysAndWhenInUsePermission": false,
           "locationAlwaysPermission": false,
-          "motionUsagePermission": false,
+          "motionUsagePermission": "Rastcamp does not use motion or fitness data and never asks for it. Apple requires this text because the app's location component includes support for motion sensors.",
           "isAndroidBackgroundLocationEnabled": false,
           "isAndroidForegroundServiceEnabled": false
         }
