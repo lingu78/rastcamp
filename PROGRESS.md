@@ -122,7 +122,9 @@ Definition of done: _Android-bygge i Internal testing, iOS-bygge i TestFlight._
 - [x] Datapipelinen publicerad till `gh-pages`, GitHub Pages på: <https://lingu78.github.io/rastcamp/>
 - [x] Expo-konto + `EXPO_TOKEN`; EAS-projekt skapat i Actions: [@lingu78_app/rastcamp](https://expo.dev/accounts/lingu78_app/projects/rastcamp) (projectId i `app.json`)
 - [x] Integritetspolicy publicerad med kontaktadress (repo-variabeln `CONTACT_EMAIL`; publiceringssteget fick först inte variabeln – rättat och testat)
-- [ ] Apple Developer Program (Linus väljer att börja med iOS) → app i App Store Connect → API-nyckel i EAS → iOS-bygge → TestFlight
+- [x] Apple Developer Program (Individual, team `MKSMHVZ5AM`); distributionscertifikat + App Store-profil skapade med `eas credentials:configure-build` (giltiga till 2027-10-10); App Store Connect API-nyckel (Admin) lagrad hos EAS
+- [x] App i App Store Connect: Rastcamp, `no.rastcamp.app`, Apple ID `6821287622` (`ascAppId` i `eas.json`)
+- [ ] Första iOS-bygget i GitHub Actions → TestFlight
 - [ ] Google Play Console → app → service account → Android-bygge → Internal testing (senare)
 
 ## Kända begränsningar i utvecklingsmiljön
