@@ -20,7 +20,9 @@
         "track": "internal",
         "releaseStatus": "completed"
       },
-      "ios": {}
+      "ios": {
+        "appleTeamId": "MKSMHVZ5AM"
+      }
     }
   }
 }
