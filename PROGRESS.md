@@ -124,7 +124,7 @@ Definition of done: _Android-bygge i Internal testing, iOS-bygge i TestFlight._
 - [x] Integritetspolicy publicerad med kontaktadress (repo-variabeln `CONTACT_EMAIL`; publiceringssteget fick först inte variabeln – rättat och testat)
 - [x] Apple Developer Program (Individual, team `MKSMHVZ5AM`); distributionscertifikat + App Store-profil skapade med `eas credentials:configure-build` (giltiga till 2027-10-10); App Store Connect API-nyckel (Admin) lagrad hos EAS
 - [x] App i App Store Connect: Rastcamp, `no.rastcamp.app`, Apple ID `6821287622` (`ascAppId` i `eas.json`)
-- [x] Första iOS-bygget i GitHub Actions (EAS, version 1.0.0 build 2) uppladdat till App Store Connect – första försöket föll på `sharp` i `npm ci` (rättat: valfritt beroende)
+- [x] iOS-bygge i GitHub Actions (EAS) uppladdat till App Store Connect: build 1 föll på `sharp` i `npm ci` (rättat: valfritt beroende), build 2 avvisades av Apple – ITMS-90683, saknad `NSMotionUsageDescription` (rättat), **build 3** uppladdad 2026-10-10
 - [ ] Bygget behandlat av Apple och installerat via TestFlight på Linus iPhone
 - [ ] Google Play Console → app → service account → Android-bygge → Internal testing (senare)
 
