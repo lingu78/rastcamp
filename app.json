@@ -80,6 +80,12 @@
       "nb": "./locales/nb.json",
       "en": "./locales/en.json"
     },
-    "icon": "./assets/images/icon.png"
+    "icon": "./assets/images/icon.png",
+    "extra": {
+      "eas": {
+        "projectId": "7bd9ea09-5f92-4779-a1cb-3c74b9708fde"
+      }
+    },
+    "owner": "lingu78_app"
   }
 }
