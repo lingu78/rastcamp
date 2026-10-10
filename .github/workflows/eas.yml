@@ -13,6 +13,7 @@ on:
           - build
           - build-and-submit
           - submit-latest
+          - logs
         default: build
       platform:
         description: Platform
@@ -24,6 +25,10 @@ on:
         type: choice
         options: [production, preview]
         default: production
+      build_id:
+        description: 'logs: EAS build ID (empty = latest build for the platform)'
+        type: string
+        default: ''
 
 permissions:
   contents: write # 'init' commits the projectId to app.json
@@ -62,7 +67,7 @@ jobs:
           fi
 
       - name: Refresh bundled data (latest published)
-        if: inputs.action != 'init' && inputs.action != 'submit-latest' && inputs.profile == 'production'
+        if: (inputs.action == 'build' || inputs.action == 'build-and-submit') && inputs.profile == 'production'
         run: node scripts/update-bundled-data.ts || echo "::warning::Could not refresh bundled data – building with the committed file"
 
       - name: eas build
@@ -70,6 +75,24 @@ jobs:
         run: >
           npx eas-cli@latest build --platform ${{ inputs.platform }} --profile ${{ inputs.profile }}
           --non-interactive --wait ${{ inputs.action == 'build-and-submit' && '--auto-submit' || '' }}
+
+      - name: Print EAS build logs
+        if: inputs.action == 'logs'
+        env:
+          BUILD_ID: ${{ inputs.build_id }}
+          PLATFORM: ${{ inputs.platform }}
+        run: |
+          if [ -z "$BUILD_ID" ]; then
+            BUILD_ID=$(npx eas-cli@latest build:list --platform "$PLATFORM" --limit 1 --json --non-interactive | node -e "console.log(JSON.parse(require('fs').readFileSync(0,'utf8'))[0].id)")
+          fi
+          npx eas-cli@latest build:view "$BUILD_ID" --json > build.json
+          node -e "const b=require('./build.json'); console.log(b.platform, b.status, b.error ? JSON.stringify(b.error) : '')"
+          node -e "for (const u of require('./build.json').logFiles ?? []) console.log(u)" > log-urls.txt
+          while read -r url; do
+            curl -fsSL "$url" | node -e "
+              const lines = require('fs').readFileSync(0, 'utf8').split('\n').filter(Boolean);
+              for (const l of lines) { try { const j = JSON.parse(l); console.log('[' + (j.phase ?? '') + '] ' + (j.msg ?? '')); } catch { console.log(l); } }"
+          done < log-urls.txt
 
       - name: eas submit (latest build)
         if: inputs.action == 'submit-latest'
