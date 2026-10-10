@@ -170,3 +170,15 @@ Slogs upp 2026-10-09 (M1). Kontrollera igen innan M8 (första butiksbyggena).
 - **`sharp` är ett valfritt beroende** (`optionalDependencies`): det används bara av hjälpskripten för ikoner, feature graphic och skärmdumpar. Första EAS-bygget föll i `npm ci` när sharp inte hittade sin förbyggda binär på EAS macOS-maskin och försökte kompilera från källkod; som valfritt beroende hoppas det över utan att stoppa bygget. (M8)
 - **EAS-byggloggar läses via GitHub Actions** (`eas.yml` → _logs_): utvecklingsmiljön når inte expo.dev, så arbetsflödet hämtar loggfilernas signerade adresser med `eas build:view --json`, packar upp dem (gzip/brotli) och skriver ut dem per byggfas. (M8)
 - **Systemdialoger i CI:** den långsamma emulatorn fick "Pixel Launcher isn't responding" över appen; `settings put global hide_error_dialogs 1` döljer dem. (M7)
+
+## 14. Ruttläge (önskemål 2026-10-10, vilande)
+
+Linus önskemål: välj mål (t.ex. 150 mil bort), max körtid per dag och typ av stopp → förslag på
+övernattning vid max körtid, rastplatser under dagen samt tömning/vatten per etapp. Beslut: v1.1 med
+en ruttjänst på nätet – därefter **lagt på is** ("vi droppar det för nu"). Underlag till nästa gång:
+
+- **OpenRouteService (HeiGIT):** gratisnivå 2 000 rutter/dygn och 40/min; attribution "© openrouteservice.org by HeiGIT | Map data © OpenStreetMap contributors". Villkoren förbjuder API-nyckeln i en klientapp ("an API key must not be used client-side in an application") – kräver en egen server/proxy (t.ex. Cloudflare Workers) eller att varje användare har egen nyckel. Källa: ORS FAQ (GIScience/openrouteservice docs).
+- **FOSSGIS/OSRM publika servrar:** ingen nyckel, "fair use" utan garantier, kan dras in när som helst.
+- **Geoapify:** gratisplan, kommersiell användning tillåten med attribution enligt deras FAQ; om nyckeln får ligga i en mobilapp är inte kontrollerat (sidan nåddes inte).
+- **Stadia Maps:** gratisplanen tillåter inte kommersiell användning.
+- Oavsett tjänst: start/mål lämnar telefonen → integritetspolicy och butikernas integritetsuppgifter måste uppdateras.
