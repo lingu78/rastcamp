@@ -89,7 +89,9 @@ jobs:
           node -e "const b=require('./build.json'); console.log(b.platform, b.status, b.error ? JSON.stringify(b.error) : '')"
           node -e "for (const u of require('./build.json').logFiles ?? []) console.log(u)" > log-urls.txt
           while read -r url; do
-            curl -fsSL "$url" | node -e "
+            curl -fsSL "$url" -o log.bin
+            # Log files are gzip-compressed JSON lines.
+            { gunzip -c log.bin 2>/dev/null || cat log.bin; } | node -e "
               const lines = require('fs').readFileSync(0, 'utf8').split('\n').filter(Boolean);
               for (const l of lines) { try { const j = JSON.parse(l); console.log('[' + (j.phase ?? '') + '] ' + (j.msg ?? '')); } catch { console.log(l); } }"
           done < log-urls.txt
