@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "version": "2026-10-08",
+  "dataTimestamp": "2026-10-08T20:21:06Z",
+  "generated": "2026-10-10T08:28:37.738Z",
+  "file": "pois.json.gz",
+  "bytes": 368642,
+  "sha256": "6daa8bfd1c4774457454f4d3471319f24363304c40401411338cd5351366f235",
+  "jsonSha256": "902c8669c865a57d04aa3fd19e7fd2998c57eeef10da15c71ad037548aca231d",
+  "count": 13153,
+  "counts": {
+    "caravan_site": 1596,
+    "camp_site": 3804,
+    "dump_station": 1620,
+    "water": 891,
+    "rest_area": 5052,
+    "lpg": 190
+  },
+  "attribution": "© OpenStreetMap contributors",
+  "license": "ODbL-1.0"
+}
