@@ -1,0 +1,954 @@
+--------- beginning of main
+         1791804258.436   559  2039 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804258.445   506   506 W libgoldfish-rild: Multi-element reporting criteria are not supported with HIDL HAL
+--------- beginning of system
+         1791804258.470   559   578 E AppOps  : Operation not started: uid=10209 pkg=no.rastcamp.app(null) op=MONITOR_LOCATION
+         1791804258.471  1242  4126 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804258.494   559  2039 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804258.494   559  2039 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804258.494   559  2039 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804258.499   559   582 E AppOps  : Operation not started: uid=10209 pkg=no.rastcamp.app(null) op=GPS
+         1791804258.501   559   582 W AlarmManager: Unrecognized alarm listener com.android.server.location.gnss.GnssLocationProvider$$ExternalSyntheticLambda14@2744a5c
+         1791804258.501   559   582 W AlarmManager: Unrecognized alarm listener com.android.server.location.gnss.GnssLocationProvider$$ExternalSyntheticLambda13@953e165
+         1791804258.501   559   586 W ActivityTaskManager: Unable to send transaction to client proc no.rastcamp.app: no app thread
+         1791804258.520   559   842 E AppOps  : attributionTag VCN not declared in manifest of android
+         1791804258.524   918   968 W Looper  : Slow dispatch took 133ms wmshell.main h=android.os.Handler c=com.android.wm.shell.transition.Transitions$TransitionPlayerImpl$$ExternalSyntheticLambda1@c6e03cb m=0
+         1791804258.524   918   968 W Looper  : Slow delivery took 131ms wmshell.main h=android.os.Handler c=com.android.wm.shell.pip.PinnedStackListenerForwarder$PinnedTaskListenerImpl$$ExternalSyntheticLambda1@a01a7a8 m=0
+         1791804258.532   559  2020 W InputManager-JNI: Input channel object '3a1338b no.rastcamp.app/no.rastcamp.app.MainActivity (client)' was disposed without first being removed with the input manager!
+         1791804258.540   559   585 W ActivityManager: setHasOverlayUi called on unknown pid: 5106
+         1791804258.548  5222  5222 E wpa_supplicant: nl80211: kernel reports: Registration to specific type not supported
+         1791804258.579   559   829 E WifiStaIfaceAidlImpl: getTwtCapabilities failed with service-specific exception: android.os.ServiceSpecificException:  (code 4)
+         1791804258.579   559   829 E WifiChipAidlImpl: getUsableChannels failed with service-specific exception: android.os.ServiceSpecificException:  (code 4)
+         1791804258.586  1242  1242 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+         1791804258.604  2165  4841 E CellBroadcastConfigService: fails to setCellBroadcastRanges, result = 2
+         1791804258.609   918   968 W Looper  : Drained
+         1791804258.657  1242  1891 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+         1791804258.657   559   829 E WifiChipAidlImpl: setMultiStaUseCase failed with service-specific exception: android.os.ServiceSpecificException:  (code 4)
+         1791804258.657   559   829 E WifiChipAidlImpl: setMultiStaPrimaryConnection failed with service-specific exception: android.os.ServiceSpecificException:  (code 4)
+         1791804258.660   559   833 E WifiStaIfaceAidlImpl: getBackgroundScanCapabilities failed with service-specific exception: android.os.ServiceSpecificException:  (code 4)
+         1791804258.669   559  1619 W AlarmManager: Window length 1383505805528152320ms too long; limiting to 1 day
+         1791804258.676   559  1260 W ActivityTaskManager: callingPackage for (uid=2000, pid=5237) has no WPC
+         1791804258.677   559  1260 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_OVERRIDE
+         1791804258.677   559  1260 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_FULLSCREEN_OVERRIDE
+         1791804258.677   559  1260 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_ORIENTATION_OVERRIDE
+         1791804258.678   559  1260 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_RESIZEABLE_ACTIVITY_OVERRIDES
+         1791804258.678   559  1260 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_MIN_ASPECT_RATIO_OVERRIDE
+         1791804258.697   559  1508 W AppSearchIcing: icing-search-engine.cc:321: Error: 5, Message: Document (com.google.android.googlequicksearchbox$OneSearchZeroStateGoogleSuggestions/default, zp) not found.
+         1791804258.698   559   833 E WifiScanningService: wifi driver loaded received while already loaded
+         1791804258.702   559  1260 I ActivityTaskManager: Add Task{c491e31 #13 type=standard A=10209:no.rastcamp.app} to hidden list because adding Task{66993bf #14 type=standard A=10209:no.rastcamp.app}
+         1791804258.703   559  1260 I ActivityTaskManager: START u0 {act=android.intent.action.VIEW dat=rastcamp://nearby/... flg=0x10000000 pkg=no.rastcamp.app cmp=no.rastcamp.app/.MainActivity} with LAUNCH_SINGLE_TASK from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+         1791804258.722  1195  1195 W SplitSelectStateCtor: Missing session instanceIds
+         1791804258.747   559   585 W ProcessStats: Tracking association SourceState{f9409fd com.google.android.apps.nexuslauncher/10178 BTop #6873} whose proc state 2 is better than process ProcessState{f19cf37 com.google.android.googlequicksearchbox:search/10144 pkg=com.google.android.googlequicksearchbox} proc state 14 (7 skipped)
+         1791804258.764  1080  1080 W Telephony: registerMmTelCapabilityCallback: registration failed, no ImsService available. Exception: code: 1
+         1791804258.764  1080  1080 W Telephony: registerImsRegistrationCallback: registration failed, no ImsService available. Exception: code: 1
+         1791804258.776  5243  5243 W no.rastcamp.app: Unexpected CPU variant for x86: x86_64.
+         1791804258.776  5243  5243 W no.rastcamp.app: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, default
+         1791804258.782  5243  5243 E no.rastcamp.app: Not starting debugger since process cannot load the jdwp agent.
+         1791804258.783   559   829 E WifiScoringParams: Invalid frequency(-1), using 5G as default rssi array
+         1791804258.784  1242  2182 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+         1791804258.887   491   545 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804258.942   559   833 E WifiScanningService: wifi driver loaded received while already loaded
+         1791804258.952   559   829 E WifiChipAidlImpl: getUsableChannels failed with service-specific exception: android.os.ServiceSpecificException:  (code 4)
+         1791804258.957  5243  5243 W SoLoader: Initializing SoLoader: 0
+         1791804258.957  5243  5243 W SoLoader: Recording new base apk path: /data/app/~~HFD3GOCsxgknruc925cN7A==/no.rastcamp.app-5EomnLgLhPz6KbvkrPiX_g==/base.apk
+         1791804258.957  5243  5243 W SoLoader: Previously recorded 0 base apk paths.
+         1791804258.964  5195  5262 E bluetooth: system/osi/src/config.cc:104 config_new: unable to open file '/data/misc/bluedroid/bt_remote_dev_info.conf': No such file or directory
+         1791804258.964  5195  5262 W device_iot_config: system/device/src/device_iot_config_int.cc:77 device_iot_config_module_init: Unable to load config file: /data/misc/bluedroid/bt_remote_dev_info.conf; using backup.
+         1791804258.964  5195  5262 E bluetooth: system/osi/src/config.cc:104 config_new: unable to open file '/data/misc/bluedroid/bt_remote_dev_info.bak': No such file or directory
+         1791804258.964  5195  5262 E device_iot_config: system/device/src/device_iot_config_int.cc:84 device_iot_config_module_init: Unable to load bak file; creating empty config.
+         1791804258.967  5243  5243 W SoLoader: SoLoader initialized: 8
+         1791804258.971   559   829 E WifiChipAidlImpl: getUsableChannels failed with service-specific exception: android.os.ServiceSpecificException:  (code 4)
+         1791804258.972  5195  5262 W droid.bluetooth: AIBinder_linkToDeath is being called with a non-null cookie and no onUnlink callback set. This might not be intended. AIBinder_DeathRecipient_setOnUnlinked should be called first.
+         1791804259.004  5195  5269 W droid.bluetooth: AIBinder_linkToDeath is being called with a non-null cookie and no onUnlink callback set. This might not be intended. AIBinder_DeathRecipient_setOnUnlinked should be called first.
+         1791804259.007   401   401 E android.hardware.bluetooth.service.default: unable to open /dev/rfkill: Permission denied
+         1791804259.007   401   401 E android.hardware.bluetooth.service.default: rfkill unavailable
+         1791804259.008   401   401 W android.hardware.bluetooth-service.default: AIBinder_linkToDeath is being called with a non-null cookie and no onUnlink callback set. This might not be intended. AIBinder_DeathRecipient_setOnUnlinked should be called first.
+         1791804259.043   559   648 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ENABLE_FAKE_FOCUS
+         1791804259.126   559   586 W ActivityTaskManager: Unable to send transaction to client proc no.rastcamp.app: no app thread
+         1791804259.127   559  2501 W UserManagerService: Requested status bar icon for non-badged user 0
+         1791804259.129   918   968 W Looper  : Slow dispatch took 49ms wmshell.main h=android.os.Handler c=com.android.wm.shell.transition.Transitions$TransitionPlayerImpl$$ExternalSyntheticLambda0@c184e3 m=0
+         1791804259.135  1080  1080 W Telephony: registerMmTelCapabilityCallback: registration failed, no ImsService available. Exception: code: 1
+         1791804259.135  1080  1080 W Telephony: registerImsRegistrationCallback: registration failed, no ImsService available. Exception: code: 1
+         1791804259.153   559  1626 E IPCThreadState: Binder transaction failure. id: 392771, BR_*: 29189, error: -22 (Invalid argument)
+         1791804259.153   559  1626 W ActivityManager: pid 559 system sent binder code 7 with flags 1 to frozen apps and got error -32
+         1791804259.154   559  1626 W WindowManager: Exception thrown during dispatchAppVisibility Window{3a1338b u0 no.rastcamp.app/no.rastcamp.app.MainActivity EXITING}
+         1791804259.154   559  1626 W WindowManager: android.os.DeadObjectException
+         1791804259.154   559  1626 W WindowManager: 	at android.os.BinderProxy.transactNative(Native Method)
+         1791804259.154   559  1626 W WindowManager: 	at android.os.BinderProxy.transact(BinderProxy.java:586)
+         1791804259.154   559  1626 W WindowManager: 	at android.view.IWindow$Stub$Proxy.dispatchAppVisibility(IWindow.java:553)
+         1791804259.154   559  1626 W WindowManager: 	at com.android.server.wm.WindowState.sendAppVisibilityToClients(WindowState.java:3253)
+         1791804259.154   559  1626 W WindowManager: 	at com.android.server.wm.WindowContainer.sendAppVisibilityToClients(WindowContainer.java:1289)
+         1791804259.154   559  1626 W WindowManager: 	at com.android.server.wm.WindowToken.setClientVisible(WindowToken.java:403)
+         1791804259.154   559  1626 W WindowManager: 	at com.android.server.wm.ActivityRecord.setClientVisible(ActivityRecord.java:7166)
+         1791804259.154   559  1626 W WindowManager: 	at com.android.server.wm.ActivityRecord.postApplyAnimation(ActivityRecord.java:5881)
+         1791804259.154   559  1626 W WindowManager: 	at com.android.server.wm.ActivityRecord.commitVisibility(ActivityRecord.java:5823)
+         1791804259.154   559  1626 W WindowManager: 	at com.android.server.wm.Transition.finishTransition(Transition.java:1286)
+         1791804259.154   559  1626 W WindowManager: 	at com.android.server.wm.TransitionController.finishTransition(TransitionController.java:937)
+         1791804259.154   559  1626 W WindowManager: 	at com.android.server.wm.WindowOrganizerController.finishTransition(WindowOrganizerController.java:494)
+         1791804259.154   559  1626 W WindowManager: 	at android.window.IWindowOrganizerController$Stub.onTransact(IWindowOrganizerController.java:289)
+         1791804259.154   559  1626 W WindowManager: 	at com.android.server.wm.WindowOrganizerController.onTransact(WindowOrganizerController.java:204)
+         1791804259.154   559  1626 W WindowManager: 	at android.os.Binder.execTransactInternal(Binder.java:1505)
+         1791804259.154   559  1626 W WindowManager: 	at android.os.Binder.execTransact(Binder.java:1444)
+         1791804259.155   559  1626 W Process : Unable to open /proc/5106/status
+         1791804259.233   918   968 W Looper  : Slow dispatch took 95ms wmshell.main h=android.os.Handler c=com.android.wm.shell.transition.DefaultTransitionHandler$$ExternalSyntheticLambda0@b7d8c3f m=0
+         1791804259.234   918   968 W Looper  : Slow delivery took 64ms wmshell.main h=android.os.Handler c=android.window.TaskOrganizer$1$$ExternalSyntheticLambda4@cea190c m=0
+         1791804259.250   559  1898 W UserManagerService: Requested status bar icon for non-badged user 0
+         1791804259.254   918   968 W Looper  : Drained
+         1791804259.259   559  1626 W UserManagerService: Requested status bar icon for non-badged user 0
+         1791804259.305   559  2501 W UserManagerService: Requested status bar icon for non-badged user 0
+         1791804259.314  1080  1080 W Telephony: registerMmTelCapabilityCallback: registration failed, no ImsService available. Exception: code: 1
+         1791804259.314  1080  1080 W Telephony: registerImsRegistrationCallback: registration failed, no ImsService available. Exception: code: 1
+         1791804259.316   559  1898 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804259.335   431   431 E BpTransactionCompletedListener: Failed to transact (-32)
+         1791804259.379  5243  5243 W unknown:BridgelessReact: ReactHost{0}.startSurface(surfaceId = 0): Schedule
+         1791804259.379  5243  5243 W unknown:BridgelessReact: ReactHost{0}.attachSurface(surfaceId = 0)
+         1791804259.382  5243  5282 W unknown:BridgelessReact: ReactHost{0}.getOrCreateReactInstanceTask()
+         1791804259.382  5243  5282 W unknown:BridgelessReact: ReactHost{0}.getOrCreateReactInstanceTask(): Start
+         1791804259.382  5243  5282 W unknown:BridgelessReact: ReactHost{0}.getJSBundleLoader()
+         1791804259.382  5243  5282 W unknown:BridgelessReact: ReactHost{0}.getOrCreateReactInstanceTask(): Creating BridgelessReactContext
+         1791804259.382  5243  5282 W unknown:BridgelessReact: ReactHost{0}.getOrCreateReactInstanceTask(): Creating ReactInstance
+         1791804259.385  5243  5243 W unknown:BridgelessReact: ReactHost{0}.onHostResume(activity)
+         1791804259.385  5243  5243 W unknown:BridgelessReact: ReactHost{0}.ReactContext.onHostResume()
+         1791804259.404  1080  1080 W FeatureConnection: getRegistrationTech: ImsRegistration is null
+         1791804259.415  5243  5243 W HWUI    : Unknown dataspace 0
+         1791804259.482  5243  5272 W HWUI    : Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+         1791804259.484  5243  5272 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+         1791804259.569   559   559 E Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+         1791804259.569   559   559 E Binder  : java.lang.Throwable
+         1791804259.569   559   559 E Binder  : 	at android.os.BinderProxy.transact(BinderProxy.java:543)
+         1791804259.569   559   559 E Binder  : 	at android.bluetooth.IBluetooth$Stub$Proxy.getState(IBluetooth.java:2270)
+         1791804259.569   559   559 E Binder  : 	at android.bluetooth.BluetoothAdapter$2.apply(BluetoothAdapter.java:1417)
+         1791804259.569   559   559 E Binder  : 	at android.bluetooth.BluetoothAdapter$2.apply(BluetoothAdapter.java:1411)
+         1791804259.569   559   559 E Binder  : 	at android.app.PropertyInvalidatedCache.recompute(PropertyInvalidatedCache.java:775)
+         1791804259.569   559   559 E Binder  : 	at android.app.PropertyInvalidatedCache.query(PropertyInvalidatedCache.java:999)
+         1791804259.569   559   559 E Binder  : 	at android.os.IpcDataCache.query(IpcDataCache.java:360)
+         1791804259.569   559   559 E Binder  : 	at android.bluetooth.BluetoothAdapter.getStateInternal(BluetoothAdapter.java:1445)
+         1791804259.569   559   559 E Binder  : 	at android.bluetooth.BluetoothAdapter.getLeState(BluetoothAdapter.java:1510)
+         1791804259.569   559   559 E Binder  : 	at android.bluetooth.BluetoothAdapter.isLeEnabled(BluetoothAdapter.java:1299)
+         1791804259.569   559   559 E Binder  : 	at com.android.server.companion.devicepresence.BleDeviceProcessor.checkBleState(BleDeviceProcessor.java:125)
+         1791804259.569   559   559 E Binder  : 	at com.android.server.companion.devicepresence.BleDeviceProcessor.-$$Nest$mcheckBleState(BleDeviceProcessor.java:0)
+         1791804259.569   559   559 E Binder  : 	at com.android.server.companion.devicepresence.BleDeviceProcessor$1.lambda$onReceive$0(BleDeviceProcessor.java:245)
+         1791804259.569   559   559 E Binder  : 	at com.android.server.companion.devicepresence.BleDeviceProcessor$1.$r8$lambda$GG5h9OK5k90dQ3r6u26HI7ldv-E(BleDeviceProcessor.java:0)
+         1791804259.569   559   559 E Binder  : 	at com.android.server.companion.devicepresence.BleDeviceProcessor$1$$ExternalSyntheticLambda0.run(R8$$SyntheticClass:0)
+         1791804259.569   559   559 E Binder  : 	at android.os.Handler.handleCallback(Handler.java:959)
+         1791804259.569   559   559 E Binder  : 	at android.os.Handler.dispatchMessage(Handler.java:100)
+         1791804259.569   559   559 E Binder  : 	at android.os.Looper.loopOnce(Looper.java:232)
+         1791804259.569   559   559 E Binder  : 	at android.os.Looper.loop(Looper.java:317)
+         1791804259.569   559   559 E Binder  : 	at com.android.server.SystemServer.run(SystemServer.java:973)
+         1791804259.569   559   559 E Binder  : 	at com.android.server.SystemServer.main(SystemServer.java:657)
+         1791804259.569   559   559 E Binder  : 	at java.lang.reflect.Method.invoke(Native Method)
+         1791804259.569   559   559 E Binder  : 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:580)
+         1791804259.569   559   559 E Binder  : 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:864)
+         1791804259.571  3603  3698 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+         1791804259.575   559  1252 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1299 android.content.Context.sendBroadcastMultiplePermissions:2522 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:3697 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1759 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:546 
+         1791804259.576   559  1252 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1332 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:3702 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1759 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:546 android.os.Binder.execTransactInternal:1505 
+         1791804259.577   559  1252 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1332 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:3711 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1759 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:546 android.os.Binder.execTransactInternal:1505 
+         1791804259.584   559  1252 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1332 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:3717 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1759 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:546 android.os.Binder.execTransactInternal:1505 
+         1791804259.595  1080  1080 W Telephony: registerMmTelCapabilityCallback: registration failed, no ImsService available. Exception: code: 1
+         1791804259.596  3603  3748 W AsyncTelephonySimStateR: Unexpected SIM_STATE action: READY
+         1791804259.619  5243  5282 W unknown:BridgelessReact: ReactHost{0}.getOrCreateReactInstanceTask(): Loading JS Bundle
+         1791804259.619  5243  5282 W unknown:BridgelessReact: ReactHost{0}.getOrCreateReactInstanceTask(): DevSupportManager.onNewReactContextCreated()
+         1791804259.620  5243  5282 W unknown:BridgelessReact: ReactHost{0}.startSurface(surfaceId = 0): Execute
+         1791804259.640  5243  5243 W unknown:BridgelessReact: ReactHost{0}.ReactContext.onHostResume()
+         1791804259.640  5243  5243 W unknown:BridgelessReact: ReactHost{0}.getOrCreateReactInstanceTask(): Executing ReactInstanceEventListeners
+         1791804259.645  3603  3698 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+         1791804259.646  3603  3698 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+         1791804259.649  5195  5262 W bluetooth: system/stack/btm/btm_inq.cc:1159 btm_clr_inq_result_flt: Memory being reset multiple times
+         1791804259.698  5195  5263 W bt_btm_ble: system/stack/btm/btm_ble_gap.cc:963 BTM_BleConfigPrivacy: 1
+         1791804259.698  5195  5263 W bluetooth: system/btif/src/btif_bqr.cc:365 EnableBtQualityReport: Bluetooth Quality Report is disabled. bqr_prop_evtmask: , bqr_prop_interval_ms: 
+         1791804259.715  5243  5283 W BridgelessReactContext: [WARNING] Bridgeless doesn't support CatalystInstance. Accessing an API that's not part of the new architecture is not encouraged usage.
+         1791804259.737  3603  4924 W Bugle   : BuglePhoneNumberUtils: canonicalizeMccMnc: invalid mccmnc. mcc: null, mnc: null
+         1791804259.737  1080  1080 W Telephony: registerMmTelCapabilityCallback: registration failed, no ImsService available. Exception: code: 1
+         1791804259.764  5195  5195 E bluetooth-a2dp: system/stack/a2dp/a2dp_vendor_ldac.cc:1416 init: cannot load the decoder
+         1791804259.764  5195  5195 E bluetooth-a2dp: system/stack/a2dp/a2dp_vendor_ldac.cc:1416 init: cannot load the decoder
+         1791804259.765  5195  5195 E bluetooth-a2dp: system/stack/a2dp/a2dp_vendor_ldac.cc:1416 init: cannot load the decoder
+         1791804259.765  5195  5195 E bluetooth-a2dp: system/stack/a2dp/a2dp_vendor_ldac.cc:1416 init: cannot load the decoder
+         1791804259.765  5195  5195 E bluetooth-a2dp: system/stack/a2dp/a2dp_vendor_ldac.cc:1416 init: cannot load the decoder
+         1791804259.766  5195  5195 E bluetooth-a2dp: system/stack/a2dp/a2dp_vendor_ldac.cc:1416 init: cannot load the decoder
+         1791804259.776   559  1898 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1299 android.content.Context.sendBroadcastMultiplePermissions:2522 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:3697 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1759 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:546 
+         1791804259.776   559  1898 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1332 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:3702 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1759 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:546 android.os.Binder.execTransactInternal:1505 
+         1791804259.776   559  1898 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1332 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:3711 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1759 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:546 android.os.Binder.execTransactInternal:1505 
+         1791804259.778   559  1898 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1332 com.android.server.TelephonyRegistry.broadcastServiceStateChanged:3717 com.android.server.TelephonyRegistry.notifyServiceStateForPhoneId:1759 com.android.internal.telephony.ITelephonyRegistry$Stub.onTransact:546 android.os.Binder.execTransactInternal:1505 
+         1791804259.781  5195  5263 W bluetooth-a2dp: system/bta/av/bta_av_main.cc:652 bta_av_api_register: Skipping the codec index for codec index 5
+         1791804259.781  5195  5263 W bluetooth-a2dp: system/bta/av/bta_av_main.cc:652 bta_av_api_register: Skipping the codec index for codec index 6
+         1791804259.781  5195  5263 W bluetooth-a2dp: system/bta/av/bta_av_main.cc:652 bta_av_api_register: Skipping the codec index for codec index 5
+         1791804259.781  5195  5263 W bluetooth-a2dp: system/bta/av/bta_av_main.cc:652 bta_av_api_register: Skipping the codec index for codec index 6
+         1791804259.781  5195  5263 W bluetooth-a2dp: system/bta/av/bta_av_main.cc:652 bta_av_api_register: Skipping the codec index for codec index 5
+         1791804259.781  5195  5263 W bluetooth-a2dp: system/bta/av/bta_av_main.cc:652 bta_av_api_register: Skipping the codec index for codec index 6
+         1791804259.781  5195  5263 W bluetooth-a2dp: system/bta/av/bta_av_main.cc:652 bta_av_api_register: Skipping the codec index for codec index 5
+         1791804259.781  5195  5263 W bluetooth-a2dp: system/bta/av/bta_av_main.cc:652 bta_av_api_register: Skipping the codec index for codec index 6
+         1791804259.781  5195  5263 W bluetooth-a2dp: system/bta/av/bta_av_main.cc:652 bta_av_api_register: Skipping the codec index for codec index 5
+         1791804259.781  5195  5263 W bluetooth-a2dp: system/bta/av/bta_av_main.cc:652 bta_av_api_register: Skipping the codec index for codec index 6
+         1791804259.782  5195  5263 W bluetooth-a2dp: system/bta/av/bta_av_main.cc:652 bta_av_api_register: Skipping the codec index for codec index 5
+         1791804259.782  5195  5263 W bluetooth-a2dp: system/bta/av/bta_av_main.cc:652 bta_av_api_register: Skipping the codec index for codec index 6
+         1791804259.810  1080  1080 W Telephony: registerMmTelCapabilityCallback: registration failed, no ImsService available. Exception: code: 1
+         1791804259.860  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class expo.modules.kotlin.views.GroupViewManagerWrapper
+         1791804259.861  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.uimanager.LayoutShadowNode
+         1791804259.861  5195  5323 W droid.bluetooth: AIBinder_linkToDeath is being called with a non-null cookie and no onUnlink callback set. This might not be intended. AIBinder_DeathRecipient_setOnUnlinked should be called first.
+         1791804259.862  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.sources.geojsonsource.MLRNGeoJSONSourceManager
+         1791804259.864  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.annotations.markerview.MLRNMarkerViewManager
+         1791804259.865  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.ScreenContainerViewManager
+         1791804259.866  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.reanimated.view.REASharedTransitionBoundaryManager
+         1791804259.866  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.images.MLRNImagesManager
+         1791804259.868  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.gamma.tabs.host.TabsHostViewManager
+         1791804259.869  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.ScreenStackHeaderConfigViewManager
+         1791804259.870  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.ScreenStackHeaderSubviewManager
+         1791804259.870  5195  5195 E AvrcpTargetService: Please use AVRCP version 1.6 to enable cover art
+         1791804259.870  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.gamma.modals.formsheet.FormSheetHostViewManager
+         1791804259.872  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.layer.MLRNLayerManager
+         1791804259.874  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.location.MLRNNativeUserLocationManager
+         1791804259.876  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.sources.tilesources.rastersource.MLRNRasterSourceManager
+         1791804259.876  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.gamma.scrollviewmarker.ScrollViewMarkerViewManager
+         1791804259.877  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.gamma.modals.formsheet.FormSheetContentWrapperViewManager
+         1791804259.877  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.ScreenContentWrapperManager
+         1791804259.878  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.mapview.MLRNAndroidTextureMapViewManager
+         1791804259.878  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.mapview.MLRNMapViewManager$MapShadowNode
+         1791804259.879  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.gamma.stack.screen.StackScreenViewManager
+         1791804259.880  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.sources.imagesource.MLRNImageSourceManager
+         1791804259.880  5195  5195 W HeadsetClientService: getHeadsetClientService(): service is null
+         1791804259.881  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.sources.tilesources.vectorsource.MLRNVectorSourceManager
+         1791804259.881  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.th3rdwave.safeareacontext.SafeAreaViewManager
+         1791804259.882  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.th3rdwave.safeareacontext.SafeAreaViewShadowNode
+         1791804259.882  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.ScreenViewManager
+         1791804259.882  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.gamma.stack.header.config.StackHeaderConfigViewManager
+         1791804259.883  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.annotations.callout.MLRNCalloutManager
+         1791804259.883  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.th3rdwave.safeareacontext.SafeAreaProviderManager
+         1791804259.883  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.SearchBarManager
+         1791804259.883  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.camera.MLRNCameraManager
+         1791804259.884  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.mapview.MLRNMapViewManager
+         1791804259.884  5195  5263 W rfcomm_port_utils: system/stack/rfcomm/port_utils.cc:290 port_find_mcb: not found, bd_addr:ff:ff:ff:ff:ff:ff
+         1791804259.884  5195  5263 W rfcomm_port_utils: system/stack/rfcomm/port_utils.cc:290 port_find_mcb: not found, bd_addr:ff:ff:ff:ff:ff:ff
+         1791804259.884  5195  5263 W rfcomm_port_utils: system/stack/rfcomm/port_utils.cc:290 port_find_mcb: not found, bd_addr:ff:ff:ff:ff:ff:ff
+         1791804259.884  5195  5263 W rfcomm_port_utils: system/stack/rfcomm/port_utils.cc:290 port_find_mcb: not found, bd_addr:ff:ff:ff:ff:ff:ff
+         1791804259.885  5195  5263 W rfcomm_port_utils: system/stack/rfcomm/port_utils.cc:290 port_find_mcb: not found, bd_addr:ff:ff:ff:ff:ff:ff
+         1791804259.885  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.gamma.stack.host.StackHostViewManager
+         1791804259.885  5195  5263 W rfcomm_port_utils: system/stack/rfcomm/port_utils.cc:290 port_find_mcb: not found, bd_addr:ff:ff:ff:ff:ff:ff
+         1791804259.885  5195  5263 W rfcomm_port_utils: system/stack/rfcomm/port_utils.cc:290 port_find_mcb: not found, bd_addr:ff:ff:ff:ff:ff:ff
+         1791804259.885  5195  5263 W rfcomm_port_utils: system/stack/rfcomm/port_utils.cc:290 port_find_mcb: not found, bd_addr:ff:ff:ff:ff:ff:ff
+         1791804259.885  5195  5263 W rfcomm_port_utils: system/stack/rfcomm/port_utils.cc:290 port_find_mcb: not found, bd_addr:ff:ff:ff:ff:ff:ff
+         1791804259.885  5195  5263 W rfcomm_port_utils: system/stack/rfcomm/port_utils.cc:290 port_find_mcb: not found, bd_addr:ff:ff:ff:ff:ff:ff
+         1791804259.885  5195  5263 W rfcomm_port_utils: system/stack/rfcomm/port_utils.cc:290 port_find_mcb: not found, bd_addr:ff:ff:ff:ff:ff:ff
+         1791804259.885  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.sources.tilesources.rasterdemsource.MLRNRasterDEMSourceManager
+         1791804259.885  5195  5263 W rfcomm_port_utils: system/stack/rfcomm/port_utils.cc:290 port_find_mcb: not found, bd_addr:ff:ff:ff:ff:ff:ff
+         1791804259.885  5195  5195 E BluetoothHeadsetServiceJni: enableSwbNative: Failed to disable
+         1791804259.885  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.annotations.pointannotation.MLRNPointAnnotationManager
+         1791804259.886  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.ScreenFooterManager
+         1791804259.887  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.ModalScreenViewManager
+         1791804259.889  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.safearea.SafeAreaViewManager
+         1791804259.896  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.ScreenStackViewManager
+         1791804259.897  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.gamma.stack.header.subview.StackHeaderSubviewViewManager
+         1791804259.897  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.reactnative.maskedview.RNCMaskedViewManager
+         1791804259.898  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.gamma.tabs.screen.TabsScreenViewManager
+         1791804259.915  5195  5263 W droid.bluetooth: AIBinder_linkToDeath is being called with a non-null cookie and no onUnlink callback set. This might not be intended. AIBinder_DeathRecipient_setOnUnlinked should be called first.
+         1791804259.916  3603  3693 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+         1791804259.937  1080  1080 E TelephonyProvider: internal sim-specific settings backup data file does not exist. Aborting restore
+         1791804259.947  3603  3693 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+         1791804259.948  3603  3693 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+         1791804259.954   559  1911 W BluetoothSystemServer: BluetoothServiceBinder: getAddress(): Client does not have LOCAL_MAC_ADDRESS permission
+         1791804259.962  5195  5263 W rfcomm_port_utils: system/stack/rfcomm/port_utils.cc:290 port_find_mcb: not found, bd_addr:ff:ff:ff:ff:ff:ff
+         1791804259.962   559   648 W BluetoothSystemServer: BluetoothServiceBinder: getAddress(): Client does not have LOCAL_MAC_ADDRESS permission
+         1791804259.999  3603  3698 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+         1791804260.010  1624  5293 W GmsTaskScheduler: ScheduledCheckinGmsTaskService is not available. This may cause the task to be lost.
+         1791804260.035   506   506 W libgoldfish-rild: Multi-element reporting criteria are not supported with HIDL HAL
+         1791804260.037  1080  1080 W AlarmManager: Unrecognized alarm listener com.android.internal.telephony.data.AutoDataSwitchController$$ExternalSyntheticLambda0@c35baea
+         1791804260.057  5195  5325 W HeadsetPhoneState: startListenForPhoneState, no event to listen
+         1791804260.065  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$DefsViewManager
+         1791804260.066  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.VirtualViewManager$RenderableShadowNode
+         1791804260.067  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$FeMergeManager
+         1791804260.067  5195  5195 W bt_btif : system/btif/src/bluetooth.cc:864 pbap_pse_dynamic_version_upgrade_is_enabled: PBAP PSE dynamic version upgrade is not enabled
+         1791804260.071   559  1898 W BluetoothSystemServer: BluetoothServiceBinder: getAddress(): Client does not have LOCAL_MAC_ADDRESS permission
+         1791804260.071  5195  5263 W rfcomm_port_utils: system/stack/rfcomm/port_utils.cc:290 port_find_mcb: not found, bd_addr:ff:ff:ff:ff:ff:ff
+         1791804260.072   559  1907 W BluetoothSystemServer: BluetoothServiceBinder: getAddress(): Client does not have LOCAL_MAC_ADDRESS permission
+         1791804260.076  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.safeareaview.ReactSafeAreaViewManager
+         1791804260.077  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.gesturehandler.react.RNGestureHandlerDetectorViewManager
+         1791804260.079  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$LinearGradientManager
+         1791804260.080  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$FeGaussianBlurManager
+         1791804260.081  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.progressbar.ReactProgressBarViewManager
+         1791804260.082  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.scroll.ReactHorizontalScrollViewManager
+         1791804260.082  5195  5195 W LeAudioService: getLeAudioService(): service is NULL
+         1791804260.088  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.text.ReactTextViewManager
+         1791804260.089  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$FeColorMatrixManager
+         1791804260.090  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.scroll.ReactHorizontalScrollContainerViewManager
+         1791804260.091  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$ClipPathViewManager
+         1791804260.094  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$SymbolManager
+         1791804260.097  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$PatternManager
+         1791804260.100  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$FeBlendManager
+         1791804260.104  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.view.ReactViewManager
+         1791804260.105  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.SvgViewManager
+         1791804260.107  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.switchview.ReactSwitchManager
+         1791804260.108  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$UseViewManager
+         1791804260.109  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$CircleViewManager
+         1791804260.110  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$TSpanViewManager
+         1791804260.114  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$FilterManager
+         1791804260.115  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$MarkerManager
+         1791804260.117  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.gesturehandler.react.RNGestureHandlerButtonViewManager
+         1791804260.120  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.modal.ReactModalHostManager
+         1791804260.121  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$ForeignObjectManager
+         1791804260.122  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$EllipseViewManager
+         1791804260.123  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$LineViewManager
+         1791804260.124  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$FeFloodManager
+         1791804260.125  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$GroupViewManager
+         1791804260.125  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$TextViewManager
+         1791804260.126  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$ImageViewManager
+         1791804260.127  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$FeCompositeManager
+         1791804260.128  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.image.ReactImageManager
+         1791804260.129  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$RadialGradientManager
+         1791804260.130  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$MaskManager
+         1791804260.131  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.unimplementedview.ReactUnimplementedViewManager
+         1791804260.131  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$RectViewManager
+         1791804260.132  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$TextPathViewManager
+         1791804260.134  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.scroll.ReactScrollViewManager
+         1791804260.135  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$FeOffsetManager
+         1791804260.136  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$PathViewManager
+         1791804260.138   559  1619 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1332 android.content.Context.sendBroadcastMultiplePermissions:2468 android.content.Context.sendBroadcastMultiplePermissions:2456 com.android.server.TelephonyRegistry.broadcastDataConnectionStateChanged:3916 com.android.server.TelephonyRegistry.notifyDataConnectionForSubscriber:2228 
+         1791804260.138  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.drawer.ReactDrawerLayoutManager
+         1791804260.141  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.swiperefresh.SwipeRefreshLayoutManager
+         1791804260.142  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.textinput.ReactTextInputManager
+         1791804260.143  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.text.SelectableTextViewManager
+         1791804260.144  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.gesturehandler.react.RNGestureHandlerRootViewManager
+         1791804260.145  5243  5283 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.virtual.view.ReactVirtualViewManager
+         1791804260.147  1242  1242 W ProximityAuth: [PhoneHubNotificationProcessor] shutdown(): context is null.
+         1791804260.148  1242  1242 W ChimeraUtils: Module com.google.android.gms.auth_proximity missing resource null(0)
+         1791804260.150   559   829 E WifiDataStall: onDataConnectionStateChanged unexpected State: 1
+         1791804260.150   559   829 E MboOceController: onDataConnectionStateChanged unexpected State: 1
+         1791804260.172  5243  5283 I ReactNativeJS: Running "main"
+         1791804260.174  2267  2633 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+         1791804260.183   559   842 E AppOps  : attributionTag VCN not declared in manifest of android
+         1791804260.168  2267  2267 W binder:2267_5: type=1400 audit(0.0:58): avc:  denied  { read } for  name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=318 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+         1791804260.200  2267  2633 W libc    : Access denied finding property "service.adb.tls.port"
+         1791804260.168  2267  2267 W binder:2267_5: type=1400 audit(0.0:59): avc:  denied  { read } for  name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=63 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+         1791804260.233  1080  1295 E TelephonyConfigUpdateInstallReceiver: Failed to read current content : /data/misc/telephonyconfig/valid_telephony_config.pb
+         1791804260.255  5195  5275 W MediaControlGattService: Feature MEDIA_STATE(BIT 17) support: true
+         1791804260.260  1080  1295 E TelephonyConfigUpdateInstallReceiver: Failed to read current content : /data/misc/telephonyconfig/valid_telephony_config.pb
+         1791804260.267  5195  5275 W MediaControlGattService: Feature PLAYER_NAME(BIT 1) support: true
+         1791804260.267  5195  5275 W MediaControlGattService: Feature PLAYER_NAME_NOTIFY support: true
+         1791804260.279   559   842 E AppOps  : attributionTag VCN not declared in manifest of android
+         1791804260.279  5195  5275 W MediaControlGattService: Feature PLAYER_ICON_URL(BIT 3) support: false
+         1791804260.279  5195  5275 W MediaControlGattService: Feature PLAYER_ICON_OBJ_ID(BIT 2) support: false
+         1791804260.279  5195  5275 W MediaControlGattService: Feature CURRENT_TRACK_SEGMENT_OBJ_ID(BIT 10) support: false
+         1791804260.279  5195  5275 W MediaControlGattService: Feature CURRENT_TRACK_OBJ_ID(BIT 11) support: false
+         1791804260.279  5195  5275 W MediaControlGattService: Feature NEXT_TRACK_OBJ_ID(BIT 12) support: false
+         1791804260.279  5195  5275 W MediaControlGattService: Feature CURRENT_GROUP_OBJ_ID(BIT 13) support: false
+         1791804260.279  5195  5275 W MediaControlGattService: Feature PARENT_GROUP_OBJ_ID(BIT 14) support: false
+         1791804260.279  5195  5275 W MediaControlGattService: Feature SEARCH_RESULT_OBJ_ID(BIT 20) support: false
+         1791804260.279  5195  5275 W MediaControlGattService: Feature TRACK_TITLE(BIT 5) support: true
+         1791804260.279  5195  5275 W MediaControlGattService: Feature TRACK_TITLE_NOTIFY support: true
+         1791804260.289  1018  1061 E SystemServiceRegistry: No service published for: ethernet
+         1791804260.289  1018  1061 E SystemServiceRegistry: android.os.ServiceManager$ServiceNotFoundException: No service published for: ethernet
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at android.os.ServiceManager.getServiceOrThrow(ServiceManager.java:203)
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at android.app.SystemServiceRegistry$145.createService(SystemServiceRegistry.java:2120)
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at android.app.SystemServiceRegistry$CachedServiceFetcher.getService(SystemServiceRegistry.java:2231)
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at android.app.SystemServiceRegistry.getSystemService(SystemServiceRegistry.java:1812)
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at android.app.ContextImpl.getSystemService(ContextImpl.java:2241)
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at android.content.ContextWrapper.getSystemService(ContextWrapper.java:936)
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at com.android.networkstack.tethering.Tethering.isEthernetSupported(Tethering.java:1579)
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at com.android.networkstack.tethering.Tethering.makeSupportedDownstreams(Tethering.java:2562)
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at com.android.networkstack.tethering.Tethering.updateSupportedDownstreams(Tethering.java:2536)
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at com.android.networkstack.tethering.Tethering.updateConfiguration(Tethering.java:549)
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at com.android.networkstack.tethering.Tethering.lambda$new$4(Tethering.java:347)
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at com.android.networkstack.tethering.Tethering.$r8$lambda$4V1rGOzF7AkW0XBFoABAQmt9cHM(Tethering.java:0)
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at com.android.networkstack.tethering.Tethering$$ExternalSyntheticLambda12.accept(R8$$SyntheticClass:0)
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at com.android.networkstack.tethering.util.VersionedBroadcastListener$Receiver.onReceive(VersionedBroadcastListener.java:103)
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at android.app.LoadedApk$ReceiverDispatcher$Args.lambda$getRunnable$0(LoadedApk.java:1814)
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at android.app.LoadedApk$ReceiverDispatcher$Args.$r8$lambda$mcNAAl1SQ4MyJPyDg8TJ2x2h0Rk(Unknown Source:0)
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at android.app.LoadedApk$ReceiverDispatcher$Args$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at android.os.Handler.handleCallback(Handler.java:959)
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at android.os.Handler.dispatchMessage(Handler.java:100)
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at android.os.Looper.loopOnce(Looper.java:232)
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at android.os.Looper.loop(Looper.java:317)
+         1791804260.289  1018  1061 E SystemServiceRegistry: 	at android.os.HandlerThread.run(HandlerThread.java:85)
+         1791804260.290   559   582 W Looper  : Slow dispatch took 100ms android.fg h=android.os.Handler c=android.app.LoadedApk$ReceiverDispatcher$Args$$ExternalSyntheticLambda0@d225076 m=0
+         1791804260.290  5243  5283 W ExpoModulesCore: Introspectable data is missing for class expo.modules.location.records.LocationTaskOptions. Falling back to reflection-based conversion, which may have performance implications. To fix this, ensure that the Record class is properly annotated with expo.modules.kotlin.types.Introspectable and that the necessary metadata is available at runtime.
+         1791804260.309  5195  5195 W HeadsetClientService: getHeadsetClientService(): service is null
+         1791804260.309  5195  5195 W MapClientService: getMapClientService(): service is null
+         1791804260.309  5195  5195 W PbapClientService: getPbapClientService(): service is null
+         1791804260.309  5195  5195 W HapClientService: getHapClientService(): service is NULL
+         1791804260.309  5195  5195 W SapService: getSapService(): service is null
+         1791804260.309  5195  5195 W VolumeControlService: getVolumeControlService(): service is NULL
+         1791804260.309  5195  5195 W CsipSetCoordinatorService: getCsipSetCoordinatorService(): service is NULL
+         1791804260.309  5195  5195 W LeAudioService: getLeAudioService(): service is NULL
+         1791804260.309  5195  5195 W BassClientService: getBassClientService(): service is NULL
+         1791804260.309  5195  5195 W BatteryService: getBatteryService(): service is NULL
+         1791804260.309  5195  5275 W MediaControlGattService: Feature TRACK_DURATION(BIT 6) support: true
+         1791804260.309  4869  4869 W MediaSessionCompat: Couldn't find a unique registered media button receiver in the given context.
+         1791804260.309  5195  5275 W MediaControlGattService: Feature TRACK_DURATION_NOTIFY support: true
+         1791804260.313  2165  4841 E CellBroadcastConfigService: fails to setCellBroadcastRanges, result = 2
+         1791804260.316  5195  5275 W MediaControlGattService: Feature TRACK_POSITION(BIT 7) support: true
+         1791804260.316  5195  5275 W MediaControlGattService: Feature TRACK_POSITION_NOTIFY support: true
+         1791804260.316  5195  5275 W MediaControlGattService: Feature MEDIA_STATE(BIT 17) support: true
+         1791804260.316  5195  5275 W MediaControlGattService: Feature MEDIA_STATE(BIT 17) support: true
+         1791804260.332  3603  3693 W Bugle   : RestoreReceiver: Intent { act=android.telephony.action.CARRIER_CONFIG_CHANGED flg=0x15000010 cmp=com.google.android.apps.messaging/.shared.receiver.RestoreReceiver (has extras) }
+         1791804260.336  5195  5275 W MediaControlGattService: Feature PLAYBACK_SPEED(BIT 8) support: true
+         1791804260.336  5195  5275 W MediaControlGattService: Feature PLAYBACK_SPEED(BIT 8) support: true
+         1791804260.336  5195  5275 W MediaControlGattService: Feature PLAYBACK_SPEED_NOTIFY support: true
+         1791804260.349  5195  5275 W MediaControlGattService: Feature SEEKING_SPEED(BIT 9) support: true
+         1791804260.366  5195  5275 W MediaControlGattService: Feature SEEKING_SPEED(BIT 9) support: true
+         1791804260.366  5195  5275 W MediaControlGattService: Feature SEEKING_SPEED_NOTIFY support: true
+         1791804260.366  5195  5275 W MediaControlGattService: Feature PLAYING_ORDER_SUPPORTED(BIT 16) support: true
+         1791804260.367  5195  5275 W MediaControlGattService: Feature PLAYING_ORDER(BIT 15) support: true
+         1791804260.367  5195  5275 W MediaControlGattService: Feature PLAYING_ORDER_NOTIFY support: true
+         1791804260.372  5195  5195 W MediaSessionCompat: Couldn't find a unique registered media button receiver in the given context.
+         1791804260.381  5195  5275 W MediaControlGattService: Feature MEDIA_CONTROL_POINT_OPCODES_SUPPORTED(BIT 19) support: true
+         1791804260.381  5195  5275 W MediaControlGattService: Feature MEDIA_CONTROL_POINT_OPCODES_SUPPORTED_NOTIFY support: true
+         1791804260.422  5195  5275 W MediaControlGattService: Feature MEDIA_STATE(BIT 17) support: true
+         1791804260.423  5195  5275 W MediaControlGattService: Feature PLAYER_ICON_URL(BIT 3) support: false
+         1791804260.423  5195  5275 W MediaControlGattService: Feature PLAYER_ICON_OBJ_ID(BIT 2) support: false
+         1791804260.423  5195  5275 W MediaControlGattService: Feature PLAYER_NAME(BIT 1) support: true
+         1791804260.423  5195  5275 W MediaControlGattService: Feature PLAYING_ORDER_SUPPORTED(BIT 16) support: true
+         1791804260.423  5195  5275 W MediaControlProfile: MCS service state fields left unhandled: 
+         1791804260.423  5195  5275 W MediaControlProfile:    > PLAYBACK_STATE
+         1791804260.423  5195  5275 W MediaControlProfile:    > PLAYER_NAME
+         1791804260.423  5195  5275 W MediaControlProfile:    > PLAYING_ORDER_SUPPORTED
+         1791804260.425  3603  3748 W Bugle   : BuglePhoneNumberUtils: canonicalizeMccMnc: invalid mccmnc. mcc: null, mnc: null
+         1791804260.436  3603  3705 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+         1791804260.501   559   559 E BluetoothAdapter: onBluetoothOn: Binder null for LE_AUDIO
+         1791804260.501   559   559 E BluetoothAdapter: onBluetoothOn: Binder null for LE_AUDIO_BROADCAST
+         1791804260.501   559   559 E BluetoothAdapter: onBluetoothOn: Binder null for A2DP_SINK
+         1791804260.501   559   559 E BluetoothAdapter: onBluetoothOn: Binder null for LE_AUDIO
+         1791804260.528  1080  1080 W Telephony: registerMmTelCapabilityCallback: registration failed, no ImsService available. Exception: code: 1
+         1791804260.528  1080  1080 W Telephony: registerImsRegistrationCallback: registration failed, no ImsService available. Exception: code: 1
+         1791804260.529   559   559 E BluetoothAdapter: onBluetoothOn: Binder null for LE_AUDIO
+         1791804260.544  3603  4924 W Bugle   : BuglePhoneNumberUtils: canonicalizeMccMnc: invalid mccmnc. mcc: null, mnc: null
+         1791804260.578  5195  5195 E MediaBrowser: onConnectFailed for ComponentInfo{com.google.android.googlequicksearchbox/com.google.android.apps.search.podcasts.browser.PodcastBrowserService}
+         1791804260.589  4869  4869 W A       : (REDACTED) Caller %s is not allowed to use the news media browser service
+         1791804260.592   559   648 W ActivityManager: Receiver with filter android.content.IntentFilter@24ccf21 already registered for pid 1097, callerPackage is com.android.settings
+         1791804260.593   506   506 W libgoldfish-rild: Multi-element reporting criteria are not supported with HIDL HAL
+         1791804260.598  5195  5195 W BrowsedPlayerWrapper: onConnectionFailed: Connection Failed with com.google.android.googlequicksearchbox
+         1791804260.598  5195  5195 E MediaBrowser: onConnectFailed for ComponentInfo{com.google.android.googlequicksearchbox/com.google.android.apps.search.podcasts.browser.PodcastBrowserService}
+         1791804260.608  4869  4869 W A       : (REDACTED) Caller %s is not allowed to use the news media browser service
+         1791804260.613  5195  5195 W BrowsedPlayerWrapper: onConnectionFailed: Connection Failed with com.google.android.googlequicksearchbox
+         1791804260.627   559  1907 W ActivityManager: Receiver with filter android.content.IntentFilter@2fa39d2 already registered for pid 918, callerPackage is com.android.systemui
+         1791804260.645  5243  5283 I ReactNativeJS: [perf] data-ready +372 ms after JS start
+         1791804260.650   559  2039 W BluetoothSystemServer: BluetoothServiceBinder: getAddress(): Client does not have LOCAL_MAC_ADDRESS permission
+         1791804260.653  5195  5263 W rfcomm_port_utils: system/stack/rfcomm/port_utils.cc:290 port_find_mcb: not found, bd_addr:ff:ff:ff:ff:ff:ff
+         1791804260.656   559  2039 W BluetoothSystemServer: BluetoothServiceBinder: getAddress(): Client does not have LOCAL_MAC_ADDRESS permission
+         1791804260.657  1624  5293 W Checkin : [CheckinRequestProcessor] Default Task : Checkin failed: https://android.googleapis.com/checkin (fragment #0) Unable to resolve host "android.googleapis.com": No address associated with hostname
+         1791804260.668  5195  5195 W MediaSessionCompat: Couldn't find a unique registered media button receiver in the given context.
+         1791804260.677  1242  2806 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+         1791804260.688   559   576 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk' with 1 weak references
+         1791804260.688   559   576 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/PrebuiltGmail/PrebuiltGmail.apk' with 1 weak references
+         1791804260.690   559   576 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/Drive/Drive.apk' with 1 weak references
+         1791804260.690   559   576 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/CalendarGooglePrebuilt/CalendarGooglePrebuilt.apk' with 1 weak references
+         1791804260.692   559   576 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/LatinIMEGooglePrebuilt/LatinIMEGooglePrebuilt.apk' with 1 weak references
+         1791804260.693   559   576 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /system_ext/app/AccessibilityMenu/AccessibilityMenu.apk' with 1 weak references
+         1791804260.693   559   576 W system_server: ApkAssets: Deleting an ApkAssets object '/product/overlay/AccessibilityMenu__sdk_gphone64_x86_64__auto_generated_rro_product.apk' with 1 weak references
+         1791804260.694   559   576 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/talkback/talkback.apk' with 1 weak references
+         1791804260.694   559   576 W system_server: ApkAssets: Deleting an ApkAssets object '/vendor/overlay/EmulatorTalkBackOverlay/EmulatorTalkBackOverlay.apk' with 1 weak references
+         1791804260.694   559   576 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /system/priv-app/InputDevices/InputDevices.apk' with 1 weak references
+         1791804260.695   559   576 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/GoogleTTS/GoogleTTS.apk' with 1 weak references
+         1791804260.695   559   576 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /product/priv-app/Velvet/Velvet.apk' with 1 weak references
+         1791804260.696  1080  1080 W Telephony: registerMmTelCapabilityCallback: registration failed, no ImsService available. Exception: code: 1
+         1791804260.712  5195  5195 E MediaBrowser: onConnectFailed for ComponentInfo{com.google.android.googlequicksearchbox/com.google.android.libraries.assistant.auto.tng.media.mediabrowser.NewsMediaBrowserService}
+         1791804260.718  5195  5195 W BrowsedPlayerWrapper: onConnectionFailed: Connection Failed with com.google.android.googlequicksearchbox
+         1791804260.718  5195  5195 E MediaBrowser: onConnectFailed for ComponentInfo{com.google.android.googlequicksearchbox/com.google.android.libraries.assistant.auto.tng.media.mediabrowser.NewsMediaBrowserService}
+         1791804260.720  5195  5195 W BrowsedPlayerWrapper: onConnectionFailed: Connection Failed with com.google.android.googlequicksearchbox
+         1791804260.741  5195  5195 W BluetoothMediaBrowserService: getContents(id=__ROOT__): AVRCP Controller Service not ready
+         1791804260.741  5195  5195 W BluetoothMediaBrowserService: getContents(id=__ROOT__): AVRCP Controller Service not ready
+         1791804260.745  5195  5354 W droid.bluetooth: Core platform API violation: Llibcore/io/Memory;->pokeByte(JB)V from Lcom/google/protobuf/UnsafeUtil; using reflection
+         1791804260.745  5195  5354 W droid.bluetooth: Core platform API violation: Llibcore/io/Memory;->peekByte(J)B from Lcom/google/protobuf/UnsafeUtil; using reflection
+         1791804260.756  3603  3705 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+         1791804260.808   358   358 E Netd    : no such netId 102
+         1791804260.812   559   836 W ConnectivityService: Exception adding interface: android.os.ServiceSpecificException: Machine is not on the network (code 64)
+         1791804260.818   358   358 E Netd    : no such netId 102
+         1791804260.819   559   836 E ConnectivityService: Exception in addRoute for non-gateway: android.os.ServiceSpecificException: Machine is not on the network (code 64)
+         1791804260.819   358   358 E Netd    : no such netId 102
+         1791804260.825   559   836 E ConnectivityService: Exception in addRoute for gateway: android.os.ServiceSpecificException: Machine is not on the network (code 64)
+         1791804260.826  1242  1242 W ProximityAuth: [PhoneHubNotificationProcessor] shutdown(): context is null.
+         1791804260.826  1242  1242 W ChimeraUtils: Module com.google.android.gms.auth_proximity missing resource null(0)
+         1791804260.832  1242  4941 W EasyUnlock: [HostValidator] Invalid account list. [CONTEXT service_id=234 ]
+         1791804260.837   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.837   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.838   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.838   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.838   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.838   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.838   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.838   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.838   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.838   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.838   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.838   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.838   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.838   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.838   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.838   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.838   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.838   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.838   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.838   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.838   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.839   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.839   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.839   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.839   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.839   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.839   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.850  1242  5367 W Settings: Setting airplane_mode_on has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+         1791804260.852  5195  5195 E MediaControlProfile: onCurrentPlayerStateUpdated: base actions not supported, player actions= 27ee07, expected at least= 7f
+         1791804260.852  5195  5195 W MediaControlGattService: Feature MEDIA_STATE(BIT 17) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature PLAYER_NAME(BIT 1) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature PLAYER_ICON_URL(BIT 3) support: false
+         1791804260.853  5195  5195 W MediaControlGattService: Feature PLAYER_ICON_OBJ_ID(BIT 2) support: false
+         1791804260.853  5195  5195 W MediaControlGattService: Feature CURRENT_TRACK_SEGMENT_OBJ_ID(BIT 10) support: false
+         1791804260.853  5195  5195 W MediaControlGattService: Feature CURRENT_TRACK_OBJ_ID(BIT 11) support: false
+         1791804260.853  5195  5195 W MediaControlGattService: Feature NEXT_TRACK_OBJ_ID(BIT 12) support: false
+         1791804260.853  5195  5195 W MediaControlGattService: Feature CURRENT_GROUP_OBJ_ID(BIT 13) support: false
+         1791804260.853  5195  5195 W MediaControlGattService: Feature PARENT_GROUP_OBJ_ID(BIT 14) support: false
+         1791804260.853  5195  5195 W MediaControlGattService: Feature SEARCH_RESULT_OBJ_ID(BIT 20) support: false
+         1791804260.853  5195  5195 W MediaControlGattService: Feature TRACK_TITLE(BIT 5) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature TRACK_DURATION(BIT 6) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature TRACK_POSITION(BIT 7) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature TRACK_POSITION_NOTIFY support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature MEDIA_STATE(BIT 17) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature MEDIA_STATE(BIT 17) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature PLAYBACK_SPEED(BIT 8) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature PLAYBACK_SPEED(BIT 8) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature PLAYBACK_SPEED(BIT 8) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature SEEKING_SPEED(BIT 9) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature SEEKING_SPEED(BIT 9) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature SEEKING_SPEED(BIT 9) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature PLAYING_ORDER_SUPPORTED(BIT 16) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature PLAYING_ORDER(BIT 15) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature MEDIA_CONTROL_POINT_OPCODES_SUPPORTED(BIT 19) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature TRACK_POSITION(BIT 7) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature TRACK_POSITION_NOTIFY support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature MEDIA_STATE(BIT 17) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature MEDIA_STATE(BIT 17) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature PLAYER_NAME(BIT 1) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature PLAYER_NAME(BIT 1) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature PLAYER_NAME(BIT 1) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature PLAYER_NAME_NOTIFY support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature MEDIA_CONTROL_POINT_OPCODES_SUPPORTED(BIT 19) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature PLAYING_ORDER_SUPPORTED(BIT 16) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature PLAYING_ORDER(BIT 15) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature PLAYER_ICON_OBJ_ID(BIT 2) support: false
+         1791804260.853  5195  5195 W MediaControlGattService: Feature PLAYER_ICON_URL(BIT 3) support: false
+         1791804260.853  5195  5195 W MediaControlGattService: Feature MEDIA_CONTROL_POINT_OPCODES_SUPPORTED(BIT 19) support: true
+         1791804260.853  5195  5195 W MediaControlGattService: Feature TRACK_TITLE(BIT 5) support: true
+         1791804260.854  5195  5195 W MediaControlGattService: Feature TRACK_TITLE(BIT 5) support: true
+         1791804260.854  5195  5195 W MediaControlGattService: Feature TRACK_TITLE_NOTIFY support: true
+         1791804260.854  5195  5195 W MediaControlGattService: Feature TRACK_DURATION(BIT 6) support: true
+         1791804260.854  5195  5195 W MediaControlGattService: Feature TRACK_DURATION(BIT 6) support: true
+         1791804260.854  5195  5195 W MediaControlGattService: Feature TRACK_DURATION_NOTIFY support: true
+         1791804260.855  5195  5195 W MediaControlGattService: Feature MEDIA_STATE(BIT 17) support: true
+         1791804260.855  5195  5195 W MediaControlGattService: Feature TRACK_CHANGED(BIT 4) support: true
+         1791804260.855  5195  5195 W MediaControlGattService: Feature PLAYING_ORDER_SUPPORTED(BIT 16) support: true
+         1791804260.855  5195  5195 W MediaControlGattService: Feature PLAYING_ORDER(BIT 15) support: true
+         1791804260.855  5195  5195 W MediaControlGattService: Feature PLAYING_ORDER_NOTIFY support: true
+         1791804260.855  5195  5195 W MediaControlGattService: Feature MEDIA_STATE(BIT 17) support: true
+         1791804260.863   559  1911 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendBroadcastMultiplePermissions:1332 android.content.Context.sendBroadcastMultiplePermissions:2468 android.content.Context.sendBroadcastMultiplePermissions:2456 com.android.server.TelephonyRegistry.broadcastDataConnectionStateChanged:3916 com.android.server.TelephonyRegistry.notifyDataConnectionForSubscriber:2228 
+         1791804260.884  1242  5362 W PersonalSafety: LastLocation was null: no distance computed [CONTEXT service_id=310 ]
+         1791804260.885  1242  5362 W PersonalSafety: Ble scanner not running, ignore location update [CONTEXT service_id=310 ]
+         1791804260.901  1080  1080 W Telephony: registerMmTelCapabilityCallback: registration failed, no ImsService available. Exception: code: 1
+         1791804260.903   559   593 W MagnificationConnectionManager: requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+         1791804260.908   559   836 W DnsManager: updatePrivateDns(102, PrivateDnsConfig{opportunistic:/[], dohName=, dohIps=[], dohPath=, dohPort=-1})
+         1791804260.909   358  5369 W resolv  : Validating DnsTlsServer {10.0.2.3/} with mark 0xf0066
+         1791804260.911   358  5369 W resolv  : Socket failed to connect, errno=101: Network is unreachable
+         1791804260.911   358  5369 W resolv  : TCP Handshake failed: 101
+         1791804260.911   358  5369 W resolv  : query failed
+         1791804260.911   358  5369 W resolv  : validateDnsTlsServer returned 0 for {10.0.2.3/}
+         1791804260.911   358  5369 W resolv  : Validation failed
+         1791804260.915   559   559 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.916   559   559 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.918   559   559 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.918   559   559 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.922  1195  1232 W AllAppsList: updatePromiseInstallInfo: no Activities matched updated package, removing all apps from package=com.google.android.bluetooth
+         1791804260.925   358  5371 W resolv  : Validating DnsTlsServer {10.0.2.3/} with mark 0xf0066
+         1791804260.929   358  5371 W resolv  : SSL_connect ssl error =5, mark 0xf0066: Connection refused
+         1791804260.929   358  5371 W resolv  : TLS Handshake failed
+         1791804260.929   358  5371 W resolv  : query failed
+         1791804260.929   358  5371 W resolv  : validateDnsTlsServer returned 0 for {10.0.2.3/}
+         1791804260.929   358  5371 W resolv  : Validation failed
+         1791804260.937   559   593 W MagnificationConnectionManager: requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+         1791804260.937   559   559 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.938   559   559 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.938   559   559 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.941  1195  1232 W AllAppsList: updatePromiseInstallInfo: no Activities matched updated package, removing all apps from package=com.google.android.gms
+         1791804260.957   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.957   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.957   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.958   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.958   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.958   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.958   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.958   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.958   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.958   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.958   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.958   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.958   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.960   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.960   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.960   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.960   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.960   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.960   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.960   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.960   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.960   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.960   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.960   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.960   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.960   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.963   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.963   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.963   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.963   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.963   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.963   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.964   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.964   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.964   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.964   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.964   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.964   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.964   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.964   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.964   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.964   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.964   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.965   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.965   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.965   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.965   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.965   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.965   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.967   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.967   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.967   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804260.970   559  1042 W Role    : Default holder doesn't have required signing certificate: com.google.android.retaildemo:6547c73dee150c103980bfdffe55cc9a011d785dd694a5f99afd8205bcaf1f80
+         1791804260.973   559  1042 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms.supervision, role: android.app.role.SYSTEM_SUPERVISION
+         1791804260.974   559  1042 W Role    : Default holder doesn't have required signing certificate: com.google.android.apps.work.clouddpc:23962F4B43B9857638EA66F4D419518EAE282491ACDA4B94707BD59003C45E58
+         1791804260.975  1080  1080 E CarrierKeyDownloadManager [0]: handleAlarmOrConfigChange ActiveSubscriptionInfoList = 1
+         1791804260.985   358   377 E NetlinkEvent: NetlinkEvent::FindParam(): Parameter 'INTERFACE' not found
+         1791804260.985   358   377 E NetlinkEvent: NetlinkEvent::FindParam(): Parameter 'STATE' not found
+         1791804260.985   358   377 E NetlinkEvent: NetlinkEvent::FindParam(): Parameter 'TIME_NS' not found
+         1791804260.985   358   377 E NetlinkEvent: NetlinkEvent::FindParam(): Parameter 'UID' not found
+         1791804261.005  5243  5284 W unknown:ReactNative: StatusBarModule: Ignored status bar change, current activity is edge-to-edge.
+         1791804261.005  5243  5284 W unknown:ReactNative: StatusBarModule: Ignored status bar change, current activity is edge-to-edge.
+         1791804261.039   559   836 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendStickyBroadcast:1655 android.net.connectivity.com.android.server.ConnectivityService.sendStickyBroadcast:3944 android.net.connectivity.com.android.server.ConnectivityService.sendGeneralBroadcast:3914 android.net.connectivity.com.android.server.ConnectivityService.sendConnectedBroadcast:3887 android.net.connectivity.com.android.server.ConnectivityService.sendLegacyNetworkBroadcast:11497 
+         1791804261.160   559  1042 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.gms, role: android.app.role.WALLET
+         1791804261.162   506   506 W libgoldfish-rild: Multi-element reporting criteria are not supported with HIDL HAL
+         1791804261.190  1242  2182 W SystemServiceRegistry: No service published for: wifirtt
+         1791804261.208   559  1042 E RoleControllerServiceImpl: Default/fallback role holder package doesn't qualify for the role, package: com.google.android.devicelockcontroller, role: android.app.role.SYSTEM_FINANCED_DEVICE_CONTROLLER
+         1791804261.213  1080  1080 W FeatureConnection: getRegistrationTech: ImsRegistration is null
+         1791804261.230  1080  1087 W System  : A resource failed to call AbstractCursor.close. 
+         1791804261.234  1080  1087 W System  : A resource failed to call AbstractCursor.close. 
+         1791804261.234  1080  1087 W System  : A resource failed to call AbstractCursor.close. 
+         1791804261.248  1080  1080 E SmsApplication: com.google.android.apps.messaging lost android:read_cell_broadcasts:  (fixing)
+         1791804261.249   559  1056 W AppOpService: Ignored setUidMode call for runtime permission app op: uid = 10138, code = READ_CELL_BROADCASTS, mode = allow, callingUid = 1001, oldMode = allow
+         1791804261.250  1080  1080 E CellBroadcastUtils: getDefaultCellBroadcastReceiverPackageName: no package found
+         1791804261.250   559  2039 W AppOpService: Ignored setUidMode call for runtime permission app op: uid = 1001, code = READ_SMS, mode = allow, callingUid = 1001, oldMode = allow
+         1791804261.250   559  1056 W AppOpService: Ignored setUidMode call for runtime permission app op: uid = 1001, code = RECEIVE_SMS, mode = allow, callingUid = 1001, oldMode = allow
+         1791804261.250   559  2039 W AppOpService: Ignored setUidMode call for runtime permission app op: uid = 1001, code = RECEIVE_WAP_PUSH, mode = allow, callingUid = 1001, oldMode = allow
+         1791804261.250   559  1056 W AppOpService: Ignored setUidMode call for runtime permission app op: uid = 1001, code = SEND_SMS, mode = allow, callingUid = 1001, oldMode = allow
+         1791804261.251   559  2039 W AppOpService: Ignored setUidMode call for runtime permission app op: uid = 1001, code = READ_CELL_BROADCASTS, mode = allow, callingUid = 1001, oldMode = allow
+         1791804261.258   358  5387 W resolv  : Validating DnsTlsServer {10.0.2.3/} with mark 0xf0066
+         1791804261.258   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.258   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.258   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.258   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.258   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.258   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.258   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.258   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.258   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.259   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.259   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.259   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.259   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.259   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.259   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.259   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.259   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.259   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.259   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.259   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.259   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.259   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.259   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.259   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.259   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.259   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804261.259   559   836 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendStickyBroadcast:1655 android.net.connectivity.com.android.server.ConnectivityService.sendStickyBroadcast:3944 android.net.connectivity.com.android.server.ConnectivityService.sendGeneralBroadcast:3914 android.net.connectivity.com.android.server.ConnectivityService.sendInetConditionBroadcast:3891 android.net.connectivity.com.android.server.ConnectivityService.updateInetCondition:11152 
+         1791804261.262   358  5387 W resolv  : SSL_connect ssl error =5, mark 0xf0066: Connection refused
+         1791804261.262   358  5387 W resolv  : TLS Handshake failed
+         1791804261.262   358  5387 W resolv  : query failed
+         1791804261.262   358  5387 W resolv  : validateDnsTlsServer returned 0 for {10.0.2.3/}
+         1791804261.262   358  5387 W resolv  : Validation failed
+         1791804261.267  1080  1080 E SmsApplication: com.google.android.apps.messaging lost android:read_cell_broadcasts:  (fixing)
+         1791804261.267   559  1911 W AppOpService: Ignored setUidMode call for runtime permission app op: uid = 10138, code = READ_CELL_BROADCASTS, mode = allow, callingUid = 1001, oldMode = allow
+         1791804261.268  1080  1080 E CellBroadcastUtils: getDefaultCellBroadcastReceiverPackageName: no package found
+         1791804261.268   559  1911 W AppOpService: Ignored setUidMode call for runtime permission app op: uid = 1001, code = READ_SMS, mode = allow, callingUid = 1001, oldMode = allow
+         1791804261.270   559  1911 W AppOpService: Ignored setUidMode call for runtime permission app op: uid = 1001, code = RECEIVE_SMS, mode = allow, callingUid = 1001, oldMode = allow
+         1791804261.270   559  1911 W AppOpService: Ignored setUidMode call for runtime permission app op: uid = 1001, code = RECEIVE_WAP_PUSH, mode = allow, callingUid = 1001, oldMode = allow
+         1791804261.270   559  1911 W AppOpService: Ignored setUidMode call for runtime permission app op: uid = 1001, code = SEND_SMS, mode = allow, callingUid = 1001, oldMode = allow
+         1791804261.270   559  1911 W AppOpService: Ignored setUidMode call for runtime permission app op: uid = 1001, code = READ_CELL_BROADCASTS, mode = allow, callingUid = 1001, oldMode = allow
+         1791804261.277  3603  3765 W WM-Processor: Didn't find WorkSpec for id WorkGenerationalId(workSpecId=80561c99-83e6-4418-bcb5-d5188e8bab09, generation=0)
+         1791804261.288  3603  5389 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=114 ]
+         1791804261.308  5195  5325 W HeadsetPhoneState: startListenForPhoneState, no event to listen
+         1791804261.311  3603  5389 W BugleRcsEngine: Can't proceed with provisioning. Trying to provision simId: redacted-pii:sim_id[chars:20,last3:897]. Current default call simId: redacted-pii:sim_id[chars:20,last3:897]. Is RCS enabled: false [2bc2acaa-add3-44b3-aad0-63bebcb01740] [CONTEXT log_prefix="(PEv2-SM234967094-DefaultCallSmsData-1-876)" thread_id=114 ]
+         1791804261.317  3603  5389 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=114 ]
+         1791804261.323  3603  5389 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=114 ]
+         1791804261.359  3603  5389 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=114 ]
+         1791804261.360  3603  5389 W BugleRcsEngine: onQuitting [null] [CONTEXT log_prefix="(PEv2-SM234967094-DefaultCallSmsData-1-876)" thread_id=114 ]
+         1791804261.380  3603  3764 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=66 ]
+         1791804261.398  3603  3764 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=66 ]
+         1791804261.412  3603  3764 W BugleRcsEngine: Unable to send diagnostic log [CONTEXT thread_id=66 ]
+         1791804261.414  1242  5361 E WakeLock: GCM_CONN_ALARM release without a matched acquire!
+         1791804261.479   559   582 I ActivityTaskManager: Displayed no.rastcamp.app/.MainActivity for user 0: +2s855ms
+         1791804261.752   559  2039 W PackageConfigPersister: App-specific configuration not found for packageName: no.rastcamp.app and userId: 0
+         1791804261.832   918  1040 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@dced4ac
+         1791804261.833   559  2039 W InputManager-JNI: Input channel object '5503bb7 Splash Screen no.rastcamp.app (client)' was disposed without first being removed with the input manager!
+         1791804261.834   559  1907 W WindowManager: Failed looking up window session=Session{2378350 918:u0a10181} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:6311 com.android.server.wm.Session.setOnBackInvokedCallbackInfo:1020 android.view.IWindowSession$Stub.onTransact:1199 
+         1791804262.016  2267  2633 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+         1791804261.996  2267  2267 W binder:2267_5: type=1400 audit(0.0:60): avc:  denied  { read } for  name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=318 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+         1791804262.016  2267  2633 W libc    : Access denied finding property "service.adb.tls.port"
+         1791804262.012  2267  2267 W binder:2267_5: type=1400 audit(0.0:61): avc:  denied  { read } for  name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=63 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+         1791804262.065  1242  1891 W GmsUrlRequestImpl: Content-Type header is overwritten.
+         1791804262.156  1242  1891 W GLSUser : [AppCertManager] Exception while requesting key: 
+         1791804262.156  1242  1891 W GLSUser : java.util.concurrent.ExecutionException: bpcw: Parse Proto Exception with response code 400
+         1791804262.156  1242  1891 W GLSUser : 	at etvr.s(:com.google.android.gms@242335041@24.23.35 (190800-646585959):21)
+         1791804262.156  1242  1891 W GLSUser : 	at etvr.get(:com.google.android.gms@242335041@24.23.35 (190800-646585959):10)
+         1791804262.156  1242  1891 W GLSUser : 	at yfw.b(:com.google.android.gms@242335041@24.23.35 (190800-646585959):477)
+         1791804262.156  1242  1891 W GLSUser : 	at yfu.b(:com.google.android.gms@242335041@24.23.35 (190800-646585959):31)
+         1791804262.156  1242  1891 W GLSUser : 	at yfp.a(:com.google.android.gms@242335041@24.23.35 (190800-646585959):1)
+         1791804262.156  1242  1891 W GLSUser : 	at yfs.a(:com.google.android.gms@242335041@24.23.35 (190800-646585959):58)
+         1791804262.156  1242  1891 W GLSUser : 	at uou.call(:com.google.android.gms@242335041@24.23.35 (190800-646585959):56)
+         1791804262.156  1242  1891 W GLSUser : 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+         1791804262.156  1242  1891 W GLSUser : 	at angs.c(:com.google.android.gms@242335041@24.23.35 (190800-646585959):50)
+         1791804262.156  1242  1891 W GLSUser : 	at angs.run(:com.google.android.gms@242335041@24.23.35 (190800-646585959):76)
+         1791804262.156  1242  1891 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+         1791804262.156  1242  1891 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+         1791804262.156  1242  1891 W GLSUser : 	at anmg.run(:com.google.android.gms@242335041@24.23.35 (190800-646585959):8)
+         1791804262.156  1242  1891 W GLSUser : 	at java.lang.Thread.run(Thread.java:1012)
+         1791804262.156  1242  1891 W GLSUser : Caused by: bpcw: Parse Proto Exception with response code 400
+         1791804262.156  1242  1891 W GLSUser : 	at bpdw.b(:com.google.android.gms@242335041@24.23.35 (190800-646585959):80)
+         1791804262.156  1242  1891 W GLSUser : 	at bpgb.e(:com.google.android.gms@242335041@24.23.35 (190800-646585959):17)
+         1791804262.156  1242  1891 W GLSUser : 	at bpgp.onSucceeded(:com.google.android.gms@242335041@24.23.35 (190800-646585959):7)
+         1791804262.156  1242  1891 W GLSUser : 	at m.mw.onSucceeded(:com.google.android.gms.dynamite_cronetdynamite@242335041@24.23.35 (190800-0):3)
+         1791804262.156  1242  1891 W GLSUser : 	at m.lt.run(:com.google.android.gms.dynamite_cronetdynamite@242335041@24.23.35 (190800-0):25)
+         1791804262.156  1242  1891 W GLSUser : 	... 6 more
+         1791804262.156  1242  1891 W GLSUser : Caused by: fkhe: Protocol message contained an invalid tag (zero).
+         1791804262.156  1242  1891 W GLSUser : 	at fkea.k(:com.google.android.gms@242335041@24.23.35 (190800-646585959):39)
+         1791804262.156  1242  1891 W GLSUser : 	at fkid.c(:com.google.android.gms@242335041@24.23.35 (190800-646585959):309)
+         1791804262.156  1242  1891 W GLSUser : 	at fkid.i(:com.google.android.gms@242335041@24.23.35 (190800-646585959):8)
+         1791804262.156  1242  1891 W GLSUser : 	at fkgi.fe(:com.google.android.gms@242335041@24.23.35 (190800-646585959):25)
+         1791804262.156  1242  1891 W GLSUser : 	at fkgc.g(:com.google.android.gms@242335041@24.23.35 (190800-646585959):3)
+         1791804262.156  1242  1891 W GLSUser : 	at fkdw.e(:com.google.android.gms@242335041@24.23.35 (190800-646585959):1)
+         1791804262.156  1242  1891 W GLSUser : 	at fkdw.d(:com.google.android.gms@242335041@24.23.35 (190800-646585959):3)
+         1791804262.156  1242  1891 W GLSUser : 	at fkdw.p(:com.google.android.gms@242335041@24.23.35 (190800-646585959):1)
+         1791804262.156  1242  1891 W GLSUser : 	at bpdw.g(:com.google.android.gms@242335041@24.23.35 (190800-646585959):68)
+         1791804262.156  1242  1891 W GLSUser : 	at bpdw.b(:com.google.android.gms@242335041@24.23.35 (190800-646585959):11)
+         1791804262.156  1242  1891 W GLSUser : 	... 10 more
+         1791804262.276  1624  4849 W ZappDownloader: No successful Zapp module downloads for requested modules [VisionBarcode.optional:242335100800:permitMetered, MlkitBarcodeUi.optional:242335100800:permitMetered].
+         1791804262.528  1242  1249 W .gms.persistent: ApkAssets: Deleting an ApkAssets object '<empty> and /product/priv-app/Velvet/Velvet.apk' with 1 weak references
+         1791804262.544  1343  1743 E HandwritingSuperpacksUtil: HandwritingSuperpacksUtil.getPackMappingPackName():40 No pack mapping pack found in []
+         1791804262.729   559  2848 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+         1791804262.749  1242  5393 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+         1791804262.750  1242  5393 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+         1791804262.779   559   829 W LastMileLogger: Failed to open free_buffer pseudo-file: /sys/kernel/debug/tracing/instances/wifi/free_buffer: open failed: ENOENT (No such file or directory)
+         1791804262.779   559   829 W LastMileLogger: Failed to arm fail-safe.
+         1791804262.779   505   505 W wificond: Scan is not started. Ignore abort request
+         1791804262.826   559   829 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendStickyBroadcast:1655 com.android.server.wifi.ClientModeImpl.sendNetworkChangeBroadcast:3121 com.android.server.wifi.ClientModeImpl.lambda$sendNetworkChangeBroadcastWithCurrentState$14:3098 com.android.server.wifi.ClientModeImpl.$r8$lambda$mtuS9ulugUkTxNA_sDDnAioo66w:0 com.android.server.wifi.ClientModeImpl$$ExternalSyntheticLambda13.send:0 
+         1791804262.925   559   829 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendStickyBroadcast:1655 com.android.server.wifi.ClientModeImpl.sendNetworkChangeBroadcast:3121 com.android.server.wifi.ClientModeImpl.lambda$sendNetworkChangeBroadcastWithCurrentState$14:3098 com.android.server.wifi.ClientModeImpl.$r8$lambda$mtuS9ulugUkTxNA_sDDnAioo66w:0 com.android.server.wifi.ClientModeImpl$$ExternalSyntheticLambda13.send:0 
+         1791804263.063  2267  5338 W SystemServiceRegistry: No service published for: persistent_data_block
+         1791804263.110   358   358 E Netd    : no such netId 103
+         1791804263.110   559   829 E WifiStaIfaceAidlImpl: setDtimMultiplier failed with service-specific exception: android.os.ServiceSpecificException:  (code 4)
+         1791804263.110   559   836 W ConnectivityService: Exception adding interface: android.os.ServiceSpecificException: Machine is not on the network (code 64)
+         1791804263.111   358   358 E Netd    : no such netId 103
+         1791804263.129   559   829 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendStickyBroadcast:1655 com.android.server.wifi.ClientModeImpl.sendNetworkChangeBroadcast:3121 com.android.server.wifi.ClientModeImpl.lambda$sendNetworkChangeBroadcastWithCurrentState$14:3098 com.android.server.wifi.ClientModeImpl.$r8$lambda$mtuS9ulugUkTxNA_sDDnAioo66w:0 com.android.server.wifi.ClientModeImpl$$ExternalSyntheticLambda13.send:0 
+         1791804263.147   358   358 E Netd    : no such netId 103
+         1791804263.148   559   836 E ConnectivityService: Exception in addRoute for non-gateway: android.os.ServiceSpecificException: Machine is not on the network (code 64)
+         1791804263.148   358   358 E Netd    : no such netId 103
+         1791804263.148   559   836 E ConnectivityService: Exception in addRoute for gateway: android.os.ServiceSpecificException: Machine is not on the network (code 64)
+         1791804263.150   559   829 W WifiScoreReport: Cannot start external scoring netId=103 currentNetId=103 currentNetCapabilities=[ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&NOT_ROAMING&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED LinkUpBandwidth>=12000Kbps LinkDnBandwidth>=30000Kbps Specifier: <WifiNetworkAgentSpecifier [WifiConfiguration=, SSID="AndroidWifi", BSSID=02:15:b2:00:00:01, band=1, mMatchLocalOnlySpecifiers=false]> TransportInfo: <SSID: "AndroidWifi", BSSID: 02:15:b2:00:00:01, MAC: 02:15:b2:00:00:00, IP: /10.0.2.16, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 2Mbps, Tx Link speed: 2Mbps, Max Supported Tx Link speed: 54Mbps, Rx Link speed: -1Mbps, Max Supported Rx Link speed: 54Mbps, Frequency: 2437MHz, Net ID: 0, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>"AndroidWifi"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>> SignalStrength: -50 AllowedUids: <{10170}> OwnerUid: 10170 AdminUids: [10170] SSID: "AndroidWifi" UnderlyingNetworks: Null] sessionId=1035
+         1791804263.153   559   829 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendStickyBroadcast:1655 com.android.server.wifi.ClientModeImpl.sendNetworkChangeBroadcast:3121 com.android.server.wifi.ClientModeImpl.lambda$sendNetworkChangeBroadcastWithCurrentState$14:3098 com.android.server.wifi.ClientModeImpl.$r8$lambda$mtuS9ulugUkTxNA_sDDnAioo66w:0 com.android.server.wifi.ClientModeImpl$$ExternalSyntheticLambda13.send:0 
+         1791804263.155   559   836 W DnsManager: updatePrivateDns(103, PrivateDnsConfig{opportunistic:/[], dohName=, dohIps=[], dohPath=, dohPort=-1})
+         1791804263.156   358  5413 W resolv  : Validating DnsTlsServer {10.0.2.3/} with mark 0xf0067
+         1791804263.156   358  5413 W resolv  : Socket failed to connect, errno=101: Network is unreachable
+         1791804263.156   358  5413 W resolv  : TCP Handshake failed: 101
+         1791804263.156   358  5413 W resolv  : query failed
+         1791804263.156   358  5413 W resolv  : validateDnsTlsServer returned 0 for {10.0.2.3/}
+         1791804263.156   358  5413 W resolv  : Validation failed
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.160   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.166   358  5414 W resolv  : Validating DnsTlsServer {10.0.2.3/} with mark 0xf0067
+         1791804263.166   559   829 E WifiStaIfaceAidlImpl: setRoamingMode failed with service-specific exception: android.os.ServiceSpecificException:  (code 4)
+         1791804263.166   559   829 E WifiRoamingModeManager: Failed to set roaming mode due to unknown error.
+         1791804263.168   559  1626 W ScanResultUtil: Empty or null ScanResult list
+         1791804263.168   559  1626 W WifiService: Attempt to retrieve WifiConfiguration with invalid scanResult List
+         1791804263.169   559  1626 W ScanResultUtil: Empty or null ScanResult list
+         1791804263.169   559  1626 W WifiService: Attempt to retrieve WifiConfiguration with invalid scanResult List
+         1791804263.170   559  1626 W ScanResultUtil: Empty or null ScanResult list
+         1791804263.170   559  1626 E WifiService: Attempt to retrieve passpoint with invalid scanResult List
+         1791804263.170   559  1626 W ScanResultUtil: Empty or null ScanResult list
+         1791804263.170   559  1626 W WifiService: Attempt to retrieve OsuProviders with invalid scanResult List
+         1791804263.170   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.171   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.171   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.172   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.172   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.172   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.172   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.172   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.172   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.172   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.172   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.173   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.173   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.174   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.174   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.174   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.174   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.174   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.174   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.174   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.174   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.175   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.175   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.175   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.176   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.179   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.179   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.179   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.179   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.179   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.179   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.179   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.179   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.179   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.179   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.179   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.179   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.179   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.179   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.179   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.179   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.179   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.179   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.179   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.179   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.179   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.180   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.180   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.180   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.180   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.199   559  1626 W ParceledListSlice: Element #14 is 37900 bytes.
+         1791804263.214   559  2501 W ParceledListSlice: Element #15 is 18184 bytes.
+         1791804263.215   559  2501 W ParceledListSlice: Element #22 is 30408 bytes.
+         1791804263.215   559  2501 W ParceledListSlice: Overly large reply size: 88136
+         1791804263.226   559   829 E WifiStaIfaceAidlImpl: stopRssiMonitoring failed with service-specific exception: android.os.ServiceSpecificException:  (code 5)
+         1791804263.226   358   377 E NetlinkEvent: NetlinkEvent::FindParam(): Parameter 'INTERFACE' not found
+         1791804263.226   358   377 E NetlinkEvent: NetlinkEvent::FindParam(): Parameter 'STATE' not found
+         1791804263.226   358   377 E NetlinkEvent: NetlinkEvent::FindParam(): Parameter 'TIME_NS' not found
+         1791804263.226   358   377 E NetlinkEvent: NetlinkEvent::FindParam(): Parameter 'UID' not found
+         1791804263.286  1242  2047 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1
+         1791804263.322  2267  5338 W libc    : Access denied finding property "persist.adb.tls_server.enable"
+         1791804263.323  2267  5338 W libc    : Access denied finding property "service.adb.tls.port"
+         1791804263.316  2267  2267 W IntentService[D: type=1400 audit(0.0:62): avc:  denied  { read } for  name="u:object_r:system_adbd_prop:s0" dev="tmpfs" ino=318 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:system_adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+         1791804263.316  2267  2267 W IntentService[D: type=1400 audit(0.0:63): avc:  denied  { read } for  name="u:object_r:adbd_prop:s0" dev="tmpfs" ino=63 scontext=u:r:gmscore_app:s0:c512,c768 tcontext=u:object_r:adbd_prop:s0 tclass=file permissive=0 app=com.google.android.gms
+         1791804263.406  1624  2696 E WakeLock: DG:service ** IS FORCE-RELEASED ON TIMEOUT **
+         1791804263.419   559   836 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendStickyBroadcast:1655 android.net.connectivity.com.android.server.ConnectivityService.sendStickyBroadcast:3944 android.net.connectivity.com.android.server.ConnectivityService.sendLegacyNetworkBroadcast:11525 android.net.connectivity.com.android.server.ConnectivityService$LegacyTypeTracker.remove:1296 android.net.connectivity.com.android.server.ConnectivityService.updateLegacyTypeTrackerAndVpnLockdownForRematch:10988 
+         1791804263.420   559   836 W ContextImpl: Calling a method in the system process without a qualified user: android.app.ContextImpl.sendStickyBroadcast:1655 android.net.connectivity.com.android.server.ConnectivityService.sendStickyBroadcast:3944 android.net.connectivity.com.android.server.ConnectivityService.sendGeneralBroadcast:3914 android.net.connectivity.com.android.server.ConnectivityService.sendConnectedBroadcast:3887 android.net.connectivity.com.android.server.ConnectivityService.sendLegacyNetworkBroadcast:11497 
+         1791804263.437   559   829 W LastMileLogger: Failed to stop event tracing: /sys/kernel/debug/tracing/instances/wifi/tracing_on: open failed: ENOENT (No such file or directory)
+         1791804263.449   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.449   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.449   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.452   559   594 W IPCThreadState: Sending oneway calls to frozen process.
+         1791804263.456  1242  1831 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1
+         1791804263.658  1242  5393 W ctxmgr  : [NetworkStateProducer] No state change for network connection context [CONTEXT service_id=47 ]
+         1791804263.669   559  1252 W JobInfo : Job 'com.google.android.settings.intelligence/.modules.routines.impl.RoutinesJobIntentService#1728' has a deadline with no functional constraints. The deadline won't improve job execution latency. Consider removing the deadline.
+         1791804263.729  1242  5393 W TapAndPay: NfcAdapter is null while obtaining CardEmulation instance. [CONTEXT service_id=79 ]
+         1791804263.729  1242  5393 W TapAndPay: java.lang.NullPointerException: NfcAdapter is null
+         1791804263.729  1242  5393 W TapAndPay: 	at android.nfc.cardemulation.CardEmulation.getInstance(CardEmulation.java:170)
+         1791804263.729  1242  5393 W TapAndPay: 	at dhwn.<init>(:com.google.android.gms@242335041@24.23.35 (190800-646585959):15)
+         1791804263.729  1242  5393 W TapAndPay: 	at com.google.android.gms.tapandpay.hce.task.TapAndPayAidRegistrationTaskOperation.a(:com.google.android.gms@242335041@24.23.35 (190800-646585959):50)
+         1791804263.729  1242  5393 W TapAndPay: 	at com.google.android.gms.tapandpay.gcmtask.TapAndPayGcmTaskChimeraService.a(:com.google.android.gms@242335041@24.23.35 (190800-646585959):32)
+         1791804263.729  1242  5393 W TapAndPay: 	at bpjj.call(:com.google.android.gms@242335041@24.23.35 (190800-646585959):32)
+         1791804263.729  1242  5393 W TapAndPay: 	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+         1791804263.729  1242  5393 W TapAndPay: 	at angs.c(:com.google.android.gms@242335041@24.23.35 (190800-646585959):50)
+         1791804263.729  1242  5393 W TapAndPay: 	at angs.run(:com.google.android.gms@242335041@24.23.35 (190800-646585959):76)
+         1791804263.729  1242  5393 W TapAndPay: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+         1791804263.729  1242  5393 W TapAndPay: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+         1791804263.729  1242  5393 W TapAndPay: 	at anmg.run(:com.google.android.gms@242335041@24.23.35 (190800-646585959):8)
+         1791804263.729  1242  5393 W TapAndPay: 	at java.lang.Thread.run(Thread.java:1012)
+         1791804263.845   559   829 E WifiStaIfaceAidlImpl: setDtimMultiplier failed with service-specific exception: android.os.ServiceSpecificException:  (code 4)
+         1791804263.845   358   388 E netd    : Error adding route ::/0 -> fe80::2 wlan0 to table 1016: File exists
+         1791804264.006  1343  1766 E HandwritingSuperpacksUtil: HandwritingSuperpacksUtil.getPackMappingPackName():40 No pack mapping pack found in []
+         1791804264.051  1242  5393 E WakeLock: GCM_HB_ALARM release without a matched acquire!
+         1791804264.051  1242  5393 W WakeLock: GCM_HB_ALARM counter does not exist
+         1791804264.096  1242  5367 E WakeLock: GCM_CONN_ALARM release without a matched acquire!
+         1791804264.096  1242  5367 W WakeLock: GCM_CONN_ALARM counter does not exist
+         1791804266.006  1242  2416 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1
+         1791804266.906  1624  4849 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+         1791804266.906  1624  4849 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@242335041@24.23.35 (190800-646585959):204)
+         1791804266.907  1624  4849 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@242335041@24.23.35 (190800-646585959):4)
+         1791804267.406  1624  4849 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+         1791804267.407  1624  4849 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@242335041@24.23.35 (190800-646585959):204)
+         1791804267.407  1624  4849 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@242335041@24.23.35 (190800-646585959):4)
+--------- beginning of kernel
+         1791804267.545     0     0 W healthd : battery l=100 v=5000 t=25.0 h=2 st=2 c=900000 fc=3000000 cc=10 chg=a
+         1791804268.667  4241  4241 W rules.WifiRx: FenceState currentState is not true
+         1791804269.012  1242  1831 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1
+         1791804269.984  5243  5250 W System  : A resource failed to call release. 
+         1791804271.155  1242  5361 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+         1791804271.156  1242  5361 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+         1791804272.089  1624  4849 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+         1791804272.089  1624  4849 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@242335041@24.23.35 (190800-646585959):204)
+         1791804272.089  1624  4849 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@242335041@24.23.35 (190800-646585959):4)
+         1791804272.590  1624  4849 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+         1791804272.590  1624  4849 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@242335041@24.23.35 (190800-646585959):204)
+         1791804272.590  1624  4849 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@242335041@24.23.35 (190800-646585959):4)
+         1791804273.317  1242  5361 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+         1791804273.317  1242  5361 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@242335041@24.23.35 (190800-646585959):204)
+         1791804273.317  1242  5361 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@242335041@24.23.35 (190800-646585959):4)
+         1791804273.683  5443  5443 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+         1791804273.683  5443  5443 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+         1791804273.820  1242  5361 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+         1791804273.822  1242  5361 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@242335041@24.23.35 (190800-646585959):204)
+         1791804273.822  1242  5361 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@242335041@24.23.35 (190800-646585959):4)

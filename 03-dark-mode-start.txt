@@ -1,0 +1,7 @@
+Starting: Intent { cmp=no.rastcamp.app/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: no.rastcamp.app/.MainActivity
+TotalTime: 5426
+WaitTime: 5495
+Complete

@@ -1,0 +1,7 @@
+Starting: Intent { cmp=no.rastcamp.app/.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: com.google.android.permissioncontroller/com.android.permissioncontroller.permission.ui.GrantPermissionsActivity
+TotalTime: 9998
+WaitTime: 10064
+Complete

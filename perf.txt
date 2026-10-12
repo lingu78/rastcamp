@@ -1,0 +1,15 @@
+01-location-denied: data-ready 8.9 s after activity start
+01-location-denied: map-rendered 20.1 s after activity start
+01-location-denied: map-style-loaded 20.1 s after activity start
+02-location-oslo: data-ready 4.2 s after activity start
+02-location-oslo: map-rendered 13.6 s after activity start
+02-location-oslo: map-style-loaded 13.6 s after activity start
+03-dark-mode: data-ready 4.0 s after activity start
+03-dark-mode: map-rendered 8.9 s after activity start
+03-dark-mode: map-style-loaded 8.9 s after activity start
+04-nearby: data-ready 1.5 s after activity start
+06-offline-map: data-ready 2.1 s after activity start
+06-offline-map: map-rendered 6.0 s after activity start
+06-offline-map: map-style-loaded 6.0 s after activity start
+07-offline-nearby: data-ready 1.9 s after activity start
+09-nearby-no-animations: data-ready 1.9 s after activity start

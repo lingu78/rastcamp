@@ -1,0 +1,187 @@
+--------- beginning of system
+         1791804236.461   918   968 W Looper  : Slow dispatch took 87ms wmshell.main h=android.os.Handler c=com.android.wm.shell.transition.Transitions$TransitionPlayerImpl$$ExternalSyntheticLambda0@7086b86 m=0
+         1791804236.526   559  2039 W UserManagerService: Requested status bar icon for non-badged user 0
+         1791804236.532   559  1626 W PackageConfigPersister: App-specific configuration not found for packageName: com.google.android.apps.nexuslauncher and userId: 0
+         1791804236.533   559   586 W ActivityTaskManager: Unable to send transaction to client proc no.rastcamp.app: no app thread
+         1791804236.872   559  1626 W ActivityTaskManager: callingPackage for (uid=2000, pid=5103) has no WPC
+         1791804236.888   559  1626 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_OVERRIDE
+         1791804236.890   559  1626 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_FULLSCREEN_OVERRIDE
+         1791804236.891   559  1626 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_ORIENTATION_OVERRIDE
+         1791804236.892   559  1626 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_RESIZEABLE_ACTIVITY_OVERRIDES
+         1791804236.892   559  1626 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_MIN_ASPECT_RATIO_OVERRIDE
+         1791804236.916   559  1626 I ActivityTaskManager: Add Task{baf17c #12 type=standard A=10209:no.rastcamp.app} to hidden list because adding Task{c491e31 #13 type=standard A=10209:no.rastcamp.app}
+         1791804236.920   559  1626 I ActivityTaskManager: START u0 {act=android.intent.action.VIEW dat=rastcamp://nearby/... flg=0x10000000 pkg=no.rastcamp.app cmp=no.rastcamp.app/.MainActivity} with LAUNCH_SINGLE_TASK from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+--------- beginning of main
+         1791804237.024   559  1620 E IPCThreadState: Binder transaction failure. id: 384469, BR_*: 29189, error: -22 (Invalid argument)
+         1791804237.024   559  1620 W ActivityManager: pid 559 system sent binder code 7 with flags 1 to frozen apps and got error -32
+         1791804237.025   559  1620 W WindowManager: Exception thrown during dispatchAppVisibility Window{178b96a u0 no.rastcamp.app/no.rastcamp.app.MainActivity EXITING}
+         1791804237.025   559  1620 W WindowManager: android.os.DeadObjectException
+         1791804237.025   559  1620 W WindowManager: 	at android.os.BinderProxy.transactNative(Native Method)
+         1791804237.025   559  1620 W WindowManager: 	at android.os.BinderProxy.transact(BinderProxy.java:586)
+         1791804237.025   559  1620 W WindowManager: 	at android.view.IWindow$Stub$Proxy.dispatchAppVisibility(IWindow.java:553)
+         1791804237.025   559  1620 W WindowManager: 	at com.android.server.wm.WindowState.sendAppVisibilityToClients(WindowState.java:3253)
+         1791804237.025   559  1620 W WindowManager: 	at com.android.server.wm.WindowContainer.sendAppVisibilityToClients(WindowContainer.java:1289)
+         1791804237.025   559  1620 W WindowManager: 	at com.android.server.wm.WindowToken.setClientVisible(WindowToken.java:403)
+         1791804237.025   559  1620 W WindowManager: 	at com.android.server.wm.ActivityRecord.setClientVisible(ActivityRecord.java:7166)
+         1791804237.025   559  1620 W WindowManager: 	at com.android.server.wm.ActivityRecord.postApplyAnimation(ActivityRecord.java:5881)
+         1791804237.025   559  1620 W WindowManager: 	at com.android.server.wm.ActivityRecord.commitVisibility(ActivityRecord.java:5823)
+         1791804237.025   559  1620 W WindowManager: 	at com.android.server.wm.Transition.finishTransition(Transition.java:1286)
+         1791804237.025   559  1620 W WindowManager: 	at com.android.server.wm.TransitionController.finishTransition(TransitionController.java:937)
+         1791804237.025   559  1620 W WindowManager: 	at com.android.server.wm.WindowOrganizerController.finishTransition(WindowOrganizerController.java:494)
+         1791804237.025   559  1620 W WindowManager: 	at android.window.IWindowOrganizerController$Stub.onTransact(IWindowOrganizerController.java:289)
+         1791804237.025   559  1620 W WindowManager: 	at com.android.server.wm.WindowOrganizerController.onTransact(WindowOrganizerController.java:204)
+         1791804237.025   559  1620 W WindowManager: 	at android.os.Binder.execTransactInternal(Binder.java:1505)
+         1791804237.025   559  1620 W WindowManager: 	at android.os.Binder.execTransact(Binder.java:1444)
+         1791804237.025   559  1620 W Process : Unable to open /proc/4983/status
+         1791804237.031   559   585 W system_server: Long monitor contention with owner binder:559_11 (1626) at void java.lang.Object.wait(long, int)(Object.java:-2) waiters=2 in void com.android.server.wm.RootWindowContainer$RankTaskLayersRunnable.run() for 118ms
+         1791804237.031   918   968 W Looper  : Slow dispatch took 142ms wmshell.main h=android.os.Handler c=com.android.wm.shell.transition.RemoteTransitionHandler$1$$ExternalSyntheticLambda0@f5c959d m=0
+         1791804237.031   918   968 W Looper  : Slow delivery took 122ms wmshell.main h=android.os.Handler c=android.window.TaskOrganizer$1$$ExternalSyntheticLambda2@46fba12 m=0
+         1791804237.052   918   968 W Looper  : Drained
+         1791804237.096  5106  5106 W no.rastcamp.app: Unexpected CPU variant for x86: x86_64.
+         1791804237.096  5106  5106 W no.rastcamp.app: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, default
+         1791804237.104  5106  5106 E no.rastcamp.app: Not starting debugger since process cannot load the jdwp agent.
+         1791804237.176  1195  1195 W SplitSelectStateCtor: Missing session instanceIds
+         1791804237.179   559  2039 W UserManagerService: Requested status bar icon for non-badged user 0
+         1791804237.183   559   578 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ENABLE_FAKE_FOCUS
+         1791804237.189   559   578 W UserManagerService: Requested status bar icon for non-badged user 0
+         1791804237.319  5106  5106 W SoLoader: Initializing SoLoader: 0
+         1791804237.319  5106  5106 W SoLoader: Recording new base apk path: /data/app/~~HFD3GOCsxgknruc925cN7A==/no.rastcamp.app-5EomnLgLhPz6KbvkrPiX_g==/base.apk
+         1791804237.319  5106  5106 W SoLoader: Previously recorded 0 base apk paths.
+         1791804237.322  5106  5106 W SoLoader: SoLoader initialized: 8
+         1791804237.617   559  2039 W UserManagerService: Requested status bar icon for non-badged user 0
+         1791804237.669  5106  5106 W unknown:BridgelessReact: ReactHost{0}.startSurface(surfaceId = 0): Schedule
+         1791804237.669  5106  5106 W unknown:BridgelessReact: ReactHost{0}.attachSurface(surfaceId = 0)
+         1791804237.675  5106  5125 W unknown:BridgelessReact: ReactHost{0}.getOrCreateReactInstanceTask()
+         1791804237.675  5106  5125 W unknown:BridgelessReact: ReactHost{0}.getOrCreateReactInstanceTask(): Start
+         1791804237.675  5106  5125 W unknown:BridgelessReact: ReactHost{0}.getJSBundleLoader()
+         1791804237.676  5106  5106 W unknown:BridgelessReact: ReactHost{0}.onHostResume(activity)
+         1791804237.676  5106  5125 W unknown:BridgelessReact: ReactHost{0}.getOrCreateReactInstanceTask(): Creating BridgelessReactContext
+         1791804237.677  5106  5125 W unknown:BridgelessReact: ReactHost{0}.getOrCreateReactInstanceTask(): Creating ReactInstance
+         1791804237.677  3603  3705 W Bugle   : TextClassifierLibManagerImpl: Reclaiming memory at level: 40
+         1791804237.685  5106  5106 W HWUI    : Unknown dataspace 0
+         1791804237.789  5106  5119 W HWUI    : Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+         1791804237.791  5106  5119 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+         1791804238.064   918   968 W Looper  : Slow dispatch took 161ms wmshell.main h=android.os.Handler c=com.android.wm.shell.transition.DefaultTransitionHandler$$ExternalSyntheticLambda0@345fa27 m=0
+         1791804238.068   431   431 E BpTransactionCompletedListener: Failed to transact (-32)
+         1791804238.069   431   431 E BpTransactionCompletedListener: Failed to transact (-32)
+         1791804238.100   559   578 W UserManagerService: Requested status bar icon for non-badged user 0
+         1791804238.148   559  1620 W UserManagerService: Requested status bar icon for non-badged user 0
+         1791804238.148  5106  5125 W unknown:BridgelessReact: ReactHost{0}.getOrCreateReactInstanceTask(): Loading JS Bundle
+         1791804238.156  5106  5125 W unknown:BridgelessReact: ReactHost{0}.getOrCreateReactInstanceTask(): DevSupportManager.onNewReactContextCreated()
+         1791804238.157  5106  5125 W unknown:BridgelessReact: ReactHost{0}.startSurface(surfaceId = 0): Execute
+         1791804238.172   559  1620 W UserManagerService: Requested status bar icon for non-badged user 0
+         1791804238.176  5106  5106 W unknown:BridgelessReact: ReactHost{0}.ReactContext.onHostResume()
+         1791804238.182  5106  5106 W unknown:BridgelessReact: ReactHost{0}.getOrCreateReactInstanceTask(): Executing ReactInstanceEventListeners
+         1791804238.261  5106  5126 W BridgelessReactContext: [WARNING] Bridgeless doesn't support CatalystInstance. Accessing an API that's not part of the new architecture is not encouraged usage.
+         1791804238.327  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class expo.modules.kotlin.views.GroupViewManagerWrapper
+         1791804238.328  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.uimanager.LayoutShadowNode
+         1791804238.329  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.sources.geojsonsource.MLRNGeoJSONSourceManager
+         1791804238.330  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.annotations.markerview.MLRNMarkerViewManager
+         1791804238.331  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.ScreenContainerViewManager
+         1791804238.332  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.reanimated.view.REASharedTransitionBoundaryManager
+         1791804238.333  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.images.MLRNImagesManager
+         1791804238.335  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.gamma.tabs.host.TabsHostViewManager
+         1791804238.335  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.ScreenStackHeaderConfigViewManager
+         1791804238.336  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.ScreenStackHeaderSubviewManager
+         1791804238.337  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.gamma.modals.formsheet.FormSheetHostViewManager
+         1791804238.338  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.layer.MLRNLayerManager
+         1791804238.339  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.location.MLRNNativeUserLocationManager
+         1791804238.340  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.sources.tilesources.rastersource.MLRNRasterSourceManager
+         1791804238.341  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.gamma.scrollviewmarker.ScrollViewMarkerViewManager
+         1791804238.342  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.gamma.modals.formsheet.FormSheetContentWrapperViewManager
+         1791804238.343  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.ScreenContentWrapperManager
+         1791804238.343  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.mapview.MLRNAndroidTextureMapViewManager
+         1791804238.344  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.mapview.MLRNMapViewManager$MapShadowNode
+         1791804238.345  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.gamma.stack.screen.StackScreenViewManager
+         1791804238.346  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.sources.imagesource.MLRNImageSourceManager
+         1791804238.347  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.sources.tilesources.vectorsource.MLRNVectorSourceManager
+         1791804238.347  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.th3rdwave.safeareacontext.SafeAreaViewManager
+         1791804238.348  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.th3rdwave.safeareacontext.SafeAreaViewShadowNode
+         1791804238.349  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.ScreenViewManager
+         1791804238.349  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.gamma.stack.header.config.StackHeaderConfigViewManager
+         1791804238.351  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.annotations.callout.MLRNCalloutManager
+         1791804238.351  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.th3rdwave.safeareacontext.SafeAreaProviderManager
+         1791804238.352  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.SearchBarManager
+         1791804238.352  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.camera.MLRNCameraManager
+         1791804238.353  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.mapview.MLRNMapViewManager
+         1791804238.354  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.gamma.stack.host.StackHostViewManager
+         1791804238.354  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.sources.tilesources.rasterdemsource.MLRNRasterDEMSourceManager
+         1791804238.355  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.maplibre.reactnative.components.annotations.pointannotation.MLRNPointAnnotationManager
+         1791804238.356  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.ScreenFooterManager
+         1791804238.356  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.ModalScreenViewManager
+         1791804238.357  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.safearea.SafeAreaViewManager
+         1791804238.357  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.ScreenStackViewManager
+         1791804238.358  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.gamma.stack.header.subview.StackHeaderSubviewViewManager
+         1791804238.359  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class org.reactnative.maskedview.RNCMaskedViewManager
+         1791804238.360  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.rnscreens.gamma.tabs.screen.TabsScreenViewManager
+         1791804238.421  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$DefsViewManager
+         1791804238.422  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.VirtualViewManager$RenderableShadowNode
+         1791804238.424  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$FeMergeManager
+         1791804238.426  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.safeareaview.ReactSafeAreaViewManager
+         1791804238.427  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.gesturehandler.react.RNGestureHandlerDetectorViewManager
+         1791804238.428  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$LinearGradientManager
+         1791804238.429  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$FeGaussianBlurManager
+         1791804238.430  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.progressbar.ReactProgressBarViewManager
+         1791804238.431  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.scroll.ReactHorizontalScrollViewManager
+         1791804238.433  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.text.ReactTextViewManager
+         1791804238.434  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$FeColorMatrixManager
+         1791804238.435  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.scroll.ReactHorizontalScrollContainerViewManager
+         1791804238.436  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$ClipPathViewManager
+         1791804238.437  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$SymbolManager
+         1791804238.438  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$PatternManager
+         1791804238.439  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$FeBlendManager
+         1791804238.440  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.view.ReactViewManager
+         1791804238.441  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.SvgViewManager
+         1791804238.442  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.switchview.ReactSwitchManager
+         1791804238.443  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$UseViewManager
+         1791804238.444  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$CircleViewManager
+         1791804238.445  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$TSpanViewManager
+         1791804238.446  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$FilterManager
+         1791804238.447  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$MarkerManager
+         1791804238.450  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.gesturehandler.react.RNGestureHandlerButtonViewManager
+         1791804238.452  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.modal.ReactModalHostManager
+         1791804238.453  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$ForeignObjectManager
+         1791804238.454  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$EllipseViewManager
+         1791804238.455  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$LineViewManager
+         1791804238.456  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$FeFloodManager
+         1791804238.457  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$GroupViewManager
+         1791804238.458  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$TextViewManager
+         1791804238.459  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$ImageViewManager
+         1791804238.460  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$FeCompositeManager
+         1791804238.462  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.image.ReactImageManager
+         1791804238.463  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$RadialGradientManager
+         1791804238.464  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$MaskManager
+         1791804238.465  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.unimplementedview.ReactUnimplementedViewManager
+         1791804238.466  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$RectViewManager
+         1791804238.467  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$TextPathViewManager
+         1791804238.469  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.scroll.ReactScrollViewManager
+         1791804238.470  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$FeOffsetManager
+         1791804238.471  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.horcrux.svg.RenderableViewManager$PathViewManager
+         1791804238.472  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.drawer.ReactDrawerLayoutManager
+         1791804238.473  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.swiperefresh.SwipeRefreshLayoutManager
+         1791804238.475  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.textinput.ReactTextInputManager
+         1791804238.476  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.text.SelectableTextViewManager
+         1791804238.477  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.swmansion.gesturehandler.react.RNGestureHandlerRootViewManager
+         1791804238.478  5106  5126 W unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.virtual.view.ReactVirtualViewManager
+         1791804238.498  5106  5126 I ReactNativeJS: Running "main"
+         1791804238.555  5106  5126 W ExpoModulesCore: Introspectable data is missing for class expo.modules.location.records.LocationTaskOptions. Falling back to reflection-based conversion, which may have performance implications. To fix this, ensure that the Record class is properly annotated with expo.modules.kotlin.types.Introspectable and that the necessary metadata is available at runtime.
+         1791804238.599   559   578 W AlarmManager: Window length 1383505805528155392ms too long; limiting to 1 day
+         1791804238.780  5106  5126 I ReactNativeJS: [perf] data-ready +231 ms after JS start
+         1791804238.978  5106  5127 W unknown:ReactNative: StatusBarModule: Ignored status bar change, current activity is edge-to-edge.
+         1791804238.978  5106  5127 W unknown:ReactNative: StatusBarModule: Ignored status bar change, current activity is edge-to-edge.
+         1791804239.184   918   968 W Looper  : Slow delivery took 35ms wmshell.main h=android.os.Handler c=android.window.TaskOrganizer$1$$ExternalSyntheticLambda6@d26a02a m=0
+         1791804239.186   559   582 I ActivityTaskManager: Displayed no.rastcamp.app/.MainActivity for user 0: +2s267ms
+         1791804239.209   918   968 W Looper  : Drained
+         1791804239.383   559  1620 W PackageConfigPersister: App-specific configuration not found for packageName: no.rastcamp.app and userId: 0
+         1791804239.387   918  1040 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@c2b5537
+         1791804239.391   559   578 W InputManager-JNI: Input channel object '9ddb7d9 Splash Screen no.rastcamp.app (client)' was disposed without first being removed with the input manager!
+         1791804240.089   918   918 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+         1791804240.934   559  2848 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+         1791804243.017  1624  4865 W gclk    : [{0}] Failed to resolve name. status={1}
+         1791804245.854  1624  4865 W gclk    : [{0}] Failed to resolve name. status={1}
+         1791804247.455  1242  4860 W gclk    : [{0}] Failed to resolve name. status={1}
+         1791804247.664  1242  4860 W gclk    : [{0}] Failed to resolve name. status={1}
+         1791804247.763  1624  4865 W gclk    : [{0}] Failed to resolve name. status={1}
+         1791804250.601  5106  5112 W System  : A resource failed to call release. 
+         1791804251.328  5165  5165 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+         1791804251.329  5165  5165 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
