@@ -1,0 +1,599 @@
+2026-10-12 14:48:37.531 xcodebuild[13356:289782] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+2026-10-12 14:48:37.578 xcodebuild[13356:289782] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS Simulator, arch:arm64, id:841190F6-F927-4F0D-B152-62A06B4040CA, OS:26.2026-10-12 14:48:53.391677+0000 maestro-driver-iosUITests-Runner[13990:291694] [Default] Running tests...
+2026-10-12 14:48:53.582378+0000 maestro-driver-iosUITests-Runner[13990:291694] snapshotKeyHonorModalViews configured to value: (null)
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-12 14:48:57.427.
+Test Suite 'maestro-driver-iosUITests.xctest' started at 2026-10-12 14:48:57.432.
+Test Suite 'SwipeRouteHandlerV2ClassificationTests' started at 2026-10-12 14:48:57.433.
+Test Case '-[maestro_driver_iosUITests.SwipeRouteHandlerV2ClassificationTests testClassifiedTimeoutPreservesTheRealMessage]' started.
+    t =     0.02s Start Test at 2026-10-12 14:48:57.453
+    t =     0.02s Set Up
+    t =     0.05s Tear Down
+Test Case '-[maestro_driver_iosUITests.SwipeRouteHandlerV2ClassificationTests testClassifiedTimeoutPreservesTheRealMessage]' passed (0.030 seconds).
+Test Case '-[maestro_driver_iosUITests.SwipeRouteHandlerV2ClassificationTests testMainThreadBusyIsClassifiedAsTimeout]' started.
+    t =     0.00s Start Test at 2026-10-12 14:48:57.486
+    t =     0.00s Set Up
+    t =     0.00s Tear Down
+Test Case '-[maestro_driver_iosUITests.SwipeRouteHandlerV2ClassificationTests testMainThreadBusyIsClassifiedAsTimeout]' passed (0.004 seconds).
+Test Case '-[maestro_driver_iosUITests.SwipeRouteHandlerV2ClassificationTests testTimeoutMessageWithWrongDomainStaysInternal]' started.
+    t =     0.00s Start Test at 2026-10-12 14:48:57.490
+    t =     0.00s Set Up
+    t =     0.00s Tear Down
+Test Case '-[maestro_driver_iosUITests.SwipeRouteHandlerV2ClassificationTests testTimeoutMessageWithWrongDomainStaysInternal]' passed (0.002 seconds).
+Test Case '-[maestro_driver_iosUITests.SwipeRouteHandlerV2ClassificationTests testUIQueryTimeoutIsClassifiedAsTimeout]' started.
+    t =     0.00s Start Test at 2026-10-12 14:48:57.545
+    t =     0.00s Set Up
+    t =     0.01s Tear Down
+Test Case '-[maestro_driver_iosUITests.SwipeRouteHandlerV2ClassificationTests testUIQueryTimeoutIsClassifiedAsTimeout]' passed (0.007 seconds).
+Test Case '-[maestro_driver_iosUITests.SwipeRouteHandlerV2ClassificationTests testUnrelatedXCTFutureErrorStaysInternal]' started.
+    t =     0.00s Start Test at 2026-10-12 14:48:57.552
+    t =     0.00s Set Up
+    t =     0.00s Tear Down
+Test Case '-[maestro_driver_iosUITests.SwipeRouteHandlerV2ClassificationTests testUnrelatedXCTFutureErrorStaysInternal]' passed (0.002 seconds).
+Test Case '-[maestro_driver_iosUITests.SwipeRouteHandlerV2ClassificationTests testXCTFutureCode1000WithUnrelatedMessageStaysInternal]' started.
+    t =     0.00s Start Test at 2026-10-12 14:48:57.554
+    t =     0.00s Set Up
+    t =     0.00s Tear Down
+Test Case '-[maestro_driver_iosUITests.SwipeRouteHandlerV2ClassificationTests testXCTFutureCode1000WithUnrelatedMessageStaysInternal]' passed (0.002 seconds).
+Test Suite 'SwipeRouteHandlerV2ClassificationTests' passed at 2026-10-12 14:48:57.556.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.047 (0.123) seconds
+Test Suite 'maestro_driver_iosUITests' started at 2026-10-12 14:48:57.607.
+    t =      nans Suite Set Up
+Test Case '-[maestro_driver_iosUITests.maestro_driver_iosUITests testHttpServer]' started.
+    t =     0.00s Start Test at 2026-10-12 14:48:57.609
+    t =     0.00s Set Up
+2026-10-12 14:48:57.611892+0000 maestro-driver-iosUITests-Runner[13990:292060] [maestro_driver_iosUITests] Will start HTTP server
+2026-10-12 14:48:57.884079+0000 maestro-driver-iosUITests-Runner[13990:292060] [FlyingFox] starting server 127.0.0.1:63083
+objc[13990]: Class UIAccessibilityLoaderWebShared is implemented in both /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebCore.axbundle/WebCore (0x10c4a4310) and /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebKit.axbundle/WebKit (0x10bc48398). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+2026-10-12 14:48:58.057959+0000 maestro-driver-iosUITests-Runner[13990:292496] [FlyingFox] <127.0.0.1> open connection
+2026-10-12 14:48:58.073534+0000 maestro-driver-iosUITests-Runner[13990:292068] [FlyingFox] <127.0.0.1> request: GET /status
+2026-10-12 14:48:58.530296+0000 maestro-driver-iosUITests-Runner[13990:292067] [FlyingFox] <127.0.0.1> open connection
+2026-10-12 14:48:58.535829+0000 maestro-driver-iosUITests-Runner[13990:292060] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =     0.93s Getting device orientation
+2026-10-12 14:48:58.588522+0000 maestro-driver-iosUITests-Runner[13990:291694] Using singleton test manager
+2026-10-12 14:48:58.591846+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =     0.99s Getting device orientation
+    t =     0.99s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:06.527374+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:07.263640+0000 maestro-driver-iosUITests-Runner[13990:292067] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =     9.66s Getting device orientation
+2026-10-12 14:49:07.352017+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =     9.74s Getting device orientation
+2026-10-12 14:49:07.354911+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:07.355290+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:07.832704+0000 maestro-driver-iosUITests-Runner[13990:292068] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:07.849375+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:07.850440+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:07.850609+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    10.24s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:08.083990+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:08.086778+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    10.48s Checking existence of `StatusBar (First Match)`
+    t =    10.64s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    10.80s Find the StatusBar (Element at index 0)
+    t =    10.88s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:08.572374+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.485537052154541
+2026-10-12 14:49:08.572708+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:08.598016+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.025256037712097168
+    t =    10.99s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:08.661844+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:08.791703+0000 maestro-driver-iosUITests-Runner[13990:292068] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    11.18s Getting device orientation
+2026-10-12 14:49:08.797399+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    11.19s Getting device orientation
+2026-10-12 14:49:08.800867+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:08.801041+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:08.806359+0000 maestro-driver-iosUITests-Runner[13990:292068] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:08.813412+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:08.816745+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:08.817027+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    11.21s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:08.984530+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:08.984803+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    11.38s Checking existence of `StatusBar (First Match)`
+    t =    11.41s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    11.47s Find the StatusBar (Element at index 0)
+    t =    11.52s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:09.195972+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.2110450267791748
+2026-10-12 14:49:09.196265+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:09.197107+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.0008139610290527344
+    t =    11.59s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:09.247113+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:09.271787+0000 maestro-driver-iosUITests-Runner[13990:292067] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    11.66s Getting device orientation
+2026-10-12 14:49:09.276843+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    11.67s Getting device orientation
+2026-10-12 14:49:09.279402+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:09.279581+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:09.282230+0000 maestro-driver-iosUITests-Runner[13990:292068] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:09.285466+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:09.287157+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:09.287275+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    11.68s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:09.496039+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:09.496766+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    11.89s Checking existence of `StatusBar (First Match)`
+    t =    11.91s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    11.95s Find the StatusBar (Element at index 0)
+    t =    12.00s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:09.653563+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.15668189525604248
+2026-10-12 14:49:09.653686+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:09.654188+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.00047791004180908203
+    t =    12.05s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:09.689908+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:09.871646+0000 maestro-driver-iosUITests-Runner[13990:292068] [FlyingFox] <127.0.0.1> request: GET /screenshot
+2026-10-12 14:49:10.379034+0000 maestro-driver-iosUITests-Runner[13990:292068] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    12.77s Getting device orientation
+2026-10-12 14:49:10.390193+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    12.78s Getting device orientation
+2026-10-12 14:49:10.396157+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:10.396474+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:10.401304+0000 maestro-driver-iosUITests-Runner[13990:292496] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:10.409835+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:10.410836+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:10.410984+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    12.80s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:10.944754+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:10.944981+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    13.34s Checking existence of `StatusBar (First Match)`
+    t =    13.35s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    13.39s Find the StatusBar (Element at index 0)
+    t =    13.43s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:11.073367+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.12832403182983398
+2026-10-12 14:49:11.073495+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:11.074178+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.0006579160690307617
+    t =    13.47s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:11.113618+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:11.166161+0000 maestro-driver-iosUITests-Runner[13990:292068] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    13.56s Getting device orientation
+2026-10-12 14:49:11.172820+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    13.57s Getting device orientation
+2026-10-12 14:49:11.175475+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:11.175641+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:11.181578+0000 maestro-driver-iosUITests-Runner[13990:292496] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:11.186500+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:11.187307+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:11.187403+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    13.58s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:12.411983+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:12.412275+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    14.80s Checking existence of `StatusBar (First Match)`
+    t =    14.82s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    14.86s Find the StatusBar (Element at index 0)
+    t =    14.90s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:12.546249+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.13386404514312744
+2026-10-12 14:49:12.546339+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:12.547001+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.0006439685821533203
+    t =    14.94s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:12.572291+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:12.608400+0000 maestro-driver-iosUITests-Runner[13990:292064] [FlyingFox] <127.0.0.1> request: GET /isScreenStatic
+2026-10-12 14:49:13.235387+0000 maestro-driver-iosUITests-Runner[13990:292068] [FlyingFox] <127.0.0.1> request: GET /screenshot
+2026-10-12 14:49:14.112534+0000 maestro-driver-iosUITests-Runner[13990:292068] [FlyingFox] <127.0.0.1> request: POST /touch
+2026-10-12 14:49:14.121535+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    16.51s Getting device orientation
+2026-10-12 14:49:14.123859+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+    t =    16.52s Getting device orientation
+2026-10-12 14:49:14.125932+0000 maestro-driver-iosUITests-Runner[13990:291694] Tapping 219.0, 93.0
+    t =    16.52s Getting device orientation
+2026-10-12 14:49:14.525363+0000 maestro-driver-iosUITests-Runner[13990:291694] Tapping took 0.3936169147491455
+2026-10-12 14:49:14.535062+0000 maestro-driver-iosUITests-Runner[13990:292064] [FlyingFox] <127.0.0.1> request: GET /isScreenStatic
+2026-10-12 14:49:15.188616+0000 maestro-driver-iosUITests-Runner[13990:292067] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    17.58s Getting device orientation
+2026-10-12 14:49:15.195806+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    17.59s Getting device orientation
+2026-10-12 14:49:15.202672+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:15.202847+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:15.207396+0000 maestro-driver-iosUITests-Runner[13990:292064] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:15.215215+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:15.216904+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:15.217227+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    17.61s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:17.693368+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:17.694460+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    20.09s Checking existence of `StatusBar (First Match)`
+    t =    20.14s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    20.22s Find the StatusBar (Element at index 0)
+    t =    20.31s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:17.972488+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.27790701389312744
+2026-10-12 14:49:17.972597+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:17.973268+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.0006529092788696289
+    t =    20.37s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:18.000384+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:18.292824+0000 maestro-driver-iosUITests-Runner[13990:292064] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    20.69s Getting device orientation
+2026-10-12 14:49:18.305768+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    20.70s Getting device orientation
+2026-10-12 14:49:18.309137+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:18.309298+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:18.357699+0000 maestro-driver-iosUITests-Runner[13990:292067] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:18.366443+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:18.367187+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:18.367276+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    20.76s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:18.464022+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:18.464203+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    20.86s Checking existence of `StatusBar (First Match)`
+    t =    20.88s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    20.91s Find the StatusBar (Element at index 0)
+    t =    20.96s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:18.611042+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.14677190780639648
+2026-10-12 14:49:18.611166+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:18.613476+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.0021439790725708008
+    t =    21.01s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:18.651433+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:18.668153+0000 maestro-driver-iosUITests-Runner[13990:292061] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    21.06s Getting device orientation
+2026-10-12 14:49:18.673478+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    21.07s Getting device orientation
+2026-10-12 14:49:18.674980+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:18.675098+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:18.696070+0000 maestro-driver-iosUITests-Runner[13990:292496] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:18.699600+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:18.700037+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:18.700104+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    21.09s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:18.783949+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:18.784132+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    21.18s Checking existence of `StatusBar (First Match)`
+    t =    21.19s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    21.22s Find the StatusBar (Element at index 0)
+    t =    21.25s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:18.906646+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.12241709232330322
+2026-10-12 14:49:18.906744+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:18.907286+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.0005309581756591797
+    t =    21.30s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:18.933738+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:19.108548+0000 maestro-driver-iosUITests-Runner[13990:292067] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    21.50s Getting device orientation
+2026-10-12 14:49:19.116609+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    21.51s Getting device orientation
+2026-10-12 14:49:19.119246+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:19.119413+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:19.122474+0000 maestro-driver-iosUITests-Runner[13990:292496] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:19.125352+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:19.125913+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:19.125975+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    21.52s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:19.212530+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:19.212728+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    21.60s Checking existence of `StatusBar (First Match)`
+    t =    21.62s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    21.65s Find the StatusBar (Element at index 0)
+    t =    21.68s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:19.332576+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.11979293823242188
+2026-10-12 14:49:19.332681+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:19.333314+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.0006129741668701172
+    t =    21.73s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:19.361605+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:19.373671+0000 maestro-driver-iosUITests-Runner[13990:292064] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    21.77s Getting device orientation
+2026-10-12 14:49:19.377610+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    21.77s Getting device orientation
+2026-10-12 14:49:19.379059+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:19.379312+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:19.395737+0000 maestro-driver-iosUITests-Runner[13990:292064] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:19.398654+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:19.399161+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:19.399227+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    21.79s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:19.463369+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:19.463687+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    21.86s Checking existence of `StatusBar (First Match)`
+    t =    21.87s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    21.89s Find the StatusBar (Element at index 0)
+    t =    21.93s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:19.575665+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.11192488670349121
+2026-10-12 14:49:19.575740+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:19.576269+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.0005170106887817383
+    t =    21.97s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:19.600508+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:19.629426+0000 maestro-driver-iosUITests-Runner[13990:292068] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    22.02s Getting device orientation
+2026-10-12 14:49:19.633268+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    22.03s Getting device orientation
+2026-10-12 14:49:19.634824+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:19.634951+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:19.637209+0000 maestro-driver-iosUITests-Runner[13990:292067] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:19.640194+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:19.640776+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:19.640856+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    22.03s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:19.709068+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:19.709334+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    22.10s Checking existence of `StatusBar (First Match)`
+    t =    22.11s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    22.15s Find the StatusBar (Element at index 0)
+    t =    22.18s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:19.823015+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.11362600326538086
+2026-10-12 14:49:19.823130+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:19.823742+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.0005909204483032227
+    t =    22.22s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:19.848987+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:19.862487+0000 maestro-driver-iosUITests-Runner[13990:292067] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    22.25s Getting device orientation
+2026-10-12 14:49:19.866355+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    22.26s Getting device orientation
+2026-10-12 14:49:19.867985+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:19.868112+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:19.872506+0000 maestro-driver-iosUITests-Runner[13990:292068] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:19.875408+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:19.876164+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:19.876249+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    22.27s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:19.939806+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:19.939994+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    22.33s Checking existence of `StatusBar (First Match)`
+    t =    22.35s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    22.37s Find the StatusBar (Element at index 0)
+    t =    22.41s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:20.062444+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.1223989725112915
+2026-10-12 14:49:20.062529+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:20.063229+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.0006719827651977539
+    t =    22.46s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:20.094499+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:20.116166+0000 maestro-driver-iosUITests-Runner[13990:292061] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    22.51s Getting device orientation
+2026-10-12 14:49:20.120726+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    22.51s Getting device orientation
+2026-10-12 14:49:20.122330+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:20.122442+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:20.124991+0000 maestro-driver-iosUITests-Runner[13990:292067] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:20.127821+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:20.128422+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:20.128492+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    22.52s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:20.197955+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:20.198687+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    22.59s Checking existence of `StatusBar (First Match)`
+    t =    22.61s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    22.65s Find the StatusBar (Element at index 0)
+    t =    22.69s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:20.342557+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.14382195472717285
+2026-10-12 14:49:20.342812+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:20.344496+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.0016620159149169922
+    t =    22.74s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:20.408024+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:20.443257+0000 maestro-driver-iosUITests-Runner[13990:292064] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    22.84s Getting device orientation
+2026-10-12 14:49:20.447232+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    22.84s Getting device orientation
+2026-10-12 14:49:20.449250+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:20.449401+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:20.554545+0000 maestro-driver-iosUITests-Runner[13990:292064] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:20.557750+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:20.558381+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:20.558471+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    22.95s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:20.640509+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:20.640704+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    23.03s Checking existence of `StatusBar (First Match)`
+    t =    23.05s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    23.07s Find the StatusBar (Element at index 0)
+    t =    23.11s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:20.763520+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.12277305126190186
+2026-10-12 14:49:20.763609+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:20.765099+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.001423954963684082
+    t =    23.16s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:20.790957+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:20.802106+0000 maestro-driver-iosUITests-Runner[13990:292061] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    23.19s Getting device orientation
+2026-10-12 14:49:20.806316+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    23.20s Getting device orientation
+2026-10-12 14:49:20.807936+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:20.808043+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:20.810119+0000 maestro-driver-iosUITests-Runner[13990:292068] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:20.812843+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:20.813473+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:20.813535+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    23.21s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:20.875373+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:20.875560+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    23.27s Checking existence of `StatusBar (First Match)`
+    t =    23.28s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    23.31s Find the StatusBar (Element at index 0)
+    t =    23.34s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:20.982203+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.10659396648406982
+2026-10-12 14:49:20.982339+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:20.983019+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.000661015510559082
+    t =    23.38s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:21.009878+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:21.034895+0000 maestro-driver-iosUITests-Runner[13990:292068] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    23.43s Getting device orientation
+2026-10-12 14:49:21.040918+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    23.43s Getting device orientation
+2026-10-12 14:49:21.044366+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:21.044523+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:21.085930+0000 maestro-driver-iosUITests-Runner[13990:292068] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:21.091132+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:21.092140+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:21.092233+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    23.48s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:21.155694+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:21.155862+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    23.55s Checking existence of `StatusBar (First Match)`
+    t =    23.56s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    23.59s Find the StatusBar (Element at index 0)
+    t =    23.62s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:21.267498+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.11158990859985352
+2026-10-12 14:49:21.267583+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:21.268142+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.0005398988723754883
+    t =    23.66s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:21.294152+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:21.327807+0000 maestro-driver-iosUITests-Runner[13990:292064] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    23.72s Getting device orientation
+2026-10-12 14:49:21.333527+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    23.73s Getting device orientation
+2026-10-12 14:49:21.334975+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:21.335091+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:21.341774+0000 maestro-driver-iosUITests-Runner[13990:292496] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:21.345542+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:21.346407+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:21.346496+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    23.74s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:21.406275+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:21.406780+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    23.80s Checking existence of `StatusBar (First Match)`
+    t =    23.82s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    23.86s Find the StatusBar (Element at index 0)
+    t =    23.89s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:21.528738+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.12190592288970947
+2026-10-12 14:49:21.528975+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:21.529914+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.0009049177169799805
+    t =    23.92s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:21.556103+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:21.568210+0000 maestro-driver-iosUITests-Runner[13990:292061] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    23.96s Getting device orientation
+2026-10-12 14:49:21.574647+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    23.97s Getting device orientation
+2026-10-12 14:49:21.576813+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:21.576942+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:21.579933+0000 maestro-driver-iosUITests-Runner[13990:292068] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:21.582945+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:21.583552+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:21.583638+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    23.98s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:21.652482+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:21.653255+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    24.05s Checking existence of `StatusBar (First Match)`
+    t =    24.06s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    24.10s Find the StatusBar (Element at index 0)
+    t =    24.13s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:21.778050+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.12475097179412842
+2026-10-12 14:49:21.778269+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:21.778859+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.0005730390548706055
+    t =    24.17s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:21.803966+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:21.815871+0000 maestro-driver-iosUITests-Runner[13990:292067] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    24.21s Getting device orientation
+2026-10-12 14:49:21.819832+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    24.21s Getting device orientation
+2026-10-12 14:49:21.821282+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:21.821408+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:21.823614+0000 maestro-driver-iosUITests-Runner[13990:292061] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:21.826403+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:21.826988+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:21.827060+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    24.22s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:21.885279+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:21.885435+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    24.28s Checking existence of `StatusBar (First Match)`
+    t =    24.29s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    24.32s Find the StatusBar (Element at index 0)
+    t =    24.36s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:21.999624+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.1141500473022461
+2026-10-12 14:49:21.999712+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:22.000278+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.0005539655685424805
+    t =    24.39s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:22.028404+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:22.046366+0000 maestro-driver-iosUITests-Runner[13990:292067] [FlyingFox] <127.0.0.1> request: GET /screenshot
+2026-10-12 14:49:22.223175+0000 maestro-driver-iosUITests-Runner[13990:292061] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    24.62s Getting device orientation
+2026-10-12 14:49:22.228370+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    24.62s Getting device orientation
+2026-10-12 14:49:22.232533+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:22.232863+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:22.238252+0000 maestro-driver-iosUITests-Runner[13990:292061] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:22.243102+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:22.244296+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:22.244538+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    24.64s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:22.343613+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:22.343789+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    24.74s Checking existence of `StatusBar (First Match)`
+    t =    24.75s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    24.78s Find the StatusBar (Element at index 0)
+    t =    24.82s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:22.468333+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.12449991703033447
+2026-10-12 14:49:22.468499+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:22.469059+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.0005559921264648438
+    t =    24.86s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:22.517860+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:22.543608+0000 maestro-driver-iosUITests-Runner[13990:292068] [FlyingFox] <127.0.0.1> request: POST /inputText
+2026-10-12 14:49:22.552322+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    24.95s Checking existence of `Keyboard (First Match)`
+2026-10-12 14:49:22.581078+0000 maestro-driver-iosUITests-Runner[13990:291694] [TextInputHelper] first character: Å
+    t =    24.97s Getting device orientation
+2026-10-12 14:49:23.313539+0000 maestro-driver-iosUITests-Runner[13990:291694] [TextInputHelper] remaining text: re
+    t =    25.71s Getting device orientation
+2026-10-12 14:49:23.585294+0000 maestro-driver-iosUITests-Runner[13990:291694] [InputTextRouteHandler] Text input duration took 1.036242
+2026-10-12 14:49:23.620890+0000 maestro-driver-iosUITests-Runner[13990:292067] [FlyingFox] <127.0.0.1> request: GET /isScreenStatic
+2026-10-12 14:49:24.039691+0000 maestro-driver-iosUITests-Runner[13990:292496] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    26.43s Getting device orientation
+2026-10-12 14:49:24.046011+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    26.44s Getting device orientation
+2026-10-12 14:49:24.047990+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:24.048184+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:24.051786+0000 maestro-driver-iosUITests-Runner[13990:292067] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:24.056689+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:24.057337+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:24.057418+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    26.45s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:24.188860+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:24.189032+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    26.58s Checking existence of `StatusBar (First Match)`
+    t =    26.60s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    26.63s Find the StatusBar (Element at index 0)
+    t =    26.66s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:24.307519+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.11844110488891602
+2026-10-12 14:49:24.307612+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:24.308361+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.0007350444793701172
+    t =    26.70s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:24.344764+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:24.359787+0000 maestro-driver-iosUITests-Runner[13990:292067] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    26.75s Getting device orientation
+2026-10-12 14:49:24.366551+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    26.76s Getting device orientation
+2026-10-12 14:49:24.368257+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:24.368455+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:24.387415+0000 maestro-driver-iosUITests-Runner[13990:292064] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:24.390160+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:24.390683+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:24.390755+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    26.78s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:24.476266+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:24.476450+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    26.87s Checking existence of `StatusBar (First Match)`
+    t =    26.88s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    26.91s Find the StatusBar (Element at index 0)
+    t =    26.94s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:24.592215+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.11572098731994629
+2026-10-12 14:49:24.592314+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:24.593760+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.0014199018478393555
+    t =    26.99s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:24.632050+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
+2026-10-12 14:49:24.658153+0000 maestro-driver-iosUITests-Runner[13990:292496] [FlyingFox] <127.0.0.1> request: GET /isScreenStatic
+2026-10-12 14:49:25.074096+0000 maestro-driver-iosUITests-Runner[13990:292068] [FlyingFox] <127.0.0.1> request: GET /screenshot
+2026-10-12 14:49:25.372491+0000 maestro-driver-iosUITests-Runner[13990:292067] [FlyingFox] <127.0.0.1> request: POST /touch
+2026-10-12 14:49:25.376241+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    27.77s Getting device orientation
+2026-10-12 14:49:25.380008+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+    t =    27.77s Getting device orientation
+2026-10-12 14:49:25.382016+0000 maestro-driver-iosUITests-Runner[13990:291694] Tapping 403.0, 155.0
+    t =    27.77s Getting device orientation
+2026-10-12 14:49:25.724329+0000 maestro-driver-iosUITests-Runner[13990:291694] Tapping took 0.34079599380493164
+2026-10-12 14:49:25.771444+0000 maestro-driver-iosUITests-Runner[13990:292496] [FlyingFox] <127.0.0.1> request: GET /isScreenStatic
+2026-10-12 14:49:26.408786+0000 maestro-driver-iosUITests-Runner[13990:292061] [FlyingFox] <127.0.0.1> request: GET /isScreenStatic
+2026-10-12 14:49:27.007614+0000 maestro-driver-iosUITests-Runner[13990:292068] [FlyingFox] <127.0.0.1> request: POST /deviceInfo
+    t =    29.40s Getting device orientation
+2026-10-12 14:49:27.016138+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+    t =    29.41s Getting device orientation
+2026-10-12 14:49:27.020255+0000 maestro-driver-iosUITests-Runner[13990:291694] Returning cached screen size
+2026-10-12 14:49:27.020572+0000 maestro-driver-iosUITests-Runner[13990:291694] Device orientation is 1
+2026-10-12 14:49:27.025193+0000 maestro-driver-iosUITests-Runner[13990:292061] [FlyingFox] <127.0.0.1> request: POST /viewHierarchy
+2026-10-12 14:49:27.032259+0000 maestro-driver-iosUITests-Runner[13990:291694] Detected running apps: ["no.rastcamp.app"]
+2026-10-12 14:49:27.033661+0000 maestro-driver-iosUITests-Runner[13990:291694] [Start] View hierarchy snapshot for Application 'no.rastcamp.app'
+2026-10-12 14:49:27.033769+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Starting getHierarchyWithFallback for element.
+    t =    29.43s Find the Application 'no.rastcamp.app'
+2026-10-12 14:49:27.100556+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Successfully retrieved element hierarchy.
+2026-10-12 14:49:27.100896+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch status bar hierarchy - start
+    t =    29.49s Checking existence of `StatusBar (First Match)`
+    t =    29.52s Get all elements bound by index for: Descendants matching type StatusBar
+    t =    29.58s Find the StatusBar (Element at index 0)
+    t =    29.64s Find the StatusBar (Element at index 1)
+2026-10-12 14:49:27.302403+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch status bar hierarchy - duration 0.20145809650421143
+2026-10-12 14:49:27.302509+0000 maestro-driver-iosUITests-Runner[13990:291694] [ViewHierarchyHandler] Fetch Safari WebView hierarchy - start
+2026-10-12 14:49:27.303161+0000 maestro-driver-iosUITests-Runner[13990:291694] Fetch Safari WebView hierarchy - duration 0.0006269216537475586
+    t =    29.70s Find the Application 'com.apple.springboard'
+2026-10-12 14:49:27.340498+0000 maestro-driver-iosUITests-Runner[13990:291694] [Done] View hierarchy snapshot for Application 'no.rastcamp.app' 
