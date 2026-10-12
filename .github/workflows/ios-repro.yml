@@ -8,7 +8,13 @@ on:
     inputs:
       runs:
         description: Number of app starts
-        default: '5'
+        default: '4'
+      mode:
+        description: full = whole screenshot flow on a fresh install, search = only the search
+        default: full
+      places_from:
+        description: Build with src/data/places.ts from this commit (empty = as checked out)
+        default: ''
   push:
     paths:
       - 'scripts/ios-repro/**'
@@ -18,7 +24,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: ios-repro-${{ github.sha }}
+  group: ios-repro-${{ github.sha }}-${{ inputs.places_from }}
   cancel-in-progress: true
 
 jobs:
@@ -27,6 +33,12 @@ jobs:
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v7
+      - name: Take places.ts from another commit
+        if: inputs.places_from != ''
+        run: |
+          git fetch --depth=1 origin "${{ inputs.places_from }}"
+          git checkout FETCH_HEAD -- src/data/places.ts
+          git log -1 --oneline FETCH_HEAD
       - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
@@ -67,7 +79,8 @@ jobs:
       - name: Start the app under lldb and search
         run: scripts/ios-repro/run.sh repro-out
         env:
-          RUNS: ${{ inputs.runs || '5' }}
+          RUNS: ${{ inputs.runs || '4' }}
+          MODE: ${{ inputs.mode || 'full' }}
           MAESTRO_DRIVER_STARTUP_TIMEOUT: 600000
       - name: App log
         if: always()
@@ -79,6 +92,7 @@ jobs:
           ls -la repro-out
       - name: Push to ios-repro
         if: always()
-        run: scripts/push-dir.sh repro-out "ios-repro-${GITHUB_SHA::7}"
+        run: scripts/push-dir.sh repro-out "ios-repro-${GITHUB_SHA::7}${PLACES_FROM:+-places-${PLACES_FROM::7}}"
         env:
+          PLACES_FROM: ${{ inputs.places_from }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
