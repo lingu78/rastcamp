@@ -139,6 +139,16 @@ jobs:
         env:
           # The XCUITest driver needs more than the default 2 min on the macOS runner.
           MAESTRO_DRIVER_STARTUP_TIMEOUT: 600000
+      - name: Collect crash reports and the app log
+        if: failure()
+        run: |
+          dbg=store/screenshots/debug/ios/crash
+          mkdir -p "$dbg"
+          find ~/Library/Logs/DiagnosticReports -iname '*Rastcamp*' -mmin -120 -exec cp {} "$dbg/" \; || true
+          xcrun simctl spawn "$UDID" log show --last 90m --style compact \
+            --predicate 'process == "Rastcamp" OR (process == "SpringBoard" AND eventMessage CONTAINS "rastcamp")' \
+            | tail -n 20000 > "$dbg/rastcamp.log" || true
+          ls -la "$dbg"
       - run: node scripts/frame-screenshots.ts ios
         if: always()
       - name: Push to store-screenshots-ios
