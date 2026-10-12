@@ -131,12 +131,16 @@ Definition of done: _Android-bygge i Internal testing, iOS-bygge i TestFlight._
 ## Tillägg efter M7 – Sök ort eller plats (önskemål 2026-10-12)
 
 - [x] Datapipeline: 91 100 ortsnamn ur OSM (stad, tätort, ort, by, stadsdel, kända öar och ögrupper, nationalparker) med alternativa namn och "nära <stad>"; `places.json` (3,9 MB, 1,4 MB gzip) följer med appen och uppdateras med `npm run data:update`
-- [x] Sökning helt offline, 3–35 ms per fråga på riktig data (rankning: hela namnet, början, ordbörjan, delsträng; sedan ortstyp, folkmängd, avstånd)
+- [x] Sökning helt offline, 1–35 ms per fråga på riktig data (rankning: hela namnet, början, ordbörjan, delsträng; sedan ortstyp, folkmängd, avstånd)
 - [x] Kartan: "Sök ort eller plats" → kartan flyttar sig, ringmarkör på orten; rensa-knapp
 - [x] Närmast: "Avstånd från <ort>" med Rensa, och "Välj ort"
 - [x] Sökningen hittar även appens egna platser på namn → detaljvy
 - [x] Tester (pipeline + app), TESTPLAN 3b, butikstexter, DECISIONS §15
 - [x] Ny TestFlight-build med sökningen (iOS build 4, uppladdad 2026-10-12)
+- [ ] 🔄 Krasch i iOS-simulatorn (SIGBUS/SIGSEGV) när sökskärmen öppnas eller just efter inmatning, sedd i skärmdumpsjobbet. Bjud inte in testare till build 4 förrän den är utredd. Läge:
+  - Uppträder bara när Maestro installerar om och startar appen (`launchApp clearState`): 3 av 5 och 4 av 8 körningar. Med appen startad av skriptet och lldb ansluten: 0 av 18 (bara sökningen, och hela flödet; gammalt och nytt index).
+  - Ingen kraschrapport (.ips) skrivs på GitHubs macOS-maskiner; felsökningsjobbet `ios-repro.yml` ansluter lldb till appen för att få en anropsstack.
+  - Sökindexet gjort lättare (en namnsträng, avkodning bara av träffar): 21 MB JS-minne i stället för 42 MB, samma resultat för 937 testfrågor. Löste inte kraschen ensamt.
 
 ## Kända begränsningar i utvecklingsmiljön
 
