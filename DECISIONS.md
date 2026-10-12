@@ -197,3 +197,18 @@ Linus beslut: bara iOS tills vidare. Android-röktestet körs inte längre autom
 Android, och EAS-arbetsflödet har iOS som standard. Ingen kod tas bort: appen är Expo och
 fungerar för båda plattformarna, Android-konfigurationen i `app.json`, Play-material i `store/`
 och CI:s bundle-test för Android ligger kvar så att Android kan återupptas utan omtag.
+
+## 17. Simulatorkrasch i skärmdumpsjobbet (2026-10-12)
+
+I iOS-simulatorn på GitHubs macOS-maskiner dog appen ibland (SIGBUS eller SIGSEGV) när
+sökskärmen öppnades eller strax efter inmatning, men bara när Maestro först hade installerat om
+och startat appen (`launchApp clearState`): 7 av 13 körningar. När skriptet själv installerade och
+startade appen med lldb ansluten kraschade den aldrig (0 av 18, även hela skärmdumpsflödet), och
+build 4 fungerar på Linus iPhone. Ingen kraschrapport skrivs på maskinerna, så orsaken är inte
+fastställd; felsökningsjobbet `ios-repro.yml` finns kvar för att få en anropsstack.
+
+- Skärmdumpsflödet gör upp till tre försök per språk (`scripts/screenshots.sh`).
+- Sökindexet gjordes samtidigt lättare (en namnsträng, avkodning bara av träffar: 21 MB i stället
+  för 42 MB JS-minne, samma resultat). Det är en förbättring i sig men tog inte bort kraschen.
+- Ses kraschen på en riktig telefon (TestFlight-feedback, kraschloggar i App Store Connect) tas
+  den upp igen med högsta prioritet.

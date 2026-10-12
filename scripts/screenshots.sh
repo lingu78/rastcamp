@@ -12,23 +12,28 @@ FLOW="$ROOT/store/screenshots/flows/screenshots.yaml"
 run() { # $1 = lang code, rest = KEY=VALUE labels
   local lang="$1"; shift
   local out="$ROOT/store/screenshots/raw/$PLATFORM/$lang"
-  local run; run="$(mktemp -d)"
-  rm -rf "$out" && mkdir -p "$out"
   local permission=allow
   [ "$PLATFORM" = ios ] && permission=inuse
   local args=(-e "TAB_MORE_DEVICE=More" -e "LOCATION_PERMISSION=$permission")
   for kv in "$@"; do args+=(-e "$kv"); done
-  # Maestro only writes screenshots inside the run's output folder (…/takeScreenshot/).
-  local status=0
-  maestro test --test-output-dir "$run" "${args[@]}" "$FLOW" || status=$?
-  find "$run" -name '*.png' -path '*takeScreenshot*' -exec cp {} "$out/" \;
-  if [ "$status" -ne 0 ]; then
-    # Keep Maestro's failure screenshots/hierarchy for debugging (pushed with the results).
-    local dbg="$ROOT/store/screenshots/debug/$PLATFORM/$lang"
-    # Without files over 20 MB (simulator logs can exceed GitHub's 100 MB file limit).
+  # Up to three attempts: on the iOS simulator the app sometimes dies (SIGBUS/SIGSEGV)
+  # after Maestro's clearState reinstall – never seen on a phone (PROGRESS, DECISIONS §17).
+  local status attempt run
+  for attempt in 1 2 3; do
+    rm -rf "$out" && mkdir -p "$out"
+    run="$(mktemp -d)"
+    status=0
+    # Maestro only writes screenshots inside the run's output folder (…/takeScreenshot/).
+    maestro test --test-output-dir "$run" "${args[@]}" "$FLOW" || status=$?
+    find "$run" -name '*.png' -path '*takeScreenshot*' -exec cp {} "$out/" \;
+    [ "$status" -eq 0 ] && break
+    echo "::warning::$PLATFORM/$lang: attempt $attempt failed (exit $status)"
+    # Keep Maestro's failure screenshots/hierarchy for debugging (pushed with the results),
+    # without files over 20 MB (simulator logs can exceed GitHub's 100 MB file limit).
+    local dbg="$ROOT/store/screenshots/debug/$PLATFORM/$lang/attempt-$attempt"
     mkdir -p "$dbg" && rsync -a --max-size=20m "$run/" "$dbg/" 2>/dev/null || true
-    exit "$status"
-  fi
+  done
+  [ "$status" -eq 0 ] || exit "$status"
   ls -1 "$out"
 }
 
