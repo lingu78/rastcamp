@@ -1,0 +1,322 @@
+(lldb) process attach --pid 77134
+Process 77134 stopped
+* thread #1, queue = 'com.apple.main-thread', stop reason = signal SIGSTOP
+    frame #0: 0x000000010677252c React`facebook::react::TimerManager::TimerManager(std::__1::unique_ptr<facebook::react::PlatformTimerRegistry, std::__1::default_delete<facebook::react::PlatformTimerRegistry>>)
+React`facebook::react::TimerManager::TimerManager:
+->  0x10677252c <+0>:  str    xzr, [x0, #0x18]
+    0x106772530 <+4>:  ldr    x8, [x1]
+    0x106772534 <+8>:  str    xzr, [x1]
+    0x106772538 <+12>: str    x8, [x0, #0x20]
+Target 0: (Rastcamp) stopped.
+Executable binary set to "/Users/runner/Library/Developer/CoreSimulator/Devices/841190F6-F927-4F0D-B152-62A06B4040CA/data/Containers/Bundle/Application/B7E852EE-E4B1-4BB7-8A5C-F24903496A11/Rastcamp.app/Rastcamp".
+Architecture set to: arm64-apple-ios-simulator.
+(lldb) process handle SIGPIPE SIGUSR1 SIGUSR2 SIGTERM -s false -n false -p true
+NAME         PASS   STOP   NOTIFY
+===========  =====  =====  ======
+SIGPIPE      true   false  false
+SIGUSR1      true   false  false
+SIGUSR2      true   false  false
+SIGTERM      true   false  false
+(lldb) continue
+Process 77134 resuming
+Process 77134 stopped
+* thread #1, queue = 'com.apple.main-thread', stop reason = signal SIGKILL
+    frame #0: 0x0000000104300b70 libsystem_kernel.dylib`mach_msg2_trap + 8
+libsystem_kernel.dylib`mach_msg2_trap:
+->  0x104300b70 <+8>: ret    
+
+libsystem_kernel.dylib`macx_swapon:
+    0x104300b74 <+0>: mov    x16, #-0x30               ; =-48 
+    0x104300b78 <+4>: svc    #0x80
+    0x104300b7c <+8>: ret    
+Target 0: (Rastcamp) stopped.
+(lldb) thread info
+thread #1: tid = 0x31c22, 0x0000000104300b70 libsystem_kernel.dylib`mach_msg2_trap + 8, queue = 'com.apple.main-thread', stop reason = signal SIGKILL
+
+(lldb) bt all
+* thread #1, queue = 'com.apple.main-thread', stop reason = signal SIGKILL
+  * frame #0: 0x0000000104300b70 libsystem_kernel.dylib`mach_msg2_trap + 8
+    frame #1: 0x0000000104311e84 libsystem_kernel.dylib`mach_msg2_internal + 72
+    frame #2: 0x0000000104308c44 libsystem_kernel.dylib`mach_msg_overwrite + 484
+    frame #3: 0x0000000104300ef0 libsystem_kernel.dylib`mach_msg + 20
+    frame #4: 0x00000001804227c0 CoreFoundation`__CFRunLoopServiceMachPort + 156
+    frame #5: 0x0000000180421978 CoreFoundation`__CFRunLoopRun + 1128
+    frame #6: 0x000000018041c904 CoreFoundation`_CFRunLoopRunSpecificWithOptions + 496
+    frame #7: 0x00000001933599c0 GraphicsServices`GSEventRunModal + 116
+    frame #8: 0x00000001864a54cc UIKitCore`-[UIApplication _run] + 776
+    frame #9: 0x0000000186b9f910 UIKitCore`UIApplicationMain + 120
+    frame #10: 0x000000018564a820 UIKitCore`UIApplicationMain(_:_:_:_:) + 100
+    frame #11: 0x0000000102a77d24 Rastcamp`specialized static UIApplicationDelegate.main() at AppDelegate.swift:0 [opt] [inlined]
+    frame #12: 0x0000000102a77d08 Rastcamp`static AppDelegate.$main() at <compiler-generated>:5:1 [opt] [inlined]
+    frame #13: 0x0000000102a77d08 Rastcamp`main at AppDelegate.swift:0 [opt]
+    frame #14: 0x0000000103fd30e4 dyld_sim`start_sim + 20
+    frame #15: 0x00000001041204e4 dyld`start + 6992
+  thread #5
+    frame #0: 0x00000001043e9a20 libsystem_pthread.dylib`start_wqthread
+  thread #6, name = 'com.apple.uikit.eventfetch-thread'
+    frame #0: 0x0000000104300b70 libsystem_kernel.dylib`mach_msg2_trap + 8
+    frame #1: 0x0000000104311e84 libsystem_kernel.dylib`mach_msg2_internal + 72
+    frame #2: 0x0000000104308c44 libsystem_kernel.dylib`mach_msg_overwrite + 484
+    frame #3: 0x0000000104300ef0 libsystem_kernel.dylib`mach_msg + 20
+    frame #4: 0x00000001804227c0 CoreFoundation`__CFRunLoopServiceMachPort + 156
+    frame #5: 0x0000000180421978 CoreFoundation`__CFRunLoopRun + 1128
+    frame #6: 0x000000018041c904 CoreFoundation`_CFRunLoopRunSpecificWithOptions + 496
+    frame #7: 0x000000018112fa4c Foundation`-[NSRunLoop(NSRunLoop) runMode:beforeDate:] + 208
+    frame #8: 0x000000018112fc68 Foundation`-[NSRunLoop(NSRunLoop) runUntilDate:] + 60
+    frame #9: 0x00000001861d7ad4 UIKitCore`-[UIEventFetcher threadMain] + 404
+    frame #10: 0x0000000181154edc Foundation`__NSThread__start__ + 716
+    frame #11: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #10, name = 'com.facebook.react.runtime.JavaScript'
+    frame #0: 0x0000000104300b70 libsystem_kernel.dylib`mach_msg2_trap + 8
+    frame #1: 0x0000000104311e84 libsystem_kernel.dylib`mach_msg2_internal + 72
+    frame #2: 0x0000000104308c44 libsystem_kernel.dylib`mach_msg_overwrite + 484
+    frame #3: 0x0000000104300ef0 libsystem_kernel.dylib`mach_msg + 20
+    frame #4: 0x00000001804227c0 CoreFoundation`__CFRunLoopServiceMachPort + 156
+    frame #5: 0x0000000180421978 CoreFoundation`__CFRunLoopRun + 1128
+    frame #6: 0x000000018041c904 CoreFoundation`_CFRunLoopRunSpecificWithOptions + 496
+    frame #7: 0x000000010678130c React`+[RCTJSThreadManager runRunLoop] + 252
+    frame #8: 0x0000000181154edc Foundation`__NSThread__start__ + 716
+    frame #9: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #11, name = 'hades'
+    frame #0: 0x000000010430402c libsystem_kernel.dylib`__psynch_cvwait + 8
+    frame #1: 0x00000001043eeb00 libsystem_pthread.dylib`_pthread_cond_wait + 972
+    frame #2: 0x0000000180300604 libc++.1.dylib`std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 28
+    frame #3: 0x00000001058ad8f8 hermesvm`hermes::vm::HadesGC::Executor::worker() + 104
+    frame #4: 0x00000001058ad86c hermesvm`void* std::__1::__thread_proxy[abi:nn190102]<std::__1::tuple<std::__1::unique_ptr<std::__1::__thread_struct, std::__1::default_delete<std::__1::__thread_struct>>, hermes::vm::HadesGC::Executor::Executor()::'lambda'()>>(void*) + 44
+    frame #5: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #12, name = 'org.maplibre.mbgl.AssetFileSource'
+    frame #0: 0x0000000104300b70 libsystem_kernel.dylib`mach_msg2_trap + 8
+    frame #1: 0x0000000104311e84 libsystem_kernel.dylib`mach_msg2_internal + 72
+    frame #2: 0x0000000104308c44 libsystem_kernel.dylib`mach_msg_overwrite + 484
+    frame #3: 0x0000000104300ef0 libsystem_kernel.dylib`mach_msg + 20
+    frame #4: 0x00000001804227c0 CoreFoundation`__CFRunLoopServiceMachPort + 156
+    frame #5: 0x0000000180421978 CoreFoundation`__CFRunLoopRun + 1128
+    frame #6: 0x000000018041c904 CoreFoundation`_CFRunLoopRunSpecificWithOptions + 496
+    frame #7: 0x000000018041c9e4 CoreFoundation`CFRunLoopRun + 60
+    frame #8: 0x0000000104e5bac8 MapLibre`___lldb_unnamed_symbol_dfa04 + 196
+    frame #9: 0x0000000104e5b904 MapLibre`___lldb_unnamed_symbol_df8cc + 56
+    frame #10: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #13, name = 'org.maplibre.mbgl.OnlineFileSource'
+    frame #0: 0x0000000104300b70 libsystem_kernel.dylib`mach_msg2_trap + 8
+    frame #1: 0x0000000104311e84 libsystem_kernel.dylib`mach_msg2_internal + 72
+    frame #2: 0x0000000104308c44 libsystem_kernel.dylib`mach_msg_overwrite + 484
+    frame #3: 0x0000000104300ef0 libsystem_kernel.dylib`mach_msg + 20
+    frame #4: 0x00000001804227c0 CoreFoundation`__CFRunLoopServiceMachPort + 156
+    frame #5: 0x0000000180421978 CoreFoundation`__CFRunLoopRun + 1128
+    frame #6: 0x000000018041c904 CoreFoundation`_CFRunLoopRunSpecificWithOptions + 496
+    frame #7: 0x000000018041c9e4 CoreFoundation`CFRunLoopRun + 60
+    frame #8: 0x0000000104e93254 MapLibre`___lldb_unnamed_symbol_1171c0 + 148
+    frame #9: 0x0000000104e930c0 MapLibre`___lldb_unnamed_symbol_117088 + 56
+    frame #10: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #14, name = 'org.maplibre.mbgl.DatabaseFileSource'
+    frame #0: 0x0000000104300b70 libsystem_kernel.dylib`mach_msg2_trap + 8
+    frame #1: 0x0000000104311e84 libsystem_kernel.dylib`mach_msg2_internal + 72
+    frame #2: 0x0000000104308c44 libsystem_kernel.dylib`mach_msg_overwrite + 484
+    frame #3: 0x0000000104300ef0 libsystem_kernel.dylib`mach_msg + 20
+    frame #4: 0x00000001804227c0 CoreFoundation`__CFRunLoopServiceMachPort + 156
+    frame #5: 0x0000000180421978 CoreFoundation`__CFRunLoopRun + 1128
+    frame #6: 0x000000018041c904 CoreFoundation`_CFRunLoopRunSpecificWithOptions + 496
+    frame #7: 0x000000018041c9e4 CoreFoundation`CFRunLoopRun + 60
+    frame #8: 0x0000000104e622b0 MapLibre`___lldb_unnamed_symbol_e61dc + 212
+    frame #9: 0x0000000104e62088 MapLibre`___lldb_unnamed_symbol_e6054 + 52
+    frame #10: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #15, name = 'org.maplibre.mbgl.LocalFileSource'
+    frame #0: 0x0000000104300b70 libsystem_kernel.dylib`mach_msg2_trap + 8
+    frame #1: 0x0000000104311e84 libsystem_kernel.dylib`mach_msg2_internal + 72
+    frame #2: 0x0000000104308c44 libsystem_kernel.dylib`mach_msg_overwrite + 484
+    frame #3: 0x0000000104300ef0 libsystem_kernel.dylib`mach_msg + 20
+    frame #4: 0x00000001804227c0 CoreFoundation`__CFRunLoopServiceMachPort + 156
+    frame #5: 0x0000000180421978 CoreFoundation`__CFRunLoopRun + 1128
+    frame #6: 0x000000018041c904 CoreFoundation`_CFRunLoopRunSpecificWithOptions + 496
+    frame #7: 0x000000018041c9e4 CoreFoundation`CFRunLoopRun + 60
+    frame #8: 0x0000000104e69c5c MapLibre`___lldb_unnamed_symbol_edbc4 + 152
+    frame #9: 0x0000000104e69ac4 MapLibre`___lldb_unnamed_symbol_eda8c + 56
+    frame #10: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #16, name = 'org.maplibre.mbgl.MBTilesFileSource'
+    frame #0: 0x0000000104300b70 libsystem_kernel.dylib`mach_msg2_trap + 8
+    frame #1: 0x0000000104311e84 libsystem_kernel.dylib`mach_msg2_internal + 72
+    frame #2: 0x0000000104308c44 libsystem_kernel.dylib`mach_msg_overwrite + 484
+    frame #3: 0x0000000104300ef0 libsystem_kernel.dylib`mach_msg + 20
+    frame #4: 0x00000001804227c0 CoreFoundation`__CFRunLoopServiceMachPort + 156
+    frame #5: 0x0000000180421978 CoreFoundation`__CFRunLoopRun + 1128
+    frame #6: 0x000000018041c904 CoreFoundation`_CFRunLoopRunSpecificWithOptions + 496
+    frame #7: 0x000000018041c9e4 CoreFoundation`CFRunLoopRun + 60
+    frame #8: 0x0000000104e79d38 MapLibre`___lldb_unnamed_symbol_fdc74 + 196
+    frame #9: 0x0000000104e79b74 MapLibre`___lldb_unnamed_symbol_fdb3c + 56
+    frame #10: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #17, name = 'org.maplibre.mbgl.PMTilesFileSource'
+    frame #0: 0x0000000104300b70 libsystem_kernel.dylib`mach_msg2_trap + 8
+    frame #1: 0x0000000104311e84 libsystem_kernel.dylib`mach_msg2_internal + 72
+    frame #2: 0x0000000104308c44 libsystem_kernel.dylib`mach_msg_overwrite + 484
+    frame #3: 0x0000000104300ef0 libsystem_kernel.dylib`mach_msg + 20
+    frame #4: 0x00000001804227c0 CoreFoundation`__CFRunLoopServiceMachPort + 156
+    frame #5: 0x0000000180421978 CoreFoundation`__CFRunLoopRun + 1128
+    frame #6: 0x000000018041c904 CoreFoundation`_CFRunLoopRunSpecificWithOptions + 496
+    frame #7: 0x000000018041c9e4 CoreFoundation`CFRunLoopRun + 60
+    frame #8: 0x0000000104ea1768 MapLibre`___lldb_unnamed_symbol_1256a0 + 200
+    frame #9: 0x0000000104ea15a0 MapLibre`___lldb_unnamed_symbol_125568 + 56
+    frame #10: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #18, name = 'org.maplibre.mbgl.ResourceLoaderThread'
+    frame #0: 0x0000000104300b70 libsystem_kernel.dylib`mach_msg2_trap + 8
+    frame #1: 0x0000000104311e84 libsystem_kernel.dylib`mach_msg2_internal + 72
+    frame #2: 0x0000000104308c44 libsystem_kernel.dylib`mach_msg_overwrite + 484
+    frame #3: 0x0000000104300ef0 libsystem_kernel.dylib`mach_msg + 20
+    frame #4: 0x00000001804227c0 CoreFoundation`__CFRunLoopServiceMachPort + 156
+    frame #5: 0x0000000180421978 CoreFoundation`__CFRunLoopRun + 1128
+    frame #6: 0x000000018041c904 CoreFoundation`_CFRunLoopRunSpecificWithOptions + 496
+    frame #7: 0x000000018041c9e4 CoreFoundation`CFRunLoopRun + 60
+    frame #8: 0x0000000104e6fa64 MapLibre`___lldb_unnamed_symbol_f3998 + 204
+    frame #9: 0x0000000104e6f854 MapLibre`___lldb_unnamed_symbol_f381c + 56
+    frame #10: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #19, name = 'org.maplibre.mbgl.Worker 1'
+    frame #0: 0x000000010430402c libsystem_kernel.dylib`__psynch_cvwait + 8
+    frame #1: 0x00000001043eeb00 libsystem_pthread.dylib`_pthread_cond_wait + 972
+    frame #2: 0x0000000180300604 libc++.1.dylib`std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 28
+    frame #3: 0x0000000105161bd8 MapLibre`___lldb_unnamed_symbol_3e5a68 + 368
+    frame #4: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #20, name = 'org.maplibre.mbgl.Worker 2'
+    frame #0: 0x000000010430402c libsystem_kernel.dylib`__psynch_cvwait + 8
+    frame #1: 0x00000001043eeb00 libsystem_pthread.dylib`_pthread_cond_wait + 972
+    frame #2: 0x0000000180300604 libc++.1.dylib`std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 28
+    frame #3: 0x0000000105161bd8 MapLibre`___lldb_unnamed_symbol_3e5a68 + 368
+    frame #4: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #21, name = 'org.maplibre.mbgl.Worker 3'
+    frame #0: 0x000000010430402c libsystem_kernel.dylib`__psynch_cvwait + 8
+    frame #1: 0x00000001043eeb00 libsystem_pthread.dylib`_pthread_cond_wait + 972
+    frame #2: 0x0000000180300604 libc++.1.dylib`std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 28
+    frame #3: 0x0000000105161bd8 MapLibre`___lldb_unnamed_symbol_3e5a68 + 368
+    frame #4: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #22, name = 'org.maplibre.mbgl.Worker 4'
+    frame #0: 0x000000010430402c libsystem_kernel.dylib`__psynch_cvwait + 8
+    frame #1: 0x00000001043eeb00 libsystem_pthread.dylib`_pthread_cond_wait + 972
+    frame #2: 0x0000000180300604 libc++.1.dylib`std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 28
+    frame #3: 0x0000000105161bd8 MapLibre`___lldb_unnamed_symbol_3e5a68 + 368
+    frame #4: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #26, name = 'org.maplibre.mbgl.Worker 1'
+    frame #0: 0x000000010430402c libsystem_kernel.dylib`__psynch_cvwait + 8
+    frame #1: 0x00000001043eeb00 libsystem_pthread.dylib`_pthread_cond_wait + 972
+    frame #2: 0x0000000180300604 libc++.1.dylib`std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 28
+    frame #3: 0x0000000105161bd8 MapLibre`___lldb_unnamed_symbol_3e5a68 + 368
+    frame #4: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #27, name = 'org.maplibre.mbgl.Worker 1'
+    frame #0: 0x000000010430402c libsystem_kernel.dylib`__psynch_cvwait + 8
+    frame #1: 0x00000001043eeb00 libsystem_pthread.dylib`_pthread_cond_wait + 972
+    frame #2: 0x0000000180300604 libc++.1.dylib`std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 28
+    frame #3: 0x0000000105161bd8 MapLibre`___lldb_unnamed_symbol_3e5a68 + 368
+    frame #4: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #28, name = 'org.maplibre.mbgl.Worker 1'
+    frame #0: 0x000000010430402c libsystem_kernel.dylib`__psynch_cvwait + 8
+    frame #1: 0x00000001043eeb00 libsystem_pthread.dylib`_pthread_cond_wait + 972
+    frame #2: 0x0000000180300604 libc++.1.dylib`std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 28
+    frame #3: 0x0000000105161bd8 MapLibre`___lldb_unnamed_symbol_3e5a68 + 368
+    frame #4: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #29, name = 'org.maplibre.mbgl.Worker 1'
+    frame #0: 0x000000010430402c libsystem_kernel.dylib`__psynch_cvwait + 8
+    frame #1: 0x00000001043eeb00 libsystem_pthread.dylib`_pthread_cond_wait + 972
+    frame #2: 0x0000000180300604 libc++.1.dylib`std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 28
+    frame #3: 0x0000000105161bd8 MapLibre`___lldb_unnamed_symbol_3e5a68 + 368
+    frame #4: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #30, name = 'org.maplibre.mbgl.Worker 1'
+    frame #0: 0x000000010430402c libsystem_kernel.dylib`__psynch_cvwait + 8
+    frame #1: 0x00000001043eeb00 libsystem_pthread.dylib`_pthread_cond_wait + 972
+    frame #2: 0x0000000180300604 libc++.1.dylib`std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 28
+    frame #3: 0x0000000105161bd8 MapLibre`___lldb_unnamed_symbol_3e5a68 + 368
+    frame #4: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #31, name = 'org.maplibre.mbgl.Worker 1'
+    frame #0: 0x000000010430402c libsystem_kernel.dylib`__psynch_cvwait + 8
+    frame #1: 0x00000001043eeb00 libsystem_pthread.dylib`_pthread_cond_wait + 972
+    frame #2: 0x0000000180300604 libc++.1.dylib`std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 28
+    frame #3: 0x0000000105161bd8 MapLibre`___lldb_unnamed_symbol_3e5a68 + 368
+    frame #4: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #32, name = 'org.maplibre.mbgl.Worker 1'
+    frame #0: 0x000000010430402c libsystem_kernel.dylib`__psynch_cvwait + 8
+    frame #1: 0x00000001043eeb00 libsystem_pthread.dylib`_pthread_cond_wait + 972
+    frame #2: 0x0000000180300604 libc++.1.dylib`std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 28
+    frame #3: 0x0000000105161bd8 MapLibre`___lldb_unnamed_symbol_3e5a68 + 368
+    frame #4: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #37, name = 'org.maplibre.mbgl.Worker 1'
+    frame #0: 0x000000010430402c libsystem_kernel.dylib`__psynch_cvwait + 8
+    frame #1: 0x00000001043eeb00 libsystem_pthread.dylib`_pthread_cond_wait + 972
+    frame #2: 0x0000000180300604 libc++.1.dylib`std::__1::condition_variable::wait(std::__1::unique_lock<std::__1::mutex>&) + 28
+    frame #3: 0x0000000105161bd8 MapLibre`___lldb_unnamed_symbol_3e5a68 + 368
+    frame #4: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #38, queue = 'AXBinaryMonitorQueue'
+    frame #0: 0x0000000104302844 libsystem_kernel.dylib`__ulock_wake + 8
+    frame #1: 0x000000010428d350 libsystem_platform.dylib`_os_unfair_lock_unlock_slow + 52
+    frame #2: 0x0000000180053470 libobjc.A.dylib`lookUpImpOrForward + 412
+    frame #3: 0x000000018003af00 libobjc.A.dylib`_objc_msgSend_uncached + 64
+    frame #4: 0x0000000192abecbc AXCoreUtilities`__46-[AXBinaryMonitor _addHandler:withName:toMap:]_block_invoke_2 + 128
+    frame #5: 0x00000001801866a0 libdispatch.dylib`_dispatch_call_block_and_release + 24
+    frame #6: 0x00000001801a0e98 libdispatch.dylib`_dispatch_client_callout + 12
+    frame #7: 0x000000018018f724 libdispatch.dylib`_dispatch_lane_serial_drain + 984
+    frame #8: 0x00000001801901e8 libdispatch.dylib`_dispatch_lane_invoke + 396
+    frame #9: 0x000000018019aec0 libdispatch.dylib`_dispatch_root_queue_drain_deferred_wlh + 288
+    frame #10: 0x000000018019a608 libdispatch.dylib`_dispatch_workloop_worker_thread + 692
+    frame #11: 0x00000001043eac28 libsystem_pthread.dylib`_pthread_wqthread + 288
+  thread #39
+    frame #0: 0x00000001043e9a20 libsystem_pthread.dylib`start_wqthread
+  thread #41
+    frame #0: 0x0000000104302698 libsystem_kernel.dylib`__workq_kernreturn + 8
+  thread #42
+    frame #0: 0x00000001043e9a20 libsystem_pthread.dylib`start_wqthread
+  thread #43
+    frame #0: 0x00000001043e9a20 libsystem_pthread.dylib`start_wqthread
+  thread #44, name = 'com.apple.UIKit.inProcessAnimationManager'
+    frame #0: 0x0000000104300aec libsystem_kernel.dylib`semaphore_wait_trap + 8
+    frame #1: 0x0000000180187d60 libdispatch.dylib`_dispatch_sema4_wait + 24
+    frame #2: 0x00000001801883c0 libdispatch.dylib`_dispatch_semaphore_wait_slow + 128
+    frame #3: 0x0000000185729634 UIKitCore`___lldb_unnamed_symbol_4a0618 + 28
+    frame #4: 0x000000018572d494 UIKitCore`___lldb_unnamed_symbol_4a4364 + 304
+    frame #5: 0x00000001853d4730 UIKitCore`___lldb_unnamed_symbol_14b714 + 28
+    frame #6: 0x0000000181154edc Foundation`__NSThread__start__ + 716
+    frame #7: 0x00000001043ee63c libsystem_pthread.dylib`_pthread_start + 104
+  thread #45
+    frame #0: 0x00000001043e9a20 libsystem_pthread.dylib`start_wqthread
+  thread #46
+    frame #0: 0x0000000104302698 libsystem_kernel.dylib`__workq_kernreturn + 8
+  thread #47
+    frame #0: 0x0000000104302698 libsystem_kernel.dylib`__workq_kernreturn + 8
+  thread #48
+    frame #0: 0x0000000104302698 libsystem_kernel.dylib`__workq_kernreturn + 8
+  thread #49
+    frame #0: 0x0000000000000000 
+(lldb) register read
+General Purpose Registers:
+        x0 = 0x0000000010004005
+        x1 = 0x0000000507000806
+        x2 = 0x0000000200000000
+        x3 = 0x0000210300000000
+        x4 = 0x0000000000000000
+        x5 = 0x0000210300000000
+        x6 = 0x0000000000000002
+        x7 = 0x00000000ffffffff
+        x8 = 0x0000000000000000
+        x9 = 0x0000000400000000
+       x10 = 0x0000000000000000
+       x11 = 0x0000000000000002
+       x12 = 0x0000000000000000
+       x13 = 0x0000000000000000
+       x14 = 0x0000000000002103
+       x15 = 0x0000000000000c00
+       x16 = 0xffffffffffffffd1
+       x17 = 0x00000001803a0738  CoreFoundation`-[__NSArrayM objectAtIndex:]
+       x18 = 0x0000000000000000
+       x19 = 0x00000000ffffffff
+       x20 = 0x0000000000000002
+       x21 = 0x0000210300000000
+       x22 = 0x0000000000000000
+       x23 = 0x0000210300000000
+       x24 = 0x0000000507000806
+       x25 = 0x000000016d388e48
+       x26 = 0x0000000200000000
+       x27 = 0xfffffffffffffbbf
+       x28 = 0x0000000104344000  _libkernel_string_functions
+        fp = 0x000000016d388db0
+        lr = 0x0000000104311e84  libsystem_kernel.dylib`mach_msg2_internal + 72
+        sp = 0x000000016d388d60
+        pc = 0x0000000104300b70  libsystem_kernel.dylib`mach_msg2_trap + 8
+      cpsr = 0x00001000
+
+(lldb) memory region $pc
+[0x0000000104300000-0x000000010433c000) r-x __TEXT
+Modified memory (dirty) page list provided, 0 entries.
