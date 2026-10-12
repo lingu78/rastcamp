@@ -2,7 +2,7 @@ name: iOS crash repro
 
 # Debugging aid: builds the iOS app for the simulator, starts it several times with lldb
 # attached and runs the location search, keeping backtraces if it crashes. Results are
-# pushed to the ios-repro branch. Manual, or when the repro files change.
+# pushed to the ios-repro-<commit> branch. Manual, or when the repro files change.
 on:
   workflow_dispatch:
     inputs:
@@ -79,6 +79,6 @@ jobs:
           ls -la repro-out
       - name: Push to ios-repro
         if: always()
-        run: scripts/push-dir.sh repro-out ios-repro
+        run: scripts/push-dir.sh repro-out "ios-repro-${GITHUB_SHA::7}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
