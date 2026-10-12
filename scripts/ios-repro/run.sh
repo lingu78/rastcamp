@@ -36,11 +36,14 @@ summary="$OUT/summary.txt"
 : > "$summary"
 # Attaches lldb to each new app process until $OUT/done-$1 exists.
 follow() {
-  local i="$1" n=0 last="" pid
+  local i="$1" n=0 last="" pid t=0
   while [ ! -f "$OUT/done-$i" ]; do
-    pid=$(pgrep -f 'Rastcamp\.app/Rastcamp$' | tail -1 || true)
+    t=$((t + 1))
+    [ "$t" = 100 ] && ps -axo pid,command | grep -i '[R]astcamp' >> "$OUT/processes-$i.txt"
+    pid=$(pgrep -f 'Rastcamp\.app/Rastcamp( |$)' | tail -1 || true)
     if [ -n "$pid" ] && [ "$pid" != "$last" ]; then
       last="$pid"; n=$((n + 1))
+      ps -o pid,command -p "$pid" >> "$OUT/processes-$i.txt" 2>&1
       lldb --batch --attach-pid "$pid" \
         -o "process handle SIGPIPE SIGUSR1 SIGUSR2 SIGTERM -s false -n false -p true" \
         -o continue \
