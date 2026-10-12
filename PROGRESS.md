@@ -139,6 +139,7 @@ Definition of done: _Android-bygge i Internal testing, iOS-bygge i TestFlight._
 - [x] Ny TestFlight-build med sökningen (iOS build 4, uppladdad 2026-10-12)
 - [x] Krasch i iOS-simulatorn i skärmdumpsjobbet utredd: simulatormiljön på GitHubs maskiner är instabil efter en ominstallation (krascher även i `dyld_sim` innan appkod körs), inte ett appfel; build 4 fungerar på Linus iPhone (DECISIONS §17). Skärmdumpsflödet kontrollerar varje bild och gör om ett språk upp till tre gånger.
 - [x] Lättare sökindex: 21 MB JS-minne i stället för 42 MB, samma resultat, 3,4× snabbare
+- [x] iOS build 5 (1.0.0) uppladdad till App Store Connect 2026-10-12: lättare sökindex och Expo SDK 57-patchar (expo 57.0.28 m.fl.)
 
 ## Kända begränsningar i utvecklingsmiljön
 
