@@ -10,8 +10,8 @@ on:
         description: Number of app starts
         default: '4'
       mode:
-        description: full = whole screenshot flow on a fresh install, search = only the search
-        default: full
+        description: full = screenshot flow on a fresh install (app started under lldb), maestro = unchanged screenshot flow (Maestro reinstalls the app; lldb follows), search = only the search
+        default: maestro
       places_from:
         description: Build with src/data/places.ts from this commit (empty = as checked out)
         default: ''
@@ -80,7 +80,7 @@ jobs:
         run: scripts/ios-repro/run.sh repro-out
         env:
           RUNS: ${{ inputs.runs || '4' }}
-          MODE: ${{ inputs.mode || 'full' }}
+          MODE: ${{ inputs.mode || 'maestro' }}
           MAESTRO_DRIVER_STARTUP_TIMEOUT: 600000
       - name: App log
         if: always()

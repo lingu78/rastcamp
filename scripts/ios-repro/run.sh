@@ -2,11 +2,13 @@
 # Starts the app N times on the booted simulator ($UDID) with lldb attached, runs a flow
 # each time and keeps lldb's backtraces if the app crashes. MODE=search runs only the
 # location search; MODE=full runs the whole store screenshot flow (Swedish) on a fresh
-# install, which is where the app died with SIGBUS.
+# install, which is where the app died with SIGBUS. MODE=maestro runs the unchanged
+# screenshot flow (Maestro reinstalls and starts the app itself, as in the screenshot job)
+# and attaches lldb to every new app process.
 set -uo pipefail
 OUT="${1:?output dir}"
 RUNS="${RUNS:-5}"
-MODE="${MODE:-full}"
+MODE="${MODE:-maestro}"
 DIR="$(cd "$(dirname "$0")" && pwd)"
 ROOT="$(cd "$DIR/../.." && pwd)"
 APP=no.rastcamp.app
@@ -32,7 +34,42 @@ xcrun simctl location "$UDID" set 59.9139,10.7522 || true
 stats start
 summary="$OUT/summary.txt"
 : > "$summary"
-for i in $(seq 1 "$RUNS"); do
+# Attaches lldb to each new app process until $OUT/done-$1 exists.
+follow() {
+  local i="$1" n=0 last="" pid
+  while [ ! -f "$OUT/done-$i" ]; do
+    pid=$(pgrep -f 'Rastcamp\.app/Rastcamp$' | tail -1 || true)
+    if [ -n "$pid" ] && [ "$pid" != "$last" ]; then
+      last="$pid"; n=$((n + 1))
+      lldb --batch --attach-pid "$pid" \
+        -o "process handle SIGPIPE SIGUSR1 SIGUSR2 SIGTERM -s false -n false -p true" \
+        -o continue \
+        -k "thread info" -k "bt all" -k "register read" -k "memory region \$pc" \
+        > "$OUT/lldb-$i-$n.txt" 2>&1 &
+    fi
+    sleep 0.3
+  done
+}
+
+if [ "$MODE" = maestro ]; then
+  for i in $(seq 1 "$RUNS"); do
+    follow "$i" &
+    follower=$!
+    status=0
+    maestro test --test-output-dir "$OUT/maestro-$i" -e LOCATION_PERMISSION=inuse "${SV[@]}" \
+      "$ROOT/store/screenshots/flows/screenshots.yaml" > "$OUT/maestro-$i.txt" 2>&1 || status=$?
+    sleep 3
+    if cat "$OUT"/lldb-"$i"-*.txt 2>/dev/null | grep -q -E "stop reason = (EXC_|signal SIG(BUS|SEGV|ABRT|ILL|TRAP))"; then crashed=yes; else crashed=no; fi
+    echo "run $i: maestro=$status crash=$crashed" | tee -a "$summary"
+    touch "$OUT/done-$i"
+    xcrun simctl terminate "$UDID" "$APP" 2>/dev/null || true
+    wait "$follower" 2>/dev/null || true
+    pkill -f 'lldb --batch' 2>/dev/null || true
+    stats "after run $i"
+  done
+fi
+
+[ "$MODE" = maestro ] || for i in $(seq 1 "$RUNS"); do
   xcrun simctl terminate "$UDID" "$APP" 2>/dev/null || true
   if [ "$MODE" = full ]; then # fresh install, like Maestro's clearState
     xcrun simctl uninstall "$UDID" "$APP" || true
