@@ -110,8 +110,8 @@ Definition of done: _Allt i avsnitt 9–10 klart i `store/`, integritetspolicy p
 - [x] Feature graphic 1024×500 (sv/nb/en) och Play-ikon 512²
 - [x] Integritetspolicy sv/nb/en (`site/privacy/`) + Pages-startsida och öppen-data-sida
 - [x] Material för slutet test och TestFlight (inbjudan, guide, påminnelser dag 7/12, svar till produktionsansökan) – `store/testing/`
-- [x] Skärmdumpar Android 1080×1920 sv/nb/en (5 st/språk) – `store/screenshots/final/android/`, metod i `store/screenshots/README.md`
-- [x] Skärmdumpar iPhone 6,9" (1320×2868) sv/nb/en (5 st/språk) – `store/screenshots/final/ios/`
+- [x] Skärmdumpar Android 1080×1920 sv/nb/en (5 st/språk, utan sökbilden – Android pausad) – `store/screenshots/final/android/`, metod i `store/screenshots/README.md`
+- [x] Skärmdumpar iPhone 6,9" (1320×2868) sv/nb/en (6 st/språk inkl. ortssökningen, tagna om 2026-10-12) – `store/screenshots/final/ios/`
 - [x] Integritetspolicy publicerad (sv/nb/en): <https://lingu78.github.io/rastcamp/privacy/>
 
 ## M8 – 🔑 Konton & första byggen
