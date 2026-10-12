@@ -136,7 +136,7 @@ Definition of done: _Android-bygge i Internal testing, iOS-bygge i TestFlight._
 - [x] Närmast: "Avstånd från <ort>" med Rensa, och "Välj ort"
 - [x] Sökningen hittar även appens egna platser på namn → detaljvy
 - [x] Tester (pipeline + app), TESTPLAN 3b, butikstexter, DECISIONS §15
-- [ ] Ny TestFlight-build med sökningen
+- [x] Ny TestFlight-build med sökningen (iOS build 4, uppladdad 2026-10-12)
 
 ## Kända begränsningar i utvecklingsmiljön
 
