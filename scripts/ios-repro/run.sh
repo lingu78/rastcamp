@@ -58,9 +58,23 @@ if [ "$MODE" = maestro ]; then
   for i in $(seq 1 "$RUNS"); do
     follow "$i" &
     follower=$!
-    status=0
     maestro test --test-output-dir "$OUT/maestro-$i" -e LOCATION_PERMISSION=inuse "${SV[@]}" \
-      "$ROOT/store/screenshots/flows/screenshots.yaml" > "$OUT/maestro-$i.txt" 2>&1 || status=$?
+      "$ROOT/store/screenshots/flows/screenshots.yaml" > "$OUT/maestro-$i.txt" 2>&1 &
+    runner=$!
+    # A crash stopped under lldb freezes the app and Maestro then waits for ever: stop
+    # Maestro once lldb has printed the backtrace, or after 15 minutes.
+    for _ in $(seq 1 900); do
+      kill -0 "$runner" 2>/dev/null || break
+      if cat "$OUT"/lldb-"$i"-*.txt 2>/dev/null | grep -q -E "stop reason = (EXC_|signal SIG(BUS|SEGV|ABRT|ILL|TRAP))"; then
+        sleep 20
+        break
+      fi
+      sleep 1
+    done
+    pkill -P "$runner" 2>/dev/null || true
+    kill "$runner" 2>/dev/null || true
+    status=0
+    wait "$runner" || status=$?
     sleep 3
     if cat "$OUT"/lldb-"$i"-*.txt 2>/dev/null | grep -q -E "stop reason = (EXC_|signal SIG(BUS|SEGV|ABRT|ILL|TRAP))"; then crashed=yes; else crashed=no; fi
     echo "run $i: maestro=$status crash=$crashed" | tee -a "$summary"
@@ -105,6 +119,7 @@ fi
   stats "after run $i"
 done
 # Crash reports, wherever the runner's ReportCrash puts them.
+find "$OUT" -size +20M -delete
 mkdir -p "$OUT/ips"
 sudo find /Users /Library /private/var -name '*.ips' -mmin -120 2>/dev/null \
   | grep -i -E 'rastcamp' | while read -r f; do sudo cp "$f" "$OUT/ips/" ; done

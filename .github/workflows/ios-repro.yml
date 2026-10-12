@@ -30,7 +30,7 @@ concurrency:
 jobs:
   ios:
     runs-on: macos-latest
-    timeout-minutes: 90
+    timeout-minutes: 150
     steps:
       - uses: actions/checkout@v7
       - name: Take places.ts from another commit
@@ -77,6 +77,7 @@ jobs:
           curl -fsSL "https://get.maestro.mobile.dev" | bash
           echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
       - name: Start the app under lldb and search
+        timeout-minutes: 100
         run: scripts/ios-repro/run.sh repro-out
         env:
           RUNS: ${{ inputs.runs || '4' }}
@@ -92,7 +93,9 @@ jobs:
           ls -la repro-out
       - name: Push to ios-repro
         if: always()
-        run: scripts/push-dir.sh repro-out "ios-repro-${GITHUB_SHA::7}${PLACES_FROM:+-places-${PLACES_FROM::7}}"
+        run: |
+          find repro-out -size +20M -delete || true
+          scripts/push-dir.sh repro-out "ios-repro-${GITHUB_SHA::7}${PLACES_FROM:+-places-${PLACES_FROM::7}}"
         env:
           PLACES_FROM: ${{ inputs.places_from }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
