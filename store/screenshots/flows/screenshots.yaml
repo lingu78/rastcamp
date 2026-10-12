@@ -47,6 +47,9 @@ appId: no.rastcamp.app
     text: 'Sjølyst bobilparkering.*'
 - tapOn: '${SAVE_FAVORITE}'
 - waitForAnimationToEnd
+# Before each screenshot: the app is still on screen (on the iOS simulator it sometimes
+# dies after Maestro's reinstall – DECISIONS §17 – and the shot would show the home screen).
+- assertVisible: '${CLOSE}'
 - takeScreenshot: 03-detail
 - tapOn: '${CLOSE}'
 - tapOn: '${CLEAR_SEARCH}'
@@ -59,6 +62,7 @@ appId: no.rastcamp.app
 - tapOn: '${LOCATE}'
 - waitForAnimationToEnd:
     timeout: 8000
+- assertVisible: '${LOCATE}'
 - takeScreenshot: 01-map-filter
 
 # 2) Nearby list (same filter). Wait for the list itself: a tab tap during the map's
@@ -71,6 +75,7 @@ appId: no.rastcamp.app
           visible: '${SEARCH}'
           timeout: 10000
 - waitForAnimationToEnd
+- assertVisible: '${SEARCH}'
 - takeScreenshot: 02-nearby
 
 # 4) Favourites.
@@ -82,6 +87,7 @@ appId: no.rastcamp.app
           visible: 'Homannsberget Camping.*'
           timeout: 10000
 - waitForAnimationToEnd
+- assertVisible: 'Homannsberget Camping.*'
 - takeScreenshot: 04-favorites
 
 # 6) Location search from the map (results only – no place is chosen).
@@ -99,6 +105,7 @@ appId: no.rastcamp.app
     timeout: 30000
 - hideKeyboard
 - waitForAnimationToEnd
+- assertVisible: '${PLACES_HEADER}'
 - takeScreenshot: 06-search
 - tapOn: '${CANCEL}'
 
@@ -117,6 +124,8 @@ appId: no.rastcamp.app
 - inputText: 'camping'
 - hideKeyboard
 - waitForAnimationToEnd
+- assertVisible: '${TAB_NEARBY}'
+- assertVisible: '${CLEAR_SEARCH}'
 - takeScreenshot: 05-offline
 - runFlow:
     when:
