@@ -59,6 +59,7 @@ export default function RootLayout() {
               headerShown: false,
             }}
           />
+          <Stack.Screen name="search" options={{ presentation: 'modal', headerShown: false }} />
           <Stack.Screen name="licenses" options={{ title: t('licenses.title') }} />
         </Stack>
       </PoiDataProvider>

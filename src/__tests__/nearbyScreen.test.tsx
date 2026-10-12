@@ -6,6 +6,7 @@ import type { PoiFile } from '@/data/schema';
 import i18n from '@/i18n';
 import { filterStore } from '@/state/filters';
 import { locationStore, mapCenterStore } from '@/state/location';
+import { searchedPlaceStore } from '@/state/searchedPlace';
 
 import { testPoiFile } from '../../test/fixtures';
 
@@ -23,8 +24,8 @@ async function renderList(file: PoiFile = testPoiFile) {
 const rowLabels = () =>
   screen
     .getAllByRole('button')
-    .map((b) => b.props.accessibilityLabel as string)
-    .filter((l) => l.includes(' km '));
+    .map((b) => b.props.accessibilityLabel as string | undefined)
+    .filter((l): l is string => !!l?.includes(' km '));
 
 describe('Närmast list (F5, F11)', () => {
   beforeEach(async () => {
@@ -32,6 +33,7 @@ describe('Närmast list (F5, F11)', () => {
     filterStore.set([]);
     locationStore.set({ permission: 'granted', position: { lat: 59.33, lon: 18.06 } }); // Stockholm
     mockPush.mockClear();
+    searchedPlaceStore.set(null);
   });
 
   it('sorts by distance from the device position with name, category, km and direction', async () => {
@@ -78,5 +80,28 @@ describe('Närmast list (F5, F11)', () => {
     const row = screen.getByLabelText(/^Gasolbutiken/);
     expect(within(row).getByText('Gasolbutiken')).toBeOnTheScreen();
     expect(within(row).getByText('Gasol')).toBeOnTheScreen();
+  });
+
+  it('measures from a place chosen in the search until it is cleared', async () => {
+    searchedPlaceStore.set({
+      name: 'Oslo',
+      type: 'city',
+      lat: 59.91,
+      lon: 10.75,
+      country: 'NO',
+      near: null,
+    });
+    await renderList();
+    expect(screen.getByText('Avstånd från Oslo')).toBeOnTheScreen();
+    expect(rowLabels()[0]).toMatch(/^Bobilparkering Sentrum/);
+    await fireEvent.press(screen.getByRole('button', { name: 'Sluta visa platser nära Oslo' }));
+    expect(searchedPlaceStore.get()).toBeNull();
+    expect(screen.getByText('Avstånd från din position')).toBeOnTheScreen();
+  });
+
+  it('opens the location search', async () => {
+    await renderList();
+    await fireEvent.press(screen.getByRole('button', { name: 'Välj ort' }));
+    expect(mockPush).toHaveBeenCalledWith('/search');
   });
 });

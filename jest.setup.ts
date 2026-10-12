@@ -33,3 +33,8 @@ jest.mock('./src/data/storage', () => ({
   runUpdateCheck: jest.fn(async () => ({ status: 'skipped' })),
   getLastCheck: jest.fn(async () => null),
 }));
+
+// The bundled place names (several MB) are replaced by a small fixture in tests.
+jest.mock('./assets/data/places.json', () => require('./test/placesFixture').testPlaceFile, {
+  virtual: true,
+});

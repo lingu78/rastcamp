@@ -29,7 +29,7 @@ RASKT TIL SVARET
 • Trykk på et sted for avgift, åpningstider, strøm, dusj, toalett, vann, tømming, hunder og kontaktinformasjon – når informasjonen finnes.
 • «Naviger dit» åpner Apple Kart eller Google Maps med veibeskrivelse.
 • Lagre favoritter for turen.
-• Søk på navn.
+• Søk etter et sted, en øy eller en nasjonalpark og se hva som finnes i nærheten – eller søk på navnet på en plass.
 
 GRATIS, UTEN KONTO OG UTEN REKLAME
 Ingen konto, ingen innlogging, ingen annonser, ingen kjøp i appen. Rastcamp samler ikke inn noen data om deg. Posisjonen din brukes bare på telefonen for å regne ut avstander.

@@ -128,6 +128,16 @@ Definition of done: _Android-bygge i Internal testing, iOS-bygge i TestFlight._
 - [ ] Bygget behandlat av Apple och installerat via TestFlight på Linus iPhone
 - [ ] Google Play Console → app → service account → Android-bygge → Internal testing (senare)
 
+## Tillägg efter M7 – Sök ort eller plats (önskemål 2026-10-12)
+
+- [x] Datapipeline: 91 100 ortsnamn ur OSM (stad, tätort, ort, by, stadsdel, kända öar och ögrupper, nationalparker) med alternativa namn och "nära <stad>"; `places.json` (3,9 MB, 1,4 MB gzip) följer med appen och uppdateras med `npm run data:update`
+- [x] Sökning helt offline, 3–35 ms per fråga på riktig data (rankning: hela namnet, början, ordbörjan, delsträng; sedan ortstyp, folkmängd, avstånd)
+- [x] Kartan: "Sök ort eller plats" → kartan flyttar sig, ringmarkör på orten; rensa-knapp
+- [x] Närmast: "Avstånd från <ort>" med Rensa, och "Välj ort"
+- [x] Sökningen hittar även appens egna platser på namn → detaljvy
+- [x] Tester (pipeline + app), TESTPLAN 3b, butikstexter, DECISIONS §15
+- [ ] Ny TestFlight-build med sökningen
+
 ## Kända begränsningar i utvecklingsmiljön
 
 - Molnmiljön blockerar bl.a. `download.geofabrik.de`, `openfreemap.org`, `expo.dev`/`docs.expo.dev` och `play.google.com`. Påverkar M2 (PBF-nedladdning lokalt) och M3 (kartstil). Pipelinen kan ändå köras i GitHub Actions, som har fri nätåtkomst.

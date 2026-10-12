@@ -182,3 +182,10 @@ en ruttjänst på nätet – därefter **lagt på is** ("vi droppar det för nu"
 - **Geoapify:** gratisplan, kommersiell användning tillåten med attribution enligt deras FAQ; om nyckeln får ligga i en mobilapp är inte kontrollerat (sidan nåddes inte).
 - **Stadia Maps:** gratisplanen tillåter inte kommersiell användning.
 - Oavsett tjänst: start/mål lämnar telefonen → integritetspolicy och butikernas integritetsuppgifter måste uppdateras.
+
+## 15. Sök ort eller plats (önskemål 2026-10-12)
+
+- **Helt offline:** ortsnamnen tas ut ur samma Geofabrik-extrakt som platserna (eget osmium-pass, `data-pipeline/src/places.ts`) och följer med appen (`assets/data/places.json`). Ingen geokodningstjänst, inget konto, inget lämnar telefonen – integritetsuppgifterna är oförändrade.
+- **Vilka orter:** namngivna `place=city/town/village/hamlet/suburb`, öar och skärgårdar med Wikidata-koppling (Finland har tiotusentals namngivna holmar) samt `boundary=national_park`. Alternativa namn (`name:sv/fi/nb/en/se…`, `alt_name`) är sökbara, så "Helsingfors" hittar Helsinki. Mindre orter får "nära <stad>" (närmaste stad/tätort inom 50 km) för att skilja namnar åt.
+- **Rankning:** hela namnet → början av namnet → början av ord → delsträng; därefter ortstyp (stad före by), folkmängd och avstånd från användaren.
+- **Beteende:** vald ort flyttar kartan och visar en ringmarkör; "Närmast" mäter från orten tills man rensar. Inte sparad – efter omstart utgår appen från telefonens position igen. Ortsfilen läses in först när sökningen öppnas (inte vid start).

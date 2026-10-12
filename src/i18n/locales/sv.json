@@ -37,7 +37,9 @@
     "noResults": "Inga platser matchar.",
     "rowA11y": "{{name}}, {{category}}, {{distance}} åt {{direction}}",
     "waitingForPosition": "Väntar på position … avstånd från kartans mittpunkt så länge",
-    "rowA11yUnnamed": "{{category}}, {{distance}} åt {{direction}}"
+    "rowA11yUnnamed": "{{category}}, {{distance}} åt {{direction}}",
+    "fromPlace": "Avstånd från {{place}}",
+    "choosePlace": "Välj ort"
   },
   "favorites": {
     "title": "Favoriter",
@@ -134,5 +136,34 @@
     "software": "Programvara med öppen källkod",
     "showText": "Visa licenstext",
     "hideText": "Dölj licenstext"
+  },
+  "search": {
+    "placeholder": "Sök ort eller plats",
+    "hint": "Sök på ort, stadsdel, ö, nationalpark eller namnet på en camping eller ställplats.",
+    "places": "Orter och områden",
+    "pois": "Platser i appen",
+    "noResults": "Inga träffar för ”{{query}}”.",
+    "clear": "Rensa",
+    "clearPlace": "Sluta visa platser nära {{place}}",
+    "near": "nära {{place}}",
+    "useMyPosition": "Visa platser nära min position",
+    "placeRowA11y": "{{name}}, {{details}}",
+    "loading": "Laddar orter …"
+  },
+  "placeTypes": {
+    "city": "Stad",
+    "town": "Tätort",
+    "village": "Ort",
+    "hamlet": "By",
+    "suburb": "Stadsdel",
+    "island": "Ö",
+    "archipelago": "Ögrupp",
+    "national_park": "Nationalpark"
+  },
+  "countries": {
+    "SE": "Sverige",
+    "NO": "Norge",
+    "FI": "Finland",
+    "DK": "Danmark"
   }
 }

@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { FilterChips } from '@/components/FilterChips';
 import { LocateButton } from '@/components/map/LocateButton';
 import { MapAttribution } from '@/components/map/MapAttribution';
+import { MapSearchBar } from '@/components/map/MapSearchBar';
 import { PoiMap, type PoiMapHandle } from '@/components/map/PoiMap';
 import type { Poi } from '@/data/pois';
 import { useSelectedCategories, visibleCategories } from '@/state/filters';
@@ -49,6 +50,7 @@ export default function MapScreen() {
       </View>
 
       <View style={[styles.top, { paddingTop: insets.top }]} pointerEvents="box-none">
+        <MapSearchBar />
         <FilterChips />
         {baseMapFailed && (
           <View

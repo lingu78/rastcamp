@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import { useCallback, useMemo, useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, Pressable, StyleSheet, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import { EmptyState } from '@/components/EmptyState';
@@ -13,10 +13,13 @@ import type { Poi } from '@/data/pois';
 import { nearbyRows } from '@/data/nearbyRows';
 import { useSelectedCategories, visibleCategories } from '@/state/filters';
 import { useLocationState, useReferencePoint } from '@/state/location';
+import { clearSearchedPlace } from '@/state/searchedPlace';
+import { useTheme } from '@/theme/useTheme';
 
 /** "Närmast" (spec F5) + name search (F11). Works fully offline (F7). */
 export default function NearbyScreen() {
   const { t } = useTranslation();
+  const theme = useTheme();
   const router = useRouter();
   const data = usePoiData();
   const selected = useSelectedCategories();
@@ -48,13 +51,39 @@ export default function NearbyScreen() {
           <View>
             <SearchField value={query} onChange={setQuery} />
             <FilterChips />
-            <ThemedText secondary variant="caption" style={styles.reference}>
-              {reference.source === 'gps'
-                ? t('nearby.fromPosition')
-                : permission === 'granted'
-                  ? t('nearby.waitingForPosition')
-                  : t('nearby.fromMapCenter')}
-            </ThemedText>
+            <View style={styles.referenceRow}>
+              <ThemedText secondary variant="caption" style={styles.reference}>
+                {reference.source === 'place'
+                  ? t('nearby.fromPlace', { place: reference.name })
+                  : reference.source === 'gps'
+                    ? t('nearby.fromPosition')
+                    : permission === 'granted'
+                      ? t('nearby.waitingForPosition')
+                      : t('nearby.fromMapCenter')}
+              </ThemedText>
+              {reference.source === 'place' ? (
+                <Pressable
+                  onPress={clearSearchedPlace}
+                  accessibilityRole="button"
+                  accessibilityLabel={t('search.clearPlace', { place: reference.name })}
+                  hitSlop={8}
+                  style={styles.referenceAction}>
+                  <ThemedText variant="caption" style={{ color: theme.primary }}>
+                    {t('search.clear')}
+                  </ThemedText>
+                </Pressable>
+              ) : (
+                <Pressable
+                  onPress={() => router.push('/search')}
+                  accessibilityRole="button"
+                  hitSlop={8}
+                  style={styles.referenceAction}>
+                  <ThemedText variant="caption" style={{ color: theme.primary }}>
+                    {t('nearby.choosePlace')}
+                  </ThemedText>
+                </Pressable>
+              )}
+            </View>
           </View>
         }
         ListEmptyComponent={
@@ -67,5 +96,13 @@ export default function NearbyScreen() {
 
 const styles = StyleSheet.create({
   flex: { flex: 1 },
-  reference: { paddingHorizontal: 16, paddingBottom: 8 },
+  referenceRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    paddingHorizontal: 16,
+    paddingBottom: 4,
+  },
+  reference: { flex: 1 },
+  referenceAction: { minHeight: 44, justifyContent: 'center' },
 });

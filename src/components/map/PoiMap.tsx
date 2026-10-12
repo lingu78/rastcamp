@@ -11,6 +11,7 @@ import {
 } from '@maplibre/maplibre-react-native';
 import { useEffect, useImperativeHandle, useRef, useState, type Ref } from 'react';
 import { StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { usePoiData } from '@/data/DataProvider';
 import type { Poi } from '@/data/pois';
@@ -22,6 +23,7 @@ import {
   SCANDINAVIA_ZOOM,
   useLocationState,
 } from '@/state/location';
+import { useCameraRequest, useSearchedPlace } from '@/state/searchedPlace';
 import { CATEGORY_COLORS } from '@/theme/categories';
 import { useColorSchemeName, useTheme } from '@/theme/useTheme';
 import { markPerf } from '@/utils/perf';
@@ -71,6 +73,7 @@ export function PoiMap({ visible, onSelectPoi, onBaseMapStatus, ref }: Props) {
   const scheme = useColorSchemeName();
   const theme = useTheme();
   const { permission, position } = useLocationState();
+  const insets = useSafeAreaInsets();
   const cameraRef = useRef<CameraRef>(null);
   const sourceRefs = useRef<Partial<Record<Category, GeoJSONSourceRef | null>>>({});
   const userMovedMap = useRef(false);
@@ -109,6 +112,21 @@ export function PoiMap({ visible, onSelectPoi, onBaseMapStatus, ref }: Props) {
     });
   }, [position]);
 
+  // Jumps requested by the location search (newest request wins).
+  const cameraRequest = useCameraRequest();
+  const searchedPlace = useSearchedPlace();
+  const handledRequest = useRef(0);
+  useEffect(() => {
+    if (!cameraRequest || cameraRequest.id === handledRequest.current) return;
+    handledRequest.current = cameraRequest.id;
+    userMovedMap.current = true; // don't snap back to the GPS position afterwards
+    cameraRef.current?.flyTo({
+      center: [cameraRequest.lon, cameraRequest.lat],
+      zoom: cameraRequest.zoom,
+      duration: 1000,
+    });
+  }, [cameraRequest]);
+
   const handlePress = async (category: Category, features: GeoJSON.Feature[]): Promise<void> => {
     const feature = features[0];
     if (!feature || feature.geometry.type !== 'Point') return;
@@ -139,7 +157,8 @@ export function PoiMap({ visible, onSelectPoi, onBaseMapStatus, ref }: Props) {
       attribution={false}
       logo={false}
       compass
-      compassPosition={{ top: 72, right: 12 }}
+      // Below the search bar and the filter chips.
+      compassPosition={{ top: insets.top + 118, right: 12 }}
       touchPitch={false}
       onRegionDidChange={(event) => {
         const { center, userInteraction } = event.nativeEvent;
@@ -229,6 +248,31 @@ export function PoiMap({ visible, onSelectPoi, onBaseMapStatus, ref }: Props) {
           </GeoJSONSource>
         );
       })}
+      {searchedPlace && (
+        <GeoJSONSource
+          id="searched-place"
+          data={{
+            type: 'Feature',
+            geometry: { type: 'Point', coordinates: [searchedPlace.lon, searchedPlace.lat] },
+            properties: {},
+          }}>
+          <Layer
+            id="searched-place-ring"
+            type="circle"
+            paint={{
+              'circle-radius': 12,
+              'circle-color': theme.text,
+              'circle-stroke-width': 3,
+              'circle-stroke-color': theme.surface,
+            }}
+          />
+          <Layer
+            id="searched-place-dot"
+            type="circle"
+            paint={{ 'circle-radius': 4, 'circle-color': theme.surface }}
+          />
+        </GeoJSONSource>
+      )}
       {/* Drawn from our own expo-location fix (the one "Närmast" measures from) instead of
           MapLibre's location component, which has a separate location engine. */}
       {permission === 'granted' && position && (

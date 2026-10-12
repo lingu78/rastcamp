@@ -52,6 +52,8 @@ if [ -f "$OUT/manifest.json" ]; then
   mkdir -p "$SITE/data/archive"
   cp "$OUT/pois.json.gz" "$OUT/manifest.json" "$SITE/data/"
   cp "$OUT/pois.json.gz" "$SITE/data/archive/pois-$VERSION.json.gz"
+  # Place names for the location search (bundled into each app release by data:update).
+  if [ -f "$OUT/places.json.gz" ]; then cp "$OUT/places.json.gz" "$SITE/data/"; fi
   # Keep the 24 newest archived versions.
   ls -1 "$SITE/data/archive"/pois-*.json.gz | sort -r | tail -n +25 | xargs -r rm -f
   MESSAGE="Data $VERSION"

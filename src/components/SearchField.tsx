@@ -1,16 +1,32 @@
-import { Pressable, StyleSheet, TextInput, View } from 'react-native';
+import {
+  Pressable,
+  StyleSheet,
+  TextInput,
+  View,
+  type StyleProp,
+  type ViewStyle,
+} from 'react-native';
 import Svg, { Circle, Path } from 'react-native-svg';
 import { useTranslation } from 'react-i18next';
 
 import { useTheme } from '@/theme/useTheme';
 
-type Props = { value: string; onChange: (text: string) => void };
+type Props = {
+  value: string;
+  onChange: (text: string) => void;
+  /** Defaults to the "Närmast" name search texts. */
+  placeholder?: string;
+  autoFocus?: boolean;
+  style?: StyleProp<ViewStyle>;
+};
 
-export function SearchField({ value, onChange }: Props) {
+export function SearchField({ value, onChange, placeholder, autoFocus, style }: Props) {
   const { t } = useTranslation();
   const theme = useTheme();
+  const label = placeholder ?? t('nearby.searchPlaceholder');
   return (
-    <View style={[styles.box, { backgroundColor: theme.surface, borderColor: theme.border }]}>
+    <View
+      style={[styles.box, { backgroundColor: theme.surface, borderColor: theme.border }, style]}>
       <Svg width={20} height={20} viewBox="0 0 24 24" accessible={false}>
         <Circle cx={11} cy={11} r={6.5} stroke={theme.textSecondary} strokeWidth={2} fill="none" />
         <Path
@@ -23,9 +39,10 @@ export function SearchField({ value, onChange }: Props) {
       <TextInput
         value={value}
         onChangeText={onChange}
-        placeholder={t('nearby.searchPlaceholder')}
+        placeholder={label}
         placeholderTextColor={theme.textSecondary}
-        accessibilityLabel={t('nearby.searchPlaceholder')}
+        accessibilityLabel={label}
+        autoFocus={autoFocus}
         autoCorrect={false}
         autoCapitalize="none"
         returnKeyType="search"

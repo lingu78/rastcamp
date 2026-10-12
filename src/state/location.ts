@@ -1,6 +1,7 @@
 import * as Location from 'expo-location';
 import { AppState, Linking } from 'react-native';
 
+import { useSearchedPlace } from './searchedPlace';
 import { createStore, useStore } from './store';
 
 export type LatLon = { lat: number; lon: number };
@@ -127,9 +128,16 @@ export function useMapCenter(): LatLon {
   return useStore(mapCenterStore);
 }
 
-/** Point used for distances: device position if known, else the map centre. */
-export function useReferencePoint(): LatLon & { source: 'gps' | 'map' } {
+export type ReferencePoint = LatLon & { source: 'place' | 'gps' | 'map'; name?: string };
+
+/**
+ * Point used for distances: a place chosen in the search, else the device position,
+ * else the map centre.
+ */
+export function useReferencePoint(): ReferencePoint {
   const { position } = useLocationState();
   const center = useMapCenter();
+  const place = useSearchedPlace();
+  if (place) return { lat: place.lat, lon: place.lon, source: 'place', name: place.name };
   return position ? { ...position, source: 'gps' } : { ...center, source: 'map' };
 }

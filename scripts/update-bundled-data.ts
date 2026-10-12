@@ -50,3 +50,20 @@ if (!validatePoiFile(JSON.parse(json))) throw new Error('POI file failed schema 
 await writeFile(join(ROOT, 'assets/data/pois.json'), json);
 await writeFile(join(ROOT, 'assets/data/manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
 console.log(`✔ Bundled data updated to ${manifest.version} (${manifest.count} POIs)`);
+
+// Place names for the location search (optional: older publications don't have them).
+let placesGz: Buffer | null = null;
+try {
+  placesGz = await read('places.json.gz');
+} catch {
+  console.warn('! places.json.gz not found – keeping the bundled place names');
+}
+if (placesGz) {
+  const placesJson = gunzipSync(placesGz).toString('utf8');
+  const places = JSON.parse(placesJson) as { schema?: number; places?: unknown[] };
+  if (places.schema !== 1 || !Array.isArray(places.places) || places.places.length < 1000) {
+    throw new Error('places.json.gz does not look like a place file');
+  }
+  await writeFile(join(ROOT, 'assets/data/places.json'), placesJson);
+  console.log(`✔ Bundled place names updated (${places.places.length} places)`);
+}

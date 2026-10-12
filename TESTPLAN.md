@@ -32,6 +32,14 @@ telefonmodell, OS-version och appversion (Mer → Appversion) om något inte st�
 - [ ] Sök "camping" → träffar visas direkt (utan fördröjning). Sök utan å/ä/ö (t.ex. "ostersund") → hittar "Östersund".
 - [ ] Rensa sökningen med krysset.
 
+## 3b. Sök ort eller plats
+
+- [ ] Kartan: tryck på **Sök ort eller plats** → sök "are" → **Åre** (Ort · Sverige) visas överst. Tryck på den → kartan flyttar sig till Åre och en mörk ringmarkör visas.
+- [ ] **Närmast** visar nu "Avstånd från Åre" och sorterar efter avstånd därifrån. **Rensa** → tillbaka till din position.
+- [ ] Sök "helsingfors" → **Helsinki (Helsingfors)** hittas. Sök en by → den visas som "Ort · nära <stad> · <land>".
+- [ ] Sök på namnet på en camping → den syns under "Platser i appen"; tryck → detaljvyn öppnas och kartan flyttar sig dit.
+- [ ] Sökningen fungerar även i flygplansläge.
+
 ## 4. Detaljvy (F6)
 
 - [ ] Namnet visas (eller kategorinamnet om platsen saknar namn), kategori, avstånd och koordinater.

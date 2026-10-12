@@ -29,7 +29,7 @@ STRAIGHT TO THE ANSWER
 • Tap a place for fee, opening hours, electricity, shower, toilets, water, waste disposal, dogs and contact details – when the information exists.
 • "Navigate" opens Apple Maps or Google Maps with directions.
 • Save favourites for the trip.
-• Search by name.
+• Search for a town, island or national park and see what is nearby – or search by the name of a place.
 
 FREE, NO ACCOUNT, NO ADS
 No account, no sign-in, no ads, no in-app purchases. Rastcamp collects no data about you. Your location is only used on your phone to calculate distances.

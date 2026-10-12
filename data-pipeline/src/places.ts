@@ -8,17 +8,9 @@ import { type InputFeature, uniqueFeatures } from './build.ts';
 import type { OsmTags } from './categorize.ts';
 import { centroid, GridIndex, haversine } from './geo.ts';
 
-export const PLACE_TYPES = [
-  'city',
-  'town',
-  'village',
-  'hamlet',
-  'suburb',
-  'island',
-  'archipelago',
-  'national_park',
-] as const;
-export type PlaceType = (typeof PLACE_TYPES)[number];
+import { PLACE_TYPES, type PlaceFile, type PlaceTuple, type PlaceType } from './placeSchema.ts';
+
+export { PLACE_TYPES, type PlaceFile, type PlaceTuple, type PlaceType };
 
 /** `osmium tags-filter` expressions – a superset of what classifyPlace accepts. */
 export const PLACE_FILTERS = [
@@ -177,21 +169,6 @@ export const PLACE_COUNTRIES: Record<string, string> = {
   norway: 'NO',
   finland: 'FI',
   denmark: 'DK',
-};
-
-/** [name, lat, lon, typeIndex, countryIndex, nearIndex, population, aliases?] */
-export type PlaceTuple =
-  | [string, number, number, number, number, number, number]
-  | [string, number, number, number, number, number, number, string[]];
-
-export type PlaceFile = {
-  schema: 1;
-  version: string;
-  attribution: string;
-  license: string;
-  types: PlaceType[];
-  countries: string[];
-  places: PlaceTuple[];
 };
 
 export function buildPlacesOutput(

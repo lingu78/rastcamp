@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react-native';
+import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import { Alert } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
@@ -7,11 +7,14 @@ import { PoiDataProvider } from '@/data/DataProvider';
 import i18n from '@/i18n';
 import { filterStore } from '@/state/filters';
 import { locationStore } from '@/state/location';
+import { requestCamera, searchedPlaceStore } from '@/state/searchedPlace';
 
+import { cameraCalls } from '../../test/maplibreMock';
 import { testPoiFile } from '../../test/fixtures';
 
+const mockPush = jest.fn();
 jest.mock('expo-router', () => ({
-  useRouter: () => ({ push: jest.fn(), navigate: jest.fn() }),
+  useRouter: () => ({ push: mockPush, navigate: jest.fn() }),
 }));
 
 const metrics = {
@@ -36,6 +39,8 @@ describe('map screen (F1–F4)', () => {
   beforeEach(async () => {
     filterStore.set([]);
     locationStore.set({ permission: 'undetermined', position: null });
+    searchedPlaceStore.set(null);
+    mockPush.mockClear();
     await i18n.changeLanguage('sv');
   });
 
@@ -81,5 +86,38 @@ describe('map screen (F1–F4)', () => {
     await renderMap();
     expect(screen.getByTestId('user-location')).toBeOnTheScreen();
     expect(screen.getByTestId('user-location-dot')).toBeOnTheScreen();
+  });
+
+  it('opens the location search from the search bar', async () => {
+    await renderMap();
+    await fireEvent.press(screen.getByRole('search', { name: 'Sök ort eller plats' }));
+    expect(mockPush).toHaveBeenCalledWith('/search');
+  });
+
+  it('shows the chosen place with a marker and lets you clear it', async () => {
+    searchedPlaceStore.set({
+      name: 'Åre',
+      type: 'village',
+      lat: 63.4,
+      lon: 13.08,
+      country: 'SE',
+      near: null,
+    });
+    await renderMap();
+    expect(screen.getByText('Åre')).toBeOnTheScreen();
+    expect(screen.getByTestId('searched-place')).toBeOnTheScreen();
+    await fireEvent.press(screen.getByRole('button', { name: 'Sluta visa platser nära Åre' }));
+    expect(searchedPlaceStore.get()).toBeNull();
+    expect(screen.queryByTestId('searched-place')).toBeNull();
+  });
+
+  it('flies to places requested by the search', async () => {
+    await renderMap();
+    cameraCalls.length = 0;
+    await act(() => requestCamera(63.4, 13.08, 13));
+    expect(cameraCalls).toContainEqual({
+      method: 'flyTo',
+      args: { center: [13.08, 63.4], zoom: 13, duration: 1000 },
+    });
   });
 });

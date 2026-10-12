@@ -37,7 +37,9 @@
     "noResults": "No matching places.",
     "rowA11y": "{{name}}, {{category}}, {{distance}} {{direction}}",
     "waitingForPosition": "Waiting for your location … distances from the map centre for now",
-    "rowA11yUnnamed": "{{category}}, {{distance}} {{direction}}"
+    "rowA11yUnnamed": "{{category}}, {{distance}} {{direction}}",
+    "fromPlace": "Distance from {{place}}",
+    "choosePlace": "Choose place"
   },
   "favorites": {
     "title": "Favourites",
@@ -134,5 +136,34 @@
     "software": "Open source software",
     "showText": "Show licence text",
     "hideText": "Hide licence text"
+  },
+  "search": {
+    "placeholder": "Search town or place",
+    "hint": "Search for a town, district, island, national park or the name of a campsite or motorhome stop.",
+    "places": "Towns and areas",
+    "pois": "Places in the app",
+    "noResults": "No results for “{{query}}”.",
+    "clear": "Clear",
+    "clearPlace": "Stop showing places near {{place}}",
+    "near": "near {{place}}",
+    "useMyPosition": "Show places near my location",
+    "placeRowA11y": "{{name}}, {{details}}",
+    "loading": "Loading places …"
+  },
+  "placeTypes": {
+    "city": "City",
+    "town": "Town",
+    "village": "Village",
+    "hamlet": "Hamlet",
+    "suburb": "District",
+    "island": "Island",
+    "archipelago": "Archipelago",
+    "national_park": "National park"
+  },
+  "countries": {
+    "SE": "Sweden",
+    "NO": "Norway",
+    "FI": "Finland",
+    "DK": "Denmark"
   }
 }

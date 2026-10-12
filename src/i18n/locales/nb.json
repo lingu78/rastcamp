@@ -37,7 +37,9 @@
     "noResults": "Ingen steder passer.",
     "rowA11y": "{{name}}, {{category}}, {{distance}} mot {{direction}}",
     "waitingForPosition": "Venter på posisjon … avstand fra kartets midtpunkt så lenge",
-    "rowA11yUnnamed": "{{category}}, {{distance}} mot {{direction}}"
+    "rowA11yUnnamed": "{{category}}, {{distance}} mot {{direction}}",
+    "fromPlace": "Avstand fra {{place}}",
+    "choosePlace": "Velg sted"
   },
   "favorites": {
     "title": "Favoritter",
@@ -134,5 +136,34 @@
     "software": "Programvare med åpen kildekode",
     "showText": "Vis lisenstekst",
     "hideText": "Skjul lisenstekst"
+  },
+  "search": {
+    "placeholder": "Søk etter sted",
+    "hint": "Søk på by, bydel, øy, nasjonalpark eller navnet på en camping eller bobilplass.",
+    "places": "Steder og områder",
+    "pois": "Plasser i appen",
+    "noResults": "Ingen treff for «{{query}}».",
+    "clear": "Tøm",
+    "clearPlace": "Slutt å vise plasser nær {{place}}",
+    "near": "nær {{place}}",
+    "useMyPosition": "Vis plasser nær min posisjon",
+    "placeRowA11y": "{{name}}, {{details}}",
+    "loading": "Laster steder …"
+  },
+  "placeTypes": {
+    "city": "By",
+    "town": "Tettsted",
+    "village": "Bygd",
+    "hamlet": "Grend",
+    "suburb": "Bydel",
+    "island": "Øy",
+    "archipelago": "Øygruppe",
+    "national_park": "Nasjonalpark"
+  },
+  "countries": {
+    "SE": "Sverige",
+    "NO": "Norge",
+    "FI": "Finland",
+    "DK": "Danmark"
   }
 }
