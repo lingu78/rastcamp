@@ -18,7 +18,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: ios-repro-${{ github.ref }}
+  group: ios-repro-${{ github.sha }}
   cancel-in-progress: true
 
 jobs:
@@ -37,7 +37,7 @@ jobs:
           sudo xcode-select -s "$XCODE"
           xcodebuild -version
           df -h / && sysctl hw.memsize vm.swapusage
-      - run: npm ci
+      - run: npm ci || (sleep 20 && npm ci)
       - run: npx expo prebuild --platform ios
         env:
           EXPO_NO_TELEMETRY: 1
@@ -72,6 +72,7 @@ jobs:
       - name: App log
         if: always()
         run: |
+          mkdir -p repro-out
           xcrun simctl spawn "$UDID" log show --last 90m --style compact \
             --predicate 'process == "Rastcamp" OR process == "ReportCrash" OR (process == "SpringBoard" AND eventMessage CONTAINS "rastcamp")' \
             | grep -v -E 'XC_kAXXCAttributeChildren|com.apple.dt.xctest' | tail -n 30000 > repro-out/rastcamp.log || true
