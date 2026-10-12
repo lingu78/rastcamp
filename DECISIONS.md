@@ -189,3 +189,11 @@ en ruttjänst på nätet – därefter **lagt på is** ("vi droppar det för nu"
 - **Vilka orter:** namngivna `place=city/town/village/hamlet/suburb`, öar och skärgårdar med Wikidata-koppling (Finland har tiotusentals namngivna holmar) samt `boundary=national_park`. Alternativa namn (`name:sv/fi/nb/en/se…`, `alt_name`) är sökbara, så "Helsingfors" hittar Helsinki. Mindre orter får "nära <stad>" (närmaste stad/tätort inom 50 km) för att skilja namnar åt.
 - **Rankning:** hela namnet → början av namnet → början av ord → delsträng; därefter ortstyp (stad före by), folkmängd och avstånd från användaren.
 - **Beteende:** vald ort flyttar kartan och visar en ringmarkör; "Närmast" mäter från orten tills man rensar. Inte sparad – efter omstart utgår appen från telefonens position igen. Ortsfilen läses in först när sökningen öppnas (inte vid start).
+
+## 16. Android pausad (2026-10-12)
+
+Linus beslut: bara iOS tills vidare. Android-röktestet körs inte längre automatiskt
+(`android.yml` startas bara för hand), skärmdumpsflödet tar bara iOS-bilder om man inte väljer
+Android, och EAS-arbetsflödet har iOS som standard. Ingen kod tas bort: appen är Expo och
+fungerar för båda plattformarna, Android-konfigurationen i `app.json`, Play-material i `store/`
+och CI:s bundle-test för Android ligger kvar så att Android kan återupptas utan omtag.

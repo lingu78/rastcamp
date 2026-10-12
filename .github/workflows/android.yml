@@ -3,17 +3,9 @@ name: Android
 # Builds a release-variant APK (JS bundled, debug-signed) and runs it on an emulator:
 # proves the native config (MapLibre, location, locales) builds and the app starts
 # without crashing on the main paths. Screenshots go to the ci-screenshots branch.
+# Android is paused (Linus, 2026-10-12): no automatic runs, start by hand if needed.
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - 'src/**'
-      - 'assets/**'
-      - 'app.json'
-      - 'package.json'
-      - 'package-lock.json'
-      - 'scripts/android-smoke.sh'
-      - '.github/workflows/android.yml'
 
 permissions:
   contents: read

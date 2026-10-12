@@ -1,5 +1,8 @@
 # Release-guide – Rastcamp
 
+> **Android är pausad** (Linus 2026-10-12): steg 3 (Google Play Console) och steg 5 (Android-testare)
+> görs inte nu. iOS (steg 1, 2, 4, 6) gäller.
+
 Allt som kräver **konton, inloggning, betalning eller identitet (🔑)** görs av Linus. Allt annat
 (byggen, uppladdning, texter, svar på avslag) sköts av Claude Code via GitHub Actions.
 Uppskattad tid för Linus totalt: 2–4 timmar, utspritt.

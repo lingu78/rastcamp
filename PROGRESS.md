@@ -2,18 +2,18 @@
 
 Bockas av enligt "Definition of done" i SPEC.md §13. Senast uppdaterad: 2026-10-09.
 
-| #   | Milstolpe                     | Status   |
-| --- | ----------------------------- | -------- |
-| M1  | Repo & skelett                | ✅ Klar  |
-| M2  | Datapipeline                  | ✅ Klar  |
-| M3  | Karta & filter                | ✅ Klar  |
-| M4  | Lista, detalj, favoriter, sök | ✅ Klar  |
-| M5  | Datauppdatering & Mer-flik    | ✅ Klar  |
-| M6  | Polish                        | ✅ Klar¹ |
-| M7  | Butiksmaterial                | ✅ Klar  |
-| M8  | 🔑 Konton & första byggen     | 🔄 Pågår |
-| M9  | Closed test / TestFlight      | ⬜       |
-| M10 | 🔑 Inskick                    | ⬜       |
+| #   | Milstolpe                     | Status                               |
+| --- | ----------------------------- | ------------------------------------ |
+| M1  | Repo & skelett                | ✅ Klar                              |
+| M2  | Datapipeline                  | ✅ Klar                              |
+| M3  | Karta & filter                | ✅ Klar                              |
+| M4  | Lista, detalj, favoriter, sök | ✅ Klar                              |
+| M5  | Datauppdatering & Mer-flik    | ✅ Klar                              |
+| M6  | Polish                        | ✅ Klar¹                             |
+| M7  | Butiksmaterial                | ✅ Klar                              |
+| M8  | 🔑 Konton & första byggen     | 🔄 Pågår (iOS)                       |
+| M9  | Closed test / TestFlight      | ⬜ (iOS: TestFlight; Android pausad) |
+| M10 | 🔑 Inskick                    | ⬜                                   |
 
 ---
 
@@ -126,7 +126,7 @@ Definition of done: _Android-bygge i Internal testing, iOS-bygge i TestFlight._
 - [x] App i App Store Connect: Rastcamp, `no.rastcamp.app`, Apple ID `6821287622` (`ascAppId` i `eas.json`)
 - [x] iOS-bygge i GitHub Actions (EAS) uppladdat till App Store Connect: build 1 föll på `sharp` i `npm ci` (rättat: valfritt beroende), build 2 avvisades av Apple – ITMS-90683, saknad `NSMotionUsageDescription` (rättat), **build 3** uppladdad 2026-10-10
 - [ ] Bygget behandlat av Apple och installerat via TestFlight på Linus iPhone
-- [ ] Google Play Console → app → service account → Android-bygge → Internal testing (senare)
+- ⏸ Android pausad (Linus 2026-10-12): Google Play Console, Android-bygge och slutet test görs inte nu. Koden är fortfarande plattformsoberoende och Android-material ligger kvar i `store/`.
 
 ## Tillägg efter M7 – Sök ort eller plats (önskemål 2026-10-12)
 

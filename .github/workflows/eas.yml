@@ -18,8 +18,8 @@ on:
       platform:
         description: Platform
         type: choice
-        options: [android, ios, all]
-        default: android
+        options: [ios, android, all]
+        default: ios # Android is paused
       profile:
         description: Build profile
         type: choice
