@@ -1,0 +1,134 @@
+# Store screenshots (spec §10). Run per language with the labels as env vars, e.g.:
+#   maestro test --test-output-dir out store/screenshots/flows/screenshots.yaml -e LANGUAGE=Svenska ...
+# See store/screenshots/README.md and scripts/screenshots.sh (which passes them all).
+appId: no.rastcamp.app
+---
+- setLocation:
+    latitude: 59.9139
+    longitude: 10.7522
+- launchApp:
+    clearState: true
+    permissions:
+      location: ${LOCATION_PERMISSION} # 'allow' on Android, 'inuse' on iOS
+- extendedWaitUntil:
+    visible: '${TAB_MORE_DEVICE}'
+    timeout: 20000
+
+# Switch the app language (the language names are the same in every UI language).
+- retry:
+    maxRetries: 3
+    commands:
+      - tapOn: '${TAB_MORE_DEVICE}'
+      - extendedWaitUntil:
+          visible: '${LANGUAGE}'
+          timeout: 10000
+- tapOn: '${LANGUAGE}'
+- extendedWaitUntil:
+    visible: '${TAB_NEARBY}'
+    timeout: 10000
+
+# Favourites first, so the favourites screenshot has content.
+- tapOn: '${TAB_NEARBY}'
+- extendedWaitUntil:
+    visible: '${SEARCH}'
+    timeout: 10000
+- tapOn: '${SEARCH}'
+- inputText: 'Homannsberget'
+- hideKeyboard
+- tapOn:
+    text: 'Homannsberget Camping.*'
+- tapOn: '${SAVE_FAVORITE}'
+- tapOn: '${CLOSE}'
+- tapOn: '${CLEAR_SEARCH}'
+- tapOn: '${SEARCH}'
+- inputText: 'Sjølyst'
+- hideKeyboard
+- tapOn:
+    text: 'Sjølyst bobilparkering.*'
+- tapOn: '${SAVE_FAVORITE}'
+- waitForAnimationToEnd
+# Before each screenshot: the app is still on screen (on the iOS simulator it sometimes
+# dies after Maestro's reinstall – DECISIONS §17 – and the shot would show the home screen).
+- assertVisible: '${CLOSE}'
+- takeScreenshot: 03-detail
+- tapOn: '${CLOSE}'
+- tapOn: '${CLEAR_SEARCH}'
+- hideKeyboard
+
+# 1) Map with filter: motorhome stops + dump stations around Oslo.
+- tapOn: '${TAB_MAP}'
+- tapOn: '${CHIP_CARAVAN}'
+- tapOn: '${CHIP_DUMP}'
+- tapOn: '${LOCATE}'
+- waitForAnimationToEnd:
+    timeout: 8000
+- assertVisible: '${LOCATE}'
+- takeScreenshot: 01-map-filter
+
+# 2) Nearby list (same filter). Wait for the list itself: a tab tap during the map's
+# camera animation can get lost (happened on iOS).
+- retry:
+    maxRetries: 3
+    commands:
+      - tapOn: '${TAB_NEARBY}'
+      - extendedWaitUntil:
+          visible: '${SEARCH}'
+          timeout: 10000
+- waitForAnimationToEnd
+- assertVisible: '${SEARCH}'
+- takeScreenshot: 02-nearby
+
+# 4) Favourites.
+- retry:
+    maxRetries: 3
+    commands:
+      - tapOn: '${TAB_FAVORITES}'
+      - extendedWaitUntil:
+          visible: 'Homannsberget Camping.*'
+          timeout: 10000
+- waitForAnimationToEnd
+- assertVisible: 'Homannsberget Camping.*'
+- takeScreenshot: 04-favorites
+
+# 6) Location search from the map (results only – no place is chosen).
+- tapOn: '${TAB_MAP}'
+- retry:
+    maxRetries: 3
+    commands:
+      - tapOn: '${SEARCH_PLACE}'
+      - extendedWaitUntil:
+          visible: '${CANCEL}'
+          timeout: 10000
+- inputText: '${SEARCH_QUERY}'
+- extendedWaitUntil:
+    visible: '${PLACES_HEADER}'
+    timeout: 30000
+- hideKeyboard
+- waitForAnimationToEnd
+- assertVisible: '${PLACES_HEADER}'
+- takeScreenshot: 06-search
+- tapOn: '${CANCEL}'
+
+# 5) Offline: everything but the background map keeps working (Android only can toggle
+# airplane mode; on iOS the caption carries the message).
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - setAirplaneMode: enabled
+      - waitForAnimationToEnd
+# Search works offline too ("Vatten" etc. may be scrolled out of view in the chip row).
+- tapOn: '${TAB_NEARBY}'
+- tapOn: '${CHIP_ALL}'
+- tapOn: '${SEARCH}'
+- inputText: 'camping'
+- hideKeyboard
+- waitForAnimationToEnd
+- assertVisible: '${TAB_NEARBY}'
+- assertVisible: '${CLEAR_SEARCH}'
+- takeScreenshot: 05-offline
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - setAirplaneMode: disabled
