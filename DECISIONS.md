@@ -200,15 +200,29 @@ och CI:s bundle-test för Android ligger kvar så att Android kan återupptas ut
 
 ## 17. Simulatorkrasch i skärmdumpsjobbet (2026-10-12)
 
-I iOS-simulatorn på GitHubs macOS-maskiner dog appen ibland (SIGBUS eller SIGSEGV) när
-sökskärmen öppnades eller strax efter inmatning, men bara när Maestro först hade installerat om
-och startat appen (`launchApp clearState`): 7 av 13 körningar. När skriptet själv installerade och
-startade appen med lldb ansluten kraschade den aldrig (0 av 18, även hela skärmdumpsflödet), och
-build 4 fungerar på Linus iPhone. Ingen kraschrapport skrivs på maskinerna, så orsaken är inte
-fastställd; felsökningsjobbet `ios-repro.yml` finns kvar för att få en anropsstack.
+I iOS-simulatorn på GitHubs macOS-maskiner dog appen ibland (SIGBUS, SIGSEGV eller ett
+JS-fel inne i React) i skärmdumpsflödet – oftast när sökskärmen öppnades, men också i
+Närmast-sökningen. Utredningen (`ios-repro.yml`, `scripts/ios-repro/run.sh`):
 
-- Skärmdumpsflödet gör upp till tre försök per språk (`scripts/screenshots.sh`).
-- Sökindexet gjordes samtidigt lättare (en namnsträng, avkodning bara av träffar: 21 MB i stället
-  för 42 MB JS-minne, samma resultat). Det är en förbättring i sig men tog inte bort kraschen.
-- Ses kraschen på en riktig telefon (TestFlight-feedback, kraschloggar i App Store Connect) tas
-  den upp igen med högsta prioritet.
+| Så installerades och startades appen | Krascher |
+| --- | --- |
+| Från byggmappen, startad av skriptet, lldb ansluten (bara sökningen / hela flödet) | 0 av 18 |
+| Maestro `launchApp clearState` (installerar om från en kopia av den installerade appen) | 7 av 13 |
+| Samma ominstallation som Maestro, startad med `simctl`, utan lldb | 5 av 6 |
+
+Kraschrapporterna från den sista raden avgör: tre krascher sker i `dyld_sim`
+(`DyldSharedCache::getUUID`, KERN_PROTECTION_FAILURE) – simulatorns egen laddare, innan
+någon appkod körs – och en i Hermes skräpsamlare (samma felkod). De tidigare rapporterna
+visade SIGSEGV i Hermes (`hermesBuiltinCopyDataProperties`) och "Cannot read property
+'tag' of undefined" inne i React, utan appkod i stacken. Slutsats: simulatormiljön på
+maskinerna är instabil efter en ominstallation; det är inte ett fel i appen. Build 4
+fungerar på Linus iPhone.
+
+- Skärmdumpsflödet kontrollerar före varje bild att appens skärm syns och gör upp till tre
+  försök per språk (`scripts/screenshots.sh`).
+- Sökindexet gjordes samtidigt lättare (en namnsträng, avkodning bara av träffar: 21 MB i
+  stället för 42 MB JS-minne, samma resultat för 937 testfrågor) – en förbättring i sig.
+- `ios-repro.yml` finns kvar som manuellt felsökningsjobb (lägen `full`, `maestro`,
+  `reinstall`, `search`; resultat på grenen `ios-repro-<commit>`).
+- Ses en krasch på en riktig telefon (TestFlight-feedback, kraschloggar i App Store Connect)
+  tas den upp med högsta prioritet.

@@ -2,7 +2,7 @@ name: iOS crash repro
 
 # Debugging aid: builds the iOS app for the simulator, starts it several times with lldb
 # attached and runs the location search, keeping backtraces if it crashes. Results are
-# pushed to the ios-repro-<commit> branch. Manual, or when the repro files change.
+# pushed to the ios-repro-<commit> branch. Manual only (DECISIONS §17).
 on:
   workflow_dispatch:
     inputs:
@@ -15,10 +15,6 @@ on:
       places_from:
         description: Build with src/data/places.ts from this commit (empty = as checked out)
         default: ''
-  push:
-    paths:
-      - 'scripts/ios-repro/**'
-      - '.github/workflows/ios-repro.yml'
 
 permissions:
   contents: write

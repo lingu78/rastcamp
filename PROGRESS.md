@@ -137,10 +137,8 @@ Definition of done: _Android-bygge i Internal testing, iOS-bygge i TestFlight._
 - [x] Sökningen hittar även appens egna platser på namn → detaljvy
 - [x] Tester (pipeline + app), TESTPLAN 3b, butikstexter, DECISIONS §15
 - [x] Ny TestFlight-build med sökningen (iOS build 4, uppladdad 2026-10-12)
-- [x] Krasch i iOS-simulatorn (SIGBUS/SIGSEGV) när sökskärmen öppnas eller just efter inmatning, sedd i skärmdumpsjobbet – bara i simulatorn efter Maestros ominstallation (DECISIONS §17); skärmdumpsjobbet gör om ett språk upp till tre gånger. Läge:
-  - Build 4 fungerar på Linus iPhone (2026-10-12). Uppträder bara när Maestro installerar om och startar appen (`launchApp clearState`): 3 av 5 och 4 av 8 körningar. Med appen startad av skriptet och lldb ansluten: 0 av 18 (bara sökningen, och hela flödet; gammalt och nytt index).
-  - Ingen kraschrapport (.ips) skrivs på GitHubs macOS-maskiner; felsökningsjobbet `ios-repro.yml` ansluter lldb till appen för att få en anropsstack.
-  - Sökindexet gjort lättare (en namnsträng, avkodning bara av träffar): 21 MB JS-minne i stället för 42 MB, samma resultat för 937 testfrågor. Löste inte kraschen ensamt.
+- [x] Krasch i iOS-simulatorn i skärmdumpsjobbet utredd: simulatormiljön på GitHubs maskiner är instabil efter en ominstallation (krascher även i `dyld_sim` innan appkod körs), inte ett appfel; build 4 fungerar på Linus iPhone (DECISIONS §17). Skärmdumpsflödet kontrollerar varje bild och gör om ett språk upp till tre gånger.
+- [x] Lättare sökindex: 21 MB JS-minne i stället för 42 MB, samma resultat, 3,4× snabbare
 
 ## Kända begränsningar i utvecklingsmiljön
 
