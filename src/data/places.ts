@@ -1,4 +1,9 @@
-import { PLACE_TYPES, type PlaceFile, type PlaceType } from '../../data-pipeline/src/placeSchema';
+import {
+  PLACE_TYPES,
+  type PlaceFile,
+  type PlaceTuple,
+  type PlaceType,
+} from '../../data-pipeline/src/placeSchema';
 
 import { haversine } from '../utils/geo';
 import { normalizeText } from './search';
@@ -20,13 +25,31 @@ export type Place = {
   population: number;
 };
 
+/**
+ * Search index over the bundled file. Places stay as compact tuples and are decoded only
+ * when they are hits; the names live in one string searched with indexOf, which keeps the
+ * index small (about half the memory of one object per place) and quick to build.
+ */
 export type PlaceIndex = {
-  places: Place[];
-  /**
-   * Normalised [name, ...aliases] per place, each with a leading space so word starts can
-   * be found with includes(' ' + word); same order as `places`.
-   */
-  names: string[][];
+  file: PlaceFile;
+  /** Every normalised name (main name, then aliases), each followed by "\n". */
+  haystack: string;
+  /** Start of each name in `haystack`, plus a final entry equal to its length. */
+  starts: Int32Array;
+  /** Place (index in `file.places`) of each name. */
+  owner: Int32Array;
+  /** 0 for a main name, n for the place's n-th alias. */
+  alias: Uint8Array;
+};
+
+const EMPTY_FILE: PlaceFile = {
+  schema: 1,
+  version: '',
+  attribution: '',
+  license: '',
+  types: [],
+  countries: [],
+  places: [],
 };
 
 function isPlaceFile(data: unknown): data is PlaceFile {
@@ -40,39 +63,79 @@ function isPlaceFile(data: unknown): data is PlaceFile {
   );
 }
 
-export function decodePlaces(data: unknown): Place[] {
-  if (!isPlaceFile(data)) return [];
-  const places: Place[] = [];
-  data.places.forEach((tuple, id) => {
-    const [name, lat, lon, typeIndex, countryIndex, nearIndex, population, aliases] = tuple;
-    const type = data.types[typeIndex];
-    if (typeof name !== 'string' || !type || !PLACE_TYPES.includes(type)) return;
-    if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
-    places.push({
-      id,
-      name,
-      aliases: Array.isArray(aliases) ? aliases.filter((a) => typeof a === 'string') : [],
-      type,
-      lat,
-      lon,
-      country: data.countries[countryIndex] ?? '',
-      near: nearIndex >= 0 ? (data.places[nearIndex]?.[0] ?? null) : null,
-      population: population > 0 ? population : 0,
-    });
-  });
-  return places;
+function isValidTuple(file: PlaceFile, tuple: unknown): tuple is PlaceTuple {
+  if (!Array.isArray(tuple)) return false;
+  const [name, lat, lon, typeIndex] = tuple as unknown[];
+  const type = file.types[typeIndex as number];
+  return (
+    typeof name === 'string' &&
+    !!type &&
+    PLACE_TYPES.includes(type) &&
+    Number.isFinite(lat) &&
+    Number.isFinite(lon)
+  );
 }
 
-export function buildPlaceIndex(places: Place[]): PlaceIndex {
+function tupleAliases(tuple: PlaceTuple): string[] {
+  const aliases = tuple[7];
+  return Array.isArray(aliases) ? aliases.filter((a) => typeof a === 'string') : [];
+}
+
+/** Place `id` (its index in the file), or null if that entry is not a valid place. */
+export function placeAt(index: PlaceIndex, id: number): Place | null {
+  const { file } = index;
+  const tuple = file.places[id];
+  if (!isValidTuple(file, tuple)) return null;
+  const [name, lat, lon, typeIndex, countryIndex, nearIndex, population] = tuple;
   return {
-    places,
-    names: places.map((p) => [p.name, ...p.aliases].map((n) => ` ${normalizeText(n)}`)),
+    id,
+    name,
+    aliases: tupleAliases(tuple),
+    type: file.types[typeIndex]!,
+    lat,
+    lon,
+    country: file.countries[countryIndex] ?? '',
+    near: nearIndex >= 0 ? (file.places[nearIndex]?.[0] ?? null) : null,
+    population: population > 0 ? population : 0,
+  };
+}
+
+export function buildPlaceIndex(data: unknown): PlaceIndex {
+  const file = isPlaceFile(data) ? data : EMPTY_FILE;
+  const keys: string[] = [];
+  const owner: number[] = [];
+  const alias: number[] = [];
+  for (let i = 0; i < file.places.length; i++) {
+    const tuple = file.places[i];
+    if (!isValidTuple(file, tuple)) continue;
+    const names = [tuple[0], ...tupleAliases(tuple).slice(0, 255)];
+    for (let a = 0; a < names.length; a++) {
+      const key = normalizeText(names[a]!);
+      if (!key) continue;
+      keys.push(key);
+      owner.push(i);
+      alias.push(a);
+    }
+  }
+  const starts = new Int32Array(keys.length + 1);
+  let offset = 0;
+  for (let k = 0; k < keys.length; k++) {
+    starts[k] = offset;
+    offset += keys[k]!.length + 1;
+  }
+  starts[keys.length] = offset;
+  return {
+    file,
+    haystack: keys.length ? `${keys.join('\n')}\n` : '',
+    starts,
+    owner: Int32Array.from(owner),
+    alias: Uint8Array.from(alias),
   };
 }
 
 let cached: PlaceIndex | null = null;
 
-/** The bundled place names, parsed on first use (not at start-up). */
+/** The bundled place names, indexed on first use (not at start-up). */
 export function getPlaceIndex(): PlaceIndex {
   if (!cached) {
     let data: unknown = null;
@@ -82,7 +145,7 @@ export function getPlaceIndex(): PlaceIndex {
     } catch {
       data = null;
     }
-    cached = buildPlaceIndex(decodePlaces(data));
+    cached = buildPlaceIndex(data);
   }
   return cached;
 }
@@ -132,6 +195,17 @@ export type PlaceHit = {
   matchedAlias: string | null;
 };
 
+/** Index of the name that contains `pos` (largest k with starts[k] <= pos), from `lo` on. */
+function nameAt(starts: Int32Array, pos: number, lo: number): number {
+  let hi = starts.length - 2;
+  while (lo < hi) {
+    const mid = (lo + hi + 1) >> 1;
+    if (starts[mid]! <= pos) lo = mid;
+    else hi = mid - 1;
+  }
+  return lo;
+}
+
 /**
  * Offline place search. Ranked by match quality, then place type, population and
  * distance from `from` (closest first) – fast enough for every keystroke.
@@ -144,46 +218,58 @@ export function searchPlaces(
   const q = normalizeText(query);
   if (q.length < MIN_PLACE_QUERY) return [];
   const words = q.split(' ').filter(Boolean);
+  // Scan for the longest word (fewest occurrences); the others are checked per name.
+  const key = words.reduce((a, b) => (b.length > a.length ? b : a));
+  const { file, haystack, starts, owner, alias } = index;
+
+  // Best match per place: [quality, alias number].
+  const best = new Map<number, [number, number]>();
+  let k = 0;
+  let pos = haystack.indexOf(key);
+  while (pos !== -1) {
+    k = nameAt(starts, pos, k);
+    const end = starts[k + 1]!;
+    const quality = matchQuality(` ${haystack.slice(starts[k]!, end - 1)}`, q, words);
+    if (quality !== null) {
+      const place = owner[k]!;
+      const prev = best.get(place);
+      if (!prev || quality < prev[0]) best.set(place, [quality, alias[k]!]);
+    }
+    pos = haystack.indexOf(key, end); // the next name
+  }
 
   // One bucket per match quality; only as many buckets as needed get sorted.
-  const buckets: { i: number; name: number }[][] = [[], [], [], []];
-  for (let i = 0; i < index.places.length; i++) {
-    const names = index.names[i]!;
-    let best: number | null = null;
-    let bestName = 0;
-    for (let n = 0; n < names.length && best !== 0; n++) {
-      const quality = matchQuality(names[n]!, q, words);
-      if (quality !== null && (best === null || quality < best)) {
-        best = quality;
-        bestName = n;
-      }
-    }
-    if (best !== null) buckets[best]!.push({ i, name: bestName });
-  }
+  const buckets: { id: number; alias: number }[][] = [[], [], [], []];
+  for (const [id, [quality, aliasNo]] of best) buckets[quality]!.push({ id, alias: aliasNo });
 
   const hits: PlaceHit[] = [];
   for (const bucket of buckets) {
     if (hits.length >= limit) break;
-    const ranked = bucket.map(({ i, name }) => {
-      const place = index.places[i]!;
+    const ranked = bucket.map(({ id, alias: aliasNo }) => {
+      const tuple = file.places[id]!;
       return {
-        place,
-        name,
-        distance: from ? haversine(from.lat, from.lon, place.lat, place.lon) : 0,
+        id,
+        alias: aliasNo,
+        name: tuple[0],
+        rank: TYPE_RANK[file.types[tuple[3]]!],
+        population: tuple[6] > 0 ? tuple[6] : 0,
+        distance: from ? haversine(from.lat, from.lon, tuple[1], tuple[2]) : 0,
       };
     });
     ranked.sort(
       (a, b) =>
-        TYPE_RANK[a.place.type] - TYPE_RANK[b.place.type] ||
-        b.place.population - a.place.population ||
+        a.rank - b.rank ||
+        b.population - a.population ||
         a.distance - b.distance ||
-        a.place.name.localeCompare(b.place.name),
+        a.name.localeCompare(b.name),
     );
     for (const r of ranked) {
       if (hits.length >= limit) break;
+      const place = placeAt(index, r.id);
+      if (!place) continue;
       hits.push({
-        place: r.place,
-        matchedAlias: r.name > 0 ? (r.place.aliases[r.name - 1] ?? null) : null,
+        place,
+        matchedAlias: r.alias > 0 ? (place.aliases[r.alias - 1] ?? null) : null,
       });
     }
   }
