@@ -204,11 +204,11 @@ I iOS-simulatorn på GitHubs macOS-maskiner dog appen ibland (SIGBUS, SIGSEGV el
 JS-fel inne i React) i skärmdumpsflödet – oftast när sökskärmen öppnades, men också i
 Närmast-sökningen. Utredningen (`ios-repro.yml`, `scripts/ios-repro/run.sh`):
 
-| Så installerades och startades appen | Krascher |
-| --- | --- |
-| Från byggmappen, startad av skriptet, lldb ansluten (bara sökningen / hela flödet) | 0 av 18 |
-| Maestro `launchApp clearState` (installerar om från en kopia av den installerade appen) | 7 av 13 |
-| Samma ominstallation som Maestro, startad med `simctl`, utan lldb | 5 av 6 |
+| Så installerades och startades appen                                                    | Krascher |
+| --------------------------------------------------------------------------------------- | -------- |
+| Från byggmappen, startad av skriptet, lldb ansluten (bara sökningen / hela flödet)      | 0 av 18  |
+| Maestro `launchApp clearState` (installerar om från en kopia av den installerade appen) | 7 av 13  |
+| Samma ominstallation som Maestro, startad med `simctl`, utan lldb                       | 5 av 6   |
 
 Kraschrapporterna från den sista raden avgör: tre krascher sker i `dyld_sim`
 (`DyldSharedCache::getUUID`, KERN_PROTECTION_FAILURE) – simulatorns egen laddare, innan
