@@ -1,0 +1,83 @@
+name: iOS crash repro
+
+# Debugging aid: builds the iOS app for the simulator, starts it several times with lldb
+# attached and runs the location search, keeping backtraces if it crashes. Results are
+# pushed to the ios-repro branch. Manual, or when the repro files change.
+on:
+  workflow_dispatch:
+    inputs:
+      runs:
+        description: Number of app starts
+        default: '5'
+  push:
+    paths:
+      - 'scripts/ios-repro/**'
+      - '.github/workflows/ios-repro.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ios-repro-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ios:
+    runs-on: macos-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Select newest Xcode
+        run: |
+          XCODE=$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)
+          sudo xcode-select -s "$XCODE"
+          xcodebuild -version
+          df -h / && sysctl hw.memsize vm.swapusage
+      - run: npm ci
+      - run: npx expo prebuild --platform ios
+        env:
+          EXPO_NO_TELEMETRY: 1
+      - name: Build for simulator (Release, unsigned)
+        run: |
+          set -o pipefail
+          xcodebuild -workspace ios/Rastcamp.xcworkspace -scheme Rastcamp -configuration Release \
+            -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath build CODE_SIGNING_ALLOWED=NO build | tail -n 20
+          df -h /
+      - name: Boot the largest iPhone simulator
+        run: |
+          UDID=$(xcrun simctl list devices available -j | node -e '
+            const d = JSON.parse(require("fs").readFileSync(0, "utf8")).devices;
+            const all = Object.entries(d).filter(([r]) => r.includes("iOS")).flatMap(([r, ds]) => ds.map((x) => ({ ...x, r })));
+            const pick = all.filter((x) => /Pro Max/.test(x.name)).sort((a, b) => a.r.localeCompare(b.r, undefined, { numeric: true }) || a.name.localeCompare(b.name, undefined, { numeric: true })).pop();
+            console.log(pick.udid); console.error(pick.name, pick.r);')
+          echo "UDID=$UDID" >> "$GITHUB_ENV"
+          xcrun simctl boot "$UDID"
+          xcrun simctl bootstatus "$UDID" -b
+          xcrun simctl install "$UDID" build/Build/Products/Release-iphonesimulator/Rastcamp.app
+          sudo DevToolsSecurity -enable || true
+      - name: Install Maestro
+        run: |
+          curl -fsSL "https://get.maestro.mobile.dev" | bash
+          echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
+      - name: Start the app under lldb and search
+        run: scripts/ios-repro/run.sh repro-out
+        env:
+          RUNS: ${{ inputs.runs || '5' }}
+          MAESTRO_DRIVER_STARTUP_TIMEOUT: 600000
+      - name: App log
+        if: always()
+        run: |
+          xcrun simctl spawn "$UDID" log show --last 90m --style compact \
+            --predicate 'process == "Rastcamp" OR process == "ReportCrash" OR (process == "SpringBoard" AND eventMessage CONTAINS "rastcamp")' \
+            | grep -v -E 'XC_kAXXCAttributeChildren|com.apple.dt.xctest' | tail -n 30000 > repro-out/rastcamp.log || true
+          ls -la repro-out
+      - name: Push to ios-repro
+        if: always()
+        run: scripts/push-dir.sh repro-out ios-repro
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,28 @@
+# Opens the location search in an already running app (started and watched by run.sh),
+# waits for the place names to load, then searches. English UI (fresh install).
+appId: no.rastcamp.app
+---
+- tapOn:
+    text: 'Allow While Using App'
+    optional: true
+- extendedWaitUntil:
+    visible: 'Search town or place'
+    timeout: 60000
+- tapOn: 'Search town or place'
+- extendedWaitUntil:
+    visible: 'Cancel'
+    timeout: 15000
+# Give the place names time to load before typing (crash before or after typing?).
+- extendedWaitUntil:
+    visible: 'this text never appears'
+    timeout: 6000
+    optional: true
+- assertVisible: 'Cancel'
+- inputText: 'Åre'
+- extendedWaitUntil:
+    visible: 'Towns and areas'
+    timeout: 30000
+- tapOn: 'Cancel'
+- extendedWaitUntil:
+    visible: 'Search town or place'
+    timeout: 15000
