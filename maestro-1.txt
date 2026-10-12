@@ -1,0 +1,14 @@
+Anonymous analytics enabled. To opt out, set MAESTRO_CLI_NO_ANALYTICS environment variable to any value before running Maestro.
+
+Running on iPhone 17 Pro Max - iOS 26.5 - 841190F6-F927-4F0D-B152-62A06B4040CA
+ > Flow search
+Tap on (Optional) "Allow While Using App"... WARNED
+Assert that "Search town or place" is visible... COMPLETED
+Tap on "Search town or place"... COMPLETED
+Assert that "Cancel" is visible... COMPLETED
+Assert that (Optional) "this text never appears" is visible... WARNED
+Assert that "Cancel" is visible... COMPLETED
+Input text Åre... COMPLETED
+Assert that "Towns and areas" is visible... COMPLETED
+Tap on "Cancel"... COMPLETED
+Assert that "Search town or place" is visible... COMPLETED
