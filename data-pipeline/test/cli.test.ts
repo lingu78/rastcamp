@@ -60,4 +60,23 @@ maybe('pipeline CLI on fixture', () => {
     const manifest = JSON.parse(readFileSync(join(dir, 'out/manifest.json'), 'utf8'));
     expect(manifest.count).toBe(13);
   });
+
+  it('writes the place names for the location search', () => {
+    const file = JSON.parse(readFileSync(join(dir, 'out/places.json'), 'utf8'));
+    const names = file.places.map((p: [string]) => p[0]).sort();
+    expect(names).toEqual(
+      [
+        'Abisko nationalpark',
+        'Gotland',
+        'Helsinki',
+        'Odensala',
+        'Odenskog',
+        'Åre',
+        'Östersund',
+      ].sort(),
+    );
+    const helsinki = file.places.find((p: [string]) => p[0] === 'Helsinki');
+    expect(helsinki[7]).toEqual(['Helsingfors', 'Stadi']);
+    expect(stdout).toMatch(/Total places: 7 \(duplicates removed: 1\)/);
+  });
 });

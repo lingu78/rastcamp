@@ -88,6 +88,57 @@
   <node id="71" version="1" lat="60.000000" lon="17.004000"/>
   <node id="72" version="1" lat="60.002000" lon="17.004000"/>
   <node id="73" version="1" lat="60.002000" lon="17.000000"/>
+  <!-- 9. Place names for the location search -->
+  <node id="80" version="1" lat="63.176000" lon="14.636000">
+    <tag k="place" v="town"/>
+    <tag k="name" v="Östersund"/>
+    <tag k="population" v="52 000"/>
+  </node>
+  <node id="81" version="1" lat="63.399000" lon="13.081000">
+    <tag k="place" v="village"/>
+    <tag k="name" v="Åre"/>
+    <tag k="name:se" v="Åarjel-Saepmie"/>
+  </node>
+  <node id="82" version="1" lat="63.180000" lon="14.640000">
+    <tag k="place" v="village"/>
+    <tag k="name" v="Odensala"/>
+  </node>
+  <node id="83" version="1" lat="63.181000" lon="14.641000">
+    <tag k="place" v="village"/>
+    <tag k="name" v="Odensala"/>
+  </node>
+  <node id="84" version="1" lat="60.170000" lon="24.940000">
+    <tag k="place" v="city"/>
+    <tag k="name" v="Helsinki"/>
+    <tag k="name:sv" v="Helsingfors"/>
+    <tag k="name:fi" v="Helsinki"/>
+    <tag k="alt_name" v="Stadi;Helsingfors"/>
+    <tag k="population" v="674500"/>
+  </node>
+  <node id="85" version="1" lat="63.190000" lon="14.650000">
+    <tag k="place" v="suburb"/>
+    <tag k="name" v="Odenskog"/>
+  </node>
+  <node id="86" version="1" lat="57.500000" lon="18.500000">
+    <tag k="place" v="island"/>
+    <tag k="name" v="Gotland"/>
+    <tag k="wikidata" v="Q10691"/>
+  </node>
+  <node id="87" version="1" lat="59.500000" lon="18.900000">
+    <tag k="place" v="island"/>
+    <tag k="name" v="Lilla Kobben"/>
+  </node>
+  <node id="88" version="1" lat="59.600000" lon="18.900000">
+    <tag k="place" v="locality"/>
+    <tag k="name" v="Gamla kvarnen"/>
+  </node>
+  <node id="89" version="1" lat="59.700000" lon="18.900000">
+    <tag k="place" v="village"/>
+  </node>
+  <node id="90" version="1" lat="68.000000" lon="18.000000"/>
+  <node id="91" version="1" lat="68.000000" lon="18.200000"/>
+  <node id="92" version="1" lat="68.100000" lon="18.200000"/>
+  <node id="93" version="1" lat="68.100000" lon="18.000000"/>
   <way id="100" version="1">
     <nd ref="10"/><nd ref="11"/><nd ref="12"/><nd ref="13"/><nd ref="10"/>
     <tag k="tourism" v="camp_site"/>
@@ -103,6 +154,12 @@
   </way>
   <way id="102" version="1">
     <nd ref="70"/><nd ref="71"/><nd ref="72"/><nd ref="73"/><nd ref="70"/>
+  </way>
+  <way id="103" version="1">
+    <nd ref="90"/><nd ref="91"/><nd ref="92"/><nd ref="93"/><nd ref="90"/>
+    <tag k="boundary" v="national_park"/>
+    <tag k="name" v="Abisko nationalpark"/>
+    <tag k="name:en" v="Abisko National Park"/>
   </way>
   <relation id="200" version="1">
     <member type="way" ref="102" role="outer"/>

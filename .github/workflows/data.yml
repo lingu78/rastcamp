@@ -55,6 +55,16 @@ jobs:
                   console.log('| ' + cat + ' | ' + cs.map(c => by[c] ?? 0).join(' | ') + ' | ' + r.stats.totals[cat] + ' |');
                 console.log('');
                 console.log('Total ' + r.stats.total + ' POIs, gzip ' + (m.bytes / 1e6).toFixed(2) + ' MB, data ' + m.dataTimestamp);
+                if (r.places) {
+                  console.log('');
+                  console.log('### Place names (location search)');
+                  console.log('| type | ' + cs.join(' | ') + ' |');
+                  console.log('|---|' + cs.map(() => '---:|').join(''));
+                  for (const [type, by] of Object.entries(r.places.counts))
+                    console.log('| ' + type + ' | ' + cs.map(c => by[c] ?? 0).join(' | ') + ' |');
+                  console.log('');
+                  console.log('Total ' + r.places.total + ' places');
+                }
               "
             } >> "$GITHUB_STEP_SUMMARY"
           fi
@@ -65,7 +75,7 @@ jobs:
         run: |
           cd data-pipeline/out
           git init -q && git checkout -q -b data-preview
-          git add pois.json.gz manifest.json report.json
+          git add pois.json.gz manifest.json report.json places.json.gz
           git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
             commit -q -m "Data preview from ${GITHUB_SHA::7} (${GITHUB_REF_NAME})"
           git push -q -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" data-preview
@@ -79,6 +89,7 @@ jobs:
             data-pipeline/out/pois.json.gz
             data-pipeline/out/manifest.json
             data-pipeline/out/report.json
+            data-pipeline/out/places.json.gz
           retention-days: 30
 
   publish:

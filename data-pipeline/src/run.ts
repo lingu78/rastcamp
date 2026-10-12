@@ -6,7 +6,8 @@
  *   node data-pipeline/src/run.ts --input a.osm.pbf     # build from local file(s) instead (repeatable)
  *
  * Requires `osmium` (osmium-tool) on PATH. Outputs to data-pipeline/out/:
- *   pois.json.gz, pois.json, manifest.json, report.json
+ *   pois.json.gz, pois.json, manifest.json, report.json,
+ *   places.json(.gz) – place names for the offline location search (bundled in the app)
  */
 import { execFileSync } from 'node:child_process';
 import { createReadStream, createWriteStream, existsSync } from 'node:fs';
@@ -22,6 +23,7 @@ import { createHash } from 'node:crypto';
 import { buildPois, emptyCategories, type InputFeature } from './build.ts';
 import { classify, OSMIUM_FILTERS } from './categorize.ts';
 import { buildOutput, MAX_GZIP_BYTES } from './output.ts';
+import { buildPlaces, buildPlacesOutput, PLACE_FILTERS, PLACE_TYPES } from './places.ts';
 import { CATEGORIES, type Category } from './schema.ts';
 import { validatePoiFile } from './validate.ts';
 
@@ -76,6 +78,22 @@ function dataTimestamp(pbf: string): string | null {
   }
 }
 
+function exportGeojson(input: string, output: string): void {
+  osmium(
+    'export',
+    input,
+    '-f',
+    'geojsonseq',
+    '-x',
+    'print_record_separator=false',
+    '--add-unique-id=type_id',
+    '--geometry-types=point,linestring,polygon',
+    '-o',
+    output,
+    '--overwrite',
+  );
+}
+
 async function* readFeatures(geojsonseq: string, country: string): AsyncGenerator<InputFeature> {
   const lines = createInterface({ input: createReadStream(geojsonseq), crlfDelay: Infinity });
   for await (const raw of lines) {
@@ -112,6 +130,7 @@ async function main() {
   }
 
   const features: InputFeature[] = [];
+  const placeFeatures: InputFeature[] = [];
   const timestamps: string[] = [];
   const keyReport = Object.fromEntries(CATEGORIES.map((c) => [c, {}])) as KeyReport;
 
@@ -121,19 +140,13 @@ async function main() {
     log(`${country}: osmium tags-filter`);
     osmium('tags-filter', pbf, ...OSMIUM_FILTERS, '-o', filtered, '--overwrite');
     log(`${country}: osmium export`);
-    osmium(
-      'export',
-      filtered,
-      '-f',
-      'geojsonseq',
-      '-x',
-      'print_record_separator=false',
-      '--add-unique-id=type_id',
-      '--geometry-types=point,linestring,polygon',
-      '-o',
-      geojson,
-      '--overwrite',
-    );
+    exportGeojson(filtered, geojson);
+    // Place names (separate pass, so the POI filter stays exactly as before).
+    const placesFiltered = join(args.work, `${country}-places.osm.pbf`);
+    const placesGeojson = join(args.work, `${country}-places.geojsonseq`);
+    osmium('tags-filter', pbf, ...PLACE_FILTERS, '-o', placesFiltered, '--overwrite');
+    exportGeojson(placesFiltered, placesGeojson);
+    for await (const feature of readFeatures(placesGeojson, country)) placeFeatures.push(feature);
     const ts = dataTimestamp(pbf);
     if (ts) timestamps.push(ts);
 
@@ -171,6 +184,24 @@ async function main() {
     `pois.json: ${(output.json.length / 1e6).toFixed(2)} MB, pois.json.gz: ${(output.gzip.length / 1e6).toFixed(2)} MB`,
   );
 
+  const { places, stats: placeStats } = buildPlaces(placeFeatures);
+  const placesOutput = buildPlacesOutput(places, output.manifest.version);
+  const placeRows = PLACE_TYPES.map((type) => [
+    type,
+    ...countries.map((c) => String(placeStats.counts[type][c] ?? 0)),
+    String(Object.values(placeStats.counts[type]).reduce((a, b) => a + b, 0)),
+  ]);
+  console.log(
+    '\n' +
+      [['place', ...countries, 'total'], ...placeRows]
+        .map((r) => r.map((v) => v.padEnd(14)).join(''))
+        .join('\n'),
+  );
+  console.log(
+    `\nTotal places: ${placeStats.total} (duplicates removed: ${placeStats.duplicatesRemoved}); ` +
+      `places.json: ${(placesOutput.json.length / 1e6).toFixed(2)} MB, gzip ${(placesOutput.gzip.length / 1e6).toFixed(2)} MB`,
+  );
+
   const topKeys = Object.fromEntries(
     CATEGORIES.map((cat) => [
       cat,
@@ -185,9 +216,15 @@ async function main() {
   await writeFile(join(args.out, 'pois.json'), output.json);
   await writeFile(join(args.out, 'pois.json.gz'), output.gzip);
   await writeFile(join(args.out, 'manifest.json'), JSON.stringify(output.manifest, null, 2) + '\n');
+  await writeFile(join(args.out, 'places.json'), placesOutput.json);
+  await writeFile(join(args.out, 'places.json.gz'), placesOutput.gzip);
   await writeFile(
     join(args.out, 'report.json'),
-    JSON.stringify({ stats, sources: countries, dataTimestamp: dataTs, topKeys }, null, 2) + '\n',
+    JSON.stringify(
+      { stats, places: placeStats, sources: countries, dataTimestamp: dataTs, topKeys },
+      null,
+      2,
+    ) + '\n',
   );
   log(`wrote ${args.out}`);
 
@@ -196,6 +233,7 @@ async function main() {
   const empty = emptyCategories(stats.totals);
   if (empty.length) problems.push(`categories with 0 POIs: ${empty.join(', ')}`);
   if (output.gzip.length > MAX_GZIP_BYTES) problems.push(`gzip is larger than 5 MB`);
+  if (placeStats.total === 0) problems.push('no place names');
   if (!validatePoiFile(JSON.parse(await readFile(join(args.out, 'pois.json'), 'utf8')))) {
     problems.push('output failed schema validation');
   }
