@@ -1,0 +1,124 @@
+{"app_name":"Rastcamp","timestamp":"2026-10-12 21:37:44.00 +0000","app_version":"1.0.0","slice_uuid":"9a6bb466-0136-3fb6-bb0b-fa3865064a47","build_version":"1","platform":7,"bundleID":"no.rastcamp.app","share_with_app_devs":0,"is_first_party":0,"bug_type":"309","os_version":"macOS 26.6.2 (25G83)","roots_installed":0,"name":"Rastcamp","incident_id":"87CFCCAF-5A2E-454E-A3E5-1ED735CD2713"}
+{
+  "uptime" : 5400,
+  "procRole" : "Foreground",
+  "version" : 2,
+  "userID" : 501,
+  "deployVersion" : 210,
+  "modelCode" : "VirtualMac2,1",
+  "coalitionID" : 2831,
+  "osVersion" : {
+    "train" : "macOS 26.6.2",
+    "build" : "25G83",
+    "releaseType" : "User"
+  },
+  "captureTime" : "2026-10-12 21:37:42.7613 +0000",
+  "codeSigningMonitor" : 0,
+  "incident" : "87CFCCAF-5A2E-454E-A3E5-1ED735CD2713",
+  "pid" : 39548,
+  "translated" : false,
+  "cpuType" : "ARM-64",
+  "procLaunch" : "2026-10-12 21:37:42.5239 +0000",
+  "procStartAbsTime" : 131754042658,
+  "procExitAbsTime" : 131759354747,
+  "procName" : "Rastcamp",
+  "procPath" : "\/Users\/USER\/Library\/Developer\/CoreSimulator\/Devices\/841190F6-F927-4F0D-B152-62A06B4040CA\/data\/Containers\/Bundle\/Application\/44F85169-EBB0-4668-8210-D0AAC0E3FD1E\/no.rastcamp.app-1791840813000.app\/Rastcamp",
+  "bundleInfo" : {"CFBundleShortVersionString":"1.0.0","CFBundleVersion":"1","CFBundleIdentifier":"no.rastcamp.app"},
+  "storeInfo" : {"deviceIdentifierForVendor":"D9AF2449-3179-5E00-8967-3870F2687C00","thirdParty":true},
+  "parentProc" : "launchd_sim",
+  "parentPid" : 48752,
+  "coalitionName" : "com.apple.CoreSimulator.SimDevice.841190F6-F927-4F0D-B152-62A06B4040CA",
+  "crashReporterKey" : "6968BE36-3F79-6321-9220-1411BA862524",
+  "appleIntelligenceStatus" : {"state":"unavailable","reasons":["selectedSiriLanguageIneligible","countryBillingIneligible","countryLocationIneligible","selectedSiriLanguageIneligibleInfo(und)","deviceNotCapable"]},
+  "developerMode" : 1,
+  "responsiblePid" : 5009,
+  "responsibleProc" : "SimulatorTrampoline",
+  "codeSigningID" : "Rastcamp",
+  "codeSigningTeamID" : "",
+  "codeSigningFlags" : 570556929,
+  "codeSigningValidationCategory" : 10,
+  "codeSigningTrustLevel" : 4294967295,
+  "codeSigningAuxiliaryInfo" : 0,
+  "instructionByteStream" : {"beforePC":"6AMA+QABALAAvCqRj3QAlAgAQPkJAQCQKRUykR8BAPEgAYiawANf1g==","atPC":"AIDFPCAAgD3AA1\/WCBBAuR81BnFiAABUAACAUsADX9YAjEG5wANf1g=="},
+  "bootSessionUUID" : "ED68D488-6EB6-4DF3-A9BC-20AEBA92B1F0",
+  "sip" : "disabled",
+  "vmRegionInfo" : "0x180000058 is in 0x180000000-0x300000000;  bytes after start: 88  bytes before end: 6442450855\n      REGION TYPE                    START - END         [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      Stack                       16ad08000-16b504000    [ 8176K] rw-\/rwx SM=SHM  thread 0\n      GAP OF 0x14afc000 BYTES\n--->  commpage (reserved)         180000000-300000000    [  6.0G] ---\/--- SM=NUL  reserved VM address space (unallocated)\n      GAP OF 0xcc0000000 BYTES\n      GPU Carveout (reserved)     fc0000000-1000000000   [  1.0G] ---\/--- SM=NUL  reserved VM address space (unallocated)",
+  "exception" : {"codes":"0x0000000000000002, 0x0000000180000058","rawCodes":[2,6442451032],"type":"EXC_BAD_ACCESS","signal":"SIGBUS","subtype":"KERN_PROTECTION_FAILURE at 0x0000000180000058"},
+  "termination" : {"flags":1024,"code":10,"namespace":"SIGNAL","indicator":"Bus error: 10","byProc":"exc handler","byPid":39548},
+  "vmregioninfo" : "0x180000058 is in 0x180000000-0x300000000;  bytes after start: 88  bytes before end: 6442450855\n      REGION TYPE                    START - END         [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      Stack                       16ad08000-16b504000    [ 8176K] rw-\/rwx SM=SHM  thread 0\n      GAP OF 0x14afc000 BYTES\n--->  commpage (reserved)         180000000-300000000    [  6.0G] ---\/--- SM=NUL  reserved VM address space (unallocated)\n      GAP OF 0xcc0000000 BYTES\n      GPU Carveout (reserved)     fc0000000-1000000000   [  1.0G] ---\/--- SM=NUL  reserved VM address space (unallocated)",
+  "extMods" : {"caller":{"thread_create":0,"thread_set_state":0,"task_for_pid":0},"system":{"thread_create":0,"thread_set_state":0,"task_for_pid":11},"targeted":{"thread_create":0,"thread_set_state":0,"task_for_pid":0},"warnings":0},
+  "faultingThread" : 0,
+  "threads" : [{"triggered":true,"id":571008,"threadState":{"x":[{"value":6442450944},{"value":6095373736},{"value":5},{"value":262162},{"value":4},{"value":0},{"value":4392997232,"symbolLocation":0,"symbol":"mmap"},{"value":4393732856,"symbolLocation":0,"symbol":"dyld4::sSysCalls"},{"value":16087199349382316038},{"value":16087199349382316038},{"value":524306},{"value":0},{"value":0},{"value":6095293808},{"value":32},{"value":96},{"value":6},{"value":1},{"value":0},{"value":6095373808},{"value":4396072976,"symbolLocation":0,"symbol":"dyld4::sSyscallDelegate"},{"value":4396076032,"symbolLocation":1184,"symbol":"lsl::sPoolBytes"},{"value":0},{"value":1},{"value":3},{"value":4396076320,"symbolLocation":1472,"symbol":"lsl::sPoolBytes"},{"value":4396076440,"symbolLocation":1592,"symbol":"lsl::sPoolBytes"},{"value":6095373808},{"value":1}],"flavor":"ARM_THREAD_STATE64","lr":{"value":4395753212},"cpsr":{"value":1610616832},"fp":{"value":6095373776},"sp":{"value":6095373696},"esr":{"value":2449473542,"description":"(Data Abort) byte read Translation fault"},"pc":{"value":4395865768,"matchesCrashFrame":1},"far":{"value":6442451032}},"frames":[{"imageOffset":153256,"symbol":"DyldSharedCache::getUUID(unsigned char*) const","symbolLocation":0,"imageIndex":1},{"imageOffset":40700,"symbol":"dyld4::SyscallDelegate::getDyldCache(dyld3::SharedCacheOptions const&, dyld3::SharedCacheLoadInfo&) const","symbolLocation":112,"imageIndex":1},{"imageOffset":58556,"symbol":"dyld4::ProcessConfig::DyldCache::DyldCache(dyld4::ProcessConfig::Process&, dyld4::ProcessConfig::Security const&, dyld4::ProcessConfig::Logging const&, dyld4::SyscallDelegate&, lsl::Allocator&, dyld4::ProcessConfig const&)","symbolLocation":592,"imageIndex":1},{"imageOffset":51020,"symbol":"dyld4::ProcessConfig::ProcessConfig(dyld4::KernelArgs const*, dyld4::SyscallDelegate&, lsl::Allocator&)","symbolLocation":124,"imageIndex":1},{"imageOffset":45000,"symbol":"_dyld_sim_prepare","symbolLocation":712,"imageIndex":1},{"imageOffset":141376,"symbol":"dyld4::prepareSim(dyld4::RuntimeState&, char const*)","symbolLocation":1300,"imageIndex":2},{"imageOffset":134304,"symbol":"dyld4::prepare(dyld4::APIs&, mach_o::UnsafeHeader const*)","symbolLocation":340,"imageIndex":2},{"imageOffset":133936,"symbol":"dyld4::start(dyld4::KernelArgs*, void*, void*, unsigned long long)::$_1::operator()() const","symbolLocation":320,"imageIndex":2},{"imageOffset":132236,"symbol":"start","symbolLocation":6904,"imageIndex":2}]}],
+  "usedImages" : [
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4371496960,
+    "CFBundleShortVersionString" : "1.0.0",
+    "CFBundleIdentifier" : "no.rastcamp.app",
+    "size" : 6258688,
+    "uuid" : "9a6bb466-0136-3fb6-bb0b-fa3865064a47",
+    "path" : "\/Users\/USER\/Library\/Developer\/CoreSimulator\/Devices\/841190F6-F927-4F0D-B152-62A06B4040CA\/data\/Containers\/Bundle\/Application\/44F85169-EBB0-4668-8210-D0AAC0E3FD1E\/no.rastcamp.app-1791840813000.app\/Rastcamp",
+    "name" : "Rastcamp",
+    "CFBundleVersion" : "1"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4395712512,
+    "size" : 327680,
+    "uuid" : "ba544d9a-46ab-3c59-a00f-aba1479d2079",
+    "path" : "\/Volumes\/VOLUME\/*\/dyld_sim",
+    "name" : "dyld_sim"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 4392976384,
+    "size" : 737280,
+    "uuid" : "74e52480-c2bd-3c8d-812d-95fe2b74a096",
+    "path" : "\/usr\/lib\/dyld",
+    "name" : "dyld"
+  },
+  {
+    "size" : 0,
+    "source" : "A",
+    "base" : 0,
+    "uuid" : "00000000-0000-0000-0000-000000000000"
+  }
+],
+  "vmSummary" : "ReadOnly portion of Libraries: Total=20.7M resident=0K(0%) swapped_out_or_unallocated=20.7M(100%)\nWritable regions: Total=8720K written=80K(1%) resident=80K(1%) swapped_out=0K(0%) unallocated=8640K(99%)\n\n                                VIRTUAL   REGION \nREGION TYPE                        SIZE    COUNT (non-coalesced) \n===========                     =======  ======= \nSTACK GUARD                       56.0M        1 \nStack                             8176K        1 \n__AUTH_CONST                        32K        1 \n__DATA                             864K        5 \n__DATA_CONST                       432K        3 \n__DATA_DIRTY                        32K        2 \n__LINKEDIT                        13.7M        3 \n__TEXT                            7152K        3 \n__TPRO_CONST                       160K        2 \npage table in kernel                80K        1 \n===========                     =======  ======= \nTOTAL                             86.2M       22 \n",
+  "legacyInfo" : {
+  "threadTriggered" : {
+
+  }
+},
+  "logWritingSignature" : "c5c2b367eb311ae1e536c77602180990c0f26108",
+  "bug_type" : "309",
+  "roots_installed" : 0,
+  "trmStatus" : 2105344,
+  "trialInfo" : {
+  "rollouts" : [
+    {
+      "rolloutId" : "60f8ddccefea4203d95cbeef",
+      "factorPackIds" : [
+
+      ],
+      "deploymentId" : 240000025
+    },
+    {
+      "rolloutId" : "644114de41e7236e6177f9bd",
+      "factorPackIds" : [
+
+      ],
+      "deploymentId" : 240000013
+    }
+  ],
+  "experiments" : [
+
+  ]
+},
+  "reportNotes" : [
+  "dyld_process_snapshot_get_shared_cache failed"
+]
+}

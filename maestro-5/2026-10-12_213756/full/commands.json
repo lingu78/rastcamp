@@ -1,0 +1,156 @@
+[ {
+  "command" : {
+    "defineVariablesCommand" : {
+      "env" : {
+        "TAB_MORE_DEVICE" : "More",
+        "LANGUAGE" : "Svenska",
+        "TAB_MAP" : "Karta",
+        "TAB_NEARBY" : "Närmast",
+        "TAB_FAVORITES" : "Favoriter",
+        "SEARCH" : "Sök på namn",
+        "SAVE_FAVORITE" : "Spara favorit",
+        "CLOSE" : "Stäng",
+        "CLEAR_SEARCH" : "Rensa sökningen",
+        "CHIP_CARAVAN" : "Ställplats",
+        "CHIP_DUMP" : "Tömning",
+        "CHIP_ALL" : "Alla",
+        "LOCATE" : "Centrera på min position",
+        "SEARCH_PLACE" : "Sök ort eller plats",
+        "SEARCH_QUERY" : "Åre",
+        "PLACES_HEADER" : "Orter och områden",
+        "CANCEL" : "Avbryt",
+        "MAESTRO_DRIVER_STARTUP_TIMEOUT" : "600000",
+        "MAESTRO_FILENAME" : "full",
+        "MAESTRO_DEVICE_UDID" : "841190F6-F927-4F0D-B152-62A06B4040CA",
+        "MAESTRO_SHARD_ID" : "1",
+        "MAESTRO_SHARD_INDEX" : "0"
+      },
+      "optional" : false
+    }
+  },
+  "metadata" : {
+    "status" : "COMPLETED",
+    "timestamp" : 1791841111648,
+    "duration" : 9,
+    "sequenceNumber" : 0,
+    "depth" : 0,
+    "evaluatedCommand" : {
+      "defineVariablesCommand" : {
+        "env" : {
+          "TAB_MORE_DEVICE" : "More",
+          "LANGUAGE" : "Svenska",
+          "TAB_MAP" : "Karta",
+          "TAB_NEARBY" : "Närmast",
+          "TAB_FAVORITES" : "Favoriter",
+          "SEARCH" : "Sök på namn",
+          "SAVE_FAVORITE" : "Spara favorit",
+          "CLOSE" : "Stäng",
+          "CLEAR_SEARCH" : "Rensa sökningen",
+          "CHIP_CARAVAN" : "Ställplats",
+          "CHIP_DUMP" : "Tömning",
+          "CHIP_ALL" : "Alla",
+          "LOCATE" : "Centrera på min position",
+          "SEARCH_PLACE" : "Sök ort eller plats",
+          "SEARCH_QUERY" : "Åre",
+          "PLACES_HEADER" : "Orter och områden",
+          "CANCEL" : "Avbryt",
+          "MAESTRO_DRIVER_STARTUP_TIMEOUT" : "600000",
+          "MAESTRO_FILENAME" : "full",
+          "MAESTRO_DEVICE_UDID" : "841190F6-F927-4F0D-B152-62A06B4040CA",
+          "MAESTRO_SHARD_ID" : "1",
+          "MAESTRO_SHARD_INDEX" : "0"
+        },
+        "optional" : false
+      }
+    }
+  }
+}, {
+  "command" : {
+    "applyConfigurationCommand" : {
+      "config" : {
+        "appId" : "no.rastcamp.app"
+      },
+      "optional" : false
+    }
+  },
+  "metadata" : {
+    "status" : "COMPLETED",
+    "timestamp" : 1791841111659,
+    "duration" : 5,
+    "sequenceNumber" : 1,
+    "depth" : 0,
+    "evaluatedCommand" : {
+      "applyConfigurationCommand" : {
+        "config" : {
+          "appId" : "no.rastcamp.app"
+        },
+        "optional" : false
+      }
+    }
+  }
+}, {
+  "command" : {
+    "setLocationCommand" : {
+      "latitude" : "59.9139",
+      "longitude" : "10.7522",
+      "optional" : false
+    }
+  },
+  "metadata" : {
+    "status" : "COMPLETED",
+    "timestamp" : 1791841111668,
+    "duration" : 1579,
+    "sequenceNumber" : 2,
+    "depth" : 0,
+    "evaluatedCommand" : {
+      "setLocationCommand" : {
+        "latitude" : "59.9139",
+        "longitude" : "10.7522",
+        "optional" : false
+      }
+    }
+  }
+}, {
+  "command" : {
+    "assertConditionCommand" : {
+      "condition" : {
+        "visible" : {
+          "textRegex" : "${TAB_MORE_DEVICE}",
+          "optional" : false
+        }
+      },
+      "timeout" : "20000",
+      "optional" : false
+    }
+  },
+  "metadata" : {
+    "status" : "FAILED",
+    "timestamp" : 1791841113347,
+    "duration" : 20567,
+    "error" : {
+      "message" : "Assertion is false: \"More\" is visible",
+      "debugMessage" : "Assertion '\"More\" is visible' failed. Check the UI hierarchy in debug artifacts to verify the element state and properties.\n\nPossible causes:\n- Element selector may be incorrect - check if there are similar elements with slightly different names/properties.\n- Element may be temporarily unavailable due to loading state\n- This could be a real regression that needs to be addressed"
+    },
+    "sequenceNumber" : 3,
+    "depth" : 0,
+    "evaluatedCommand" : {
+      "assertConditionCommand" : {
+        "condition" : {
+          "visible" : {
+            "textRegex" : "More",
+            "optional" : false
+          }
+        },
+        "timeout" : "20000",
+        "optional" : false
+      }
+    },
+    "artifacts" : [ {
+      "type" : "SCREEN_HIERARCHY",
+      "path" : "screen-hierarchy/step-004-assertCondition-${TAB_MORE_DEVICE}.json"
+    }, {
+      "type" : "SCREENSHOT",
+      "path" : "screenshots/step-004-assertCondition-${TAB_MORE_DEVICE}.png"
+    } ]
+  }
+} ]

@@ -1,0 +1,6 @@
+run 1: copy deleted=yes maestro=1 crash reports=0
+run 2: copy deleted=yes maestro=0 crash reports=0
+run 3: copy deleted=yes maestro=1 crash reports=1
+run 4: copy deleted=no maestro=1 crash reports=1
+run 5: copy deleted=no maestro=1 crash reports=1
+run 6: copy deleted=no maestro=1 crash reports=1

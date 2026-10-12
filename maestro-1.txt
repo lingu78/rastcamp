@@ -1,0 +1,76 @@
+Anonymous analytics enabled. To opt out, set MAESTRO_CLI_NO_ANALYTICS environment variable to any value before running Maestro.
+
+Running on iPhone 17 Pro Max - iOS 26.5 - 841190F6-F927-4F0D-B152-62A06B4040CA
+ > Flow full
+Set location (59.9139, 10.7522)... COMPLETED
+Assert that "${TAB_MORE_DEVICE}" is visible... COMPLETED
+Retry 3 times...
+  Tap on "${TAB_MORE_DEVICE}"... COMPLETED
+  Assert that "${LANGUAGE}" is visible... COMPLETED
+Retry 3 times... COMPLETED
+Tap on "${LANGUAGE}"... COMPLETED
+Assert that "${TAB_NEARBY}" is visible... COMPLETED
+Tap on "${TAB_NEARBY}"... COMPLETED
+Assert that "${SEARCH}" is visible... COMPLETED
+Tap on "${SEARCH}"... COMPLETED
+Input text Homannsberget... COMPLETED
+Hide Keyboard... COMPLETED
+Tap on "Homannsberget Camping.*"... COMPLETED
+Tap on "${SAVE_FAVORITE}"... COMPLETED
+Tap on "${CLOSE}"... COMPLETED
+Tap on "${CLEAR_SEARCH}"... COMPLETED
+Tap on "${SEARCH}"... COMPLETED
+Input text Sjølyst... COMPLETED
+Hide Keyboard... COMPLETED
+Tap on "Sjølyst bobilparkering.*"... COMPLETED
+Tap on "${SAVE_FAVORITE}"... COMPLETED
+Wait for animation to end... COMPLETED
+Take screenshot 03-detail... COMPLETED
+Tap on "${CLOSE}"... COMPLETED
+Tap on "${CLEAR_SEARCH}"... COMPLETED
+Hide Keyboard... COMPLETED
+Tap on "${TAB_MAP}"... COMPLETED
+Tap on "${CHIP_CARAVAN}"... COMPLETED
+Tap on "${CHIP_DUMP}"... COMPLETED
+Tap on "${LOCATE}"... COMPLETED
+Wait for animation to end within 8000 ms... COMPLETED
+Take screenshot 01-map-filter... COMPLETED
+Retry 3 times...
+  Tap on "${TAB_NEARBY}"... COMPLETED
+  Assert that "${SEARCH}" is visible... COMPLETED
+Retry 3 times... COMPLETED
+Wait for animation to end... COMPLETED
+Take screenshot 02-nearby... COMPLETED
+Retry 3 times...
+  Tap on "${TAB_FAVORITES}"... COMPLETED
+  Assert that "Homannsberget Camping.*" is visible... COMPLETED
+Retry 3 times... COMPLETED
+Wait for animation to end... COMPLETED
+Take screenshot 04-favorites... COMPLETED
+Tap on "${TAB_MAP}"... COMPLETED
+Retry 3 times...
+  Tap on "${SEARCH_PLACE}"... COMPLETED
+  Assert that "${CANCEL}" is visible... COMPLETED
+Retry 3 times... COMPLETED
+Input text ${SEARCH_QUERY}... COMPLETED
+Assert that "${PLACES_HEADER}" is visible... COMPLETED
+Hide Keyboard... COMPLETED
+Wait for animation to end... COMPLETED
+Take screenshot 06-search... COMPLETED
+Tap on "${CANCEL}"... COMPLETED
+Run flow when Platform is ANDROID...
+Run flow when Platform is ANDROID... SKIPPED
+Tap on "${TAB_NEARBY}"... FAILED
+
+Element not found: Text matching regex: Närmast
+
+Element with Text matching regex: Närmast not found. Check the UI hierarchy in debug artifacts to verify if the element exists.
+
+Possible causes:
+- Element selector may be incorrect - check if there are similar elements with slightly different names/properties.
+- Element may be temporarily unavailable due to loading state.
+- This could be a real regression that needs to be addressed.
+
+==== Debug output (logs & screenshots) ====
+
+/Users/runner/work/rastcamp/rastcamp/repro-out/maestro-1/2026-10-12_205427
