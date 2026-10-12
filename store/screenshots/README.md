@@ -13,8 +13,8 @@ Bilder (6 per språk): `01-map-filter`, `02-nearby`, `03-detail`, `04-favorites`
 ## Generera om
 
 1. GitHub → _Actions → Store screenshots → Run workflow_ (eller pusha en ändring i
-   `store/screenshots/flows/`). Android-jobbet körs alltid, iOS-jobbet vid manuell körning
-   eller en commit med `[ios]` i meddelandet (macOS-minuter är dyra i privata repon).
+   `store/screenshots/flows/`). iOS-jobbet körs alltid; Android är pausat och körs bara om
+   man bockar i _android_ vid en manuell körning.
 2. Resultatet hamnar på grenarna `store-screenshots-android` / `store-screenshots-ios`
    (`raw/` = skärmdumpar, `final/` = med bildtext, `debug/` = Maestros felsökning vid fel).
 3. Hämta och lägg in:

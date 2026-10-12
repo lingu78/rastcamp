@@ -86,11 +86,17 @@ appId: no.rastcamp.app
 
 # 6) Location search from the map (results only – no place is chosen).
 - tapOn: '${TAB_MAP}'
-- tapOn: '${SEARCH_PLACE}'
+- retry:
+    maxRetries: 3
+    commands:
+      - tapOn: '${SEARCH_PLACE}'
+      - extendedWaitUntil:
+          visible: '${CANCEL}'
+          timeout: 10000
 - inputText: '${SEARCH_QUERY}'
 - extendedWaitUntil:
     visible: '${PLACES_HEADER}'
-    timeout: 15000
+    timeout: 30000
 - hideKeyboard
 - waitForAnimationToEnd
 - takeScreenshot: 06-search

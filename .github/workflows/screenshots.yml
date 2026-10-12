@@ -3,9 +3,14 @@ name: Store screenshots
 # Takes the store screenshots (spec §10) with Maestro on a real Android emulator and an iOS
 # simulator, for sv/nb/en, then adds captions in store sizes. Results are pushed to the
 # store-screenshots-android / store-screenshots-ios branches (copied into store/screenshots/).
-# macOS minutes are expensive, so this only runs on demand or when the flows change.
+# Runs on demand or when the flows change (the repository is public, so runner minutes are free).
 on:
   workflow_dispatch:
+    inputs:
+      android:
+        description: Also take Android screenshots (Android is paused)
+        type: boolean
+        default: false
   push:
     paths:
       - 'store/screenshots/flows/**'
@@ -23,6 +28,8 @@ concurrency:
 jobs:
   android:
     name: Android (1080×1920)
+    # Android is paused (DECISIONS §16): only when chosen in a manual run.
+    if: github.event_name == 'workflow_dispatch' && inputs.android
     runs-on: ubuntu-latest
     timeout-minutes: 75
     steps:
@@ -89,7 +96,6 @@ jobs:
   ios:
     name: iOS (6.9" iPhone)
     # macOS minutes cost 10× – only on manual runs or commits tagged [ios].
-    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[ios]')
     runs-on: macos-latest
     timeout-minutes: 90
     steps:

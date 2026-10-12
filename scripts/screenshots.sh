@@ -25,7 +25,8 @@ run() { # $1 = lang code, rest = KEY=VALUE labels
   if [ "$status" -ne 0 ]; then
     # Keep Maestro's failure screenshots/hierarchy for debugging (pushed with the results).
     local dbg="$ROOT/store/screenshots/debug/$PLATFORM/$lang"
-    mkdir -p "$dbg" && cp -R "$run/." "$dbg/" 2>/dev/null || true
+    # Without files over 20 MB (simulator logs can exceed GitHub's 100 MB file limit).
+    mkdir -p "$dbg" && rsync -a --max-size=20m "$run/" "$dbg/" 2>/dev/null || true
     exit "$status"
   fi
   ls -1 "$out"
