@@ -4,11 +4,14 @@
 # location search; MODE=full runs the whole store screenshot flow (Swedish) on a fresh
 # install, which is where the app died with SIGBUS. MODE=maestro runs the unchanged
 # screenshot flow (Maestro reinstalls and starts the app itself, as in the screenshot job)
-# and attaches lldb to every new app process.
+# and attaches lldb to every new app process. MODE=reinstall reinstalls the app the way
+# Maestro's clearState does (copy of the installed bundle, reinstall from it), deleting the
+# copy afterwards in the first half of the runs and keeping it in the second half, then
+# starts it with simctl (no lldb) and runs the flow without launchApp.
 set -uo pipefail
 OUT="${1:?output dir}"
 RUNS="${RUNS:-5}"
-MODE="${MODE:-maestro}"
+MODE="${MODE:-reinstall}"
 DIR="$(cd "$(dirname "$0")" && pwd)"
 ROOT="$(cd "$DIR/../.." && pwd)"
 APP=no.rastcamp.app
@@ -40,7 +43,8 @@ follow() {
   while [ ! -f "$OUT/done-$i" ]; do
     t=$((t + 1))
     [ "$t" = 100 ] && ps -axo pid,command | grep -i '[R]astcamp' >> "$OUT/processes-$i.txt"
-    pid=$(pgrep -f 'Rastcamp\.app/Rastcamp( |$)' | tail -1 || true)
+    # (after Maestro's reinstall the bundle is named like no.rastcamp.app-1791834511422.app)
+    pid=$(pgrep -f '\.app/Rastcamp( |$)' | tail -1 || true)
     if [ -n "$pid" ] && [ "$pid" != "$last" ]; then
       last="$pid"; n=$((n + 1))
       ps -o pid,command -p "$pid" >> "$OUT/processes-$i.txt" 2>&1
@@ -86,7 +90,36 @@ if [ "$MODE" = maestro ]; then
   done
 fi
 
-[ "$MODE" = maestro ] || for i in $(seq 1 "$RUNS"); do
+ips_count() {
+  sudo find /Users /Library /private/var -name 'Rastcamp*.ips' 2>/dev/null | wc -l | tr -d ' '
+}
+
+if [ "$MODE" = reinstall ]; then
+  for i in $(seq 1 "$RUNS"); do
+    keep=no
+    [ "$i" -gt $((RUNS / 2)) ] && keep=yes
+    xcrun simctl terminate "$UDID" "$APP" 2>/dev/null || true
+    container=$(xcrun simctl get_app_container "$UDID" "$APP" app)
+    tmp=$(mktemp -d)
+    copy="$tmp/$APP-$(date +%s)000.app"
+    cp -R "$container" "$copy"
+    xcrun simctl uninstall "$UDID" "$APP"
+    xcrun simctl install "$UDID" "$copy"
+    [ "$keep" = no ] && rm -rf "$tmp"
+    xcrun simctl privacy "$UDID" grant location "$APP" || true
+    before=$(ips_count)
+    xcrun simctl launch "$UDID" "$APP" > /dev/null
+    sleep 8
+    status=0
+    maestro test --test-output-dir "$OUT/maestro-$i" "${SV[@]}" "$OUT/full.yaml" > "$OUT/maestro-$i.txt" 2>&1 || status=$?
+    sleep 5
+    after=$(ips_count)
+    echo "run $i: copy deleted=$([ "$keep" = no ] && echo yes || echo no) maestro=$status crash reports=$((after - before))" | tee -a "$summary"
+    stats "after run $i"
+  done
+fi
+
+[ "$MODE" = maestro ] || [ "$MODE" = reinstall ] || for i in $(seq 1 "$RUNS"); do
   xcrun simctl terminate "$UDID" "$APP" 2>/dev/null || true
   if [ "$MODE" = full ]; then # fresh install, like Maestro's clearState
     xcrun simctl uninstall "$UDID" "$APP" || true
