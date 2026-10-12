@@ -34,14 +34,17 @@ run() { # $1 = lang code, rest = KEY=VALUE labels
 run sv LANGUAGE=Svenska TAB_MAP=Karta TAB_NEARBY=Närmast TAB_FAVORITES=Favoriter \
   "SEARCH=Sök på namn" "SAVE_FAVORITE=Spara favorit" CLOSE=Stäng "CLEAR_SEARCH=Rensa sökningen" \
   CHIP_CARAVAN=Ställplats CHIP_DUMP=Tömning CHIP_ALL=Alla \
-  "LOCATE=Centrera på min position"
+  "LOCATE=Centrera på min position" "SEARCH_PLACE=Sök ort eller plats" SEARCH_QUERY=Åre \
+  "PLACES_HEADER=Orter och områden" CANCEL=Avbryt
 
 run nb "LANGUAGE=Norsk (bokmål)" TAB_MAP=Kart TAB_NEARBY=Nærmest TAB_FAVORITES=Favoritter \
   "SEARCH=Søk på navn" "SAVE_FAVORITE=Lagre favoritt" CLOSE=Lukk "CLEAR_SEARCH=Tøm søket" \
   CHIP_CARAVAN=Bobilplass CHIP_DUMP=Tømming CHIP_ALL=Alle \
-  "LOCATE=Sentrer på min posisjon"
+  "LOCATE=Sentrer på min posisjon" "SEARCH_PLACE=Søk etter sted" SEARCH_QUERY=Geiranger \
+  "PLACES_HEADER=Steder og områder" CANCEL=Avbryt
 
 run en LANGUAGE=English TAB_MAP=Map TAB_NEARBY=Nearby TAB_FAVORITES=Favourites \
   "SEARCH=Search by name" "SAVE_FAVORITE=Save favourite" CLOSE=Close "CLEAR_SEARCH=Clear search" \
   "CHIP_CARAVAN=Motorhome stop" "CHIP_DUMP=Dump station" CHIP_ALL=All \
-  "LOCATE=Centre on my location"
+  "LOCATE=Centre on my location" "SEARCH_PLACE=Search town or place" SEARCH_QUERY=Åre \
+  "PLACES_HEADER=Towns and areas" CANCEL=Cancel

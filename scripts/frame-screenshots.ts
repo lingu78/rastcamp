@@ -38,6 +38,11 @@ export const CAPTIONS: Record<string, Record<'sv' | 'nb' | 'en', string>> = {
     nb: 'Lagre favoritter for turen',
     en: 'Save favourites for the trip',
   },
+  '06-search': {
+    sv: 'Sök ort – se vad som finns nära',
+    nb: 'Søk etter sted – se hva som er i nærheten',
+    en: "Search a town – see what's nearby",
+  },
   '05-offline': {
     sv: 'Fungerar utan täckning',
     nb: 'Fungerer uten dekning',

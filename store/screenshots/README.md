@@ -8,7 +8,7 @@ Butiksbilderna tas automatiskt i en riktig Android-emulator och iOS-simulator me
 | Android   | 1080×1920 (9:16) | Emulator API 35, `pixel_2`, Mesa-GPU (`-gpu lavapipe`) |
 | iOS       | 1320×2868 (6,9") | Simulator, största iPhone (iOS 26)                     |
 
-Bilder (5 per språk): `01-map-filter`, `02-nearby`, `03-detail`, `04-favorites`, `05-offline`.
+Bilder (6 per språk): `01-map-filter`, `02-nearby`, `03-detail`, `04-favorites`, `05-offline`, `06-search`.
 
 ## Generera om
 

@@ -84,6 +84,18 @@ appId: no.rastcamp.app
 - waitForAnimationToEnd
 - takeScreenshot: 04-favorites
 
+# 6) Location search from the map (results only – no place is chosen).
+- tapOn: '${TAB_MAP}'
+- tapOn: '${SEARCH_PLACE}'
+- inputText: '${SEARCH_QUERY}'
+- extendedWaitUntil:
+    visible: '${PLACES_HEADER}'
+    timeout: 15000
+- hideKeyboard
+- waitForAnimationToEnd
+- takeScreenshot: 06-search
+- tapOn: '${CANCEL}'
+
 # 5) Offline: everything but the background map keeps working (Android only can toggle
 # airplane mode; on iOS the caption carries the message).
 - runFlow:
