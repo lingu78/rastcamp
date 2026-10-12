@@ -1,0 +1,53 @@
+{
+  "$schema" : "https://storage.googleapis.com/maestro-schemas/artifact-manifest/v1.schema.json",
+  "entries" : [ {
+    "kind" : "MAESTRO_LOG",
+    "format" : "TXT",
+    "relativePath" : "logs/maestro.log",
+    "sizeBytes" : 245345
+  }, {
+    "kind" : "TAKE_SCREENSHOT",
+    "format" : "PNG",
+    "relativePath" : "takeScreenshot",
+    "count" : 4
+  }, {
+    "kind" : "SCREEN_HIERARCHY",
+    "format" : "JSON",
+    "relativePath" : "screen-hierarchy",
+    "count" : 4
+  }, {
+    "kind" : "SCREENSHOT",
+    "format" : "PNG",
+    "relativePath" : "screenshots",
+    "count" : 5
+  }, {
+    "kind" : "COMMAND_METADATA",
+    "format" : "JSON",
+    "relativePath" : "commands.json",
+    "sizeBytes" : 41213
+  }, {
+    "kind" : "DEVICE_LOG",
+    "format" : "TXT",
+    "relativePath" : "logs/device-simulator.log",
+    "sizeBytes" : 75571765,
+    "metadata" : {
+      "source" : "simulator"
+    }
+  }, {
+    "kind" : "DEVICE_LOG",
+    "format" : "TXT",
+    "relativePath" : "logs/device-xctest.log",
+    "sizeBytes" : 391718,
+    "metadata" : {
+      "source" : "xctest"
+    }
+  }, {
+    "kind" : "CRASH_REPORT",
+    "format" : "TXT",
+    "relativePath" : "logs/crash-report.txt",
+    "sizeBytes" : 93146,
+    "metadata" : {
+      "message" : "EXC_BAD_ACCESS (SIGSEGV) - KERN_INVALID_ADDRESS at 0xefefefefefc0ffb8 -> 0xffffefefefc0ffb8 (possible pointer authentication failure)"
+    }
+  } ]
+}

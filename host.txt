@@ -1,0 +1,20 @@
+== start 16:05:30
+/dev/disk2s1s1   320Gi    12Gi    84Gi    13%    459k  877M    0%   /
+vm.swapusage: total = 0.00M  used = 0.00M  free = 0.00M  (encrypted)
+System-wide memory free percentage: 73%
+== after run 1 16:07:43
+/dev/disk2s1s1   320Gi    12Gi    80Gi    13%    459k  841M    0%   /
+vm.swapusage: total = 0.00M  used = 0.00M  free = 0.00M  (encrypted)
+System-wide memory free percentage: 65%
+== after run 2 16:09:38
+/dev/disk2s1s1   320Gi    12Gi    82Gi    13%    459k  855M    0%   /
+vm.swapusage: total = 0.00M  used = 0.00M  free = 0.00M  (encrypted)
+System-wide memory free percentage: 64%
+== after run 3 16:11:34
+/dev/disk2s1s1   320Gi    12Gi    81Gi    13%    459k  853M    0%   /
+vm.swapusage: total = 0.00M  used = 0.00M  free = 0.00M  (encrypted)
+System-wide memory free percentage: 65%
+== after run 4 16:13:15
+/dev/disk2s1s1   320Gi    12Gi    81Gi    13%    459k  851M    0%   /
+vm.swapusage: total = 0.00M  used = 0.00M  free = 0.00M  (encrypted)
+System-wide memory free percentage: 66%

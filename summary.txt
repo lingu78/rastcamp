@@ -1,0 +1,4 @@
+run 1: maestro=1 crash=no
+run 2: maestro=0 crash=no
+run 3: maestro=0 crash=no
+run 4: maestro=1 crash=no
